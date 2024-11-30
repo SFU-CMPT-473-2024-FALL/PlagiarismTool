@@ -1,6 +1,6 @@
 # PlagiarismTool
-To run (version 1):
+To run (version 2):
 
-javac PlagiarismTool.java 
+javac src/PlagiarismTool.java 
 
-java PlagiarismTool filename1.java filename2.java
+java src.PlagiarismTool test
