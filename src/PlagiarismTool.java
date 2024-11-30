@@ -1,3 +1,4 @@
+package src;
 import java.io.*;
 import java.nio.file.*;
 import java.security.MessageDigest;
@@ -5,51 +6,76 @@ import java.util.*;
 
 public class PlagiarismTool {
 
-    private static final int K_GRAM_SIZE = 20; // k-gram size (smaller value = handles shorter text)
-    private static final int WINDOW_SIZE = 3; // window size (smaller value = better matching)
+    private static final int K_GRAM_SIZE = 20; // k-gram size
+    private static final int WINDOW_SIZE = 3; // window size
 
     public static void main(String[] args) throws IOException {
+        if (args.length != 1) {
+            System.out.println("Usage: java PlagiarismTool <path_to_test_folder>");
+            return;
+        }
 
-        // Read files
-        String file1 = Files.readString(Paths.get(args[0]));
-        String file2 = Files.readString(Paths.get(args[1]));
+        Path testFolder = Paths.get(args[0]);
+        if (!Files.exists(testFolder) || !Files.isDirectory(testFolder)) {
+            System.out.println("Invalid folder path: " + testFolder);
+            return;
+        }
 
-        // Normalize content
-        String normFile1 = normalize(file1);
-        String normFile2 = normalize(file2);
+        // Get all files in the folder
+        List<Path> files = new ArrayList<>();
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(testFolder)) {
+            for (Path entry : stream) {
+                if (Files.isRegularFile(entry)) {
+                    files.add(entry);
+                }
+            }
+        }
 
-        // Debug: Print normalized content for both files
-        System.out.println("Normalized File 1: " + normFile1 + "\n");
-        System.out.println("Normalized File 2: " + normFile2);
+        if (files.size() < 2) {
+            System.out.println("Not enough files in the folder to compare.");
+            return;
+        }
 
-        // Generate k-grams, hashes, and fingerprints
-        List<KGram> kGrams1 = generateKGrams(normFile1);
-        List<KGram> kGrams2 = generateKGrams(normFile2);
+        // Compare each file with every other file
+        for (int i = 0; i < files.size(); i++) {
+            for (int j = i + 1; j < files.size(); j++) {
+                Path file1 = files.get(i);
+                Path file2 = files.get(j);
 
-        List<Integer> hashList1 = getHashes(kGrams1);
-        List<Integer> hashList2 = getHashes(kGrams2);
+                System.out.println("\nComparing: " + file1.getFileName() + " and " + file2.getFileName());
 
-        List<Integer> fingerprints1 = generateFingerprints(hashList1);
-        List<Integer> fingerprints2 = generateFingerprints(hashList2);
+                String content1 = Files.readString(file1);
+                String content2 = Files.readString(file2);
 
-        System.out.println("Comparing fingerprints:");
-        List<Region> matchedRegions = compareFingerprints(kGrams1, kGrams2, fingerprints1, fingerprints2);
+                String normFile1 = normalize(content1);
+                String normFile2 = normalize(content2);
 
-        double plagiarismRatio = calculatePlagiarismPercentage(matchedRegions, file1.length());
-        System.out.printf("Approximate plagiarism percentage: %.2f%%\n", plagiarismRatio * 100);
+                List<KGram> kGrams1 = generateKGrams(normFile1);
+                List<KGram> kGrams2 = generateKGrams(normFile2);
 
-        System.out.println("Plagiarized content:");
-        System.out.println(highlightPlagiarism(file1, matchedRegions));
+                List<Integer> hashList1 = getHashes(kGrams1);
+                List<Integer> hashList2 = getHashes(kGrams2);
+
+                List<Integer> fingerprints1 = generateFingerprints(hashList1);
+                List<Integer> fingerprints2 = generateFingerprints(hashList2);
+
+                List<Region> matchedRegions = compareFingerprints(kGrams1, kGrams2, fingerprints1, fingerprints2);
+                double plagiarismRatio = calculatePlagiarismPercentage(matchedRegions, content1.length());
+
+                System.out.printf("Approximate plagiarism percentage: %.2f%%\n", plagiarismRatio * 100);
+                System.out.println("Plagiarized content:");
+                System.out.println(highlightPlagiarism(content1, matchedRegions));
+            }
+        }
     }
 
-    // Normalize input (removes comments, whitespace, case normalization)
+    // Normalize input
     private static String normalize(String code) {
-        return code.replaceAll("//.*|/\\*.*?\\*/", "") 
-                .replaceAll("\\s+", " ") 
-                .toLowerCase(); 
+        return code.replaceAll("//.*|/\\*.*?\\*/", "")
+                .replaceAll("\\s+", " ")
+                .toLowerCase();
     }
 
-    // Generate k-grams and calculate their hash values
     private static List<KGram> generateKGrams(String text) {
         List<KGram> kGrams = new ArrayList<>();
         for (int i = 0; i <= text.length() - K_GRAM_SIZE; i++) {
@@ -60,7 +86,6 @@ public class PlagiarismTool {
         return kGrams;
     }
 
-    // Hash function (SHA-1)
     private static int hashSHA1(String text) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
@@ -68,7 +93,7 @@ public class PlagiarismTool {
             String hexHash = bytesToHex(hashBytes);
             return Integer.parseInt(hexHash.substring(hexHash.length() - 4), 16);
         } catch (Exception e) {
-            throw new RuntimeException("Hasing Error", e);
+            throw new RuntimeException("Hashing Error", e);
         }
     }
 
@@ -80,7 +105,6 @@ public class PlagiarismTool {
         return sb.toString();
     }
 
-    // Extract hash values from k-grams
     private static List<Integer> getHashes(List<KGram> kGrams) {
         List<Integer> hashes = new ArrayList<>();
         for (KGram kGram : kGrams) {
@@ -89,7 +113,6 @@ public class PlagiarismTool {
         return hashes;
     }
 
-    // Create fingerprints using Winnowing algorithm
     private static List<Integer> generateFingerprints(List<Integer> hashes) {
         List<Integer> fingerprints = new ArrayList<>();
         int prevMinIndex = -1;
@@ -103,9 +126,6 @@ public class PlagiarismTool {
                 prevMinIndex = minIndex;
             }
         }
-
-        // Debug:check fingerprints generated
-        // System.out.println("Fingerprints generated: " + fingerprints);
         return fingerprints;
     }
 
@@ -119,21 +139,13 @@ public class PlagiarismTool {
         return minIndex;
     }
 
-    // Compare fingerprints and find matching regions
     private static List<Region> compareFingerprints(List<KGram> kGrams1, List<KGram> kGrams2,
             List<Integer> fingerprints1, List<Integer> fingerprints2) {
-        // Create maps from fingerprints to KGrams
         Map<Integer, KGram> kGramMap1 = new HashMap<>();
         for (KGram kGram : kGrams1) {
             kGramMap1.put(kGram.hash, kGram);
         }
 
-        Map<Integer, KGram> kGramMap2 = new HashMap<>();
-        for (KGram kGram : kGrams2) {
-            kGramMap2.put(kGram.hash, kGram);
-        }
-
-        // Match fingerprints
         Set<Integer> fingerprintSet2 = new HashSet<>(fingerprints2);
         List<Region> regions = new ArrayList<>();
         for (int fp1 : fingerprints1) {
@@ -164,41 +176,32 @@ public class PlagiarismTool {
             }
         }
         merged.add(prev);
-
-        // Debugging: Output merged regions
-        // System.out.println("Merged regions: " + merged);
         return merged;
     }
 
-    // Calculate plagiarism percentage
     private static double calculatePlagiarismPercentage(List<Region> regions, int codeLength) {
         int plagiarizedLength = 0;
         for (Region region : regions) {
             plagiarizedLength += (region.end - region.start);
         }
-
-        // Debugging: Output total plagiarized length
-        // System.out.println("Total plagiarized length: " + plagiarizedLength);
         return (double) plagiarizedLength / codeLength;
     }
 
-    // Highlight plagiarized portion of file
     private static String highlightPlagiarism(String code, List<Region> regions) {
         StringBuilder highlightedCode = new StringBuilder();
         int lastIndex = 0;
 
         for (Region region : regions) {
             highlightedCode.append(code, lastIndex, region.start);
-            highlightedCode.append("\033[42m") 
+            highlightedCode.append("\033[42m")
                     .append(code, region.start, region.end)
-                    .append("\033[0m"); 
+                    .append("\033[0m");
             lastIndex = region.end;
         }
         highlightedCode.append(code.substring(lastIndex));
         return highlightedCode.toString();
     }
 
-    // Helper Classes
     static class KGram {
         String text;
         int hash, start, end;

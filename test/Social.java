@@ -1,3 +1,4 @@
+package test;
 import java.util.*;
 class Social {
     public static Stack<Integer> s = new Stack<Integer>();
