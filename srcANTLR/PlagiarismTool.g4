@@ -19,17 +19,17 @@ textline: (
 	)+;
 
 WORD:
-	[a-zA-Z_][a-zA-Z_0-9]*; // Matches identifiers and keywords
-NUMBER: DIGIT+; // Matches numbers
+	[a-zA-Z_][a-zA-Z_0-9]*; 
+NUMBER: DIGIT+; 
 SYMBOL:
-	[;{}(),.<>[\]]; // Matches common symbols including brackets
-OPERATOR: [=+*/!%-]; // Matches operators
-STRING: '"' (~["\r\n])* '"'; // Matches string literals
-ESCAPED: '\\' .; // Matches escaped sequences like \n, \t
-WHITESPACE: [ \t\r\n]+ -> skip; // Skips whitespace
+	[;{}(),.<>[\]]; 
+OPERATOR: [=+*/!%-]; 
+STRING: '"' (~["\r\n])* '"'; 
+ESCAPED: '\\' .; 
+WHITESPACE: [ \t\r\n]+ -> skip; 
 
-COMMENT: '//' ~[\r\n]* -> skip; // Skips single-line comments
+COMMENT: '//' ~[\r\n]* -> skip; 
 BLOCK_COMMENT:
-	'/*' .*? '*/' -> skip; // Skips multi-line comments
+	'/*' .*? '*/' -> skip; 
 
 fragment DIGIT: [0-9];

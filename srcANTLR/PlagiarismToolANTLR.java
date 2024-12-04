@@ -23,7 +23,6 @@ public class PlagiarismToolANTLR {
             return;
         }
 
-        // Get all files in the folder
         List<Path> files = new ArrayList<>();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(testFolder)) {
             for (Path entry : stream) {
@@ -78,13 +77,6 @@ public class PlagiarismToolANTLR {
         ParseTree tree = parser.diagrams();
         return tree.toStringTree(parser);
     }
-
-    // // Normalize input by removing comments, extra spaces, etc.
-    // private static String normalize(String code) {
-    //     return code.replaceAll("//.*|/\\*.*?\\*/", "")
-    //             .replaceAll("\\s+", " ")
-    //             .toLowerCase();
-    // }
 
     private static List<KGram> generateKGrams(String text) {
         List<KGram> kGrams = new ArrayList<>();

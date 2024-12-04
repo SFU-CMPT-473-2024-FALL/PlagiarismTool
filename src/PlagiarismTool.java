@@ -6,8 +6,8 @@ import java.util.*;
 
 public class PlagiarismTool {
 
-    private static final int K_GRAM_SIZE = 20; // k-gram size
-    private static final int WINDOW_SIZE = 3; // window size
+    private static final int K_GRAM_SIZE = 20;
+    private static final int WINDOW_SIZE = 3; 
 
     public static void main(String[] args) throws IOException {
         if (args.length != 1) {
@@ -21,7 +21,6 @@ public class PlagiarismTool {
             return;
         }
 
-        // Get all files in the folder
         List<Path> files = new ArrayList<>();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(testFolder)) {
             for (Path entry : stream) {
@@ -32,11 +31,10 @@ public class PlagiarismTool {
         }
 
         if (files.size() < 2) {
-            System.out.println("Not enough files in the folder to compare.");
+            System.out.println("Not enough files in the folder to compare. Need 2 files.");
             return;
         }
 
-        // Compare each file with every other file
         for (int i = 0; i < files.size(); i++) {
             for (int j = i + 1; j < files.size(); j++) {
                 Path file1 = files.get(i);
