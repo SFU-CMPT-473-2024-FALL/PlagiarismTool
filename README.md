@@ -1,5 +1,5 @@
 # PlagiarismTool
-Note: Contains onyl winnowing and winnowing + ANTLR implementation
+Note: Contains only winnowing and winnowing + ANTLR implementation
 
 Base 
 
