@@ -8,7 +8,7 @@ To run:
 
 javac src/PlagiarismTool.java 
 
-java src.PlagiarismTool test
+java -cp . src.PlagiarismTool test
 
 
 
@@ -22,6 +22,6 @@ java -jar ../lib/antlr-4.13.2-complete.jar PlagiarismTool.g4
 
 2. In root (PLAGIARISMTOOL) folder; compile using:
 
-javac -d bin src/PlagiarismTool.java srcANTLR/PlagiarismToolBaseListener.java srcANTLR/PlagiarismToolLexer.java srcANTLR/PlagiarismToolListener.java srcANTLR/PlagiarismToolParser.java srcANTLR/PlagiarismToolANTLR.java
+javac -d bin srcANTLR/PlagiarismToolBaseListener.java srcANTLR/PlagiarismToolLexer.java srcANTLR/PlagiarismToolListener.java srcANTLR/PlagiarismToolParser.java srcANTLR/PlagiarismToolANTLR.java
  
 java -cp "bin;lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR test
