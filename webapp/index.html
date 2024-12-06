@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Tool</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <!-- Left side: File uploads -->
+            <div class="upload-section">
+                <label for="single-file-upload" class="upload-label">Upload File to Check</label>
+                <input type="file" id="single-file-upload" class="upload-input">
+
+                <label for="multiple-file-upload" class="upload-label">Upload Files to Compare</label>
+                <input type="file" id="multiple-file-upload" class="upload-input" multiple>
+            </div>
+
+            <!-- Right side: Options -->
+            <div class="options-section">
+                <label for="comparison-method" class="dropdown-label">Choose Comparison Method</label>
+                <select id="comparison-method" class="dropdown">
+                    <option value="standard">Standard</option>
+                    <option value="antlr">ANTLR</option>
+                    <option value="tree-sitter">Tree-Sitter</option>
+                </select>
+                <button id="compare-button" class="button">Compare</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
