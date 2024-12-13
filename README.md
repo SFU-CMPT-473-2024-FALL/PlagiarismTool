@@ -23,11 +23,13 @@ java -jar ../lib/antlr-4.13.2-complete.jar PlagiarismTool.g4
 
 2. In root (PLAGIARISMTOOL) folder; compile using:
 
+```bash
 javac -cp "lib/antlr-4.13.2-complete.jar" -d bin \
 srcANTLR/PlagiarismToolBaseListener.java \
 srcANTLR/PlagiarismToolLexer.java \
 srcANTLR/PlagiarismToolListener.java \
 srcANTLR/PlagiarismToolParser.java \
 srcANTLR/PlagiarismToolANTLR.java
+```
  
 java -cp "bin;lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR test
