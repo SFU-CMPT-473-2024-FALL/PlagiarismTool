@@ -67,12 +67,43 @@ javac -cp "lib/antlr-4.13.2-complete.jar" -d bin srcANTLR/PlagiarismToolBaseList
  
 Windows:
 
+for processing 2 particular files in the test folder:
+
 ```bash
 java -cp "bin;lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR test
 ```
 
+for processing all files in the data folder:
+
+```bash
+java -cp "bin;lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR data
+```
+
 Linux:
+
+for processing 2 particular files in the test folder:
 
 ```bash
 java -cp "bin:lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR test
+```
+
+for processing all files in the data folder:
+
+```bash
+java -cp "bin:lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR data
+```
+
+
+TREE-SITTER
+
+for processing 2 particular files in the test folder:
+
+```bash
+node srcTreesitter/tree-sitter.js test
+```
+
+for processing all files in the data folder:
+
+```bash
+node srcTreesitter/tree-sitter.js data
 ```

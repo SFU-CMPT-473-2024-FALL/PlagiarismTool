@@ -5,6 +5,10 @@ import java.nio.file.*;
 import java.security.MessageDigest;
 import java.util.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlagiarismToolANTLR {
 
     private static final int K_GRAM_SIZE = 20; // k-gram size
@@ -13,6 +17,15 @@ public class PlagiarismToolANTLR {
     public static void main(String[] args) throws IOException {
         if (args.length != 1) {
             System.out.println("Usage: java PlagiarismTool <path_to_test_folder>");
+            return;
+        }
+
+        if ("data".equals(args[0])) {
+            scanData("data/dataset", "data/plags/insert");
+            System.out.println("\n\n");
+            scanData("data/dataset", "data/plags/insert_after_reorder");
+            System.out.println("\n\n");
+            scanData("data/dataset", "data/plags/reorder");
             return;
         }
 
@@ -55,6 +68,99 @@ public class PlagiarismToolANTLR {
             System.out.printf("Plagiarism percentage (Jaccard Similarity): %.2f%%\n", jaccardCalc * 100);
         }
     }
+
+    private static void scanData(String datasetPath, String plagPath) {
+        // Path dataDir = Paths.get("data/dataset");
+        // Path plagInsertDir = Paths.get("data/plags/insert");
+        // Path plagInsertAfterReorderDir = Paths.get("data/plags/insert_after_reorder");
+        // Path plagDir = Paths.get("data/plags/reorder");
+
+        Path dataDir = Paths.get(datasetPath);
+        Path plagDir = Paths.get(plagPath);
+
+        List<Path> datasetSubdirs = getSubdirectories(dataDir);
+        List<Path> plagiarizedSubdirs = getSubdirectories(plagDir);
+
+        if (datasetSubdirs.size() != plagiarizedSubdirs.size()) {
+            System.out.println("NUM DIRS NOT MATCHING!");
+            return;
+        }
+
+        int fileCount = 0;
+
+        for (int i = 0; i < datasetSubdirs.size(); i++) {
+            Path datasetSubdir = datasetSubdirs.get(i);
+            Path plagiarizedSubdir = plagiarizedSubdirs.get(i);
+
+            Path datasetFile = getJavaFile(datasetSubdir);
+            Path plagiarizedFile = getJavaFile(plagiarizedSubdir);
+
+            if (datasetFile != null && plagiarizedFile != null) {
+                try {
+                    // original
+                    String baseContent = Files.readString(datasetFile);
+                    String normalizedBaseContent = parseWithANTLR(baseContent);
+                    List<KGram> baseKGrams = generateKGrams(normalizedBaseContent);
+                    List<Integer> baseHashList = getHashes(baseKGrams);
+                    List<Integer> baseFingerprints = generateFingerprints(baseHashList);
+
+                    // plagiarised
+                    String otherContent = Files.readString(plagiarizedFile);
+                    String normalizedOtherContent = parseWithANTLR(otherContent);
+                    List<KGram> otherKGrams = generateKGrams(normalizedOtherContent);
+                    List<Integer> otherHashList = getHashes(otherKGrams);
+                    List<Integer> otherFingerprints = generateFingerprints(otherHashList);
+
+                    double jaccardCalc = generatejaccardCalc(baseFingerprints, otherFingerprints);
+                    System.out.printf("Plagiarism percentage (Jaccard Similarity): %.2f%%\n", jaccardCalc * 100);
+
+                    fileCount++;
+                } catch (Exception e) {
+                    System.out.println("ERROR: Unable to execute winnow algorithm");
+                }
+            } else {
+                System.out.println("ERROR: Unable to read data file");
+            }
+        }
+
+        System.out.printf("*** %d FILES READ!%n", fileCount);
+
+    }
+
+    private static List<Path> getSubdirectories(Path dir) {
+        List<Path> subdirs = new ArrayList<>();
+
+        if (!Files.exists(dir) || !Files.isDirectory(dir)) {
+            System.out.println("ERROR: Invalid directory path - " + dir);
+            return subdirs;
+        }
+
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
+            for (Path entry : stream) {
+                if (Files.isDirectory(entry)) {
+                    subdirs.add(entry);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("ERROR: Unable to retrieve subdirectories");
+        }
+        return subdirs;
+    }
+
+    private static Path getJavaFile(Path dir) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.java")) {
+            for (Path entry : stream) {
+                if (Files.isRegularFile(entry)) {
+                    return entry;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("ERROR: Unable to locate any .java file");
+        }
+        return null;
+    }
+
+
 
     private static String parseWithANTLR(String code) {
         CharStream input = CharStreams.fromString(code);
