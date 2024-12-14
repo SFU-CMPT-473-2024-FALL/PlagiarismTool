@@ -37,35 +37,30 @@ public class PlagiarismToolANTLR {
             return;
         }
 
-        for (int i = 0; i < files.size(); i++) {
-            for (int j = i + 1; j < files.size(); j++) {
-                Path file1 = files.get(i);
-                Path file2 = files.get(j);
+        // Use the first file as the base file
+        Path baseFile = files.get(0);
+        String baseContent = Files.readString(baseFile);
+        String normalizedBaseContent = parseWithANTLR(baseContent);
+        List<KGram> baseKGrams = generateKGrams(normalizedBaseContent);
+        List<Integer> baseHashList = getHashes(baseKGrams);
+        List<Integer> baseFingerprints = generateFingerprints(baseHashList);
 
-                System.out.println("\nComparing: " + file1.getFileName() + " and " + file2.getFileName());
+        // Compare the first file with all other files
+        for (int i = 1; i < files.size(); i++) {
+            Path otherFile = files.get(i);
 
-                String content1 = Files.readString(file1);
-                String content2 = Files.readString(file2);
+            System.out.println("\nComparing: " + baseFile.getFileName() + " and " + otherFile.getFileName());
 
-                String normalizedContent1 = parseWithANTLR(content1);
-                String normalizedContent2 = parseWithANTLR(content2);
+            String otherContent = Files.readString(otherFile);
+            String normalizedOtherContent = parseWithANTLR(otherContent);
 
-                List<KGram> kGrams1 = generateKGrams(normalizedContent1);
-                List<KGram> kGrams2 = generateKGrams(normalizedContent2);
+            List<KGram> otherKGrams = generateKGrams(normalizedOtherContent);
+            List<Integer> otherHashList = getHashes(otherKGrams);
+            List<Integer> otherFingerprints = generateFingerprints(otherHashList);
 
-                List<Integer> hashList1 = getHashes(kGrams1);
-                List<Integer> hashList2 = getHashes(kGrams2);
+            double jaccardCalc = generatejaccardCalc(baseFingerprints, otherFingerprints);
 
-                List<Integer> fingerprints1 = generateFingerprints(hashList1);
-                List<Integer> fingerprints2 = generateFingerprints(hashList2);
-
-                List<Region> matchedRegions = compareFingerprints(kGrams1, kGrams2, fingerprints1, fingerprints2);
-                double plagiarismRatio = calculatePlagiarismPercentage(matchedRegions, content1.length());
-
-                System.out.printf("Approximate plagiarism percentage: %.2f%%\n", plagiarismRatio * 100);
-                System.out.println("Plagiarized content:");
-                System.out.println(highlightPlagiarism(content1, matchedRegions));
-            }
+            System.out.printf("Plagiarism percentage (Jaccard Similarity): %.2f%%\n", jaccardCalc * 100);
         }
     }
 
@@ -141,70 +136,26 @@ public class PlagiarismToolANTLR {
         return minIndex;
     }
 
-    private static List<Region> compareFingerprints(List<KGram> kGrams1, List<KGram> kGrams2,
-            List<Integer> fingerprints1, List<Integer> fingerprints2) {
-        Map<Integer, KGram> kGramMap1 = new HashMap<>();
-        for (KGram kGram : kGrams1) {
-            kGramMap1.put(kGram.hash, kGram);
+    public static double generatejaccardCalc(List<Integer> fingerprints1, List<Integer> fingerprints2) {
+        Set<Integer> set1 = new HashSet<>(fingerprints1);
+        Set<Integer> set2 = new HashSet<>(fingerprints2);
+
+        Set<Integer> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2); 
+
+        Set<Integer> union = new HashSet<>(set1);
+        union.addAll(set2); 
+
+        int intersectionSize = intersection.size();
+        int unionSize = union.size();
+
+        if (unionSize == 0) {
+            return 0.0;
         }
 
-        Set<Integer> fingerprintSet2 = new HashSet<>(fingerprints2);
-        List<Region> regions = new ArrayList<>();
-        for (int fp1 : fingerprints1) {
-            if (fingerprintSet2.contains(fp1) && kGramMap1.containsKey(fp1)) {
-                KGram matched1 = kGramMap1.get(fp1);
-                regions.add(new Region(matched1.start, matched1.end));
-            }
-        }
-
-        return mergeOverlappingRegions(regions);
+        return (double) intersectionSize / unionSize;
     }
 
-    private static List<Region> mergeOverlappingRegions(List<Region> regions) {
-        if (regions.isEmpty())
-            return regions;
-
-        regions.sort(Comparator.comparingInt(r -> r.start));
-        List<Region> merged = new ArrayList<>();
-        Region prev = regions.get(0);
-
-        for (int i = 1; i < regions.size(); i++) {
-            Region curr = regions.get(i);
-            if (curr.start <= prev.end) {
-                prev.end = Math.max(prev.end, curr.end);
-            } else {
-                merged.add(prev);
-                prev = curr;
-            }
-        }
-        merged.add(prev);
-        return merged;
-    }
-
-    private static double calculatePlagiarismPercentage(List<Region> regions, int codeLength) {
-        int plagiarizedLength = 0;
-        for (Region region : regions) {
-            plagiarizedLength += (region.end - region.start);
-        }
-        return (double) plagiarizedLength / codeLength;
-    }
-
-    private static String highlightPlagiarism(String code, List<Region> regions) {
-        StringBuilder highlightedCode = new StringBuilder();
-        int lastIndex = 0;
-
-        for (Region region : regions) {
-            highlightedCode.append(code, lastIndex, region.start);
-            highlightedCode.append("\033[42m")
-                    .append(code, region.start, region.end)
-                    .append("\033[0m");
-            lastIndex = region.end;
-        }
-
-        highlightedCode.append(code.substring(lastIndex));
-        return highlightedCode.toString();
-    }
-    
     static class KGram {
         String text;
         int hash, start, end;
@@ -212,15 +163,6 @@ public class PlagiarismToolANTLR {
         KGram(String text, int hash, int start, int end) {
             this.text = text;
             this.hash = hash;
-            this.start = start;
-            this.end = end;
-        }
-    }
-
-    static class Region {
-        int start, end;
-
-        Region(int start, int end) {
             this.start = start;
             this.end = end;
         }

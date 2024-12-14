@@ -4,14 +4,14 @@ class sol {
     sol(Scanner kb) {
         this.kb = kb;
     }
-    int N;
-    int count;
-    boolean[] visited;
-    Deque<Integer> order = new LinkedList<Integer>();
-    LinkedList<Integer> Nodes = new LinkedList<Integer>();
-    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-    ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();
-    ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();
+    ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();  // reordered 7
+    ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();  // reordered 7
+    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();  // reordered 7
+    LinkedList<Integer> Nodes = new LinkedList<Integer>();  // reordered 7
+    Deque<Integer> order = new LinkedList<Integer>();  // reordered 7
+    boolean[] visited;  // reordered 7
+    int count;  // reordered 7
+    int N;  // reordered 7
     int find_node(int u) {
         if (map.containsKey(u))
             return map.get(u);
@@ -53,8 +53,8 @@ class sol {
         order.addFirst(u);
     }
     void flood_fill(int u) {
-        count++;
-        visited[u] = true;
+        visited[u] = true;  // reordered 1
+        count++;  // reordered 1
         for (int v : tadj.get(u)) {
             if (!visited[v])
                 flood_fill(v);
