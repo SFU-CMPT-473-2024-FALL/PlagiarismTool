@@ -26,11 +26,8 @@ npm install
 node server.js
 ```
 
-5. Navigate to localhost:3000
+5. Navigate to [localhost:3000](http://localhost:3000)
 
-```bash
-start http://localhost:3000
-```
 
 **To Run Using CMD Line**
 
