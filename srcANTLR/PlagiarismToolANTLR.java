@@ -1,6 +1,5 @@
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-
 import java.io.*;
 import java.nio.file.*;
 import java.security.MessageDigest;
@@ -37,7 +36,6 @@ public class PlagiarismToolANTLR {
             return;
         }
 
-        // Use the first file as the base file
         Path baseFile = files.get(0);
         String baseContent = Files.readString(baseFile);
         String normalizedBaseContent = parseWithANTLR(baseContent);
@@ -45,21 +43,15 @@ public class PlagiarismToolANTLR {
         List<Integer> baseHashList = getHashes(baseKGrams);
         List<Integer> baseFingerprints = generateFingerprints(baseHashList);
 
-        // Compare the first file with all other files
         for (int i = 1; i < files.size(); i++) {
             Path otherFile = files.get(i);
-
             System.out.println("\nComparing: " + baseFile.getFileName() + " and " + otherFile.getFileName());
-
             String otherContent = Files.readString(otherFile);
             String normalizedOtherContent = parseWithANTLR(otherContent);
-
             List<KGram> otherKGrams = generateKGrams(normalizedOtherContent);
             List<Integer> otherHashList = getHashes(otherKGrams);
             List<Integer> otherFingerprints = generateFingerprints(otherHashList);
-
             double jaccardCalc = generatejaccardCalc(baseFingerprints, otherFingerprints);
-
             System.out.printf("Plagiarism percentage (Jaccard Similarity): %.2f%%\n", jaccardCalc * 100);
         }
     }
@@ -139,27 +131,21 @@ public class PlagiarismToolANTLR {
     public static double generatejaccardCalc(List<Integer> fingerprints1, List<Integer> fingerprints2) {
         Set<Integer> set1 = new HashSet<>(fingerprints1);
         Set<Integer> set2 = new HashSet<>(fingerprints2);
-
         Set<Integer> intersection = new HashSet<>(set1);
         intersection.retainAll(set2); 
-
         Set<Integer> union = new HashSet<>(set1);
         union.addAll(set2); 
-
         int intersectionSize = intersection.size();
         int unionSize = union.size();
-
         if (unionSize == 0) {
             return 0.0;
         }
-
         return (double) intersectionSize / unionSize;
     }
 
     static class KGram {
         String text;
         int hash, start, end;
-
         KGram(String text, int hash, int start, int end) {
             this.text = text;
             this.hash = hash;
