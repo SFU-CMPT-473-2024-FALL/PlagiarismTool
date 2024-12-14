@@ -33,7 +33,7 @@ node server.js
 
 Base 
 
-To run, execute the following commands in the root folder (Plagiarism/):
+To run, execute the following commands in the root folder (PlagiarismTool/):
 
 1. Compile Java source files:
 
@@ -50,7 +50,7 @@ java -cp . src.PlagiarismTool test
 
 ANTLR
 
-To run, execute the following commands in the root folder (Plagiarism/):
+To run, execute the following commands in the root folder (PlagiarismTool/):
 
 1. Compile grammar file using:
 ```bash
