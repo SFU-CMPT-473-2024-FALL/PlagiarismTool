@@ -17,7 +17,7 @@ cd PlagiarismTool
 3. Install Dependencies
 
 ```bash
-npm install
+npm install --force
 ```
 
 4. Run server.js

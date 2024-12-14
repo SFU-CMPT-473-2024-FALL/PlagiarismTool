@@ -64,9 +64,9 @@ function generateDiceCoefficient(fingerprints1, fingerprints2) {
     return (2 * intersection) / totalElements;
 }
 
-async function winnow(text1, text2) {
-    const normalizedText1 = normalizeSource(text1);
-    const normalizedText2 = normalizeSource(text2);
+async function winnow(doc1, doc2) {
+    const normalizedText1 = normalizeSource(doc1);
+    const normalizedText2 = normalizeSource(doc2);
 
     const kgrams1 = generateKgrams(normalizedText1, K_GRAM_SIZE);
     const kgrams2 = generateKgrams(normalizedText2, K_GRAM_SIZE);
