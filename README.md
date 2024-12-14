@@ -1,5 +1,38 @@
 # PlagiarismTool
-Note: Contains only winnowing and winnowing + ANTLR implementation
+
+**To Run Web Application (Windows)**
+
+1. Clone repo
+
+```bash
+git clone https://github.com/username/repository-name.git
+```
+
+3. Navigate to Application
+
+```bash
+cd PlagiarismTool
+```
+
+3. Install Dependencies
+
+```bash
+npm install
+```
+
+4. Run server.js
+
+```bash
+node server.js
+```
+
+5. Navigate to localhost:3000
+
+```bash
+start http://localhost:3000
+```
+
+**To Run Using CMD Line**
 
 Base 
 
