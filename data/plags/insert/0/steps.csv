@@ -1,0 +1,60 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,95
+pa.java,insert line 92: `String[] messages;` on try 0,0.9696969696969697,1.0,95
+pa.java,insert line 28: `boolean debug = false;` on try 0,0.9664429530201343,1.0,95
+pa.java,insert line 35: `int index = 0;` on try 0,0.9632107023411371,1.0,95
+pa.java,insert line 97: `double x;` on try 0,0.96,1.0,95
+pa.java,insert line 20: `int j = 0;` on try 0,0.9568106312292359,1.0,95
+pa.java,insert line 53: `int j = 0;` on try 0,0.9536423841059603,1.0,95
+pa.java,insert line 52: `String[] messages;` on try 0,0.9306930693069307,1.0,95
+pa.java,"insert line 19: `int x, y;` on try 0",0.9114754098360656,1.0,95
+pa.java,insert line 34: `int min;` on try 0,0.8431372549019608,1.0,95
+pa.java,insert line 45: `boolean done = false;` on try 0,0.8403908794788274,1.0,95
+pa.java,insert line 102: `int j = 0;` on try 0,0.8376623376623377,1.0,95
+pa.java,insert line 66: `boolean debug = false;` on try 0,0.8349514563106796,1.0,95
+pa.java,insert line 24: `int intInput;` on try 0,0.7612903225806451,1.0,95
+pa.java,insert line 23: `int indexOfField;` on try 0,0.7588424437299035,1.0,95
+pa.java,insert line 72: `int indexOfField;` on try 0,0.717948717948718,1.0,95
+pa.java,"insert line 70: `String output = """";` on try 0",0.7156549520766773,1.0,95
+pa.java,insert line 64: `double w;` on try 0,0.6496815286624203,1.0,95
+pa.java,insert line 102: `int max;` on try 0,0.6095238095238096,1.0,95
+pa.java,insert line 50: `int index = 0;` on try 0,0.5949367088607594,1.0,95
+pa.java,insert line 96: `String[] messages;` on try 0,0.5930599369085173,1.0,95
+pa.java,insert line 94: `int min;` on try 0,0.5786163522012578,1.0,95
+pa.java,insert line 89: `int max;` on try 0,0.5329153605015674,1.0,95
+pa.java,insert line 108: `boolean debug = false;` on try 0,0.53125,1.0,95
+pa.java,insert line 77: `int min;` on try 0,0.5233644859813084,1.0,95
+pa.java,insert line 64: `int index = 0;` on try 0,0.5217391304347826,1.0,95
+pa.java,insert line 89: `int index = 0;` on try 0,0.5077399380804953,1.0,95
+pa.java,insert line 88: `double w;` on try 0,0.49382716049382713,1.0,95
+pa.java,insert line 44: `int max;` on try 1,0.4123076923076923,1.0,95
+pa.java,insert line 38: `int count = 0;` on try 3,0.4110429447852761,1.0,95
+pa.java,insert line 111: `int count = 0;` on try 0,0.39755351681957185,1.0,95
+pa.java,insert line 97: `String[] messages;` on try 0,0.39634146341463417,1.0,95
+pa.java,insert line 27: `String[] messages;` on try 0,0.3951367781155015,1.0,95
+pa.java,"insert line 88: `int x, y;` on try 0",0.3504531722054381,1.0,95
+pa.java,insert line 49: `double w;` on try 0,0.3493975903614458,1.0,95
+pa.java,insert line 56: `int max;` on try 0,0.33633633633633636,1.0,95
+pa.java,insert line 74: `String[] messages;` on try 1,0.33532934131736525,1.0,95
+pa.java,insert line 41: `count++;` on try 1,0.33432835820895523,1.0,95
+pa.java,insert line 110: `int choosen = -1;` on try 1,0.3333333333333333,1.0,95
+pa.java,insert line 45: `int intInput;` on try 0,0.3323442136498516,1.0,95
+pa.java,insert line 47: `String[] messages;` on try 0,0.33136094674556216,1.0,95
+pa.java,insert line 71: `boolean debug = false;` on try 0,0.3303834808259587,1.0,95
+pa.java,insert line 80: `int max;` on try 0,0.32941176470588235,1.0,95
+pa.java,"insert line 129: `String output = """";` on try 0",0.3284457478005865,1.0,95
+pa.java,"insert line 6: `int x, y;` on try 0",0.2915451895043732,1.0,95
+pa.java,insert line 57: `boolean done = false;` on try 0,0.29069767441860467,1.0,95
+pa.java,insert line 17: `boolean done = false;` on try 0,0.25507246376811593,1.0,95
+pa.java,insert line 5: `String[] messages;` on try 0,0.2543352601156069,1.0,95
+pa.java,insert line 122: `int min;` on try 0,0.2017291066282421,1.0,95
+pa.java,insert line 103: `boolean debug = false;` on try 1,0.20114942528735633,1.0,95
+pa.java,insert line 97: `int j = 0;` on try 2,0.14326647564469913,1.0,95
+pa.java,insert line 39: `double y;` on try 3,0.14285714285714285,1.0,95
+pa.java,insert line 139: `boolean done = false;` on try 1,0.14245014245014245,1.0,95
+pa.java,"insert line 35: `String output = """";` on try 1",0.14204545454545456,1.0,95
+pa.java,insert line 131: `double w;` on try 0,0.141643059490085,1.0,95
+pa.java,insert line 68: `int min;` on try 0,0.0903954802259887,1.0,95
+pa.java,insert line 113: `boolean done = false;` on try 6,0.09014084507042254,1.0,95
+pa.java,insert line 56: `int j = 0;` on try 5,0.0898876404494382,1.0,95
+pa.java,insert line 100: `int from;` on try 3,0.0896358543417367,1.0,95

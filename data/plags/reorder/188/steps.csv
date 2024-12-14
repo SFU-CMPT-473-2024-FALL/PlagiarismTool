@@ -1,0 +1,38 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,130
+Sociologia.java,swap lines 45:`grupos = 0;` and 46:`sozinhos = 0;`,1.0,1.0,130
+Sociologia.java,swap lines 26:`private static int tempo;` and 27:`private static Stack<Integer> pilha = new Stack<Integer>();`,0.9891891891891892,1.0,130
+Sociologia.java,swap lines 13:`this.aluno = aluno;` and 14:`this.amigos = new int[namigos];`,0.9783783783783784,1.0,130
+Sociologia.java,swap lines 3:`import java.util.Scanner;` and 4:`import java.util.Stack;`,0.9783783783783784,1.0,130
+Sociologia.java,swap lines 45:`grupos = 0;` and 47:`Vertice u;`,0.9675675675675676,1.0,130
+Sociologia.java,swap lines 28:`private static LinkedList<Integer> arvore;` and 29:`private static int grupos = 0;`,0.9675675675675676,1.0,130
+Sociologia.java,swap lines 10:`int cor;` and 11:`int tempo;`,0.9675675675675676,1.0,130
+Sociologia.java,swap lines 6:`int aluno;` and 7:`int[] amigos;`,0.9675675675675676,1.0,130
+Sociologia.java,swap lines 6:`int aluno;` and 8:`LinkedList<Integer> tamigos = new LinkedList<Integer>();`,0.8864864864864865,1.0,130
+Sociologia.java,swap lines 9:`int namigos;` and 11:`int tempo;`,0.8864864864864865,1.0,130
+Sociologia.java,swap lines 26:`private static int tempo;` and 29:`private static int grupos = 0;`,0.8864864864864865,1.0,130
+Sociologia.java,swap lines 6:`int aluno;` and 11:`int tempo;`,0.8864864864864865,1.0,130
+Sociologia.java,swap lines 46:`sozinhos = 0;` and 47:`Vertice u;`,0.8810810810810811,1.0,130
+Sociologia.java,swap lines 26:`private static int tempo;` and 28:`private static LinkedList<Integer> arvore;`,0.8810810810810811,1.0,130
+Sociologia.java,swap lines 27:`private static Stack<Integer> pilha = new Stack<Integer>();` and 29:`private static int grupos = 0;`,0.8918918918918919,1.0,130
+Sociologia.java,swap lines 9:`int namigos;` and 10:`int cor;`,0.8918918918918919,1.0,130
+Sociologia.java,swap lines 8:`LinkedList<Integer> tamigos = new LinkedList<Integer>();` and 11:`int tempo;`,0.972972972972973,1.0,130
+Sociologia.java,swap lines 26:`private static int tempo;` and 30:`private static int sozinhos = 0;`,0.972972972972973,1.0,130
+Sociologia.java,swap lines 25:`private static Scanner in = new Scanner(System.in);` and 29:`private static int grupos = 0;`,0.9621621621621622,1.0,130
+Sociologia.java,swap lines 28:`private static LinkedList<Integer> arvore;` and 30:`private static int sozinhos = 0;`,0.9621621621621622,1.0,130
+Sociologia.java,swap lines 7:`int[] amigos;` and 11:`int tempo;`,0.9621621621621622,1.0,130
+Sociologia.java,swap lines 27:`private static Stack<Integer> pilha = new Stack<Integer>();` and 30:`private static int sozinhos = 0;`,0.9459459459459459,1.0,130
+Sociologia.java,swap lines 107:`v.cor = 1;` and 108:`tempo++;`,0.9459459459459459,1.0,130
+Sociologia.java,swap lines 6:`int aluno;` and 10:`int cor;`,0.9459459459459459,1.0,130
+Sociologia.java,swap lines 6:`int aluno;` and 9:`int namigos;`,0.9459459459459459,1.0,130
+Sociologia.java,swap lines 27:`private static Stack<Integer> pilha = new Stack<Integer>();` and 28:`private static LinkedList<Integer> arvore;`,0.9405405405405406,1.0,130
+Sociologia.java,swap lines 8:`LinkedList<Integer> tamigos = new LinkedList<Integer>();` and 10:`int cor;`,0.8594594594594595,1.0,130
+Sociologia.java,swap lines 25:`private static Scanner in = new Scanner(System.in);` and 30:`private static int sozinhos = 0;`,0.8594594594594595,1.0,130
+Sociologia.java,swap lines 8:`LinkedList<Integer> tamigos = new LinkedList<Integer>();` and 9:`int namigos;`,0.8594594594594595,1.0,130
+Sociologia.java,swap lines 25:`private static Scanner in = new Scanner(System.in);` and 28:`private static LinkedList<Integer> arvore;`,0.8594594594594595,1.0,130
+Sociologia.java,swap lines 7:`int[] amigos;` and 10:`int cor;`,0.8594594594594595,1.0,130
+Sociologia.java,swap lines 25:`private static Scanner in = new Scanner(System.in);` and 27:`private static Stack<Integer> pilha = new Stack<Integer>();`,0.8594594594594595,1.0,130
+Sociologia.java,swap lines 25:`private static Scanner in = new Scanner(System.in);` and 26:`private static int tempo;`,0.8540540540540541,1.0,130
+Sociologia.java,swap lines 29:`private static int grupos = 0;` and 30:`private static int sozinhos = 0;`,0.8540540540540541,1.0,130
+Sociologia.java,swap lines 7:`int[] amigos;` and 9:`int namigos;`,0.8540540540540541,1.0,130
+Sociologia.java,swap lines 7:`int[] amigos;` and 8:`LinkedList<Integer> tamigos = new LinkedList<Integer>();`,0.8540540540540541,1.0,130

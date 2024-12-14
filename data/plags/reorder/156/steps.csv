@@ -1,0 +1,78 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,139
+Sociologia.java,swap lines 18:`startTime = -1;` and 19:`endTime = -1;`,1.0,1.0,139
+Sociologia.java,swap lines 74:`time = 0;` and 75:`ordem_alunos = new Stack<Svertice>();`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 15:`this.id = id;` and 16:`parent = null;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 11:`int numFriends;` and 12:`int[] friends_t;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 44:`static int[] ocorrencias;` and 45:`static int ngrupos;`,0.9887640449438202,1.0,139
+Sociologia.java,"swap lines 17:`color = ""white"";` and 19:`endTime = -1;`",0.9887640449438202,1.0,139
+Sociologia.java,swap lines 10:`int[] friends;` and 12:`int[] friends_t;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 10:`int[] friends;` and 11:`int numFriends;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 9:`int endTime;` and 12:`int[] friends_t;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 15:`this.id = id;` and 19:`endTime = -1;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 25:`startTime = -1;` and 26:`endTime = -1;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 44:`static int[] ocorrencias;` and 46:`static int npessoas;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 43:`static Stack<Svertice> ordem_alunos;` and 45:`static int ngrupos;`,0.9887640449438202,1.0,139
+Sociologia.java,"swap lines 23:`parent = null;` and 24:`color = ""white"";`",0.9887640449438202,1.0,139
+Sociologia.java,swap lines 8:`int startTime;` and 12:`int[] friends_t;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 6:`Svertice parent;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 8:`int startTime;` and 9:`int endTime;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 43:`static Stack<Svertice> ordem_alunos;` and 46:`static int npessoas;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 45:`static int ngrupos;` and 46:`static int npessoas;`,0.9887640449438202,1.0,139
+Sociologia.java,"swap lines 15:`this.id = id;` and 17:`color = ""white"";`",0.9887640449438202,1.0,139
+Sociologia.java,swap lines 53:`all_alunos = new Svertice[nalunos];` and 54:`ocorrencias = new int[nalunos];`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 15:`this.id = id;` and 18:`startTime = -1;`,0.9887640449438202,1.0,139
+Sociologia.java,"swap lines 136:`aluno.color = ""black"";` and 137:`time++;`",0.9887640449438202,1.0,139
+Sociologia.java,"swap lines 17:`color = ""white"";` and 18:`startTime = -1;`",0.9887640449438202,1.0,139
+Sociologia.java,swap lines 16:`parent = null;` and 19:`endTime = -1;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 16:`parent = null;` and 18:`startTime = -1;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 23:`parent = null;` and 26:`endTime = -1;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 7:`String color;`,0.9887640449438202,1.0,139
+Sociologia.java,"swap lines 24:`color = ""white"";` and 26:`endTime = -1;`",0.9887640449438202,1.0,139
+Sociologia.java,swap lines 110:`ngrupos = 0;` and 111:`npessoas = 0;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 6:`Svertice parent;` and 7:`String color;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 41:`static Svertice[] all_alunos;` and 42:`static int time;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 41:`static Svertice[] all_alunos;` and 46:`static int npessoas;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 42:`static int time;` and 46:`static int npessoas;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 12:`int[] friends_t;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 10:`int[] friends;` and 13:`int numFriends_t;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 43:`static Stack<Svertice> ordem_alunos;` and 44:`static int[] ocorrencias;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 8:`int startTime;` and 11:`int numFriends;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 9:`int endTime;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 11:`int numFriends;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 23:`parent = null;` and 25:`startTime = -1;`,0.9887640449438202,1.0,139
+Sociologia.java,swap lines 15:`this.id = id;` and 20:`friends = new int[size];`,0.9775280898876404,1.0,139
+Sociologia.java,"swap lines 16:`parent = null;` and 17:`color = ""white"";`",0.9775280898876404,1.0,139
+Sociologia.java,swap lines 6:`Svertice parent;` and 12:`int[] friends_t;`,0.9775280898876404,1.0,139
+Sociologia.java,swap lines 9:`int endTime;` and 11:`int numFriends;`,0.9775280898876404,1.0,139
+Sociologia.java,swap lines 41:`static Svertice[] all_alunos;` and 45:`static int ngrupos;`,0.9775280898876404,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 8:`int startTime;`,0.9775280898876404,1.0,139
+Sociologia.java,swap lines 42:`static int time;` and 45:`static int ngrupos;`,0.9775280898876404,1.0,139
+Sociologia.java,swap lines 16:`parent = null;` and 20:`friends = new int[size];`,0.9719101123595506,1.0,139
+Sociologia.java,"swap lines 17:`color = ""white"";` and 20:`friends = new int[size];`",0.9662921348314607,1.0,139
+Sociologia.java,swap lines 41:`static Svertice[] all_alunos;` and 44:`static int[] ocorrencias;`,0.9662921348314607,1.0,139
+Sociologia.java,swap lines 7:`String color;` and 12:`int[] friends_t;`,0.9662921348314607,1.0,139
+Sociologia.java,swap lines 41:`static Svertice[] all_alunos;` and 43:`static Stack<Svertice> ordem_alunos;`,0.9662921348314607,1.0,139
+Sociologia.java,swap lines 42:`static int time;` and 44:`static int[] ocorrencias;`,0.9662921348314607,1.0,139
+Sociologia.java,swap lines 18:`startTime = -1;` and 20:`friends = new int[size];`,0.9606741573033708,1.0,139
+Sociologia.java,swap lines 6:`Svertice parent;` and 11:`int numFriends;`,0.9606741573033708,1.0,139
+Sociologia.java,swap lines 42:`static int time;` and 43:`static Stack<Svertice> ordem_alunos;`,0.9606741573033708,1.0,139
+Sociologia.java,swap lines 19:`endTime = -1;` and 20:`friends = new int[size];`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 7:`String color;` and 11:`int numFriends;`,0.9550561797752809,1.0,139
+Sociologia.java,"swap lines 24:`color = ""white"";` and 25:`startTime = -1;`",0.9550561797752809,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 13:`int numFriends_t;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 8:`int startTime;` and 13:`int numFriends_t;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 6:`Svertice parent;` and 9:`int endTime;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 7:`String color;` and 9:`int endTime;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 6:`Svertice parent;` and 13:`int numFriends_t;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 5:`int id;` and 10:`int[] friends;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 7:`String color;` and 13:`int numFriends_t;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 8:`int startTime;` and 10:`int[] friends;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 6:`Svertice parent;` and 10:`int[] friends;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 7:`String color;` and 10:`int[] friends;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 6:`Svertice parent;` and 8:`int startTime;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 9:`int endTime;` and 13:`int numFriends_t;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 7:`String color;` and 8:`int startTime;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 11:`int numFriends;` and 13:`int numFriends_t;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 9:`int endTime;` and 10:`int[] friends;`,0.9550561797752809,1.0,139
+Sociologia.java,swap lines 12:`int[] friends_t;` and 13:`int numFriends_t;`,0.9550561797752809,1.0,139

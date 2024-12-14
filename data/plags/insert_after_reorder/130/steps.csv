@@ -1,0 +1,71 @@
+filename,operation,off score,on score,line count
+None,None,0.9398496240601504,1.0,95
+soci.java,insert line 93: `int min;` on try 0,0.9138576779026217,1.0,95
+soci.java,"insert line 53: `int x, y;` on try 0",0.9070631970260223,1.0,95
+soci.java,insert line 87: `boolean done = false;` on try 0,0.9185185185185185,1.0,95
+soci.java,insert line 91: `double w;` on try 0,0.8856088560885609,1.0,95
+soci.java,insert line 52: `int j = 0;` on try 0,0.875,1.0,95
+soci.java,insert line 31: `int indexOfField;` on try 0,0.8717948717948718,1.0,95
+soci.java,insert line 51: `int indexOfField;` on try 1,0.8467153284671532,1.0,95
+soci.java,insert line 24: `boolean done = false;` on try 0,0.8436363636363636,1.0,95
+soci.java,insert line 82: `int index = 0;` on try 0,0.7536231884057971,1.0,95
+soci.java,insert line 78: `int count = 0;` on try 0,0.7509025270758123,1.0,95
+soci.java,insert line 46: `int index = 0;` on try 0,0.697841726618705,1.0,95
+soci.java,insert line 66: `String[] messages;` on try 0,0.6379928315412187,1.0,95
+soci.java,insert line 60: `double w;` on try 0,0.6357142857142857,1.0,95
+soci.java,insert line 70: `boolean done = false;` on try 0,0.6120996441281139,1.0,95
+soci.java,"insert line 49: `int x, y;` on try 0",0.607773851590106,1.0,95
+soci.java,insert line 70: `int index = 0;` on try 0,0.6056338028169014,1.0,95
+soci.java,insert line 38: `int nrppl = 0;` on try 0,0.6035087719298246,1.0,95
+soci.java,"insert line 13: `String output = """";` on try 0",0.5804195804195804,1.0,95
+soci.java,insert line 50: `String[] messages;` on try 0,0.578397212543554,1.0,95
+soci.java,insert line 110: `done = true;` on try 1,0.5763888888888888,1.0,95
+soci.java,insert line 101: `boolean debug = false;` on try 0,0.5743944636678201,1.0,95
+soci.java,insert line 10: `String[] messages;` on try 0,0.5724137931034483,1.0,95
+soci.java,insert line 111: `int index = 0;` on try 1,0.570446735395189,1.0,95
+soci.java,insert line 90: `int j = 0;` on try 0,0.5684931506849316,1.0,95
+soci.java,insert line 43: `double w;` on try 0,0.49829351535836175,1.0,95
+soci.java,insert line 119: `String[] messages;` on try 0,0.4965986394557823,1.0,95
+soci.java,insert line 45: `int min;` on try 0,0.49491525423728816,1.0,95
+soci.java,insert line 12: `int min;` on try 0,0.49324324324324326,1.0,95
+soci.java,"insert line 38: `int x, y;` on try 0",0.40939597315436244,1.0,95
+soci.java,insert line 97: `int max;` on try 1,0.4080267558528428,1.0,95
+soci.java,insert line 96: `String[] messages;` on try 0,0.4066666666666667,1.0,95
+soci.java,insert line 89: `int max;` on try 1,0.3853820598006645,1.0,95
+soci.java,insert line 40: `int intInput;` on try 1,0.3841059602649007,1.0,95
+soci.java,insert line 76: `int intInput;` on try 0,0.38283828382838286,1.0,95
+soci.java,insert line 61: `int i = 0;` on try 0,0.3815789473684211,1.0,95
+soci.java,insert line 42: `String[] messages;` on try 0,0.380327868852459,1.0,95
+soci.java,insert line 86: `double w;` on try 0,0.3202614379084967,1.0,95
+soci.java,insert line 17: `int index = 0;` on try 0,0.30618892508143325,1.0,95
+soci.java,insert line 38: `int indexOfField;` on try 0,0.3051948051948052,1.0,95
+soci.java,"insert line 35: `String output = """";` on try 0",0.2912621359223301,1.0,95
+soci.java,insert line 126: `int j = 0;` on try 0,0.2903225806451613,1.0,95
+soci.java,insert line 7: `boolean debug = false;` on try 0,0.22508038585209003,1.0,95
+soci.java,"insert line 65: `int x, y;` on try 0",0.22364217252396165,1.0,95
+soci.java,insert line 119: `int max;` on try 1,0.2229299363057325,1.0,95
+soci.java,insert line 98: `boolean debug = false;` on try 0,0.2222222222222222,1.0,95
+soci.java,"insert line 72: `String output = """";` on try 1",0.22151898734177214,1.0,95
+soci.java,insert line 80: `int count = 0;` on try 0,0.22082018927444794,1.0,95
+soci.java,insert line 97: `int max;` on try 1,0.22012578616352202,1.0,95
+soci.java,insert line 9: `int j = 0;` on try 1,0.219435736677116,1.0,95
+soci.java,insert line 118: `boolean debug = false;` on try 0,0.21875,1.0,95
+soci.java,insert line 51: `int count = 0;` on try 0,0.21806853582554517,1.0,95
+soci.java,"insert line 98: `int x, y;` on try 1",0.21671826625386997,1.0,95
+soci.java,insert line 36: `int min;` on try 0,0.2037037037037037,1.0,95
+soci.java,insert line 103: `int min;` on try 1,0.20307692307692307,1.0,95
+soci.java,insert line 124: `String[] messages;` on try 1,0.20245398773006135,1.0,95
+soci.java,"insert line 85: `int x, y;` on try 0",0.20121951219512196,1.0,95
+soci.java,insert line 29: `int index = 0;` on try 0,0.1945288753799392,1.0,95
+soci.java,insert line 11: `int index = 0;` on try 0,0.19393939393939394,1.0,95
+soci.java,insert line 108: `int indexOfField;` on try 0,0.1933534743202417,1.0,95
+soci.java,insert line 141: `int count = 0;` on try 1,0.18674698795180722,1.0,95
+soci.java,insert line 22: `int max;` on try 0,0.18018018018018017,1.0,95
+soci.java,insert line 36: `int max;` on try 3,0.12574850299401197,1.0,95
+soci.java,insert line 62: `boolean debug = false;` on try 1,0.1253731343283582,1.0,95
+soci.java,insert line 66: `int j = 0;` on try 1,0.125,1.0,95
+soci.java,insert line 64: `int count = 0;` on try 0,0.12462908011869436,1.0,95
+soci.java,insert line 94: `int intInput;` on try 1,0.1242603550295858,1.0,95
+soci.java,insert line 107: `int j = 0;` on try 0,0.12389380530973451,1.0,95
+soci.java,"insert line 122: `int x, y;` on try 2",0.12316715542521994,1.0,95
+soci.java,"insert line 148: `String output = """";` on try 4",0.06432748538011696,1.0,95

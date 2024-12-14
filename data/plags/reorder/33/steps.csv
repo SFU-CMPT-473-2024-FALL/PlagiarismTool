@@ -1,0 +1,13 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,68
+Sociologia.java,swap lines 4:`boolean visitado = false;` and 5:`boolean visitadoT = false;`,1.0,1.0,68
+Sociologia.java,swap lines 14:`static Aluno[] alunos;` and 15:`static int c;`,1.0,1.0,68
+Sociologia.java,swap lines 7:`LinkedList<Integer> amigosT = new LinkedList<Integer>();` and 8:`int num;`,0.9158878504672897,1.0,68
+Sociologia.java,swap lines 4:`boolean visitado = false;` and 6:`LinkedList<Integer> amigos = new LinkedList<Integer>();`,0.9158878504672897,1.0,68
+Sociologia.java,swap lines 4:`boolean visitado = false;` and 8:`int num;`,0.9158878504672897,1.0,68
+Sociologia.java,swap lines 5:`boolean visitadoT = false;` and 6:`LinkedList<Integer> amigos = new LinkedList<Integer>();`,0.9158878504672897,1.0,68
+Sociologia.java,swap lines 5:`boolean visitadoT = false;` and 8:`int num;`,0.9158878504672897,1.0,68
+Sociologia.java,swap lines 6:`LinkedList<Integer> amigos = new LinkedList<Integer>();` and 8:`int num;`,0.9158878504672897,1.0,68
+Sociologia.java,swap lines 4:`boolean visitado = false;` and 7:`LinkedList<Integer> amigosT = new LinkedList<Integer>();`,0.9439252336448598,1.0,68
+Sociologia.java,swap lines 5:`boolean visitadoT = false;` and 7:`LinkedList<Integer> amigosT = new LinkedList<Integer>();`,0.9252336448598131,1.0,68
+Sociologia.java,swap lines 6:`LinkedList<Integer> amigos = new LinkedList<Integer>();` and 7:`LinkedList<Integer> amigosT = new LinkedList<Integer>();`,0.9252336448598131,1.0,68

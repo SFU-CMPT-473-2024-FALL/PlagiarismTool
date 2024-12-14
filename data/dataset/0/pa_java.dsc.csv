@@ -1,0 +1,706 @@
+id,type,token,location,code
+1,TRANSLATIONUNITDECLARATION,"/data/00000019/submissions/00013517_Sociologia_c0807009/pa.java",,""
+2,RECORDDECLARATION,"sol",pa.java(3:1-73:2),"class sol{
+  Scanner kb;
+  sol(Scanner kb){this.kb = kb;}
+  int N;
+  int count;
+  boolean visited[];
+  Deque<Integer> order = new LinkedList<Integer>();
+  LinkedList<Integer> Nodes = new LinkedList<Integer>();
+  HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+  ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();
+  ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();
+  int find_node(int u){
+    if(map.containsKey(u)) return map.get(u);
+    else{
+      adj.add(new LinkedList<Integer>());
+      tadj.add(new LinkedList<Integer>());
+      int p = map.size();
+      map.put(u,p);
+      return p;
+    }
+  }
+  void read(){
+    N = kb.nextInt();
+    map.clear();
+    adj.clear();
+    tadj.clear();
+    for(int i = 0; i < N; i++){
+      int u = kb.nextInt();
+      u = find_node(u);
+      int c = kb.nextInt();
+      for(int k = 0; k < c; k++){
+        int v = kb.nextInt();       
+        v = find_node(v);
+        adj.get(u).add(v);
+        tadj.get(v).add(u);
+      }
+    }
+    N = map.size();
+  }
+  void dfs(int u){
+    if(visited[u]) return;
+    else visited[u] = true;
+    for(int v : adj.get(u)){
+      if(!visited[v]) dfs(v);
+    }
+    order.addFirst(u);
+  }
+  void flood_fill(int u){
+    count++;
+    visited[u] = true;
+    for(int v : tadj.get(u)){
+      if(!visited[v]) flood_fill(v);
+    }
+  }
+  void solve(){
+    order.clear();
+    visited = new boolean[N];
+    for(int i = 0; i < N; i++) dfs(i);
+    for(int i = 0; i < N; i++) visited[i] = false;
+    int A = 0, B = 0;
+    for(int u : order){
+      if(!visited[u]){
+        count = 0;
+        flood_fill(u);
+        if(count>=4) A++;
+        else B+=count;
+      }
+    }
+    System.out.printf(""%d %d\n"",A,B);
+  }
+}"
+3,RECORDDECLARATION,"pa",pa.java(75:1-86:2),"public class pa{
+  public static void main(String args[]){
+    Scanner kb = new Scanner(System.in);
+    sol s = new sol(kb);
+    int c = kb.nextInt();
+    for(int i = 1; i <= c; i++){
+      System.out.printf(""Caso#%d\n"",i);
+      s.read();
+      s.solve();
+    }
+  }
+}"
+4,INCLUDEDECLARATION,"java.util",,""
+5,FIELDDECLARATION,"this",,""
+6,FIELDDECLARATION,"kb",pa.java(4:3-4:14),"kb"
+7,FIELDDECLARATION,"N",pa.java(6:3-6:9),"N"
+8,FIELDDECLARATION,"count",pa.java(7:3-7:13),"count"
+9,FIELDDECLARATION,"visited",pa.java(8:3-8:21),"visited"
+10,FIELDDECLARATION,"order",pa.java(9:3-9:52),"order = new LinkedList<Integer>()"
+11,FIELDDECLARATION,"Nodes",pa.java(10:3-10:57),"Nodes = new LinkedList<Integer>()"
+12,FIELDDECLARATION,"map",pa.java(11:3-11:65),"map = new HashMap<Integer, Integer>()"
+13,FIELDDECLARATION,"adj",pa.java(12:3-12:77),"adj = new ArrayList<LinkedList<Integer>>()"
+14,FIELDDECLARATION,"tadj",pa.java(13:3-13:78),"tadj = new ArrayList<LinkedList<Integer>>()"
+15,METHODDECLARATION,"find_node",pa.java(14:3-23:4),"int find_node(int u){
+    if(map.containsKey(u)) return map.get(u);
+    else{
+      adj.add(new LinkedList<Integer>());
+      tadj.add(new LinkedList<Integer>());
+      int p = map.size();
+      map.put(u,p);
+      return p;
+    }
+  }"
+16,METHODDECLARATION,"read",pa.java(24:3-41:4),"void read(){
+    N = kb.nextInt();
+    map.clear();
+    adj.clear();
+    tadj.clear();
+    for(int i = 0; i < N; i++){
+      int u = kb.nextInt();
+      u = find_node(u);
+      int c = kb.nextInt();
+      for(int k = 0; k < c; k++){
+        int v = kb.nextInt();       
+        v = find_node(v);
+        adj.get(u).add(v);
+        tadj.get(v).add(u);
+      }
+    }
+    N = map.size();
+  }"
+17,METHODDECLARATION,"dfs",pa.java(42:3-49:4),"void dfs(int u){
+    if(visited[u]) return;
+    else visited[u] = true;
+    for(int v : adj.get(u)){
+      if(!visited[v]) dfs(v);
+    }
+    order.addFirst(u);
+  }"
+18,METHODDECLARATION,"flood_fill",pa.java(50:3-56:4),"void flood_fill(int u){
+    count++;
+    visited[u] = true;
+    for(int v : tadj.get(u)){
+      if(!visited[v]) flood_fill(v);
+    }
+  }"
+19,METHODDECLARATION,"solve",pa.java(57:3-72:4),"void solve(){
+    order.clear();
+    visited = new boolean[N];
+    for(int i = 0; i < N; i++) dfs(i);
+    for(int i = 0; i < N; i++) visited[i] = false;
+    int A = 0, B = 0;
+    for(int u : order){
+      if(!visited[u]){
+        count = 0;
+        flood_fill(u);
+        if(count>=4) A++;
+        else B+=count;
+      }
+    }
+    System.out.printf(""%d %d\n"",A,B);
+  }"
+20,CONSTRUCTORDECLARATION,"sol",pa.java(5:3-5:33),"sol(Scanner kb){this.kb = kb;}"
+21,VARIABLEDECLARATION,"this",,""
+22,COMPOUNDSTATEMENT,"",pa.java(14:23-23:4),"{
+    if(map.containsKey(u)) return map.get(u);
+    else{
+      adj.add(new LinkedList<Integer>());
+      tadj.add(new LinkedList<Integer>());
+      int p = map.size();
+      map.put(u,p);
+      return p;
+    }
+  }"
+23,PARAMVARIABLEDECLARATION,"u",pa.java(14:17-14:22),"int u"
+24,DECLAREDREFERENCEEXPRESSION,"this",pa.java(15:8-15:11),"this"
+25,RETURNSTATEMENT,"",,""
+26,IFSTATEMENT,"",pa.java(15:5-22:6),"if(map.containsKey(u)) return map.get(u);
+    else{
+      adj.add(new LinkedList<Integer>());
+      tadj.add(new LinkedList<Integer>());
+      int p = map.size();
+      map.put(u,p);
+      return p;
+    }"
+27,MEMBERCALLEXPRESSION,"containsKey",pa.java(15:8-15:26),"map.containsKey(u)"
+28,RETURNSTATEMENT,"",pa.java(15:28-15:46),"return map.get(u);"
+29,COMPOUNDSTATEMENT,"",pa.java(16:9-22:6),"{
+      adj.add(new LinkedList<Integer>());
+      tadj.add(new LinkedList<Integer>());
+      int p = map.size();
+      map.put(u,p);
+      return p;
+    }"
+30,DECLAREDREFERENCEEXPRESSION,"this",pa.java(15:35-15:38),"this"
+31,DECLAREDREFERENCEEXPRESSION,"this",pa.java(17:7-17:10),"this"
+32,MEMBERCALLEXPRESSION,"get",pa.java(15:35-15:45),"map.get(u)"
+33,DECLAREDREFERENCEEXPRESSION,"get",pa.java(15:39-15:42),"get"
+34,DECLAREDREFERENCEEXPRESSION,"u",pa.java(15:43-15:44),"u"
+35,MEMBEREXPRESSION,"map",pa.java(15:35-15:38),"map"
+36,DECLAREDREFERENCEEXPRESSION,"containsKey",pa.java(15:12-15:23),"containsKey"
+37,DECLAREDREFERENCEEXPRESSION,"u",pa.java(15:24-15:25),"u"
+38,MEMBEREXPRESSION,"map",pa.java(15:8-15:11),"map"
+39,MEMBERCALLEXPRESSION,"add",pa.java(17:7-17:42),"adj.add(new LinkedList<Integer>());"
+40,MEMBERCALLEXPRESSION,"add",pa.java(18:7-18:43),"tadj.add(new LinkedList<Integer>());"
+41,DECLARATIONSTATEMENT,"",pa.java(19:7-19:26),"int p = map.size();"
+42,MEMBERCALLEXPRESSION,"put",pa.java(20:7-20:20),"map.put(u,p);"
+43,RETURNSTATEMENT,"",pa.java(21:7-21:16),"return p;"
+44,VARIABLEDECLARATION,"p",pa.java(19:11-19:25),"p = map.size()"
+45,DECLAREDREFERENCEEXPRESSION,"this",pa.java(20:7-20:10),"this"
+46,DECLAREDREFERENCEEXPRESSION,"add",pa.java(17:11-17:14),"add"
+47,DECLAREDREFERENCEEXPRESSION,"this",pa.java(18:7-18:11),"this"
+48,NEWEXPRESSION,"",pa.java(17:15-17:40),"new LinkedList<Integer>()"
+49,MEMBEREXPRESSION,"adj",pa.java(17:7-17:10),"adj"
+50,CONSTRUCTEXPRESSION,"",pa.java(17:15-17:40),"new LinkedList<Integer>()"
+51,DECLAREDREFERENCEEXPRESSION,"p",pa.java(21:14-21:15),"p"
+52,DECLAREDREFERENCEEXPRESSION,"add",pa.java(18:12-18:15),"add"
+53,DECLAREDREFERENCEEXPRESSION,"this",pa.java(19:15-19:18),"this"
+54,NEWEXPRESSION,"",pa.java(18:16-18:41),"new LinkedList<Integer>()"
+55,MEMBEREXPRESSION,"tadj",pa.java(18:7-18:11),"tadj"
+56,CONSTRUCTEXPRESSION,"",pa.java(18:16-18:41),"new LinkedList<Integer>()"
+57,MEMBERCALLEXPRESSION,"size",pa.java(19:15-19:25),"map.size()"
+58,DECLAREDREFERENCEEXPRESSION,"size",pa.java(19:19-19:23),"size"
+59,MEMBEREXPRESSION,"map",pa.java(19:15-19:18),"map"
+60,DECLAREDREFERENCEEXPRESSION,"put",pa.java(20:11-20:14),"put"
+61,DECLAREDREFERENCEEXPRESSION,"p",pa.java(20:17-20:18),"p"
+62,DECLAREDREFERENCEEXPRESSION,"u",pa.java(20:15-20:16),"u"
+63,MEMBEREXPRESSION,"map",pa.java(20:7-20:10),"map"
+64,VARIABLEDECLARATION,"this",,""
+65,COMPOUNDSTATEMENT,"",pa.java(50:25-56:4),"{
+    count++;
+    visited[u] = true;
+    for(int v : tadj.get(u)){
+      if(!visited[v]) flood_fill(v);
+    }
+  }"
+66,PARAMVARIABLEDECLARATION,"u",pa.java(50:19-50:24),"int u"
+67,DECLAREDREFERENCEEXPRESSION,"this",pa.java(51:5-51:10),"this"
+68,RETURNSTATEMENT,"",,""
+69,UNARYOPERATOR,"++",pa.java(51:5-51:13),"count++;"
+70,BINARYOPERATOR,"=",pa.java(52:5-52:23),"visited[u] = true;"
+71,FOREACHSTATEMENT,"",pa.java(53:5-55:6),"for(int v : tadj.get(u)){
+      if(!visited[v]) flood_fill(v);
+    }"
+72,ARRAYSUBSCRIPTIONEXPRESSION,"",pa.java(52:5-52:15),"visited[u]"
+73,LITERAL,"",pa.java(52:18-52:22),"true"
+74,DECLAREDREFERENCEEXPRESSION,"this",pa.java(53:17-53:21),"this"
+75,MEMBEREXPRESSION,"visited",pa.java(52:5-52:12),"visited"
+76,DECLAREDREFERENCEEXPRESSION,"u",pa.java(52:13-52:14),"u"
+77,DECLAREDREFERENCEEXPRESSION,"this",pa.java(52:5-52:12),"this"
+78,DECLARATIONSTATEMENT,"",pa.java(53:9-53:14),"int v"
+79,MEMBERCALLEXPRESSION,"get",pa.java(53:17-53:28),"tadj.get(u)"
+80,COMPOUNDSTATEMENT,"",pa.java(53:29-55:6),"{
+      if(!visited[v]) flood_fill(v);
+    }"
+81,VARIABLEDECLARATION,"v",pa.java(53:13-53:14),"v"
+82,DECLAREDREFERENCEEXPRESSION,"this",pa.java(54:11-54:18),"this"
+83,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+84,IFSTATEMENT,"",pa.java(54:7-54:37),"if(!visited[v]) flood_fill(v);"
+85,CALLEXPRESSION,"flood_fill",pa.java(54:23-54:37),"flood_fill(v);"
+86,UNARYOPERATOR,"!",pa.java(54:10-54:21),"!visited[v]"
+87,DECLAREDREFERENCEEXPRESSION,"v",pa.java(54:34-54:35),"v"
+88,METHODDECLARATION,"flood_fill",,""
+89,PARAMVARIABLEDECLARATION,"int0",,""
+90,ARRAYSUBSCRIPTIONEXPRESSION,"",pa.java(54:11-54:21),"visited[v]"
+91,MEMBEREXPRESSION,"visited",pa.java(54:11-54:18),"visited"
+92,DECLAREDREFERENCEEXPRESSION,"v",pa.java(54:19-54:20),"v"
+93,DECLAREDREFERENCEEXPRESSION,"get",pa.java(53:22-53:25),"get"
+94,DECLAREDREFERENCEEXPRESSION,"u",pa.java(53:26-53:27),"u"
+95,MEMBEREXPRESSION,"tadj",pa.java(53:17-53:21),"tadj"
+96,MEMBEREXPRESSION,"count",pa.java(51:5-51:10),"count"
+97,NEWEXPRESSION,"",pa.java(13:41-13:77),"new ArrayList<LinkedList<Integer>>()"
+98,CONSTRUCTEXPRESSION,"",pa.java(13:41-13:77),"new ArrayList<LinkedList<Integer>>()"
+99,VARIABLEDECLARATION,"this",,""
+100,COMPOUNDSTATEMENT,"",pa.java(42:18-49:4),"{
+    if(visited[u]) return;
+    else visited[u] = true;
+    for(int v : adj.get(u)){
+      if(!visited[v]) dfs(v);
+    }
+    order.addFirst(u);
+  }"
+101,PARAMVARIABLEDECLARATION,"u",pa.java(42:12-42:17),"int u"
+102,DECLAREDREFERENCEEXPRESSION,"this",pa.java(43:8-43:15),"this"
+103,RETURNSTATEMENT,"",,""
+104,IFSTATEMENT,"",pa.java(43:5-44:28),"if(visited[u]) return;
+    else visited[u] = true;"
+105,FOREACHSTATEMENT,"",pa.java(45:5-47:6),"for(int v : adj.get(u)){
+      if(!visited[v]) dfs(v);
+    }"
+106,MEMBERCALLEXPRESSION,"addFirst",pa.java(48:5-48:23),"order.addFirst(u);"
+107,DECLAREDREFERENCEEXPRESSION,"addFirst",pa.java(48:11-48:19),"addFirst"
+108,DECLAREDREFERENCEEXPRESSION,"u",pa.java(48:20-48:21),"u"
+109,MEMBEREXPRESSION,"order",pa.java(48:5-48:10),"order"
+110,DECLAREDREFERENCEEXPRESSION,"this",pa.java(48:5-48:10),"this"
+111,DECLARATIONSTATEMENT,"",pa.java(45:9-45:14),"int v"
+112,MEMBERCALLEXPRESSION,"get",pa.java(45:17-45:27),"adj.get(u)"
+113,COMPOUNDSTATEMENT,"",pa.java(45:28-47:6),"{
+      if(!visited[v]) dfs(v);
+    }"
+114,VARIABLEDECLARATION,"v",pa.java(45:13-45:14),"v"
+115,DECLAREDREFERENCEEXPRESSION,"this",pa.java(46:11-46:18),"this"
+116,DECLAREDREFERENCEEXPRESSION,"get",pa.java(45:21-45:24),"get"
+117,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+118,DECLAREDREFERENCEEXPRESSION,"u",pa.java(45:25-45:26),"u"
+119,MEMBEREXPRESSION,"adj",pa.java(45:17-45:20),"adj"
+120,DECLAREDREFERENCEEXPRESSION,"this",pa.java(45:17-45:20),"this"
+121,BINARYOPERATOR,"=",pa.java(44:10-44:28),"visited[u] = true;"
+122,IFSTATEMENT,"",pa.java(46:7-46:30),"if(!visited[v]) dfs(v);"
+123,CALLEXPRESSION,"dfs",pa.java(46:23-46:30),"dfs(v);"
+124,UNARYOPERATOR,"!",pa.java(46:10-46:21),"!visited[v]"
+125,DECLAREDREFERENCEEXPRESSION,"v",pa.java(46:27-46:28),"v"
+126,ARRAYSUBSCRIPTIONEXPRESSION,"",pa.java(46:11-46:21),"visited[v]"
+127,MEMBEREXPRESSION,"visited",pa.java(46:11-46:18),"visited"
+128,DECLAREDREFERENCEEXPRESSION,"v",pa.java(46:19-46:20),"v"
+129,METHODDECLARATION,"dfs",OrdemRara.java(71:3-78:4),"void dfs(int u){
+  	if(pos[u]>=0) return;
+  	for(int i = 0; i < deg[u]; i++){
+  		int v = adj[u][i];
+  		dfs(v);
+  	}
+  	pos[u] = N++;
+  }"
+130,PARAMVARIABLEDECLARATION,"u",OrdemRara.java(71:12-71:17),"int u"
+131,ARRAYSUBSCRIPTIONEXPRESSION,"",pa.java(43:8-43:18),"visited[u]"
+132,RETURNSTATEMENT,"",pa.java(43:20-43:27),"return;"
+133,DECLAREDREFERENCEEXPRESSION,"this",pa.java(44:10-44:17),"this"
+134,MEMBEREXPRESSION,"visited",pa.java(43:8-43:15),"visited"
+135,DECLAREDREFERENCEEXPRESSION,"u",pa.java(43:16-43:17),"u"
+136,ARRAYSUBSCRIPTIONEXPRESSION,"",pa.java(44:10-44:20),"visited[u]"
+137,LITERAL,"",pa.java(44:23-44:27),"true"
+138,MEMBEREXPRESSION,"visited",pa.java(44:10-44:17),"visited"
+139,DECLAREDREFERENCEEXPRESSION,"u",pa.java(44:18-44:19),"u"
+140,COMPOUNDSTATEMENT,"",pa.java(5:18-5:33),"{this.kb = kb;}"
+141,PARAMVARIABLEDECLARATION,"kb",pa.java(5:7-5:17),"Scanner kb"
+142,DECLAREDREFERENCEEXPRESSION,"this",pa.java(5:19-5:23),"this"
+143,RETURNSTATEMENT,"",,""
+144,BINARYOPERATOR,"=",pa.java(5:19-5:32),"this.kb = kb;"
+145,MEMBEREXPRESSION,"kb",pa.java(5:19-5:26),"this.kb"
+146,DECLAREDREFERENCEEXPRESSION,"kb",pa.java(5:29-5:31),"kb"
+147,VARIABLEDECLARATION,"this",,""
+148,COMPOUNDSTATEMENT,"",pa.java(24:14-41:4),"{
+    N = kb.nextInt();
+    map.clear();
+    adj.clear();
+    tadj.clear();
+    for(int i = 0; i < N; i++){
+      int u = kb.nextInt();
+      u = find_node(u);
+      int c = kb.nextInt();
+      for(int k = 0; k < c; k++){
+        int v = kb.nextInt();       
+        v = find_node(v);
+        adj.get(u).add(v);
+        tadj.get(v).add(u);
+      }
+    }
+    N = map.size();
+  }"
+149,DECLAREDREFERENCEEXPRESSION,"this",pa.java(25:5-25:6),"this"
+150,RETURNSTATEMENT,"",,""
+151,BINARYOPERATOR,"=",pa.java(25:5-25:22),"N = kb.nextInt();"
+152,MEMBERCALLEXPRESSION,"clear",pa.java(26:5-26:17),"map.clear();"
+153,MEMBERCALLEXPRESSION,"clear",pa.java(27:5-27:17),"adj.clear();"
+154,MEMBERCALLEXPRESSION,"clear",pa.java(28:5-28:18),"tadj.clear();"
+155,FORSTATEMENT,"",pa.java(29:5-39:6),"for(int i = 0; i < N; i++){
+      int u = kb.nextInt();
+      u = find_node(u);
+      int c = kb.nextInt();
+      for(int k = 0; k < c; k++){
+        int v = kb.nextInt();       
+        v = find_node(v);
+        adj.get(u).add(v);
+        tadj.get(v).add(u);
+      }
+    }"
+156,BINARYOPERATOR,"=",pa.java(40:5-40:20),"N = map.size();"
+157,MEMBEREXPRESSION,"N",pa.java(25:5-25:6),"N"
+158,MEMBERCALLEXPRESSION,"nextInt",pa.java(25:9-25:21),"kb.nextInt()"
+159,DECLAREDREFERENCEEXPRESSION,"this",pa.java(26:5-26:8),"this"
+160,DECLAREDREFERENCEEXPRESSION,"nextInt",pa.java(25:12-25:19),"nextInt"
+161,MEMBEREXPRESSION,"kb",pa.java(25:9-25:11),"kb"
+162,DECLAREDREFERENCEEXPRESSION,"this",pa.java(25:9-25:11),"this"
+163,DECLAREDREFERENCEEXPRESSION,"clear",pa.java(26:9-26:14),"clear"
+164,DECLAREDREFERENCEEXPRESSION,"this",pa.java(27:5-27:8),"this"
+165,MEMBEREXPRESSION,"map",pa.java(26:5-26:8),"map"
+166,DECLAREDREFERENCEEXPRESSION,"clear",pa.java(28:10-28:15),"clear"
+167,LITERAL,"",pa.java(29:17-29:18),"0"
+168,MEMBEREXPRESSION,"tadj",pa.java(28:5-28:9),"tadj"
+169,DECLAREDREFERENCEEXPRESSION,"this",pa.java(28:5-28:9),"this"
+170,COMPOUNDSTATEMENT,"",pa.java(29:31-39:6),"{
+      int u = kb.nextInt();
+      u = find_node(u);
+      int c = kb.nextInt();
+      for(int k = 0; k < c; k++){
+        int v = kb.nextInt();       
+        v = find_node(v);
+        adj.get(u).add(v);
+        tadj.get(v).add(u);
+      }
+    }"
+171,DECLARATIONSTATEMENT,"",pa.java(29:9-29:18),"int i = 0"
+172,BINARYOPERATOR,"<",pa.java(29:20-29:25),"i < N"
+173,UNARYOPERATOR,"++",pa.java(29:27-29:30),"i++"
+174,VARIABLEDECLARATION,"i",pa.java(29:13-29:18),"i = 0"
+175,DECLAREDREFERENCEEXPRESSION,"this",pa.java(30:15-30:17),"this"
+176,DECLAREDREFERENCEEXPRESSION,"this",pa.java(40:5-40:6),"this"
+177,DECLARATIONSTATEMENT,"",pa.java(30:7-30:28),"int u = kb.nextInt();"
+178,BINARYOPERATOR,"=",pa.java(31:7-31:24),"u = find_node(u);"
+179,DECLARATIONSTATEMENT,"",pa.java(32:7-32:28),"int c = kb.nextInt();"
+180,FORSTATEMENT,"",pa.java(33:7-38:8),"for(int k = 0; k < c; k++){
+        int v = kb.nextInt();       
+        v = find_node(v);
+        adj.get(u).add(v);
+        tadj.get(v).add(u);
+      }"
+181,VARIABLEDECLARATION,"u",pa.java(30:11-30:27),"u = kb.nextInt()"
+182,VARIABLEDECLARATION,"c",pa.java(32:11-32:27),"c = kb.nextInt()"
+183,DECLAREDREFERENCEEXPRESSION,"i",pa.java(29:27-29:28),"i"
+184,LITERAL,"",pa.java(33:19-33:20),"0"
+185,MEMBERCALLEXPRESSION,"nextInt",pa.java(30:15-30:27),"kb.nextInt()"
+186,DECLAREDREFERENCEEXPRESSION,"nextInt",pa.java(30:18-30:25),"nextInt"
+187,MEMBEREXPRESSION,"kb",pa.java(30:15-30:17),"kb"
+188,MEMBERCALLEXPRESSION,"nextInt",pa.java(32:15-32:27),"kb.nextInt()"
+189,DECLAREDREFERENCEEXPRESSION,"nextInt",pa.java(32:18-32:25),"nextInt"
+190,MEMBEREXPRESSION,"kb",pa.java(32:15-32:17),"kb"
+191,DECLAREDREFERENCEEXPRESSION,"this",pa.java(32:15-32:17),"this"
+192,DECLAREDREFERENCEEXPRESSION,"u",pa.java(31:7-31:8),"u"
+193,CALLEXPRESSION,"find_node",pa.java(31:11-31:23),"find_node(u)"
+194,DECLAREDREFERENCEEXPRESSION,"u",pa.java(31:21-31:22),"u"
+195,METHODDECLARATION,"find_node",,""
+196,PARAMVARIABLEDECLARATION,"int0",,""
+197,COMPOUNDSTATEMENT,"",pa.java(33:33-38:8),"{
+        int v = kb.nextInt();       
+        v = find_node(v);
+        adj.get(u).add(v);
+        tadj.get(v).add(u);
+      }"
+198,DECLARATIONSTATEMENT,"",pa.java(33:11-33:20),"int k = 0"
+199,BINARYOPERATOR,"<",pa.java(33:22-33:27),"k < c"
+200,UNARYOPERATOR,"++",pa.java(33:29-33:32),"k++"
+201,VARIABLEDECLARATION,"k",pa.java(33:15-33:20),"k = 0"
+202,DECLAREDREFERENCEEXPRESSION,"this",pa.java(34:17-34:19),"this"
+203,DECLAREDREFERENCEEXPRESSION,"k",pa.java(33:22-33:23),"k"
+204,DECLARATIONSTATEMENT,"",pa.java(34:9-34:30),"int v = kb.nextInt();"
+205,BINARYOPERATOR,"=",pa.java(35:9-35:26),"v = find_node(v);"
+206,MEMBERCALLEXPRESSION,"add",pa.java(36:9-36:27),"adj.get(u).add(v);"
+207,MEMBERCALLEXPRESSION,"add",pa.java(37:9-37:28),"tadj.get(v).add(u);"
+208,VARIABLEDECLARATION,"v",pa.java(34:13-34:29),"v = kb.nextInt()"
+209,DECLAREDREFERENCEEXPRESSION,"k",pa.java(33:29-33:30),"k"
+210,DECLAREDREFERENCEEXPRESSION,"add",pa.java(36:20-36:23),"add"
+211,DECLAREDREFERENCEEXPRESSION,"this",pa.java(37:9-37:13),"this"
+212,DECLAREDREFERENCEEXPRESSION,"v",pa.java(36:24-36:25),"v"
+213,MEMBERCALLEXPRESSION,"get",pa.java(36:9-36:19),"adj.get(u)"
+214,DECLAREDREFERENCEEXPRESSION,"get",pa.java(36:13-36:16),"get"
+215,DECLAREDREFERENCEEXPRESSION,"u",pa.java(36:17-36:18),"u"
+216,MEMBEREXPRESSION,"adj",pa.java(36:9-36:12),"adj"
+217,DECLAREDREFERENCEEXPRESSION,"this",pa.java(36:9-36:12),"this"
+218,DECLAREDREFERENCEEXPRESSION,"add",pa.java(37:21-37:24),"add"
+219,DECLAREDREFERENCEEXPRESSION,"u",pa.java(37:25-37:26),"u"
+220,MEMBERCALLEXPRESSION,"get",pa.java(37:9-37:20),"tadj.get(v)"
+221,DECLAREDREFERENCEEXPRESSION,"get",pa.java(37:14-37:17),"get"
+222,DECLAREDREFERENCEEXPRESSION,"v",pa.java(37:18-37:19),"v"
+223,MEMBEREXPRESSION,"tadj",pa.java(37:9-37:13),"tadj"
+224,DECLAREDREFERENCEEXPRESSION,"v",pa.java(35:9-35:10),"v"
+225,CALLEXPRESSION,"find_node",pa.java(35:13-35:25),"find_node(v)"
+226,DECLAREDREFERENCEEXPRESSION,"v",pa.java(35:23-35:24),"v"
+227,MEMBERCALLEXPRESSION,"nextInt",pa.java(34:17-34:29),"kb.nextInt()"
+228,DECLAREDREFERENCEEXPRESSION,"nextInt",pa.java(34:20-34:27),"nextInt"
+229,MEMBEREXPRESSION,"kb",pa.java(34:17-34:19),"kb"
+230,DECLAREDREFERENCEEXPRESSION,"c",pa.java(33:26-33:27),"c"
+231,DECLAREDREFERENCEEXPRESSION,"i",pa.java(29:20-29:21),"i"
+232,MEMBEREXPRESSION,"N",pa.java(29:24-29:25),"N"
+233,DECLAREDREFERENCEEXPRESSION,"this",pa.java(29:24-29:25),"this"
+234,DECLAREDREFERENCEEXPRESSION,"clear",pa.java(27:9-27:14),"clear"
+235,MEMBEREXPRESSION,"adj",pa.java(27:5-27:8),"adj"
+236,MEMBEREXPRESSION,"N",pa.java(40:5-40:6),"N"
+237,MEMBERCALLEXPRESSION,"size",pa.java(40:9-40:19),"map.size()"
+238,DECLAREDREFERENCEEXPRESSION,"this",pa.java(40:9-40:12),"this"
+239,DECLAREDREFERENCEEXPRESSION,"size",pa.java(40:13-40:17),"size"
+240,MEMBEREXPRESSION,"map",pa.java(40:9-40:12),"map"
+241,NEWEXPRESSION,"",pa.java(10:31-10:56),"new LinkedList<Integer>()"
+242,CONSTRUCTEXPRESSION,"",pa.java(10:31-10:56),"new LinkedList<Integer>()"
+243,NEWEXPRESSION,"",pa.java(11:34-11:64),"new HashMap<Integer,Integer>()"
+244,CONSTRUCTEXPRESSION,"",pa.java(11:34-11:64),"new HashMap<Integer,Integer>()"
+245,NEWEXPRESSION,"",pa.java(12:40-12:76),"new ArrayList<LinkedList<Integer>>()"
+246,CONSTRUCTEXPRESSION,"",pa.java(12:40-12:76),"new ArrayList<LinkedList<Integer>>()"
+247,VARIABLEDECLARATION,"this",,""
+248,COMPOUNDSTATEMENT,"",pa.java(57:15-72:4),"{
+    order.clear();
+    visited = new boolean[N];
+    for(int i = 0; i < N; i++) dfs(i);
+    for(int i = 0; i < N; i++) visited[i] = false;
+    int A = 0, B = 0;
+    for(int u : order){
+      if(!visited[u]){
+        count = 0;
+        flood_fill(u);
+        if(count>=4) A++;
+        else B+=count;
+      }
+    }
+    System.out.printf(""%d %d\n"",A,B);
+  }"
+249,DECLAREDREFERENCEEXPRESSION,"this",pa.java(58:5-58:10),"this"
+250,RETURNSTATEMENT,"",,""
+251,MEMBERCALLEXPRESSION,"clear",pa.java(58:5-58:19),"order.clear();"
+252,BINARYOPERATOR,"=",pa.java(59:5-59:30),"visited = new boolean[N];"
+253,FORSTATEMENT,"",pa.java(60:5-60:39),"for(int i = 0; i < N; i++) dfs(i);"
+254,FORSTATEMENT,"",pa.java(61:5-61:51),"for(int i = 0; i < N; i++) visited[i] = false;"
+255,DECLARATIONSTATEMENT,"",pa.java(62:5-62:22),"int A = 0, B = 0;"
+256,FOREACHSTATEMENT,"",pa.java(63:5-70:6),"for(int u : order){
+      if(!visited[u]){
+        count = 0;
+        flood_fill(u);
+        if(count>=4) A++;
+        else B+=count;
+      }
+    }"
+257,MEMBERCALLEXPRESSION,"printf",pa.java(71:5-71:38),"System.out.printf(""%d %d\n"",A,B);"
+258,VARIABLEDECLARATION,"A",pa.java(62:9-62:14),"A = 0"
+259,VARIABLEDECLARATION,"B",pa.java(62:16-62:21),"B = 0"
+260,DECLAREDREFERENCEEXPRESSION,"clear",pa.java(58:11-58:16),"clear"
+261,DECLAREDREFERENCEEXPRESSION,"this",pa.java(59:5-59:12),"this"
+262,MEMBEREXPRESSION,"order",pa.java(58:5-58:10),"order"
+263,CALLEXPRESSION,"dfs",pa.java(60:32-60:39),"dfs(i);"
+264,DECLARATIONSTATEMENT,"",pa.java(60:9-60:18),"int i = 0"
+265,BINARYOPERATOR,"<",pa.java(60:20-60:25),"i < N"
+266,UNARYOPERATOR,"++",pa.java(60:27-60:30),"i++"
+267,VARIABLEDECLARATION,"i",pa.java(60:13-60:18),"i = 0"
+268,DECLAREDREFERENCEEXPRESSION,"i",pa.java(60:36-60:37),"i"
+269,LITERAL,"",pa.java(61:17-61:18),"0"
+270,DECLAREDREFERENCEEXPRESSION,"i",pa.java(60:20-60:21),"i"
+271,MEMBEREXPRESSION,"N",pa.java(60:24-60:25),"N"
+272,DECLAREDREFERENCEEXPRESSION,"this",pa.java(60:24-60:25),"this"
+273,DECLAREDREFERENCEEXPRESSION,"i",pa.java(60:27-60:28),"i"
+274,LITERAL,"",pa.java(60:17-60:18),"0"
+275,DECLAREDREFERENCEEXPRESSION,"this",pa.java(63:17-63:22),"this"
+276,LITERAL,"",pa.java(62:13-62:14),"0"
+277,LITERAL,"",pa.java(62:20-62:21),"0"
+278,BINARYOPERATOR,"=",pa.java(61:32-61:51),"visited[i] = false;"
+279,DECLARATIONSTATEMENT,"",pa.java(61:9-61:18),"int i = 0"
+280,BINARYOPERATOR,"<",pa.java(61:20-61:25),"i < N"
+281,UNARYOPERATOR,"++",pa.java(61:27-61:30),"i++"
+282,VARIABLEDECLARATION,"i",pa.java(61:13-61:18),"i = 0"
+283,DECLAREDREFERENCEEXPRESSION,"this",pa.java(61:32-61:39),"this"
+284,DECLAREDREFERENCEEXPRESSION,"i",pa.java(61:27-61:28),"i"
+285,DECLAREDREFERENCEEXPRESSION,"i",pa.java(61:20-61:21),"i"
+286,ARRAYSUBSCRIPTIONEXPRESSION,"",pa.java(61:32-61:42),"visited[i]"
+287,LITERAL,"",pa.java(61:45-61:50),"false"
+288,MEMBEREXPRESSION,"visited",pa.java(61:32-61:39),"visited"
+289,DECLAREDREFERENCEEXPRESSION,"i",pa.java(61:40-61:41),"i"
+290,MEMBEREXPRESSION,"N",pa.java(61:24-61:25),"N"
+291,DECLAREDREFERENCEEXPRESSION,"this",pa.java(61:24-61:25),"this"
+292,DECLAREDREFERENCEEXPRESSION,"printf",pa.java(71:16-71:22),"printf"
+293,DECLAREDREFERENCEEXPRESSION,"B",pa.java(71:35-71:36),"B"
+294,DECLAREDREFERENCEEXPRESSION,"A",pa.java(71:33-71:34),"A"
+295,LITERAL,"",pa.java(71:23-71:32),"""%d %d\n"""
+296,MEMBEREXPRESSION,"out",pa.java(71:5-71:15),"System.out"
+297,DECLAREDREFERENCEEXPRESSION,"System",pa.java(71:5-71:11),"System"
+298,DECLARATIONSTATEMENT,"",pa.java(63:9-63:14),"int u"
+299,MEMBEREXPRESSION,"order",pa.java(63:17-63:22),"order"
+300,COMPOUNDSTATEMENT,"",pa.java(63:23-70:6),"{
+      if(!visited[u]){
+        count = 0;
+        flood_fill(u);
+        if(count>=4) A++;
+        else B+=count;
+      }
+    }"
+301,VARIABLEDECLARATION,"u",pa.java(63:13-63:14),"u"
+302,DECLAREDREFERENCEEXPRESSION,"this",pa.java(64:11-64:18),"this"
+303,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+304,IFSTATEMENT,"",pa.java(64:7-69:8),"if(!visited[u]){
+        count = 0;
+        flood_fill(u);
+        if(count>=4) A++;
+        else B+=count;
+      }"
+305,COMPOUNDSTATEMENT,"",pa.java(64:22-69:8),"{
+        count = 0;
+        flood_fill(u);
+        if(count>=4) A++;
+        else B+=count;
+      }"
+306,UNARYOPERATOR,"!",pa.java(64:10-64:21),"!visited[u]"
+307,DECLAREDREFERENCEEXPRESSION,"this",pa.java(65:9-65:14),"this"
+308,ARRAYSUBSCRIPTIONEXPRESSION,"",pa.java(64:11-64:21),"visited[u]"
+309,MEMBEREXPRESSION,"visited",pa.java(64:11-64:18),"visited"
+310,DECLAREDREFERENCEEXPRESSION,"u",pa.java(64:19-64:20),"u"
+311,BINARYOPERATOR,"=",pa.java(65:9-65:19),"count = 0;"
+312,CALLEXPRESSION,"flood_fill",pa.java(66:9-66:23),"flood_fill(u);"
+313,IFSTATEMENT,"",pa.java(67:9-68:23),"if(count>=4) A++;
+        else B+=count;"
+314,UNARYOPERATOR,"++",pa.java(67:22-67:26),"A++;"
+315,BINARYOPERATOR,"+=",pa.java(68:14-68:23),"B+=count;"
+316,MEMBEREXPRESSION,"count",pa.java(65:9-65:14),"count"
+317,LITERAL,"",pa.java(65:17-65:18),"0"
+318,DECLAREDREFERENCEEXPRESSION,"u",pa.java(66:20-66:21),"u"
+319,DECLAREDREFERENCEEXPRESSION,"this",pa.java(67:12-67:17),"this"
+320,BINARYOPERATOR,">=",pa.java(67:12-67:20),"count>=4"
+321,DECLAREDREFERENCEEXPRESSION,"A",pa.java(67:22-67:23),"A"
+322,DECLAREDREFERENCEEXPRESSION,"B",pa.java(68:14-68:15),"B"
+323,MEMBEREXPRESSION,"count",pa.java(68:17-68:22),"count"
+324,DECLAREDREFERENCEEXPRESSION,"this",pa.java(68:17-68:22),"this"
+325,MEMBEREXPRESSION,"count",pa.java(67:12-67:17),"count"
+326,LITERAL,"",pa.java(67:19-67:20),"4"
+327,MEMBEREXPRESSION,"visited",pa.java(59:5-59:12),"visited"
+328,ARRAYCREATIONEXPRESSION,"",pa.java(59:15-59:29),"new boolean[N]"
+329,DECLAREDREFERENCEEXPRESSION,"this",pa.java(59:27-59:28),"this"
+330,MEMBEREXPRESSION,"N",pa.java(59:27-59:28),"N"
+331,NEWEXPRESSION,"",pa.java(9:26-9:51),"new LinkedList<Integer>()"
+332,CONSTRUCTEXPRESSION,"",pa.java(9:26-9:51),"new LinkedList<Integer>()"
+333,FIELDDECLARATION,"this",,""
+334,METHODDECLARATION,"main",pa.java(76:3-85:4),"public static void main(String args[]){
+    Scanner kb = new Scanner(System.in);
+    sol s = new sol(kb);
+    int c = kb.nextInt();
+    for(int i = 1; i <= c; i++){
+      System.out.printf(""Caso#%d\n"",i);
+      s.read();
+      s.solve();
+    }
+  }"
+335,CONSTRUCTORDECLARATION,"pa",,""
+336,VARIABLEDECLARATION,"this",,""
+337,COMPOUNDSTATEMENT,"",pa.java(76:41-85:4),"{
+    Scanner kb = new Scanner(System.in);
+    sol s = new sol(kb);
+    int c = kb.nextInt();
+    for(int i = 1; i <= c; i++){
+      System.out.printf(""Caso#%d\n"",i);
+      s.read();
+      s.solve();
+    }
+  }"
+338,PARAMVARIABLEDECLARATION,"args",pa.java(76:27-76:40),"String args[]"
+339,DECLAREDREFERENCEEXPRESSION,"System",pa.java(77:30-77:36),"System"
+340,RETURNSTATEMENT,"",,""
+341,DECLARATIONSTATEMENT,"",pa.java(77:5-77:41),"Scanner kb = new Scanner(System.in);"
+342,DECLARATIONSTATEMENT,"",pa.java(78:5-78:25),"sol s = new sol(kb);"
+343,DECLARATIONSTATEMENT,"",pa.java(79:5-79:26),"int c = kb.nextInt();"
+344,FORSTATEMENT,"",pa.java(80:5-84:6),"for(int i = 1; i <= c; i++){
+      System.out.printf(""Caso#%d\n"",i);
+      s.read();
+      s.solve();
+    }"
+345,VARIABLEDECLARATION,"kb",pa.java(77:13-77:40),"kb = new Scanner(System.in)"
+346,VARIABLEDECLARATION,"s",pa.java(78:9-78:24),"s = new sol(kb)"
+347,VARIABLEDECLARATION,"c",pa.java(79:9-79:25),"c = kb.nextInt()"
+348,NEWEXPRESSION,"",pa.java(77:18-77:40),"new Scanner(System.in)"
+349,CONSTRUCTEXPRESSION,"",pa.java(77:18-77:40),"new Scanner(System.in)"
+350,MEMBEREXPRESSION,"in",pa.java(77:30-77:39),"System.in"
+351,MEMBERCALLEXPRESSION,"nextInt",pa.java(79:13-79:25),"kb.nextInt()"
+352,DECLAREDREFERENCEEXPRESSION,"nextInt",pa.java(79:16-79:23),"nextInt"
+353,DECLAREDREFERENCEEXPRESSION,"kb",pa.java(79:13-79:15),"kb"
+354,NEWEXPRESSION,"",pa.java(78:13-78:24),"new sol(kb)"
+355,CONSTRUCTEXPRESSION,"",pa.java(78:13-78:24),"new sol(kb)"
+356,CONSTRUCTORDECLARATION,"sol",OrdemRara.java(16:3-16:31),"sol(Scanner kb){this.kb=kb;}"
+357,DECLAREDREFERENCEEXPRESSION,"kb",pa.java(78:21-78:23),"kb"
+358,PARAMVARIABLEDECLARATION,"kb",OrdemRara.java(16:7-16:17),"Scanner kb"
+359,COMPOUNDSTATEMENT,"",pa.java(80:32-84:6),"{
+      System.out.printf(""Caso#%d\n"",i);
+      s.read();
+      s.solve();
+    }"
+360,DECLARATIONSTATEMENT,"",pa.java(80:9-80:18),"int i = 1"
+361,BINARYOPERATOR,"<=",pa.java(80:20-80:26),"i <= c"
+362,UNARYOPERATOR,"++",pa.java(80:28-80:31),"i++"
+363,VARIABLEDECLARATION,"i",pa.java(80:13-80:18),"i = 1"
+364,DECLAREDREFERENCEEXPRESSION,"System",pa.java(81:7-81:13),"System"
+365,DECLAREDREFERENCEEXPRESSION,"i",pa.java(80:20-80:21),"i"
+366,MEMBERCALLEXPRESSION,"printf",pa.java(81:7-81:40),"System.out.printf(""Caso#%d\n"",i);"
+367,MEMBERCALLEXPRESSION,"read",pa.java(82:7-82:16),"s.read();"
+368,MEMBERCALLEXPRESSION,"solve",pa.java(83:7-83:17),"s.solve();"
+369,DECLAREDREFERENCEEXPRESSION,"i",pa.java(80:28-80:29),"i"
+370,DECLAREDREFERENCEEXPRESSION,"solve",pa.java(83:9-83:14),"solve"
+371,METHODDECLARATION,"solve",OrdemRara.java(21:3-46:4),"void solve(){
+  	for(int i = 0; i < 26; i++) deg[i] = -1;
+  	String last = kb.next();
+  	deg[last.charAt(0)-'A'] = 0;
+		while(true){
+			String cur = kb.next();
+			if(cur.equals(""#"")) break;
+			int p = 0;
+			int mlen = Math.min(cur.length(),last.length());
+			while(p < mlen){
+				if(cur.charAt(p)!=last.charAt(p)) break;
+				p++;
+			}
+			if(p<mlen){
+				int u = last.charAt(p)-'A';
+				int v = cur.charAt(p)-'A';
+				System.out.printf(""%c < %c\n"",last.charAt(p),cur.charAt(p));
+				if(deg[u]<0) deg[u] = 0;
+				if(deg[v]<0) deg[v] = 0;
+				adj[u][deg[u]++] = v;
+			}
+			last = cur;
+		}
+		//print_graph();
+		topologicalSort();
+  }"
+372,DECLAREDREFERENCEEXPRESSION,"s",pa.java(83:7-83:8),"s"
+373,DECLAREDREFERENCEEXPRESSION,"read",pa.java(82:9-82:13),"read"
+374,METHODDECLARATION,"read",,""
+375,DECLAREDREFERENCEEXPRESSION,"s",pa.java(82:7-82:8),"s"
+376,DECLAREDREFERENCEEXPRESSION,"printf",pa.java(81:18-81:24),"printf"
+377,DECLAREDREFERENCEEXPRESSION,"i",pa.java(81:37-81:38),"i"
+378,MEMBEREXPRESSION,"out",pa.java(81:7-81:17),"System.out"
+379,LITERAL,"",pa.java(81:25-81:36),"""Caso#%d\n"""
+380,DECLAREDREFERENCEEXPRESSION,"c",pa.java(80:25-80:26),"c"
+381,LITERAL,"",pa.java(80:17-80:18),"1"

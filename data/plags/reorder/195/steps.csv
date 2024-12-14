@@ -1,0 +1,16 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,99
+Sociologia.java,swap lines 5:`Boolean visitado;` and 6:`LinkedList<Integer> amigos;`,1.0,1.0,99
+Sociologia.java,swap lines 11:`DFSresultado = new LinkedList<Integer>();` and 12:`visitado = false;`,0.9869281045751634,1.0,99
+Sociologia.java,swap lines 50:`Scanner in = new Scanner(System.in);` and 51:`int count = 1;`,0.9738562091503268,1.0,99
+Sociologia.java,swap lines 9:`aluno = alu;` and 10:`amigos = new LinkedList<Integer>();`,0.954248366013072,1.0,99
+Sociologia.java,swap lines 5:`Boolean visitado;` and 7:`LinkedList<Integer> DFSresultado;`,0.954248366013072,1.0,99
+Sociologia.java,swap lines 57:`Grafo grafo = new Grafo();` and 58:`Grafo grafoT = new Grafo();`,0.954248366013072,1.0,99
+Sociologia.java,swap lines 6:`LinkedList<Integer> amigos;` and 7:`LinkedList<Integer> DFSresultado;`,0.954248366013072,1.0,99
+Sociologia.java,swap lines 9:`aluno = alu;` and 12:`visitado = false;`,0.954248366013072,1.0,99
+Sociologia.java,swap lines 9:`aluno = alu;` and 11:`DFSresultado = new LinkedList<Integer>();`,0.9738562091503268,1.0,99
+Sociologia.java,swap lines 4:`int aluno;` and 7:`LinkedList<Integer> DFSresultado;`,0.9738562091503268,1.0,99
+Sociologia.java,swap lines 4:`int aluno;` and 6:`LinkedList<Integer> amigos;`,0.9738562091503268,1.0,99
+Sociologia.java,swap lines 4:`int aluno;` and 5:`Boolean visitado;`,0.9738562091503268,1.0,99
+Sociologia.java,swap lines 10:`amigos = new LinkedList<Integer>();` and 12:`visitado = false;`,0.9869281045751634,1.0,99
+Sociologia.java,swap lines 10:`amigos = new LinkedList<Integer>();` and 11:`DFSresultado = new LinkedList<Integer>();`,0.9869281045751634,1.0,99

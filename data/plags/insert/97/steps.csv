@@ -1,0 +1,66 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,106
+ProblemaF4.java,insert line 6: `String[] messages;` on try 0,0.9650793650793651,1.0,106
+ProblemaF4.java,insert line 98: `double w;` on try 0,0.9620253164556962,1.0,106
+ProblemaF4.java,"insert line 41: `int x, y;` on try 0",0.9559748427672956,1.0,106
+ProblemaF4.java,"insert line 84: `int x, y;` on try 0",0.95,1.0,106
+ProblemaF4.java,insert line 81: `int index = 0;` on try 0,0.9034267912772586,1.0,106
+ProblemaF4.java,insert line 50: `int index = 0;` on try 0,0.9006211180124224,1.0,106
+ProblemaF4.java,insert line 101: `boolean debug = false;` on try 0,0.8854489164086687,1.0,106
+ProblemaF4.java,insert line 70: `double w;` on try 0,0.8827160493827161,1.0,106
+ProblemaF4.java,"insert line 82: `String output = """";` on try 0",0.8738461538461538,1.0,106
+ProblemaF4.java,"insert line 109: `int x, y;` on try 0",0.7951070336391437,1.0,106
+ProblemaF4.java,insert line 33: `int max;` on try 0,0.7926829268292683,1.0,106
+ProblemaF4.java,insert line 100: `int count = 0;` on try 0,0.7477203647416414,1.0,106
+ProblemaF4.java,insert line 116: `int max;` on try 0,0.7454545454545455,1.0,106
+ProblemaF4.java,insert line 74: `String[] messages;` on try 0,0.7311178247734139,1.0,106
+ProblemaF4.java,insert line 103: `int indexOfField;` on try 0,0.7289156626506024,1.0,106
+ProblemaF4.java,insert line 17: `int min;` on try 0,0.7267267267267268,1.0,106
+ProblemaF4.java,insert line 9: `int max;` on try 0,0.7125748502994012,1.0,106
+ProblemaF4.java,insert line 16: `String[] messages;` on try 0,0.6507462686567164,1.0,106
+ProblemaF4.java,"insert line 34: `int x, y;` on try 0",0.6350148367952523,1.0,106
+ProblemaF4.java,insert line 53: `int count = 0;` on try 0,0.621301775147929,1.0,106
+ProblemaF4.java,insert line 49: `int max;` on try 0,0.56047197640118,1.0,106
+ProblemaF4.java,insert line 79: `boolean done = false;` on try 0,0.5588235294117647,1.0,106
+ProblemaF4.java,"insert line 44: `String output = """";` on try 0",0.5395894428152492,1.0,106
+ProblemaF4.java,insert line 87: `int index = 0;` on try 0,0.4678362573099415,1.0,106
+ProblemaF4.java,insert line 74: `int u;` on try 0,0.46647230320699706,1.0,106
+ProblemaF4.java,insert line 46: `int count = 0;` on try 0,0.46511627906976744,1.0,106
+ProblemaF4.java,insert line 58: `String[] messages;` on try 0,0.463768115942029,1.0,106
+ProblemaF4.java,insert line 117: `int j = 0;` on try 1,0.4624277456647399,1.0,106
+ProblemaF4.java,insert line 104: `int count = 0;` on try 0,0.4553314121037464,1.0,106
+ProblemaF4.java,insert line 70: `int min;` on try 0,0.4540229885057471,1.0,106
+ProblemaF4.java,insert line 74: `int index = 0;` on try 0,0.3954154727793696,1.0,106
+ProblemaF4.java,insert line 128: `String[] messages;` on try 0,0.3942857142857143,1.0,106
+ProblemaF4.java,insert line 134: `int j = 0;` on try 0,0.39316239316239315,1.0,106
+ProblemaF4.java,insert line 18: `int max;` on try 0,0.39204545454545453,1.0,106
+ProblemaF4.java,insert line 68: `int index = 0;` on try 0,0.36827195467422097,1.0,106
+ProblemaF4.java,"insert line 8: `String output = """";` on try 0",0.3672316384180791,1.0,106
+ProblemaF4.java,insert line 66: `int count = 0;` on try 0,0.30985915492957744,1.0,106
+ProblemaF4.java,insert line 136: `int index = 0;` on try 0,0.3089887640449438,1.0,106
+ProblemaF4.java,insert line 56: `boolean debug = false;` on try 0,0.3081232492997199,1.0,106
+ProblemaF4.java,insert line 99: `int count = 0;` on try 0,0.30726256983240224,1.0,106
+ProblemaF4.java,insert line 133: `double min = 9999999;` on try 2,0.3064066852367688,1.0,106
+ProblemaF4.java,insert line 120: `boolean done = false;` on try 2,0.2722222222222222,1.0,106
+ProblemaF4.java,insert line 102: `boolean done = false;` on try 1,0.27146814404432135,1.0,106
+ProblemaF4.java,insert line 41: `String[] messages;` on try 1,0.26519337016574585,1.0,106
+ProblemaF4.java,insert line 75: `boolean debug = false;` on try 0,0.2644628099173554,1.0,106
+ProblemaF4.java,insert line 33: `int intInput;` on try 0,0.22527472527472528,1.0,106
+ProblemaF4.java,insert line 45: `int indexOfField;` on try 0,0.16986301369863013,1.0,106
+ProblemaF4.java,insert line 152: `return;` on try 0,0.16939890710382513,0.9841269841269841,106
+ProblemaF4.java,insert line 105: `int count = 0;` on try 0,0.16893732970027248,0.9841269841269841,106
+ProblemaF4.java,insert line 36: `boolean debug = false;` on try 0,0.16847826086956522,0.9841269841269841,106
+ProblemaF4.java,insert line 40: `int min;` on try 0,0.16802168021680217,0.9841269841269841,106
+ProblemaF4.java,insert line 87: `int indexOfField;` on try 0,0.16756756756756758,0.9841269841269841,106
+ProblemaF4.java,insert line 93: `boolean debug = false;` on try 1,0.11859838274932614,0.9841269841269841,106
+ProblemaF4.java,insert line 49: `boolean done = false;` on try 1,0.11827956989247312,0.9841269841269841,106
+ProblemaF4.java,insert line 35: `int index = 0;` on try 0,0.11796246648793565,0.9841269841269841,106
+ProblemaF4.java,insert line 134: `done = true;` on try 1,0.11764705882352941,0.9841269841269841,106
+ProblemaF4.java,insert line 155: `double w;` on try 1,0.11733333333333333,0.9841269841269841,106
+ProblemaF4.java,insert line 62: `double w;` on try 0,0.11702127659574468,0.9841269841269841,106
+ProblemaF4.java,insert line 2: `import java.util.Scanner;` on try 1,0.11671087533156499,0.9810126582278481,106
+ProblemaF4.java,insert line 99: `int j = 0;` on try 2,0.1164021164021164,0.9810126582278481,106
+ProblemaF4.java,"insert line 134: `String output = """";` on try 2",0.0633245382585752,0.9810126582278481,106
+ProblemaF4.java,insert line 133: `double weight;` on try 5,0.06315789473684211,0.9810126582278481,106
+ProblemaF4.java,insert line 147: `int max;` on try 6,0.06299212598425197,0.9810126582278481,106
+ProblemaF4.java,insert line 48: `int max;` on try 2,0.06282722513089005,0.9810126582278481,106

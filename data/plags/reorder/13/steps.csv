@@ -1,0 +1,17 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,80
+socio.java,swap lines 4:`int cod;` and 5:`int place;`,1.0,1.0,80
+socio.java,swap lines 44:`int grupos = 0;` and 45:`int solos = 0;`,1.0,1.0,80
+socio.java,swap lines 9:`cod = c;` and 10:`place = 0;`,1.0,1.0,80
+socio.java,swap lines 4:`int cod;` and 6:`int place2;`,1.0,1.0,80
+socio.java,swap lines 11:`place2 = 0;` and 12:`estado = false;`,1.0,1.0,80
+socio.java,swap lines 47:`Aluno[] lista = new Aluno[alunos + 1];` and 48:`boolean[][] matr = new boolean[alunos + 1][alunos + 1];`,1.0,1.0,80
+socio.java,swap lines 9:`cod = c;` and 12:`estado = false;`,1.0,1.0,80
+socio.java,swap lines 5:`int place;` and 6:`int place2;`,1.0,1.0,80
+socio.java,swap lines 9:`cod = c;` and 11:`place2 = 0;`,1.0,1.0,80
+socio.java,swap lines 4:`int cod;` and 7:`boolean estado;`,1.0,1.0,80
+socio.java,swap lines 64:`lug = 1;` and 65:`int p = 1;`,0.9849624060150376,1.0,80
+socio.java,swap lines 5:`int place;` and 7:`boolean estado;`,0.9849624060150376,1.0,80
+socio.java,swap lines 6:`int place2;` and 7:`boolean estado;`,0.9849624060150376,1.0,80
+socio.java,swap lines 10:`place = 0;` and 12:`estado = false;`,0.9849624060150376,1.0,80
+socio.java,swap lines 10:`place = 0;` and 11:`place2 = 0;`,0.9849624060150376,1.0,80

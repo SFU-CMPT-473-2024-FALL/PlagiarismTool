@@ -1,0 +1,29 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,146
+Sociologia.java,swap lines 53:`static Grafo gInv;` and 54:`static Stack<Integer> pilhaDFS = new Stack<Integer>();`,0.9913419913419913,1.0,146
+Sociologia.java,swap lines 28:`nvs = n;` and 29:`narcos = 0;`,0.9913419913419913,1.0,146
+Sociologia.java,swap lines 55:`static Stack<Integer> inversa = new Stack<Integer>();` and 56:`static int nverts;`,0.9783549783549783,1.0,146
+Sociologia.java,swap lines 16:`int cor;` and 17:`int id;`,0.9783549783549783,1.0,146
+Sociologia.java,"swap lines 102:`int ngrupos = 0, npessoas, sozinhas = 0;` and 103:`int v;`",0.9783549783549783,1.0,146
+Sociologia.java,swap lines 15:`LinkedList<Arco> adjs;` and 17:`int id;`,0.9783549783549783,1.0,146
+Sociologia.java,swap lines 51:`static Scanner ler = new Scanner(System.in);` and 52:`static Grafo g;`,0.9653679653679653,1.0,146
+Sociologia.java,swap lines 19:`cor = 0;` and 20:`adjs = new LinkedList<Arco>();`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 53:`static Grafo gInv;` and 56:`static int nverts;`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 15:`LinkedList<Arco> adjs;` and 16:`int cor;`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 53:`static Grafo gInv;` and 55:`static Stack<Integer> inversa = new Stack<Integer>();`,0.9696969696969697,1.0,146
+Sociologia.java,swap lines 19:`cor = 0;` and 21:`id = i;`,0.9696969696969697,1.0,146
+Sociologia.java,swap lines 51:`static Scanner ler = new Scanner(System.in);` and 54:`static Stack<Integer> pilhaDFS = new Stack<Integer>();`,0.9696969696969697,1.0,146
+Sociologia.java,swap lines 3:`import java.util.Scanner;` and 4:`import java.util.Stack;`,0.9696969696969697,1.0,146
+Sociologia.java,swap lines 20:`adjs = new LinkedList<Arco>();` and 21:`id = i;`,0.9783549783549783,1.0,146
+Sociologia.java,"swap lines 25:`No[] verts;` and 26:`int nvs, narcos;`",0.9783549783549783,1.0,146
+Sociologia.java,swap lines 51:`static Scanner ler = new Scanner(System.in);` and 56:`static int nverts;`,0.9913419913419913,1.0,146
+Sociologia.java,swap lines 51:`static Scanner ler = new Scanner(System.in);` and 55:`static Stack<Integer> inversa = new Stack<Integer>();`,0.9913419913419913,1.0,146
+Sociologia.java,swap lines 28:`nvs = n;` and 30:`verts = new No[n + 1];`,0.9826839826839827,1.0,146
+Sociologia.java,swap lines 51:`static Scanner ler = new Scanner(System.in);` and 53:`static Grafo gInv;`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 54:`static Stack<Integer> pilhaDFS = new Stack<Integer>();` and 56:`static int nverts;`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 52:`static Grafo g;` and 56:`static int nverts;`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 52:`static Grafo g;` and 54:`static Stack<Integer> pilhaDFS = new Stack<Integer>();`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 52:`static Grafo g;` and 55:`static Stack<Integer> inversa = new Stack<Integer>();`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 54:`static Stack<Integer> pilhaDFS = new Stack<Integer>();` and 55:`static Stack<Integer> inversa = new Stack<Integer>();`,0.9567099567099567,1.0,146
+Sociologia.java,swap lines 29:`narcos = 0;` and 30:`verts = new No[n + 1];`,0.9523809523809523,1.0,146
+Sociologia.java,swap lines 52:`static Grafo g;` and 53:`static Grafo gInv;`,0.9523809523809523,1.0,146

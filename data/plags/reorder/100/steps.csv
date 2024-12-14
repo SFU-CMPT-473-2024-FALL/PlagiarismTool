@@ -1,0 +1,16 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,58
+Sociologia.java,"swap lines 46:`listaPre = new HashMap<Integer, ArrayList<Integer>>();` and 47:`color = new int[v];`",0.9651162790697675,1.0,58
+Sociologia.java,swap lines 15:`ArrayList<Integer> temp_Adj = new ArrayList<Integer>();` and 16:`ArrayList<Integer> temp_Pre = new ArrayList<Integer>();`,0.9651162790697675,1.0,58
+Sociologia.java,"swap lines 5:`int n_cenarios, n_alunos, control;` and 6:`Scanner stdin = new Scanner(System.in);`",0.8604651162790697,1.0,58
+Sociologia.java,"swap lines 40:`HashMap<Integer, ArrayList<Integer>> listaAdj;` and 41:`HashMap<Integer, ArrayList<Integer>> listaPre;`",0.8604651162790697,1.0,58
+Sociologia.java,"swap lines 39:`int vertices;` and 41:`HashMap<Integer, ArrayList<Integer>> listaPre;`",0.8604651162790697,1.0,58
+Sociologia.java,"swap lines 44:`vertices = v;` and 45:`listaAdj = new HashMap<Integer, ArrayList<Integer>>();`",0.8255813953488372,1.0,58
+Sociologia.java,"swap lines 39:`int vertices;` and 40:`HashMap<Integer, ArrayList<Integer>> listaAdj;`",0.8255813953488372,1.0,58
+Sociologia.java,swap lines 39:`int vertices;` and 42:`int[] color;`,0.8255813953488372,1.0,58
+Sociologia.java,swap lines 44:`vertices = v;` and 47:`color = new int[v];`,0.8255813953488372,1.0,58
+Sociologia.java,"swap lines 45:`listaAdj = new HashMap<Integer, ArrayList<Integer>>();` and 47:`color = new int[v];`",0.8255813953488372,1.0,58
+Sociologia.java,"swap lines 40:`HashMap<Integer, ArrayList<Integer>> listaAdj;` and 42:`int[] color;`",0.8255813953488372,1.0,58
+Sociologia.java,"swap lines 41:`HashMap<Integer, ArrayList<Integer>> listaPre;` and 42:`int[] color;`",0.8255813953488372,1.0,58
+Sociologia.java,"swap lines 44:`vertices = v;` and 46:`listaPre = new HashMap<Integer, ArrayList<Integer>>();`",0.8255813953488372,1.0,58
+Sociologia.java,"swap lines 45:`listaAdj = new HashMap<Integer, ArrayList<Integer>>();` and 46:`listaPre = new HashMap<Integer, ArrayList<Integer>>();`",0.8255813953488372,1.0,58

@@ -1,0 +1,78 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,119
+Main.java,insert line 93: `double w;` on try 0,0.9975308641975309,1.0,119
+Main.java,insert line 82: `int i = 0;` on try 0,0.9950738916256158,1.0,119
+Main.java,insert line 96: `int max;` on try 0,0.9778869778869779,1.0,119
+Main.java,"insert line 67: `int x, y;` on try 0",0.9731051344743277,1.0,119
+Main.java,insert line 50: `double w;` on try 0,0.9707317073170731,1.0,119
+Main.java,insert line 91: `int index = 0;` on try 0,0.9002433090024331,1.0,119
+Main.java,insert line 18: `int count = 0;` on try 0,0.8980582524271845,1.0,119
+Main.java,insert line 57: `int count = 0;` on try 0,0.8958837772397095,1.0,119
+Main.java,insert line 56: `Double valor;` on try 0,0.8454106280193237,1.0,119
+Main.java,insert line 40: `int min;` on try 0,0.8433734939759037,1.0,119
+Main.java,insert line 17: `double w;` on try 0,0.8317307692307693,1.0,119
+Main.java,insert line 127: `String[] messages;` on try 0,0.8105515587529976,1.0,119
+Main.java,insert line 122: `boolean done = false;` on try 0,0.7751196172248804,1.0,119
+Main.java,insert line 111: `int choosen = -1;` on try 1,0.7350835322195705,1.0,119
+Main.java,insert line 82: `boolean done = false;` on try 0,0.7333333333333333,1.0,119
+Main.java,insert line 86: `boolean debug = false;` on try 0,0.6888361045130641,1.0,119
+Main.java,insert line 85: `boolean debug = false;` on try 0,0.6872037914691943,1.0,119
+Main.java,insert line 50: `int intInput;` on try 0,0.7092198581560284,1.0,119
+Main.java,insert line 13: `boolean done = false;` on try 0,0.7075471698113207,1.0,119
+Main.java,insert line 113: `boolean done = false;` on try 0,0.7058823529411765,1.0,119
+Main.java,insert line 48: `int intInput;` on try 0,0.676056338028169,1.0,119
+Main.java,insert line 28: `int count = 0;` on try 0,0.6744730679156908,1.0,119
+Main.java,insert line 45: `boolean debug = false;` on try 0,0.6728971962616822,1.0,119
+Main.java,insert line 128: `boolean check;` on try 0,0.6153846153846154,1.0,119
+Main.java,insert line 101: `int min;` on try 0,0.6139534883720931,1.0,119
+Main.java,insert line 72: `int min;` on try 0,0.6125290023201856,1.0,119
+Main.java,insert line 38: `double x;` on try 0,0.5879629629629629,1.0,119
+Main.java,insert line 50: `boolean done = false;` on try 0,0.581986143187067,1.0,119
+Main.java,insert line 55: `int j = 0;` on try 0,0.5806451612903226,1.0,119
+Main.java,insert line 30: `int min;` on try 0,0.5655172413793104,1.0,119
+Main.java,"insert line 90: `double x1, y1, x2, y2;` on try 0",0.5375854214123007,1.0,119
+Main.java,insert line 137: `boolean debug = false;` on try 2,0.5363636363636364,1.0,119
+Main.java,insert line 87: `int intInput;` on try 0,0.47165532879818595,1.0,119
+Main.java,insert line 96: `String[] messages;` on try 0,0.47058823529411764,1.0,119
+Main.java,insert line 36: `boolean debug = false;` on try 0,0.45146726862302483,1.0,119
+Main.java,insert line 152: `int count = 0;` on try 0,0.45045045045045046,1.0,119
+Main.java,insert line 25: `int count = 0;` on try 0,0.42696629213483145,1.0,119
+Main.java,insert line 77: `boolean done = false;` on try 0,0.38565022421524664,1.0,119
+Main.java,insert line 34: `int indexOfField;` on try 0,0.3400447427293065,1.0,119
+Main.java,insert line 77: `int min;` on try 0,0.3392857142857143,1.0,119
+Main.java,insert line 11: `int min;` on try 0,0.32962138084632514,1.0,119
+Main.java,insert line 133: `int j = 0;` on try 1,0.3288888888888889,1.0,119
+Main.java,insert line 46: `boolean debug = false;` on try 0,0.328159645232816,1.0,119
+Main.java,insert line 144: `boolean debug = false;` on try 0,0.3274336283185841,1.0,119
+Main.java,"insert line 87: `String output = """";` on try 2",0.282560706401766,1.0,119
+Main.java,insert line 76: `int index = 0;` on try 0,0.28193832599118945,1.0,119
+Main.java,insert line 79: `String[] messages;` on try 1,0.2813186813186813,1.0,119
+Main.java,insert line 133: `String[] messages;` on try 2,0.2807017543859649,1.0,119
+Main.java,insert line 34: `String[] messages;` on try 1,0.2800875273522976,1.0,119
+Main.java,insert line 49: `int indexOfField;` on try 0,0.2794759825327511,1.0,119
+Main.java,insert line 9: `boolean debug = false;` on try 0,0.24836601307189543,1.0,119
+Main.java,insert line 7: `double w;` on try 0,0.2391304347826087,1.0,119
+Main.java,insert line 40: `double w;` on try 0,0.2386117136659436,1.0,119
+Main.java,insert line 30: `int i = 0;` on try 1,0.23809523809523808,1.0,119
+Main.java,insert line 50: `double w;` on try 1,0.23758099352051837,1.0,119
+Main.java,insert line 61: `String[] messages;` on try 2,0.1853448275862069,1.0,119
+Main.java,"insert line 47: `int x, y;` on try 2",0.18454935622317598,1.0,119
+Main.java,insert line 5: `String[] messages;` on try 0,0.13704496788008566,1.0,119
+Main.java,insert line 165: `int v;` on try 1,0.13675213675213677,1.0,119
+Main.java,insert line 177: `boolean done = false;` on try 0,0.13646055437100213,1.0,119
+Main.java,insert line 150: `boolean debug = false;` on try 0,0.13617021276595745,1.0,119
+Main.java,insert line 81: `double dist;` on try 1,0.1316348195329087,1.0,119
+Main.java,insert line 98: `double cost;` on try 0,0.13135593220338984,1.0,119
+Main.java,insert line 160: `int count = 0;` on try 6,0.13107822410147993,1.0,119
+Main.java,insert line 176: `int count = 0;` on try 3,0.1308016877637131,1.0,119
+Main.java,insert line 168: `int j = 0;` on try 4,0.13052631578947368,1.0,119
+Main.java,insert line 79: `boolean debug = false;` on try 0,0.08823529411764706,1.0,119
+Main.java,"insert line 27: `int x, y;` on try 0",0.0502092050209205,1.0,119
+Main.java,insert line 20: `int max;` on try 1,0.037578288100208766,1.0,119
+Main.java,insert line 162: `double dist;` on try 4,0.0375,1.0,119
+Main.java,insert line 92: `int min;` on try 3,0.037422037422037424,1.0,119
+Main.java,insert line 119: `double w;` on try 1,0.03734439834024896,1.0,119
+Main.java,insert line 78: `int max;` on try 7,0.037267080745341616,1.0,119
+Main.java,insert line 130: `String col;` on try 4,0.0371900826446281,1.0,119
+Main.java,insert line 146: `index++;` on try 9,0.03711340206185567,1.0,119
+Main.java,insert line 117: `int max;` on try 6,0.037037037037037035,1.0,119

@@ -1,0 +1,591 @@
+id,type,token,location,code
+1,TRANSLATIONUNITDECLARATION,"/data/00000019/submissions/00559519_Sociologia_080316115/Sociologia.java",,""
+2,RECORDDECLARATION,"Sociologia",Sociologia.java(3:1-55:2),"public class Sociologia {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int n_cenarios, n_alunos, control;
+		
+		
+		Scanner stdin = new Scanner(System.in);
+		
+		n_cenarios = stdin.nextInt();
+		stdin.nextLine();
+		control=1;
+		while(n_cenarios >= control){
+			n_alunos = stdin.nextInt();
+			stdin.nextLine();
+			Grafo g = new Grafo(n_alunos);
+			
+			
+			while(n_alunos>0){
+				ArrayList<Integer> temp_Adj = new ArrayList<Integer>();
+				ArrayList<Integer> temp_Pre = new ArrayList<Integer>();
+				int aluno = stdin.nextInt();
+				int amigos = stdin.nextInt();
+				while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}
+				
+				g.listaAdj.put(aluno, temp_Adj);
+				System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");
+				n_alunos--;
+			}
+			
+			System.out.println(""Caso: "" + control);
+			control++;
+		}
+		
+	}
+
+}"
+3,RECORDDECLARATION,"Grafo",Sociologia.java(57:1-86:2),"class Grafo{
+	
+	int vertices;
+	HashMap<Integer, ArrayList<Integer>> listaAdj;
+	HashMap<Integer, ArrayList<Integer>> listaPre;
+	int[] color;
+	
+	Grafo(int v){
+		vertices = v;
+		listaAdj = new HashMap<Integer, ArrayList<Integer>>();
+		listaPre = new HashMap<Integer, ArrayList<Integer>>();
+		color = new int[v];
+	}
+	
+	void DFS(){
+		for(int u : listaAdj.keySet()){
+			if(color[u-1]==0)
+				DFS(u);
+		}
+	}
+	
+	void DFS(int u){
+		color[u-1]=1;
+		
+		for(int v : listaAdj.get(u)){
+			
+		}
+	}
+	
+}"
+4,INCLUDEDECLARATION,"java.util",,""
+5,FIELDDECLARATION,"this",,""
+6,FIELDDECLARATION,"vertices",Sociologia.java(59:2-59:15),"vertices"
+7,FIELDDECLARATION,"listaAdj",Sociologia.java(60:2-60:48),"listaAdj"
+8,FIELDDECLARATION,"listaPre",Sociologia.java(61:2-61:48),"listaPre"
+9,FIELDDECLARATION,"color",Sociologia.java(62:2-62:14),"color"
+10,METHODDECLARATION,"DFS",Sociologia.java(71:2-76:3),"void DFS(){
+		for(int u : listaAdj.keySet()){
+			if(color[u-1]==0)
+				DFS(u);
+		}
+	}"
+11,METHODDECLARATION,"DFS",Sociologia.java(78:2-84:3),"void DFS(int u){
+		color[u-1]=1;
+		
+		for(int v : listaAdj.get(u)){
+			
+		}
+	}"
+12,CONSTRUCTORDECLARATION,"Grafo",Sociologia.java(64:2-69:3),"Grafo(int v){
+		vertices = v;
+		listaAdj = new HashMap<Integer, ArrayList<Integer>>();
+		listaPre = new HashMap<Integer, ArrayList<Integer>>();
+		color = new int[v];
+	}"
+13,VARIABLEDECLARATION,"this",,""
+14,COMPOUNDSTATEMENT,"",Sociologia.java(78:17-84:3),"{
+		color[u-1]=1;
+		
+		for(int v : listaAdj.get(u)){
+			
+		}
+	}"
+15,PARAMVARIABLEDECLARATION,"u",Sociologia.java(78:11-78:16),"int u"
+16,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(79:3-79:8),"this"
+17,RETURNSTATEMENT,"",,""
+18,BINARYOPERATOR,"=",Sociologia.java(79:3-79:16),"color[u-1]=1;"
+19,FOREACHSTATEMENT,"",Sociologia.java(81:3-83:4),"for(int v : listaAdj.get(u)){
+			
+		}"
+20,ARRAYSUBSCRIPTIONEXPRESSION,"",Sociologia.java(79:3-79:13),"color[u-1]"
+21,LITERAL,"",Sociologia.java(79:14-79:15),"1"
+22,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(81:15-81:23),"this"
+23,MEMBEREXPRESSION,"color",Sociologia.java(79:3-79:8),"color"
+24,BINARYOPERATOR,"-",Sociologia.java(79:9-79:12),"u-1"
+25,DECLAREDREFERENCEEXPRESSION,"u",Sociologia.java(79:9-79:10),"u"
+26,LITERAL,"",Sociologia.java(79:11-79:12),"1"
+27,DECLARATIONSTATEMENT,"",Sociologia.java(81:7-81:12),"int v"
+28,MEMBERCALLEXPRESSION,"get",Sociologia.java(81:15-81:30),"listaAdj.get(u)"
+29,COMPOUNDSTATEMENT,"",Sociologia.java(81:31-83:4),"{
+			
+		}"
+30,VARIABLEDECLARATION,"v",Sociologia.java(81:11-81:12),"v"
+31,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+32,DECLAREDREFERENCEEXPRESSION,"get",Sociologia.java(81:24-81:27),"get"
+33,DECLAREDREFERENCEEXPRESSION,"u",Sociologia.java(81:28-81:29),"u"
+34,MEMBEREXPRESSION,"listaAdj",Sociologia.java(81:15-81:23),"listaAdj"
+35,COMPOUNDSTATEMENT,"",Sociologia.java(64:14-69:3),"{
+		vertices = v;
+		listaAdj = new HashMap<Integer, ArrayList<Integer>>();
+		listaPre = new HashMap<Integer, ArrayList<Integer>>();
+		color = new int[v];
+	}"
+36,PARAMVARIABLEDECLARATION,"v",Sociologia.java(64:8-64:13),"int v"
+37,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(65:3-65:11),"this"
+38,RETURNSTATEMENT,"",,""
+39,BINARYOPERATOR,"=",Sociologia.java(65:3-65:16),"vertices = v;"
+40,BINARYOPERATOR,"=",Sociologia.java(66:3-66:57),"listaAdj = new HashMap<Integer, ArrayList<Integer>>();"
+41,BINARYOPERATOR,"=",Sociologia.java(67:3-67:57),"listaPre = new HashMap<Integer, ArrayList<Integer>>();"
+42,BINARYOPERATOR,"=",Sociologia.java(68:3-68:22),"color = new int[v];"
+43,MEMBEREXPRESSION,"color",Sociologia.java(68:3-68:8),"color"
+44,ARRAYCREATIONEXPRESSION,"",Sociologia.java(68:11-68:21),"new int[v]"
+45,DECLAREDREFERENCEEXPRESSION,"v",Sociologia.java(68:19-68:20),"v"
+46,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(68:3-68:8),"this"
+47,MEMBEREXPRESSION,"vertices",Sociologia.java(65:3-65:11),"vertices"
+48,DECLAREDREFERENCEEXPRESSION,"v",Sociologia.java(65:14-65:15),"v"
+49,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(66:3-66:11),"this"
+50,MEMBEREXPRESSION,"listaAdj",Sociologia.java(66:3-66:11),"listaAdj"
+51,NEWEXPRESSION,"",Sociologia.java(66:14-66:56),"new HashMap<Integer, ArrayList<Integer>>()"
+52,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(67:3-67:11),"this"
+53,CONSTRUCTEXPRESSION,"",Sociologia.java(66:14-66:56),"new HashMap<Integer, ArrayList<Integer>>()"
+54,MEMBEREXPRESSION,"listaPre",Sociologia.java(67:3-67:11),"listaPre"
+55,NEWEXPRESSION,"",Sociologia.java(67:14-67:56),"new HashMap<Integer, ArrayList<Integer>>()"
+56,CONSTRUCTEXPRESSION,"",Sociologia.java(67:14-67:56),"new HashMap<Integer, ArrayList<Integer>>()"
+57,VARIABLEDECLARATION,"this",,""
+58,COMPOUNDSTATEMENT,"",Sociologia.java(71:12-76:3),"{
+		for(int u : listaAdj.keySet()){
+			if(color[u-1]==0)
+				DFS(u);
+		}
+	}"
+59,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(72:15-72:23),"this"
+60,RETURNSTATEMENT,"",,""
+61,FOREACHSTATEMENT,"",Sociologia.java(72:3-75:4),"for(int u : listaAdj.keySet()){
+			if(color[u-1]==0)
+				DFS(u);
+		}"
+62,DECLARATIONSTATEMENT,"",Sociologia.java(72:7-72:12),"int u"
+63,MEMBERCALLEXPRESSION,"keySet",Sociologia.java(72:15-72:32),"listaAdj.keySet()"
+64,COMPOUNDSTATEMENT,"",Sociologia.java(72:33-75:4),"{
+			if(color[u-1]==0)
+				DFS(u);
+		}"
+65,VARIABLEDECLARATION,"u",Sociologia.java(72:11-72:12),"u"
+66,DECLAREDREFERENCEEXPRESSION,"this",Sociologia.java(73:7-73:12),"this"
+67,IFSTATEMENT,"",Sociologia.java(73:4-74:12),"if(color[u-1]==0)
+				DFS(u);"
+68,CALLEXPRESSION,"DFS",Sociologia.java(74:5-74:12),"DFS(u);"
+69,BINARYOPERATOR,"==",Sociologia.java(73:7-73:20),"color[u-1]==0"
+70,DECLAREDREFERENCEEXPRESSION,"u",Sociologia.java(74:9-74:10),"u"
+71,ARRAYSUBSCRIPTIONEXPRESSION,"",Sociologia.java(73:7-73:17),"color[u-1]"
+72,LITERAL,"",Sociologia.java(73:19-73:20),"0"
+73,MEMBEREXPRESSION,"color",Sociologia.java(73:7-73:12),"color"
+74,BINARYOPERATOR,"-",Sociologia.java(73:13-73:16),"u-1"
+75,DECLAREDREFERENCEEXPRESSION,"u",Sociologia.java(73:13-73:14),"u"
+76,LITERAL,"",Sociologia.java(73:15-73:16),"1"
+77,METHODDECLARATION,"DFS",,""
+78,PARAMVARIABLEDECLARATION,"grafo0",,""
+79,DECLAREDREFERENCEEXPRESSION,"keySet",Sociologia.java(72:24-72:30),"keySet"
+80,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+81,MEMBEREXPRESSION,"listaAdj",Sociologia.java(72:15-72:23),"listaAdj"
+82,FIELDDECLARATION,"this",,""
+83,METHODDECLARATION,"main",Sociologia.java(8:2-53:3),"public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int n_cenarios, n_alunos, control;
+		
+		
+		Scanner stdin = new Scanner(System.in);
+		
+		n_cenarios = stdin.nextInt();
+		stdin.nextLine();
+		control=1;
+		while(n_cenarios >= control){
+			n_alunos = stdin.nextInt();
+			stdin.nextLine();
+			Grafo g = new Grafo(n_alunos);
+			
+			
+			while(n_alunos>0){
+				ArrayList<Integer> temp_Adj = new ArrayList<Integer>();
+				ArrayList<Integer> temp_Pre = new ArrayList<Integer>();
+				int aluno = stdin.nextInt();
+				int amigos = stdin.nextInt();
+				while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}
+				
+				g.listaAdj.put(aluno, temp_Adj);
+				System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");
+				n_alunos--;
+			}
+			
+			System.out.println(""Caso: "" + control);
+			control++;
+		}
+		
+	}"
+84,CONSTRUCTORDECLARATION,"Sociologia",,""
+85,VARIABLEDECLARATION,"this",,""
+86,COMPOUNDSTATEMENT,"",Sociologia.java(8:41-53:3),"{
+		// TODO Auto-generated method stub
+		
+		int n_cenarios, n_alunos, control;
+		
+		
+		Scanner stdin = new Scanner(System.in);
+		
+		n_cenarios = stdin.nextInt();
+		stdin.nextLine();
+		control=1;
+		while(n_cenarios >= control){
+			n_alunos = stdin.nextInt();
+			stdin.nextLine();
+			Grafo g = new Grafo(n_alunos);
+			
+			
+			while(n_alunos>0){
+				ArrayList<Integer> temp_Adj = new ArrayList<Integer>();
+				ArrayList<Integer> temp_Pre = new ArrayList<Integer>();
+				int aluno = stdin.nextInt();
+				int amigos = stdin.nextInt();
+				while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}
+				
+				g.listaAdj.put(aluno, temp_Adj);
+				System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");
+				n_alunos--;
+			}
+			
+			System.out.println(""Caso: "" + control);
+			control++;
+		}
+		
+	}"
+87,PARAMVARIABLEDECLARATION,"args",Sociologia.java(8:26-8:39),"String[] args"
+88,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+89,RETURNSTATEMENT,"",,""
+90,DECLARATIONSTATEMENT,"",Sociologia.java(11:3-11:37),"int n_cenarios, n_alunos, control;"
+91,DECLARATIONSTATEMENT,"",Sociologia.java(14:3-14:42),"Scanner stdin = new Scanner(System.in);"
+92,BINARYOPERATOR,"=",Sociologia.java(16:3-16:32),"n_cenarios = stdin.nextInt();"
+93,MEMBERCALLEXPRESSION,"nextLine",Sociologia.java(17:3-17:20),"stdin.nextLine();"
+94,BINARYOPERATOR,"=",Sociologia.java(18:3-18:13),"control=1;"
+95,WHILESTATEMENT,"",Sociologia.java(19:3-51:4),"while(n_cenarios >= control){
+			n_alunos = stdin.nextInt();
+			stdin.nextLine();
+			Grafo g = new Grafo(n_alunos);
+			
+			
+			while(n_alunos>0){
+				ArrayList<Integer> temp_Adj = new ArrayList<Integer>();
+				ArrayList<Integer> temp_Pre = new ArrayList<Integer>();
+				int aluno = stdin.nextInt();
+				int amigos = stdin.nextInt();
+				while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}
+				
+				g.listaAdj.put(aluno, temp_Adj);
+				System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");
+				n_alunos--;
+			}
+			
+			System.out.println(""Caso: "" + control);
+			control++;
+		}"
+96,VARIABLEDECLARATION,"n_cenarios",Sociologia.java(11:7-11:17),"n_cenarios"
+97,VARIABLEDECLARATION,"n_alunos",Sociologia.java(11:19-11:27),"n_alunos"
+98,VARIABLEDECLARATION,"control",Sociologia.java(11:29-11:36),"control"
+99,VARIABLEDECLARATION,"stdin",Sociologia.java(14:11-14:41),"stdin = new Scanner(System.in)"
+100,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+101,BINARYOPERATOR,">=",Sociologia.java(19:9-19:30),"n_cenarios >= control"
+102,COMPOUNDSTATEMENT,"",Sociologia.java(19:31-51:4),"{
+			n_alunos = stdin.nextInt();
+			stdin.nextLine();
+			Grafo g = new Grafo(n_alunos);
+			
+			
+			while(n_alunos>0){
+				ArrayList<Integer> temp_Adj = new ArrayList<Integer>();
+				ArrayList<Integer> temp_Pre = new ArrayList<Integer>();
+				int aluno = stdin.nextInt();
+				int amigos = stdin.nextInt();
+				while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}
+				
+				g.listaAdj.put(aluno, temp_Adj);
+				System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");
+				n_alunos--;
+			}
+			
+			System.out.println(""Caso: "" + control);
+			control++;
+		}"
+103,DECLAREDREFERENCEEXPRESSION,"n_alunos",Sociologia.java(20:4-20:12),"n_alunos"
+104,BINARYOPERATOR,"=",Sociologia.java(20:4-20:31),"n_alunos = stdin.nextInt();"
+105,MEMBERCALLEXPRESSION,"nextLine",Sociologia.java(21:4-21:21),"stdin.nextLine();"
+106,DECLARATIONSTATEMENT,"",Sociologia.java(22:4-22:34),"Grafo g = new Grafo(n_alunos);"
+107,WHILESTATEMENT,"",Sociologia.java(25:4-47:5),"while(n_alunos>0){
+				ArrayList<Integer> temp_Adj = new ArrayList<Integer>();
+				ArrayList<Integer> temp_Pre = new ArrayList<Integer>();
+				int aluno = stdin.nextInt();
+				int amigos = stdin.nextInt();
+				while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}
+				
+				g.listaAdj.put(aluno, temp_Adj);
+				System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");
+				n_alunos--;
+			}"
+108,MEMBERCALLEXPRESSION,"println",Sociologia.java(49:4-49:43),"System.out.println(""Caso: "" + control);"
+109,UNARYOPERATOR,"++",Sociologia.java(50:4-50:14),"control++;"
+110,VARIABLEDECLARATION,"g",Sociologia.java(22:10-22:33),"g = new Grafo(n_alunos)"
+111,DECLAREDREFERENCEEXPRESSION,"n_cenarios",Sociologia.java(19:9-19:19),"n_cenarios"
+112,BINARYOPERATOR,">",Sociologia.java(25:10-25:20),"n_alunos>0"
+113,COMPOUNDSTATEMENT,"",Sociologia.java(25:21-47:5),"{
+				ArrayList<Integer> temp_Adj = new ArrayList<Integer>();
+				ArrayList<Integer> temp_Pre = new ArrayList<Integer>();
+				int aluno = stdin.nextInt();
+				int amigos = stdin.nextInt();
+				while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}
+				
+				g.listaAdj.put(aluno, temp_Adj);
+				System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");
+				n_alunos--;
+			}"
+114,CONSTRUCTEXPRESSION,"",Sociologia.java(26:35-26:59),"new ArrayList<Integer>()"
+115,DECLAREDREFERENCEEXPRESSION,"System",Sociologia.java(49:4-49:10),"System"
+116,DECLAREDREFERENCEEXPRESSION,"n_alunos",Sociologia.java(25:10-25:18),"n_alunos"
+117,LITERAL,"",Sociologia.java(25:19-25:20),"0"
+118,DECLARATIONSTATEMENT,"",Sociologia.java(26:5-26:60),"ArrayList<Integer> temp_Adj = new ArrayList<Integer>();"
+119,DECLARATIONSTATEMENT,"",Sociologia.java(27:5-27:60),"ArrayList<Integer> temp_Pre = new ArrayList<Integer>();"
+120,DECLARATIONSTATEMENT,"",Sociologia.java(28:5-28:33),"int aluno = stdin.nextInt();"
+121,DECLARATIONSTATEMENT,"",Sociologia.java(29:5-29:34),"int amigos = stdin.nextInt();"
+122,WHILESTATEMENT,"",Sociologia.java(30:5-42:6),"while(amigos>0){
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}"
+123,MEMBERCALLEXPRESSION,"put",Sociologia.java(44:5-44:37),"g.listaAdj.put(aluno, temp_Adj);"
+124,MEMBERCALLEXPRESSION,"println",Sociologia.java(45:5-45:83),"System.out.println(""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"");"
+125,UNARYOPERATOR,"--",Sociologia.java(46:5-46:16),"n_alunos--;"
+126,VARIABLEDECLARATION,"temp_Adj",Sociologia.java(26:24-26:59),"temp_Adj = new ArrayList<Integer>()"
+127,VARIABLEDECLARATION,"temp_Pre",Sociologia.java(27:24-27:59),"temp_Pre = new ArrayList<Integer>()"
+128,VARIABLEDECLARATION,"aluno",Sociologia.java(28:9-28:32),"aluno = stdin.nextInt()"
+129,VARIABLEDECLARATION,"amigos",Sociologia.java(29:9-29:33),"amigos = stdin.nextInt()"
+130,DECLAREDREFERENCEEXPRESSION,"stdin",Sociologia.java(28:17-28:22),"stdin"
+131,DECLAREDREFERENCEEXPRESSION,"n_alunos",Sociologia.java(46:5-46:13),"n_alunos"
+132,MEMBERCALLEXPRESSION,"nextInt",Sociologia.java(29:18-29:33),"stdin.nextInt()"
+133,DECLAREDREFERENCEEXPRESSION,"nextInt",Sociologia.java(29:24-29:31),"nextInt"
+134,DECLAREDREFERENCEEXPRESSION,"stdin",Sociologia.java(29:18-29:23),"stdin"
+135,DECLAREDREFERENCEEXPRESSION,"amigos",Sociologia.java(30:11-30:17),"amigos"
+136,NEWEXPRESSION,"",Sociologia.java(27:35-27:59),"new ArrayList<Integer>()"
+137,CONSTRUCTEXPRESSION,"",Sociologia.java(27:35-27:59),"new ArrayList<Integer>()"
+138,DECLAREDREFERENCEEXPRESSION,"println",Sociologia.java(45:16-45:23),"println"
+139,BINARYOPERATOR,"+",Sociologia.java(45:24-45:81),"""Aluno: "" + aluno + "" tem "" + temp_Adj.size() + "" amigos"""
+140,BINARYOPERATOR,"+",Sociologia.java(45:24-45:69),"""Aluno: "" + aluno + "" tem "" + temp_Adj.size()"
+141,LITERAL,"",Sociologia.java(45:72-45:81),""" amigos"""
+142,BINARYOPERATOR,"+",Sociologia.java(45:24-45:51),"""Aluno: "" + aluno + "" tem """
+143,MEMBERCALLEXPRESSION,"size",Sociologia.java(45:54-45:69),"temp_Adj.size()"
+144,BINARYOPERATOR,"+",Sociologia.java(45:24-45:41),"""Aluno: "" + aluno"
+145,LITERAL,"",Sociologia.java(45:44-45:51),""" tem """
+146,DECLAREDREFERENCEEXPRESSION,"temp_Adj",Sociologia.java(45:54-45:62),"temp_Adj"
+147,LITERAL,"",Sociologia.java(45:24-45:33),"""Aluno: """
+148,DECLAREDREFERENCEEXPRESSION,"aluno",Sociologia.java(45:36-45:41),"aluno"
+149,MEMBEREXPRESSION,"out",Sociologia.java(45:5-45:15),"System.out"
+150,DECLAREDREFERENCEEXPRESSION,"size",Sociologia.java(45:63-45:67),"size"
+151,DECLAREDREFERENCEEXPRESSION,"System",Sociologia.java(45:5-45:11),"System"
+152,NEWEXPRESSION,"",Sociologia.java(26:35-26:59),"new ArrayList<Integer>()"
+153,BINARYOPERATOR,">",Sociologia.java(30:11-30:19),"amigos>0"
+154,COMPOUNDSTATEMENT,"",Sociologia.java(30:20-42:6),"{
+					int amigo = stdin.nextInt();
+					temp_Adj.add(amigo);
+					
+					if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);
+						
+					amigos--;
+				}"
+155,DECLAREDREFERENCEEXPRESSION,"stdin",Sociologia.java(31:18-31:23),"stdin"
+156,DECLAREDREFERENCEEXPRESSION,"g",Sociologia.java(44:5-44:6),"g"
+157,DECLARATIONSTATEMENT,"",Sociologia.java(31:6-31:34),"int amigo = stdin.nextInt();"
+158,MEMBERCALLEXPRESSION,"add",Sociologia.java(32:6-32:26),"temp_Adj.add(amigo);"
+159,IFSTATEMENT,"",Sociologia.java(34:6-39:40),"if(!g.listaPre.containsKey(amigo)){
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}
+					else
+						g.listaPre.get(amigo).add(aluno);"
+160,UNARYOPERATOR,"--",Sociologia.java(41:6-41:15),"amigos--;"
+161,VARIABLEDECLARATION,"amigo",Sociologia.java(31:10-31:33),"amigo = stdin.nextInt()"
+162,DECLAREDREFERENCEEXPRESSION,"add",Sociologia.java(32:15-32:18),"add"
+163,DECLAREDREFERENCEEXPRESSION,"g",Sociologia.java(34:10-34:11),"g"
+164,DECLAREDREFERENCEEXPRESSION,"amigo",Sociologia.java(32:19-32:24),"amigo"
+165,DECLAREDREFERENCEEXPRESSION,"temp_Adj",Sociologia.java(32:6-32:14),"temp_Adj"
+166,MEMBERCALLEXPRESSION,"nextInt",Sociologia.java(31:18-31:33),"stdin.nextInt()"
+167,DECLAREDREFERENCEEXPRESSION,"nextInt",Sociologia.java(31:24-31:31),"nextInt"
+168,UNARYOPERATOR,"!",Sociologia.java(34:9-34:39),"!g.listaPre.containsKey(amigo)"
+169,COMPOUNDSTATEMENT,"",Sociologia.java(34:40-37:7),"{
+						temp_Pre.add(aluno);
+						g.listaPre.put(amigo, temp_Pre);
+					}"
+170,MEMBERCALLEXPRESSION,"add",Sociologia.java(39:7-39:40),"g.listaPre.get(amigo).add(aluno);"
+171,DECLAREDREFERENCEEXPRESSION,"temp_Pre",Sociologia.java(35:7-35:15),"temp_Pre"
+172,DECLAREDREFERENCEEXPRESSION,"g",Sociologia.java(39:7-39:8),"g"
+173,MEMBERCALLEXPRESSION,"add",Sociologia.java(35:7-35:27),"temp_Pre.add(aluno);"
+174,MEMBERCALLEXPRESSION,"put",Sociologia.java(36:7-36:39),"g.listaPre.put(amigo, temp_Pre);"
+175,DECLAREDREFERENCEEXPRESSION,"amigos",Sociologia.java(41:6-41:12),"amigos"
+176,DECLAREDREFERENCEEXPRESSION,"add",Sociologia.java(35:16-35:19),"add"
+177,DECLAREDREFERENCEEXPRESSION,"g",Sociologia.java(36:7-36:8),"g"
+178,DECLAREDREFERENCEEXPRESSION,"aluno",Sociologia.java(35:20-35:25),"aluno"
+179,DECLAREDREFERENCEEXPRESSION,"put",Sociologia.java(36:18-36:21),"put"
+180,DECLAREDREFERENCEEXPRESSION,"temp_Pre",Sociologia.java(36:29-36:37),"temp_Pre"
+181,DECLAREDREFERENCEEXPRESSION,"amigo",Sociologia.java(36:22-36:27),"amigo"
+182,MEMBEREXPRESSION,"listaPre",Sociologia.java(36:7-36:17),"g.listaPre"
+183,MEMBERCALLEXPRESSION,"containsKey",Sociologia.java(34:10-34:39),"g.listaPre.containsKey(amigo)"
+184,DECLAREDREFERENCEEXPRESSION,"containsKey",Sociologia.java(34:21-34:32),"containsKey"
+185,DECLAREDREFERENCEEXPRESSION,"amigo",Sociologia.java(34:33-34:38),"amigo"
+186,MEMBEREXPRESSION,"listaPre",Sociologia.java(34:10-34:20),"g.listaPre"
+187,DECLAREDREFERENCEEXPRESSION,"add",Sociologia.java(39:29-39:32),"add"
+188,DECLAREDREFERENCEEXPRESSION,"aluno",Sociologia.java(39:33-39:38),"aluno"
+189,MEMBERCALLEXPRESSION,"get",Sociologia.java(39:7-39:28),"g.listaPre.get(amigo)"
+190,DECLAREDREFERENCEEXPRESSION,"get",Sociologia.java(39:18-39:21),"get"
+191,DECLAREDREFERENCEEXPRESSION,"amigo",Sociologia.java(39:22-39:27),"amigo"
+192,MEMBEREXPRESSION,"listaPre",Sociologia.java(39:7-39:17),"g.listaPre"
+193,LITERAL,"",Sociologia.java(30:18-30:19),"0"
+194,MEMBERCALLEXPRESSION,"nextInt",Sociologia.java(28:17-28:32),"stdin.nextInt()"
+195,DECLAREDREFERENCEEXPRESSION,"nextInt",Sociologia.java(28:23-28:30),"nextInt"
+196,DECLAREDREFERENCEEXPRESSION,"put",Sociologia.java(44:16-44:19),"put"
+197,DECLAREDREFERENCEEXPRESSION,"temp_Adj",Sociologia.java(44:27-44:35),"temp_Adj"
+198,DECLAREDREFERENCEEXPRESSION,"aluno",Sociologia.java(44:20-44:25),"aluno"
+199,MEMBEREXPRESSION,"listaAdj",Sociologia.java(44:5-44:15),"g.listaAdj"
+200,DECLAREDREFERENCEEXPRESSION,"println",Sociologia.java(49:15-49:22),"println"
+201,DECLAREDREFERENCEEXPRESSION,"control",Sociologia.java(50:4-50:11),"control"
+202,BINARYOPERATOR,"+",Sociologia.java(49:23-49:41),"""Caso: "" + control"
+203,MEMBEREXPRESSION,"out",Sociologia.java(49:4-49:14),"System.out"
+204,LITERAL,"",Sociologia.java(49:23-49:31),"""Caso: """
+205,DECLAREDREFERENCEEXPRESSION,"control",Sociologia.java(49:34-49:41),"control"
+206,DECLAREDREFERENCEEXPRESSION,"nextLine",Sociologia.java(21:10-21:18),"nextLine"
+207,DECLAREDREFERENCEEXPRESSION,"n_alunos",Sociologia.java(22:24-22:32),"n_alunos"
+208,DECLAREDREFERENCEEXPRESSION,"stdin",Sociologia.java(21:4-21:9),"stdin"
+209,NEWEXPRESSION,"",Sociologia.java(22:14-22:33),"new Grafo(n_alunos)"
+210,CONSTRUCTEXPRESSION,"",Sociologia.java(22:14-22:33),"new Grafo(n_alunos)"
+211,CONSTRUCTORDECLARATION,"Grafo",main.java(180:2-187:3),"public Grafo(int n) {
+		nvs = n;
+		narcos = 0;
+		verts = new No[n + 1];
+		for (int i = 0; i <= n; i++)
+			verts[i] = new No();
+		// para vertices numerados de 1 a n (posicao 0 nao vai ser usada)
+	}"
+212,PARAMVARIABLEDECLARATION,"n",main.java(180:15-180:20),"int n"
+213,MEMBERCALLEXPRESSION,"nextInt",Sociologia.java(20:15-20:30),"stdin.nextInt()"
+214,DECLAREDREFERENCEEXPRESSION,"nextInt",Sociologia.java(20:21-20:28),"nextInt"
+215,DECLAREDREFERENCEEXPRESSION,"stdin",Sociologia.java(20:15-20:20),"stdin"
+216,DECLAREDREFERENCEEXPRESSION,"control",Sociologia.java(19:23-19:30),"control"
+217,DECLAREDREFERENCEEXPRESSION,"n_cenarios",Sociologia.java(16:3-16:13),"n_cenarios"
+218,MEMBERCALLEXPRESSION,"nextInt",Sociologia.java(16:16-16:31),"stdin.nextInt()"
+219,DECLAREDREFERENCEEXPRESSION,"stdin",Sociologia.java(17:3-17:8),"stdin"
+220,DECLAREDREFERENCEEXPRESSION,"stdin",Sociologia.java(16:16-16:21),"stdin"
+221,DECLAREDREFERENCEEXPRESSION,"nextInt",Sociologia.java(16:22-16:29),"nextInt"
+222,DECLAREDREFERENCEEXPRESSION,"nextLine",Sociologia.java(17:9-17:17),"nextLine"
+223,DECLAREDREFERENCEEXPRESSION,"control",Sociologia.java(18:3-18:10),"control"
+224,DECLAREDREFERENCEEXPRESSION,"System",Sociologia.java(14:31-14:37),"System"
+225,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+226,NEWEXPRESSION,"",Sociologia.java(14:19-14:41),"new Scanner(System.in)"
+227,CONSTRUCTEXPRESSION,"",Sociologia.java(14:19-14:41),"new Scanner(System.in)"
+228,MEMBEREXPRESSION,"in",Sociologia.java(14:31-14:40),"System.in"
+229,LITERAL,"",Sociologia.java(18:11-18:12),"1"

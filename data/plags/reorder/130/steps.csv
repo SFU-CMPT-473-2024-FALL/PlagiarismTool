@@ -1,0 +1,23 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,95
+soci.java,swap lines 66:`grupos++;` and 67:`pessoas = pessoas - pessoast;`,1.0,1.0,95
+soci.java,swap lines 85:`Scanner ler = new Scanner(System.in);` and 86:`int casos;`,0.9849624060150376,1.0,95
+soci.java,"swap lines 20:`No[] gt;` and 21:`int grupos, pessoas, ptemp;`",0.9849624060150376,1.0,95
+soci.java,swap lines 10:`adj = new LinkedList<Integer>();` and 11:`amigos = 0;`,0.9699248120300752,1.0,95
+soci.java,swap lines 8:`val = vali;` and 9:`visitado = false;`,0.9699248120300752,1.0,95
+soci.java,swap lines 24:`grupos = 0;` and 25:`tempos = new LinkedList<Integer>();`,0.9548872180451128,1.0,95
+soci.java,"swap lines 19:`No[] g;` and 21:`int grupos, pessoas, ptemp;`",0.9548872180451128,1.0,95
+soci.java,swap lines 19:`No[] g;` and 20:`No[] gt;`,0.9548872180451128,1.0,95
+soci.java,swap lines 30:`g[i] = new No(i);` and 31:`gt[i] = new No(i);`,0.9548872180451128,1.0,95
+soci.java,"swap lines 4:`int val, amigos;` and 5:`boolean visitado;`",0.9548872180451128,1.0,95
+soci.java,"swap lines 4:`int val, amigos;` and 6:`LinkedList<Integer> adj;`",0.9548872180451128,1.0,95
+soci.java,swap lines 27:`g = new No[pessoas + 1];` and 28:`gt = new No[pessoas + 1];`,0.9548872180451128,1.0,95
+soci.java,swap lines 8:`val = vali;` and 11:`amigos = 0;`,0.9548872180451128,1.0,95
+soci.java,swap lines 8:`val = vali;` and 10:`adj = new LinkedList<Integer>();`,0.9699248120300752,1.0,95
+soci.java,swap lines 9:`visitado = false;` and 11:`amigos = 0;`,0.9699248120300752,1.0,95
+soci.java,swap lines 9:`visitado = false;` and 10:`adj = new LinkedList<Integer>();`,0.9548872180451128,1.0,95
+soci.java,swap lines 5:`boolean visitado;` and 6:`LinkedList<Integer> adj;`,0.9548872180451128,1.0,95
+soci.java,swap lines 19:`No[] g;` and 22:`LinkedList<Integer> tempos;`,0.9548872180451128,1.0,95
+soci.java,swap lines 73:`int contagem = 1;` and 74:`gt[pai].visitado = true;`,0.9398496240601504,1.0,95
+soci.java,swap lines 20:`No[] gt;` and 22:`LinkedList<Integer> tempos;`,0.9398496240601504,1.0,95
+soci.java,"swap lines 21:`int grupos, pessoas, ptemp;` and 22:`LinkedList<Integer> tempos;`",0.9398496240601504,1.0,95

@@ -1,0 +1,25 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,106
+Sociologia.java,swap lines 30:`visitados[i] = false;` and 31:`verts[i] = new No(i);`,0.9881656804733728,1.0,106
+Sociologia.java,swap lines 26:`verts = new No[n + 1];` and 27:`stack = new LinkedList<No>();`,0.9349112426035503,1.0,106
+Sociologia.java,"swap lines 89:`int a, b;` and 90:`Grafo g;`",0.9349112426035503,1.0,106
+Sociologia.java,"swap lines 88:`int c, ncases, n, connections;` and 90:`Grafo g;`",0.9349112426035503,1.0,106
+Sociologia.java,swap lines 11:`int label;` and 12:`LinkedList<Arco> adjs;`,0.9349112426035503,1.0,106
+Sociologia.java,swap lines 46:`int aux;` and 47:`visitados[node] = true;`,0.9230769230769231,1.0,106
+Sociologia.java,swap lines 14:`label = n;` and 15:`adjs = new LinkedList<Arco>();`,0.9112426035502958,1.0,106
+Sociologia.java,swap lines 24:`nvs = n;` and 25:`narcos = 0;`,0.9112426035502958,1.0,106
+Sociologia.java,"swap lines 20:`int nvs, narcos;` and 21:`LinkedList<No> stack;`",0.9112426035502958,1.0,106
+Sociologia.java,"swap lines 20:`int nvs, narcos;` and 22:`boolean[] visitados;`",0.9112426035502958,1.0,106
+Sociologia.java,"swap lines 88:`int c, ncases, n, connections;` and 89:`int a, b;`",0.9112426035502958,1.0,106
+Sociologia.java,swap lines 24:`nvs = n;` and 27:`stack = new LinkedList<No>();`,0.9053254437869822,1.0,106
+Sociologia.java,swap lines 19:`No[] verts;` and 21:`LinkedList<No> stack;`,0.9053254437869822,1.0,106
+Sociologia.java,swap lines 25:`narcos = 0;` and 27:`stack = new LinkedList<No>();`,0.8994082840236687,1.0,106
+Sociologia.java,swap lines 24:`nvs = n;` and 26:`verts = new No[n + 1];`,0.8994082840236687,1.0,106
+Sociologia.java,swap lines 24:`nvs = n;` and 28:`visitados = new boolean[n + 1];`,0.8994082840236687,1.0,106
+Sociologia.java,swap lines 26:`verts = new No[n + 1];` and 28:`visitados = new boolean[n + 1];`,0.8994082840236687,1.0,106
+Sociologia.java,swap lines 19:`No[] verts;` and 22:`boolean[] visitados;`,0.8994082840236687,1.0,106
+Sociologia.java,swap lines 21:`LinkedList<No> stack;` and 22:`boolean[] visitados;`,0.8994082840236687,1.0,106
+Sociologia.java,"swap lines 19:`No[] verts;` and 20:`int nvs, narcos;`",0.8994082840236687,1.0,106
+Sociologia.java,swap lines 25:`narcos = 0;` and 28:`visitados = new boolean[n + 1];`,0.8994082840236687,1.0,106
+Sociologia.java,swap lines 25:`narcos = 0;` and 26:`verts = new No[n + 1];`,0.8994082840236687,1.0,106
+Sociologia.java,swap lines 27:`stack = new LinkedList<No>();` and 28:`visitados = new boolean[n + 1];`,0.8994082840236687,1.0,106

@@ -1,0 +1,179 @@
+filename,operation,off score,on score,line count
+None,None,0.9852941176470589,1.0,269
+ProblemA.java,insert line 221: `int indexOfField;` on try 0,0.9840881272949816,1.0,269
+ProblemA.java,insert line 113: `int intInput;` on try 0,0.9828850855745721,1.0,269
+ProblemA.java,insert line 133: `int index = 0;` on try 0,0.9816849816849816,1.0,269
+ProblemA.java,insert line 140: `double w;` on try 0,0.9804878048780488,1.0,269
+ProblemA.java,insert line 44: `int index = 0;` on try 0,0.9792935444579781,1.0,269
+ProblemA.java,insert line 202: `boolean done = false;` on try 0,0.9781021897810219,1.0,269
+ProblemA.java,insert line 34: `int count = 0;` on try 0,0.976913730255164,1.0,269
+ProblemA.java,insert line 166: `double w;` on try 0,0.9757281553398058,1.0,269
+ProblemA.java,insert line 139: `int max;` on try 0,0.9527272727272728,1.0,269
+ProblemA.java,insert line 80: `boolean done = false;` on try 0,0.9515738498789347,1.0,269
+ProblemA.java,insert line 123: `String[] messages;` on try 0,0.9504232164449818,1.0,269
+ProblemA.java,insert line 68: `boolean debug = false;` on try 0,0.9516908212560387,1.0,269
+ProblemA.java,"insert line 210: `int x, y;` on try 0",0.946987951807229,1.0,269
+ProblemA.java,insert line 100: `boolean debug = false;` on try 0,0.9458483754512635,1.0,269
+ProblemA.java,insert line 10: `int index = 0;` on try 0,0.9254807692307693,1.0,269
+ProblemA.java,insert line 86: `int count = 0;` on try 0,0.9147659063625451,1.0,269
+ProblemA.java,"insert line 196: `String output = """";` on try 0",0.9136690647482014,1.0,269
+ProblemA.java,insert line 208: `int max;` on try 0,0.895808383233533,1.0,269
+ProblemA.java,insert line 50: `boolean done = false;` on try 0,0.8875598086124402,1.0,269
+ProblemA.java,insert line 152: `int count = 0;` on try 0,0.8841099163679809,1.0,269
+ProblemA.java,insert line 99: `int min;` on try 0,0.8782816229116945,1.0,269
+ProblemA.java,insert line 85: `int index = 0;` on try 0,0.8772348033373063,1.0,269
+ProblemA.java,"insert line 140: `String output = """";` on try 1",0.8404761904761905,1.0,269
+ProblemA.java,insert line 165: `double w;` on try 0,0.8394768133174791,1.0,269
+ProblemA.java,insert line 103: `boolean done = false;` on try 0,0.8171021377672208,1.0,269
+ProblemA.java,insert line 235: `int intInput;` on try 0,0.8161328588374852,1.0,269
+ProblemA.java,insert line 279: `double w;` on try 0,0.8151658767772512,1.0,269
+ProblemA.java,insert line 13: `boolean debug = false;` on try 0,0.8142011834319527,1.0,269
+ProblemA.java,insert line 172: `boolean done = false;` on try 0,0.8014184397163121,1.0,269
+ProblemA.java,insert line 57: `int min;` on try 0,0.7886658795749705,1.0,269
+ProblemA.java,insert line 181: `int index = 0;` on try 0,0.7783018867924528,1.0,269
+ProblemA.java,"insert line 242: `int x, y;` on try 0",0.7717647058823529,1.0,269
+ProblemA.java,insert line 203: `int max;` on try 0,0.7779083431257344,1.0,269
+ProblemA.java,insert line 21: `int max;` on try 0,0.7769953051643192,1.0,269
+ProblemA.java,insert line 15: `int j = 0;` on try 0,0.7924970691676436,1.0,269
+ProblemA.java,insert line 262: `int min;` on try 0,0.7915690866510539,1.0,269
+ProblemA.java,insert line 69: `int indexOfField;` on try 1,0.7906432748538011,1.0,269
+ProblemA.java,insert line 30: `int max;` on try 0,0.7897196261682243,1.0,269
+ProblemA.java,insert line 93: `int max;` on try 0,0.7887981330221704,1.0,269
+ProblemA.java,insert line 286: `boolean debug = false;` on try 0,0.7762237762237763,1.0,269
+ProblemA.java,insert line 81: `int min;` on try 0,0.7613504074505238,1.0,269
+ProblemA.java,insert line 99: `int index = 0;` on try 0,0.7348837209302326,1.0,269
+ProblemA.java,insert line 293: `boolean done = false;` on try 0,0.7340301974448316,1.0,269
+ProblemA.java,insert line 265: `int j = 0;` on try 0,0.7099767981438515,1.0,269
+ProblemA.java,"insert line 26: `int x, y;` on try 0",0.6875,1.0,269
+ProblemA.java,insert line 240: `int min;` on try 1,0.6728323699421965,1.0,269
+ProblemA.java,"insert line 201: `String output = """";` on try 0",0.6720554272517321,1.0,269
+ProblemA.java,insert line 287: `String[] messages;` on try 0,0.671280276816609,1.0,269
+ProblemA.java,"insert line 183: `int x, y;` on try 0",0.667433831990794,1.0,269
+ProblemA.java,insert line 220: `String[] messages;` on try 0,0.664367816091954,1.0,269
+ProblemA.java,insert line 260: `int intInput;` on try 1,0.6567164179104478,1.0,269
+ProblemA.java,insert line 68: `String[] messages;` on try 0,0.6490825688073395,1.0,269
+ProblemA.java,insert line 289: `double w;` on try 0,0.6437571592210768,1.0,269
+ProblemA.java,insert line 81: `String[] messages;` on try 0,0.6430205949656751,1.0,269
+ProblemA.java,insert line 191: `int count = 0;` on try 0,0.6194285714285714,1.0,269
+ProblemA.java,insert line 313: `int max;` on try 0,0.6004566210045662,1.0,269
+ProblemA.java,insert line 190: `boolean debug = false;` on try 0,0.5997719498289624,1.0,269
+ProblemA.java,insert line 267: `double w;` on try 0,0.5990888382687927,1.0,269
+ProblemA.java,insert line 142: `int max;` on try 1,0.59613196814562,1.0,269
+ProblemA.java,insert line 149: `int max;` on try 0,0.575,1.0,269
+ProblemA.java,insert line 141: `int count = 0;` on try 0,0.5539160045402951,1.0,269
+ProblemA.java,insert line 287: `int max;` on try 0,0.5374149659863946,1.0,269
+ProblemA.java,"insert line 256: `int x, y;` on try 0",0.5135746606334841,1.0,269
+ProblemA.java,insert line 36: `double w;` on try 1,0.4971751412429379,1.0,269
+ProblemA.java,"insert line 263: `String output = """";` on try 0",0.4966139954853273,1.0,269
+ProblemA.java,insert line 46: `String[] messages;` on try 1,0.46223224351747466,1.0,269
+ProblemA.java,insert line 69: `int j = 0;` on try 0,0.4594594594594595,1.0,269
+ProblemA.java,insert line 211: `int max;` on try 0,0.4544431946006749,1.0,269
+ProblemA.java,"insert line 44: `int x, y;` on try 0",0.45342312008978675,1.0,269
+ProblemA.java,insert line 143: `boolean done = false;` on try 0,0.452914798206278,1.0,269
+ProblemA.java,"insert line 243: `String output = """";` on try 1",0.4501679731243001,1.0,269
+ProblemA.java,insert line 223: `index++;` on try 0,0.436241610738255,1.0,269
+ProblemA.java,insert line 328: `int index = 0;` on try 0,0.43575418994413406,1.0,269
+ProblemA.java,insert line 296: `int count = 0;` on try 0,0.43526785714285715,1.0,269
+ProblemA.java,insert line 78: `int count = 0;` on try 1,0.43255295429208473,1.0,269
+ProblemA.java,insert line 33: `boolean debug = false;` on try 0,0.43207126948775054,1.0,269
+ProblemA.java,insert line 284: `int count = 0;` on try 0,0.43159065628476084,1.0,269
+ProblemA.java,insert line 12: `int count = 0;` on try 1,0.4311111111111111,1.0,269
+ProblemA.java,insert line 69: `boolean debug = false;` on try 0,0.4195338512763596,1.0,269
+ProblemA.java,insert line 182: `boolean done = false;` on try 1,0.4146341463414634,1.0,269
+ProblemA.java,insert line 83: `int aux = 0;` on try 0,0.4141749723145072,1.0,269
+ProblemA.java,insert line 164: `String[] messages;` on try 1,0.413716814159292,1.0,269
+ProblemA.java,insert line 114: `int min;` on try 1,0.39337016574585637,1.0,269
+ProblemA.java,insert line 71: `int intInput;` on try 0,0.3708609271523179,1.0,269
+ProblemA.java,insert line 351: `int count = 0;` on try 0,0.3638368246968026,1.0,269
+ProblemA.java,insert line 220: `int intInput;` on try 0,0.3392070484581498,1.0,269
+ProblemA.java,insert line 265: `int intInput;` on try 0,0.3388338833883388,1.0,269
+ProblemA.java,insert line 36: `int i = 0;` on try 0,0.3384615384615385,1.0,269
+ProblemA.java,"insert line 329: `String output = """";` on try 0",0.3380900109769484,1.0,269
+ProblemA.java,insert line 69: `int nrppl = 0;` on try 1,0.33771929824561403,1.0,269
+ProblemA.java,insert line 270: `int indexOfField;` on try 1,0.3373493975903614,1.0,269
+ProblemA.java,insert line 127: `boolean debug = false;` on try 0,0.33698030634573306,1.0,269
+ProblemA.java,insert line 194: `int min;` on try 0,0.31693989071038253,1.0,269
+ProblemA.java,"insert line 358: `int x, y;` on try 0",0.31406761177753545,1.0,269
+ProblemA.java,insert line 49: `int min;` on try 0,0.3137254901960784,1.0,269
+ProblemA.java,insert line 202: `int intInput;` on try 0,0.3133841131664853,1.0,269
+ProblemA.java,insert line 255: `int min;` on try 0,0.2891304347826087,1.0,269
+ProblemA.java,insert line 257: `int count = 0;` on try 0,0.2888165038002172,1.0,269
+ProblemA.java,insert line 43: `int j = 0;` on try 0,0.26898047722342733,1.0,269
+ProblemA.java,insert line 313: `int index = 0;` on try 0,0.26868905742145177,1.0,269
+ProblemA.java,insert line 360: `int count = 0;` on try 0,0.24675324675324675,1.0,269
+ProblemA.java,"insert line 47: `String output = """";` on try 1",0.2464864864864865,1.0,269
+ProblemA.java,insert line 145: `int min;` on try 0,0.2526997840172786,1.0,269
+ProblemA.java,"insert line 29: `String output = """";` on try 0",0.2524271844660194,1.0,269
+ProblemA.java,insert line 232: `boolean debug = false;` on try 0,0.2521551724137931,1.0,269
+ProblemA.java,"insert line 246: `int x, y;` on try 0",0.25161290322580643,1.0,269
+ProblemA.java,insert line 374: `String[] messages;` on try 0,0.2513426423200859,1.0,269
+ProblemA.java,insert line 214: `boolean debug = false;` on try 0,0.2510729613733906,1.0,269
+ProblemA.java,insert line 169: `int indexOfField;` on try 0,0.2508038585209003,1.0,269
+ProblemA.java,insert line 350: `int indexOfField;` on try 1,0.2505353319057816,1.0,269
+ProblemA.java,"insert line 138: `int x, y;` on try 4",0.24786324786324787,1.0,269
+ProblemA.java,insert line 43: `int index = 0;` on try 1,0.24759871931696906,1.0,269
+ProblemA.java,insert line 339: `int count = 0;` on try 1,0.24520255863539445,1.0,269
+ProblemA.java,insert line 19: `String[] messages;` on try 0,0.22577209797657083,1.0,269
+ProblemA.java,insert line 148: `boolean done = false;` on try 0,0.22127659574468084,1.0,269
+ProblemA.java,"insert line 110: `int x, y;` on try 1",0.21656050955414013,1.0,269
+ProblemA.java,insert line 194: `String[] messages;` on try 0,0.2163308589607635,1.0,269
+ProblemA.java,insert line 323: `String[] messages;` on try 0,0.21610169491525424,1.0,269
+ProblemA.java,insert line 61: `int j = 0;` on try 1,0.21587301587301588,1.0,269
+ProblemA.java,insert line 269: `boolean debug = false;` on try 0,0.2156448202959831,1.0,269
+ProblemA.java,"insert line 370: `int x, y;` on try 1",0.21518987341772153,1.0,269
+ProblemA.java,insert line 260: `String[] messages;` on try 0,0.21496311907270813,1.0,269
+ProblemA.java,insert line 40: `int intInput;` on try 2,0.21473684210526317,1.0,269
+ProblemA.java,insert line 226: `int min;` on try 1,0.21451104100946372,1.0,269
+ProblemA.java,insert line 345: `int min;` on try 1,0.20798319327731093,1.0,269
+ProblemA.java,insert line 18: `int min;` on try 0,0.20776495278069254,1.0,269
+ProblemA.java,"insert line 345: `int x, y;` on try 1",0.20732984293193718,1.0,269
+ProblemA.java,insert line 73: `boolean done = false;` on try 0,0.20711297071129708,1.0,269
+ProblemA.java,insert line 127: `int index = 0;` on try 0,0.20689655172413793,1.0,269
+ProblemA.java,insert line 351: `int intInput;` on try 1,0.20668058455114824,1.0,269
+ProblemA.java,insert line 208: `int intInput;` on try 1,0.2064650677789364,1.0,269
+ProblemA.java,insert line 153: `int max;` on try 0,0.20208333333333334,1.0,269
+ProblemA.java,"insert line 379: `int x, y;` on try 0",0.20166320166320167,1.0,269
+ProblemA.java,insert line 124: `int index = 0;` on try 2,0.20145379023883697,1.0,269
+ProblemA.java,insert line 319: `double w;` on try 1,0.1825726141078838,1.0,269
+ProblemA.java,insert line 216: `boolean done = false;` on try 0,0.18238341968911917,1.0,269
+ProblemA.java,insert line 271: `int count = 0;` on try 0,0.18219461697722567,1.0,269
+ProblemA.java,insert line 153: `int count = 0;` on try 1,0.16339193381592554,1.0,269
+ProblemA.java,insert line 190: `boolean done = false;` on try 0,0.16322314049586778,1.0,269
+ProblemA.java,insert line 165: `double w;` on try 2,0.14447884416924664,1.0,269
+ProblemA.java,insert line 174: `int min;` on try 0,0.14432989690721648,1.0,269
+ProblemA.java,insert line 65: `int nDummy = 0;` on try 0,0.14418125643666324,1.0,269
+ProblemA.java,insert line 183: `int index = 0;` on try 2,0.1440329218106996,1.0,269
+ProblemA.java,insert line 112: `double w;` on try 4,0.12538540596094552,1.0,269
+ProblemA.java,insert line 295: `String[] messages;` on try 2,0.12525667351129363,1.0,269
+ProblemA.java,insert line 402: `int min;` on try 4,0.12512820512820513,1.0,269
+ProblemA.java,insert line 401: `int min;` on try 0,0.125,1.0,269
+ProblemA.java,insert line 342: `int i = 0;` on try 0,0.12487205731832139,1.0,269
+ProblemA.java,insert line 76: `int index = 0;` on try 1,0.12474437627811862,1.0,269
+ProblemA.java,insert line 336: `boolean debug = false;` on try 0,0.12461695607763024,1.0,269
+ProblemA.java,insert line 28: `String[] messages;` on try 1,0.12448979591836734,1.0,269
+ProblemA.java,insert line 27: `int indexOfField;` on try 3,0.12436289500509684,1.0,269
+ProblemA.java,insert line 271: `boolean done = false;` on try 2,0.09775967413441955,1.0,269
+ProblemA.java,insert line 415: `int min;` on try 3,0.09766022380467955,1.0,269
+ProblemA.java,insert line 118: `int index = 0;` on try 2,0.0975609756097561,1.0,269
+ProblemA.java,insert line 117: `int count = 0;` on try 5,0.09746192893401015,1.0,269
+ProblemA.java,insert line 62: `int j = 0;` on try 4,0.0973630831643002,1.0,269
+ProblemA.java,insert line 324: `boolean done = false;` on try 3,0.0972644376899696,1.0,269
+ProblemA.java,insert line 309: `int count = 0;` on try 3,0.09716599190283401,1.0,269
+ProblemA.java,insert line 404: `String[] messages;` on try 2,0.09706774519716886,1.0,269
+ProblemA.java,insert line 110: `int indexOfField;` on try 7,0.09696969696969697,1.0,269
+ProblemA.java,insert line 385: `boolean debug = false;` on try 5,0.09687184661957618,1.0,269
+ProblemA.java,insert line 422: `int max;` on try 1,0.0967741935483871,1.0,269
+ProblemA.java,insert line 180: `int p = 0;` on try 2,0.09667673716012085,1.0,269
+ProblemA.java,insert line 65: `int index = 0;` on try 7,0.096579476861167,1.0,269
+ProblemA.java,insert line 9: `int i = 0;` on try 6,0.0964824120603015,1.0,269
+ProblemA.java,insert line 109: `String[] Data;` on try 1,0.0963855421686747,1.0,269
+ProblemA.java,insert line 78: `int min;` on try 0,0.09628886659979939,1.0,269
+ProblemA.java,insert line 314: `boolean debug = false;` on try 7,0.09619238476953908,1.0,269
+ProblemA.java,insert line 231: `int min;` on try 8,0.0960960960960961,1.0,269
+ProblemA.java,insert line 118: `boolean done = false;` on try 3,0.096,1.0,269
+ProblemA.java,insert line 397: `boolean debug = false;` on try 0,0.0939060939060939,1.0,269
+ProblemA.java,insert line 430: `done = true;` on try 3,0.09381237524950099,1.0,269
+ProblemA.java,insert line 48: `int indexOfField;` on try 8,0.09371884346959122,1.0,269
+ProblemA.java,insert line 337: `int indexOfField;` on try 5,0.09362549800796813,1.0,269
+ProblemA.java,insert line 282: `int indexOfField;` on try 9,0.09353233830845771,1.0,269
+ProblemA.java,insert line 219: `index++;` on try 8,0.09343936381709742,1.0,269

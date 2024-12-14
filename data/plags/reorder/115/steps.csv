@@ -1,0 +1,48 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,114
+SociologiaCC.java,swap lines 107:`int aluno;` and 108:`int cor;`,1.0,1.0,114
+SociologiaCC.java,swap lines 112:`this.cor = SociologiaCC.BRANCO;` and 113:`amigos = new ArrayList<Alunos>();`,0.9743589743589743,1.0,114
+SociologiaCC.java,swap lines 74:`int conta = 0;` and 75:`int gajo = 1;`,0.9743589743589743,1.0,114
+SociologiaCC.java,swap lines 12:`public static int[] finalizacao;` and 13:`public static Alunos[] listaAlunosT;`,0.9743589743589743,1.0,114
+SociologiaCC.java,swap lines 9:`public static int CINZA = 1;` and 10:`public static int PRETO = 2;`,0.9743589743589743,1.0,114
+SociologiaCC.java,swap lines 3:`import java.util.Collections;` and 4:`import java.util.Iterator;`,0.9743589743589743,1.0,114
+SociologiaCC.java,swap lines 8:`public static int BRANCO = 0;` and 10:`public static int PRETO = 2;`,0.9743589743589743,1.0,114
+SociologiaCC.java,swap lines 78:`conta = finalizacao[i];` and 79:`gajo = i;`,0.9743589743589743,1.0,114
+SociologiaCC.java,swap lines 111:`this.aluno = aluno;` and 113:`amigos = new ArrayList<Alunos>();`,0.967948717948718,1.0,114
+SociologiaCC.java,swap lines 3:`import java.util.Collections;` and 5:`import java.util.LinkedList;`,0.967948717948718,1.0,114
+SociologiaCC.java,swap lines 96:`int count = 1;` and 97:`listaAlunosT[temp_aluno].cor = PRETO;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 3:`import java.util.Collections;` and 6:`import java.util.Scanner;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 22:`listaAlunos = new Alunos[n_alunos + 1];` and 23:`listaAlunosT = new Alunos[n_alunos + 1];`,0.9551282051282052,1.0,114
+SociologiaCC.java,"swap lines 11:`public static int n_alunos, n_grupos_tot, n_grupos;` and 13:`public static Alunos[] listaAlunosT;`",0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 111:`this.aluno = aluno;` and 112:`this.cor = SociologiaCC.BRANCO;`,0.9551282051282052,1.0,114
+SociologiaCC.java,"swap lines 11:`public static int n_alunos, n_grupos_tot, n_grupos;` and 12:`public static int[] finalizacao;`",0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 8:`public static int BRANCO = 0;` and 9:`public static int CINZA = 1;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 4:`import java.util.Iterator;` and 5:`import java.util.LinkedList;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 17:`int conta = 0;` and 18:`Alunos[] listaAlunos;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 107:`int aluno;` and 109:`ArrayList<Alunos> amigos;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 22:`listaAlunos = new Alunos[n_alunos + 1];` and 24:`finalizacao = new int[n_alunos + 1];`,0.9551282051282052,1.0,114
+SociologiaCC.java,"swap lines 11:`public static int n_alunos, n_grupos_tot, n_grupos;` and 14:`public static LinkedList<Integer> grupos;`",0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 4:`import java.util.Iterator;` and 6:`import java.util.Scanner;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 26:`listaAlunos[i] = new Alunos(i);` and 27:`listaAlunosT[i] = new Alunos(i);`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 5:`import java.util.LinkedList;` and 6:`import java.util.Scanner;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 108:`int cor;` and 109:`ArrayList<Alunos> amigos;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 12:`public static int[] finalizacao;` and 14:`public static LinkedList<Integer> grupos;`,0.9551282051282052,1.0,114
+SociologiaCC.java,swap lines 16:`Scanner in = new Scanner(System.in);` and 18:`Alunos[] listaAlunos;`,0.9423076923076923,1.0,114
+SociologiaCC.java,swap lines 8:`public static int BRANCO = 0;` and 13:`public static Alunos[] listaAlunosT;`,0.9423076923076923,1.0,114
+SociologiaCC.java,swap lines 16:`Scanner in = new Scanner(System.in);` and 17:`int conta = 0;`,0.9358974358974359,1.0,114
+SociologiaCC.java,swap lines 23:`listaAlunosT = new Alunos[n_alunos + 1];` and 24:`finalizacao = new int[n_alunos + 1];`,0.9358974358974359,1.0,114
+SociologiaCC.java,swap lines 9:`public static int CINZA = 1;` and 13:`public static Alunos[] listaAlunosT;`,0.9358974358974359,1.0,114
+SociologiaCC.java,swap lines 10:`public static int PRETO = 2;` and 13:`public static Alunos[] listaAlunosT;`,0.9358974358974359,1.0,114
+SociologiaCC.java,swap lines 8:`public static int BRANCO = 0;` and 14:`public static LinkedList<Integer> grupos;`,0.9358974358974359,1.0,114
+SociologiaCC.java,swap lines 9:`public static int CINZA = 1;` and 14:`public static LinkedList<Integer> grupos;`,0.9358974358974359,1.0,114
+SociologiaCC.java,swap lines 10:`public static int PRETO = 2;` and 14:`public static LinkedList<Integer> grupos;`,0.9358974358974359,1.0,114
+SociologiaCC.java,swap lines 16:`Scanner in = new Scanner(System.in);` and 19:`grupos = new LinkedList<Integer>();`,0.9294871794871795,1.0,114
+SociologiaCC.java,swap lines 8:`public static int BRANCO = 0;` and 12:`public static int[] finalizacao;`,0.9294871794871795,1.0,114
+SociologiaCC.java,swap lines 17:`int conta = 0;` and 19:`grupos = new LinkedList<Integer>();`,0.9294871794871795,1.0,114
+SociologiaCC.java,"swap lines 8:`public static int BRANCO = 0;` and 11:`public static int n_alunos, n_grupos_tot, n_grupos;`",0.9294871794871795,1.0,114
+SociologiaCC.java,swap lines 13:`public static Alunos[] listaAlunosT;` and 14:`public static LinkedList<Integer> grupos;`,0.9294871794871795,1.0,114
+SociologiaCC.java,swap lines 9:`public static int CINZA = 1;` and 12:`public static int[] finalizacao;`,0.9294871794871795,1.0,114
+SociologiaCC.java,swap lines 10:`public static int PRETO = 2;` and 12:`public static int[] finalizacao;`,0.9294871794871795,1.0,114
+SociologiaCC.java,"swap lines 9:`public static int CINZA = 1;` and 11:`public static int n_alunos, n_grupos_tot, n_grupos;`",0.9294871794871795,1.0,114
+SociologiaCC.java,swap lines 18:`Alunos[] listaAlunos;` and 19:`grupos = new LinkedList<Integer>();`,0.9230769230769231,1.0,114
+SociologiaCC.java,"swap lines 10:`public static int PRETO = 2;` and 11:`public static int n_alunos, n_grupos_tot, n_grupos;`",0.9230769230769231,1.0,114

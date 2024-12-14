@@ -1,0 +1,77 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,345
+Grupos.java,swap lines 41:`private int n_amigos;` and 42:`int[] amigos;`,1.0,1.0,345
+Grupos.java,swap lines 223:`Node j;` and 224:`int i;`,1.0,1.0,345
+Grupos.java,swap lines 110:`gruposDe4 = 0;` and 111:`outrosElementos = 0;`,1.0,1.0,345
+Grupos.java,swap lines 103:`caso = cas;` and 104:`gruposDe4 = grupos;`,1.0,1.0,345
+Grupos.java,"swap lines 259:`int id, n_amigos, amigos[], i;` and 260:`Resultados resus = new Resultados();`",0.9905482041587902,1.0,345
+Grupos.java,swap lines 89:`primeiro = res;` and 90:`ultimo = res;`,0.9905482041587902,1.0,345
+Grupos.java,swap lines 214:`int i;` and 215:`Stack s = new Stack();`,0.9867674858223062,1.0,345
+Grupos.java,swap lines 81:`primeiro = null;` and 82:`ultimo = null;`,0.9867674858223062,1.0,345
+Grupos.java,"swap lines 250:`public static PrintWriter pw = new PrintWriter(System.out, true);` and 251:`private static Scanner sca = new Scanner(System.in);`",0.9867674858223062,1.0,345
+Grupos.java,"swap lines 256:`int n_cenarios, cenario;` and 257:`int n_alunos, aluno;`",0.9867674858223062,1.0,345
+Grupos.java,swap lines 233:`int valor;` and 234:`Node next;`,0.9867674858223062,1.0,345
+Grupos.java,swap lines 289:`outros = 0;` and 290:`index = 0;`,0.9867674858223062,1.0,345
+Grupos.java,swap lines 110:`gruposDe4 = 0;` and 112:`next = null;`,0.9867674858223062,1.0,345
+Grupos.java,swap lines 43:`int index;` and 44:`int lowlink;`,0.9867674858223062,1.0,345
+Grupos.java,swap lines 204:`int[] elements = new int[elems];` and 205:`int j;`,0.9829867674858223,1.0,345
+Grupos.java,swap lines 155:`Stack componente;` and 156:`CFC next;`,0.9829867674858223,1.0,345
+Grupos.java,swap lines 139:`primeiro = null;` and 140:`ultimo = null;`,0.9829867674858223,1.0,345
+Grupos.java,swap lines 158:`componente = comp;` and 159:`next = null;`,0.9829867674858223,1.0,345
+Grupos.java,swap lines 103:`caso = cas;` and 105:`outrosElementos = outros;`,0.9829867674858223,1.0,345
+Grupos.java,swap lines 111:`outrosElementos = 0;` and 112:`next = null;`,0.9829867674858223,1.0,345
+Grupos.java,swap lines 100:`int outrosElementos;` and 101:`Resultado next;`,0.9829867674858223,1.0,345
+Grupos.java,swap lines 213:`Node nova;` and 215:`Stack s = new Stack();`,0.9810964083175804,1.0,345
+Grupos.java,swap lines 258:`Vertice[] alunos;` and 260:`Resultados resus = new Resultados();`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 284:`CFC j;` and 285:`Resultado resu;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 236:`valor = x;` and 237:`next = null;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 172:`int elems;` and 173:`Node first;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 213:`Node nova;` and 214:`int i;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 175:`elems = 0;` and 176:`first = null;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 104:`gruposDe4 = grupos;` and 105:`outrosElementos = outros;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 47:`amigos = ami;` and 48:`index = -1;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 41:`private int n_amigos;` and 44:`int lowlink;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 78:`Resultado primeiro;` and 79:`Resultado ultimo;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 42:`int[] amigos;` and 44:`int lowlink;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 98:`int caso;` and 99:`int gruposDe4;`,0.9792060491493384,1.0,345
+Grupos.java,swap lines 283:`Lista_CFC lista_comp = new Lista_CFC();` and 285:`Resultado resu;`,0.9754253308128544,1.0,345
+Grupos.java,"swap lines 258:`Vertice[] alunos;` and 259:`int id, n_amigos, amigos[], i;`",0.9754253308128544,1.0,345
+Grupos.java,swap lines 184:`first = no;` and 185:`elems++;`,0.9754253308128544,1.0,345
+Grupos.java,swap lines 204:`int[] elements = new int[elems];` and 206:`Node i;`,0.9735349716446124,1.0,345
+Grupos.java,swap lines 205:`int j;` and 206:`Node i;`,0.9735349716446124,1.0,345
+Grupos.java,"swap lines 282:`Stack pilha = new Stack(), p2;` and 285:`Resultado resu;`",0.9678638941398866,1.0,345
+Grupos.java,swap lines 41:`private int n_amigos;` and 43:`int index;`,0.9678638941398866,1.0,345
+Grupos.java,"swap lines 280:`int index, i, n_grupos4, outros, elementos_na_pilha;` and 281:`boolean[] analisados = new boolean[n_alunos];`",0.9546313799621928,1.0,345
+Grupos.java,swap lines 103:`caso = cas;` and 106:`next = null;`,0.9546313799621928,1.0,345
+Grupos.java,swap lines 46:`n_amigos = n;` and 48:`index = -1;`,0.9546313799621928,1.0,345
+Grupos.java,"swap lines 280:`int index, i, n_grupos4, outros, elementos_na_pilha;` and 285:`Resultado resu;`",0.9546313799621928,1.0,345
+Grupos.java,swap lines 47:`amigos = ami;` and 49:`lowlink = -1;`,0.9546313799621928,1.0,345
+Grupos.java,"swap lines 282:`Stack pilha = new Stack(), p2;` and 283:`Lista_CFC lista_comp = new Lista_CFC();`",0.9603024574669187,1.0,345
+Grupos.java,swap lines 46:`n_amigos = n;` and 49:`lowlink = -1;`,0.9603024574669187,1.0,345
+Grupos.java,"swap lines 280:`int index, i, n_grupos4, outros, elementos_na_pilha;` and 283:`Lista_CFC lista_comp = new Lista_CFC();`",0.9621928166351607,1.0,345
+Grupos.java,swap lines 109:`caso = cas;` and 112:`next = null;`,0.9621928166351607,1.0,345
+Grupos.java,swap lines 104:`gruposDe4 = grupos;` and 106:`next = null;`,0.9621928166351607,1.0,345
+Grupos.java,swap lines 46:`n_amigos = n;` and 47:`amigos = ami;`,0.9621928166351607,1.0,345
+Grupos.java,"swap lines 282:`Stack pilha = new Stack(), p2;` and 284:`CFC j;`",0.9546313799621928,1.0,345
+Grupos.java,"swap lines 256:`int n_cenarios, cenario;` and 260:`Resultados resus = new Resultados();`",0.9508506616257089,1.0,345
+Grupos.java,swap lines 281:`boolean[] analisados = new boolean[n_alunos];` and 285:`Resultado resu;`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 109:`caso = cas;` and 111:`outrosElementos = 0;`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 98:`int caso;` and 101:`Resultado next;`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 98:`int caso;` and 100:`int outrosElementos;`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 105:`outrosElementos = outros;` and 106:`next = null;`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 42:`int[] amigos;` and 43:`int index;`,0.9527410207939508,1.0,345
+Grupos.java,"swap lines 256:`int n_cenarios, cenario;` and 259:`int id, n_amigos, amigos[], i;`",0.9527410207939508,1.0,345
+Grupos.java,swap lines 109:`caso = cas;` and 110:`gruposDe4 = 0;`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 281:`boolean[] analisados = new boolean[n_alunos];` and 283:`Lista_CFC lista_comp = new Lista_CFC();`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 99:`int gruposDe4;` and 101:`Resultado next;`,0.9527410207939508,1.0,345
+Grupos.java,swap lines 48:`index = -1;` and 49:`lowlink = -1;`,0.9527410207939508,1.0,345
+Grupos.java,"swap lines 257:`int n_alunos, aluno;` and 260:`Resultados resus = new Resultados();`",0.9659735349716446,1.0,345
+Grupos.java,"swap lines 256:`int n_cenarios, cenario;` and 258:`Vertice[] alunos;`",0.9659735349716446,1.0,345
+Grupos.java,swap lines 99:`int gruposDe4;` and 100:`int outrosElementos;`,0.9659735349716446,1.0,345
+Grupos.java,"swap lines 280:`int index, i, n_grupos4, outros, elementos_na_pilha;` and 284:`CFC j;`",0.9659735349716446,1.0,345
+Grupos.java,swap lines 281:`boolean[] analisados = new boolean[n_alunos];` and 284:`CFC j;`,0.9659735349716446,1.0,345
+Grupos.java,"swap lines 280:`int index, i, n_grupos4, outros, elementos_na_pilha;` and 282:`Stack pilha = new Stack(), p2;`",0.9678638941398866,1.0,345
+Grupos.java,"swap lines 281:`boolean[] analisados = new boolean[n_alunos];` and 282:`Stack pilha = new Stack(), p2;`",0.9678638941398866,1.0,345
+Grupos.java,swap lines 283:`Lista_CFC lista_comp = new Lista_CFC();` and 284:`CFC j;`,0.9697542533081286,1.0,345
+Grupos.java,"swap lines 257:`int n_alunos, aluno;` and 259:`int id, n_amigos, amigos[], i;`",0.9697542533081286,1.0,345
+Grupos.java,"swap lines 257:`int n_alunos, aluno;` and 258:`Vertice[] alunos;`",0.9697542533081286,1.0,345

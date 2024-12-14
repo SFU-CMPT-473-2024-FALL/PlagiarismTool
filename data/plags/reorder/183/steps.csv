@@ -1,0 +1,28 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,143
+Sociologia.java,swap lines 20:`LinkedList<Arco> adjs;` and 21:`boolean visited;`,1.0,1.0,143
+Sociologia.java,swap lines 6:`int no_final;` and 7:`int valor;`,1.0,1.0,143
+Sociologia.java,swap lines 133:`Scanner in = new Scanner(System.in);` and 134:`int Ncenarios;`,0.9905660377358491,1.0,143
+Sociologia.java,swap lines 133:`Scanner in = new Scanner(System.in);` and 135:`Grafo[] rede;`,0.9858490566037735,1.0,143
+Sociologia.java,"swap lines 116:`Grafo[] rede = new Grafo[2];` and 117:`int Nalunos, aluno, Namigos, amigo;`",0.9622641509433962,1.0,143
+Sociologia.java,swap lines 3:`import java.util.LinkedList;` and 4:`import java.util.Scanner;`,0.9622641509433962,1.0,143
+Sociologia.java,swap lines 72:`stack = stack_;` and 73:`LinkedList<Integer> temp;`,0.9528301886792453,1.0,143
+Sociologia.java,swap lines 9:`no_final = fim;` and 10:`valor = v;`,0.9528301886792453,1.0,143
+Sociologia.java,swap lines 32:`nvs = n;` and 33:`narcos = 0;`,0.9528301886792453,1.0,143
+Sociologia.java,swap lines 35:`fora = n;` and 36:`verts = new No[n + 1];`,0.9433962264150944,1.0,143
+Sociologia.java,"swap lines 29:`int nvs, narcos, sol, fora;` and 30:`LinkedList<Integer> stack;`",0.9433962264150944,1.0,143
+Sociologia.java,swap lines 71:`int c;` and 73:`LinkedList<Integer> temp;`,0.9433962264150944,1.0,143
+Sociologia.java,swap lines 77:`verts[c].visited = true;` and 78:`temp = new LinkedList<Integer>();`,0.9056603773584906,1.0,143
+Sociologia.java,swap lines 134:`int Ncenarios;` and 135:`Grafo[] rede;`,0.9056603773584906,1.0,143
+Sociologia.java,swap lines 23:`adjs = new LinkedList<Arco>();` and 24:`visited = false;`,0.8962264150943396,1.0,143
+Sociologia.java,swap lines 71:`int c;` and 72:`stack = stack_;`,0.9339622641509434,1.0,143
+Sociologia.java,swap lines 28:`No[] verts;` and 30:`LinkedList<Integer> stack;`,0.9339622641509434,1.0,143
+Sociologia.java,"swap lines 28:`No[] verts;` and 29:`int nvs, narcos, sol, fora;`",0.9339622641509434,1.0,143
+Sociologia.java,swap lines 32:`nvs = n;` and 34:`sol = 0;`,0.9339622641509434,1.0,143
+Sociologia.java,swap lines 33:`narcos = 0;` and 34:`sol = 0;`,0.9339622641509434,1.0,143
+Sociologia.java,swap lines 32:`nvs = n;` and 36:`verts = new No[n + 1];`,0.9292452830188679,1.0,143
+Sociologia.java,swap lines 32:`nvs = n;` and 35:`fora = n;`,0.9292452830188679,1.0,143
+Sociologia.java,swap lines 33:`narcos = 0;` and 36:`verts = new No[n + 1];`,0.9245283018867925,1.0,143
+Sociologia.java,swap lines 34:`sol = 0;` and 36:`verts = new No[n + 1];`,0.9198113207547169,1.0,143
+Sociologia.java,swap lines 33:`narcos = 0;` and 35:`fora = n;`,0.9198113207547169,1.0,143
+Sociologia.java,swap lines 34:`sol = 0;` and 35:`fora = n;`,0.9198113207547169,1.0,143

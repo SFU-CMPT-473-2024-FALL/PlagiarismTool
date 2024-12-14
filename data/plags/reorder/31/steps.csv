@@ -1,0 +1,15 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,73
+Sociologia.java,swap lines 12:`AdjList = new ArrayList<ArrayList<Integer>>();` and 13:`AdjListT = new ArrayList<ArrayList<Integer>>();`,1.0,1.0,73
+Sociologia.java,swap lines 18:`colour = new int[nAlunos];` and 19:`ftimes = new LinkedList<Integer>();`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 8:`public static int[] colour;` and 9:`public static LinkedList<Integer> ftimes;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 5:`public static int nAlunos;` and 6:`public static ArrayList<ArrayList<Integer>> AdjList;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 5:`public static int nAlunos;` and 7:`public static ArrayList<ArrayList<Integer>> AdjListT;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 5:`public static int nAlunos;` and 9:`public static LinkedList<Integer> ftimes;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 51:`int ng = 0;` and 52:`int nf = 0;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 5:`public static int nAlunos;` and 8:`public static int[] colour;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 7:`public static ArrayList<ArrayList<Integer>> AdjListT;` and 9:`public static LinkedList<Integer> ftimes;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 7:`public static ArrayList<ArrayList<Integer>> AdjListT;` and 8:`public static int[] colour;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 6:`public static ArrayList<ArrayList<Integer>> AdjList;` and 9:`public static LinkedList<Integer> ftimes;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 6:`public static ArrayList<ArrayList<Integer>> AdjList;` and 8:`public static int[] colour;`,0.9736842105263158,1.0,73
+Sociologia.java,swap lines 6:`public static ArrayList<ArrayList<Integer>> AdjList;` and 7:`public static ArrayList<ArrayList<Integer>> AdjListT;`,0.9736842105263158,1.0,73

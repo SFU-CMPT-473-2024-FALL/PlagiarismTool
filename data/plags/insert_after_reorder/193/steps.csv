@@ -1,0 +1,68 @@
+filename,operation,off score,on score,line count
+None,None,0.9770114942528736,1.0,102
+sociologo.java,insert line 61: `int max;` on try 0,0.9742120343839542,1.0,102
+sociologo.java,"insert line 96: `int x, y;` on try 0",0.9230769230769231,1.0,102
+sociologo.java,insert line 47: `int count = 0;` on try 0,0.9204545454545454,1.0,102
+sociologo.java,insert line 90: `int min;` on try 0,0.9178470254957507,1.0,102
+sociologo.java,"insert line 69: `int x, y;` on try 0",0.9126760563380282,1.0,102
+sociologo.java,insert line 105: `String[] messages;` on try 0,0.9101123595505618,1.0,102
+sociologo.java,insert line 103: `int max;` on try 0,0.907563025210084,1.0,102
+sociologo.java,"insert line 57: `String output = """";` on try 0",0.8324022346368715,1.0,102
+sociologo.java,insert line 61: `int min;` on try 0,0.83008356545961,1.0,102
+sociologo.java,insert line 32: `int max;` on try 0,0.8277777777777777,1.0,102
+sociologo.java,insert line 40: `int i = 0;` on try 0,0.8254847645429363,1.0,102
+sociologo.java,insert line 94: `int count = 0;` on try 0,0.8176795580110497,1.0,102
+sociologo.java,insert line 20: `int indexOfField;` on try 0,0.8154269972451791,1.0,102
+sociologo.java,insert line 79: `int intInput;` on try 0,0.7802197802197802,1.0,102
+sociologo.java,insert line 45: `double w;` on try 0,0.7616438356164383,1.0,102
+sociologo.java,"insert line 38: `String output = """";` on try 0",0.73224043715847,1.0,102
+sociologo.java,insert line 19: `int min;` on try 0,0.7247956403269755,1.0,102
+sociologo.java,insert line 61: `int index = 0;` on try 0,0.7228260869565217,1.0,102
+sociologo.java,insert line 27: `int j = 0;` on try 0,0.7208672086720868,1.0,102
+sociologo.java,insert line 50: `int min;` on try 0,0.6486486486486487,1.0,102
+sociologo.java,insert line 121: `double w;` on try 0,0.6469002695417789,1.0,102
+sociologo.java,"insert line 38: `int x, y;` on try 0",0.5898123324396782,1.0,102
+sociologo.java,insert line 34: `int index = 0;` on try 0,0.5882352941176471,1.0,102
+sociologo.java,insert line 112: `String[] messages;` on try 1,0.576,1.0,102
+sociologo.java,insert line 29: `double w;` on try 1,0.526595744680851,1.0,102
+sociologo.java,insert line 72: `String[] messages;` on try 0,0.5251989389920424,1.0,102
+sociologo.java,insert line 97: `boolean done = false;` on try 0,0.5238095238095238,1.0,102
+sociologo.java,insert line 121: `int j = 0;` on try 1,0.5224274406332454,1.0,102
+sociologo.java,insert line 31: `String[] messages;` on try 0,0.5157894736842106,1.0,102
+sociologo.java,insert line 26: `boolean done = false;` on try 0,0.4671916010498688,1.0,102
+sociologo.java,insert line 102: `String[] messages;` on try 0,0.45549738219895286,1.0,102
+sociologo.java,"insert line 101: `int x, y;` on try 0",0.453125,1.0,102
+sociologo.java,insert line 13: `String[] messages;` on try 0,0.45194805194805193,1.0,102
+sociologo.java,insert line 37: `int j = 0;` on try 0,0.5025906735751295,1.0,102
+sociologo.java,insert line 108: `int count = 0;` on try 0,0.4392764857881137,1.0,102
+sociologo.java,insert line 97: `boolean debug = false;` on try 0,0.4020618556701031,1.0,102
+sociologo.java,insert line 65: `int indexOfField;` on try 0,0.35475578406169667,1.0,102
+sociologo.java,insert line 91: `int max;` on try 0,0.35384615384615387,1.0,102
+sociologo.java,insert line 10: `int index = 0;` on try 0,0.3171355498721228,1.0,102
+sociologo.java,insert line 25: `String[] messages;` on try 1,0.3163265306122449,1.0,102
+sociologo.java,insert line 129: `int max;` on try 0,0.3155216284987277,1.0,102
+sociologo.java,insert line 90: `double w;` on try 1,0.26903553299492383,1.0,102
+sociologo.java,insert line 62: `int index = 0;` on try 0,0.2683544303797468,1.0,102
+sociologo.java,insert line 72: `int count = 0;` on try 3,0.31313131313131315,1.0,102
+sociologo.java,insert line 141: `boolean done = false;` on try 3,0.3123425692695214,1.0,102
+sociologo.java,insert line 67: `String[] messages;` on try 0,0.31155778894472363,1.0,102
+sociologo.java,insert line 12: `double w;` on try 1,0.3107769423558897,1.0,102
+sociologo.java,insert line 110: `int index = 0;` on try 1,0.26,1.0,102
+sociologo.java,insert line 14: `int j = 0;` on try 0,0.2593516209476309,1.0,102
+sociologo.java,insert line 122: `int max;` on try 1,0.25870646766169153,1.0,102
+sociologo.java,insert line 57: `double w;` on try 1,0.25806451612903225,1.0,102
+sociologo.java,"insert line 126: `String output = """";` on try 1",0.25742574257425743,1.0,102
+sociologo.java,insert line 89: `int intInput;` on try 3,0.25679012345679014,1.0,102
+sociologo.java,"insert line 29: `int x, y;` on try 2",0.25552825552825553,1.0,102
+sociologo.java,insert line 51: `String[] messages;` on try 0,0.2549019607843137,1.0,102
+sociologo.java,insert line 66: `int j = 0;` on try 2,0.254278728606357,1.0,102
+sociologo.java,insert line 18: `boolean done = false;` on try 1,0.24878048780487805,1.0,102
+sociologo.java,insert line 97: `boolean debug = false;` on try 4,0.24817518248175183,1.0,102
+sociologo.java,insert line 82: `boolean done = false;` on try 3,0.24757281553398058,1.0,102
+sociologo.java,insert line 117: `double w;` on try 2,0.2469733656174334,1.0,102
+sociologo.java,insert line 141: `int indexOfField;` on try 8,0.24154589371980675,1.0,102
+sociologo.java,"insert line 143: `int aluno, amigos, amigo;` on try 7",0.19664268585131894,1.0,102
+sociologo.java,insert line 133: `int min;` on try 6,0.19617224880382775,1.0,102
+sociologo.java,insert line 56: `int intInput;` on try 3,0.1957040572792363,1.0,102
+sociologo.java,insert line 138: `int max;` on try 4,0.19523809523809524,1.0,102
+sociologo.java,insert line 148: `index++;` on try 4,0.19477434679334918,1.0,102

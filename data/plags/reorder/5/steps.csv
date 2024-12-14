@@ -1,0 +1,10 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,89
+Social.java,swap lines 75:`int groups = 0;` and 76:`int pplgro = 0;`,1.0,1.0,89
+Social.java,swap lines 83:`groups++;` and 84:`pplgro += nrppl;`,1.0,1.0,89
+Social.java,swap lines 59:`ArrayList<ArrayList<Integer>> g = new ArrayList<ArrayList<Integer>>();` and 60:`s = new Stack<Integer>();`,0.9841269841269841,1.0,89
+Social.java,swap lines 59:`ArrayList<ArrayList<Integer>> g = new ArrayList<ArrayList<Integer>>();` and 61:`ctr = 0;`,0.9735449735449735,1.0,89
+Social.java,swap lines 4:`public static Stack<Integer> s = new Stack<Integer>();` and 5:`public static int ctr = 0;`,0.9470899470899471,1.0,89
+Social.java,swap lines 60:`s = new Stack<Integer>();` and 61:`ctr = 0;`,0.9470899470899471,1.0,89
+Social.java,swap lines 4:`public static Stack<Integer> s = new Stack<Integer>();` and 6:`public static int[] flood;`,0.9417989417989417,1.0,89
+Social.java,swap lines 5:`public static int ctr = 0;` and 6:`public static int[] flood;`,0.9417989417989417,1.0,89

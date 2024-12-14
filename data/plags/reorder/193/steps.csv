@@ -1,0 +1,7 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,102
+sociologo.java,swap lines 99:`res1 = 0;` and 100:`res2 = 0;`,1.0,1.0,102
+sociologo.java,swap lines 76:`Grafo a = new Grafo(n);` and 77:`Grafo b = new Grafo(n);`,1.0,1.0,102
+sociologo.java,swap lines 53:`int instante = 0;` and 54:`int[] prev = new int[n];`,0.9885057471264368,1.0,102
+sociologo.java,swap lines 3:`import java.util.Scanner;` and 4:`import java.util.Stack;`,0.9885057471264368,1.0,102
+sociologo.java,swap lines 31:`int instante = 0;` and 32:`int[] prev = new int[n];`,0.9770114942528736,1.0,102

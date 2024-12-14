@@ -1,0 +1,73 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,95
+soci.java,insert line 63: `double w;` on try 0,0.9962546816479401,1.0,95
+soci.java,insert line 93: `String[] messages;` on try 0,0.9626865671641791,1.0,95
+soci.java,insert line 75: `int max;` on try 0,0.9591078066914498,1.0,95
+soci.java,insert line 24: `boolean debug = false;` on try 0,0.9555555555555556,1.0,95
+soci.java,insert line 11: `int j = 0;` on try 0,0.9520295202952029,1.0,95
+soci.java,"insert line 9: `int grupos, pessoas, ptemp;` on try 0",0.9197080291970803,1.0,95
+soci.java,insert line 71: `String[] messages;` on try 0,0.8290909090909091,1.0,95
+soci.java,insert line 94: `boolean debug = false;` on try 0,0.7971014492753623,1.0,95
+soci.java,"insert line 48: `String output = """";` on try 0",0.7942238267148014,1.0,95
+soci.java,insert line 58: `int max;` on try 0,0.7913669064748201,1.0,95
+soci.java,insert line 77: `int count = 0;` on try 0,0.7885304659498208,1.0,95
+soci.java,insert line 11: `int index = 0;` on try 0,0.7857142857142857,1.0,95
+soci.java,"insert line 106: `String output = """";` on try 0",0.7829181494661922,1.0,95
+soci.java,insert line 16: `int i = 0;` on try 0,0.7659574468085106,1.0,95
+soci.java,insert line 98: `int min;` on try 0,0.734982332155477,1.0,95
+soci.java,insert line 90: `double w;` on try 0,0.6830985915492958,1.0,95
+soci.java,insert line 18: `int j = 0;` on try 0,0.6666666666666666,1.0,95
+soci.java,insert line 65: `int max;` on try 0,0.6433566433566433,1.0,95
+soci.java,insert line 38: `int count = 0;` on try 0,0.6411149825783972,1.0,95
+soci.java,insert line 70: `int count = 0;` on try 0,0.5763888888888888,1.0,95
+soci.java,insert line 31: `String[] messages;` on try 0,0.5605536332179931,1.0,95
+soci.java,"insert line 65: `int x, y;` on try 0",0.5567010309278351,1.0,95
+soci.java,insert line 103: `int intInput;` on try 0,0.541095890410959,1.0,95
+soci.java,"insert line 71: `int x, y;` on try 0",0.5374149659863946,1.0,95
+soci.java,insert line 89: `int intInput;` on try 0,0.535593220338983,1.0,95
+soci.java,insert line 52: `int min;` on try 0,0.527027027027027,1.0,95
+soci.java,"insert line 35: `String output = """";` on try 0",0.43097643097643096,1.0,95
+soci.java,"insert line 49: `int x, y;` on try 0",0.3879598662207358,1.0,95
+soci.java,insert line 82: `boolean debug = false;` on try 0,0.38666666666666666,1.0,95
+soci.java,insert line 84: `int intInput;` on try 1,0.3853820598006645,1.0,95
+soci.java,insert line 112: `boolean done = false;` on try 0,0.3841059602649007,1.0,95
+soci.java,insert line 99: `boolean debug = false;` on try 0,0.38283828382838286,1.0,95
+soci.java,insert line 28: `int max;` on try 0,0.375,1.0,95
+soci.java,insert line 45: `int min;` on try 0,0.2754098360655738,1.0,95
+soci.java,insert line 88: `int min;` on try 0,0.27450980392156865,1.0,95
+soci.java,insert line 66: `String[] messages;` on try 0,0.26058631921824105,1.0,95
+soci.java,"insert line 125: `int x, y;` on try 0",0.2588996763754045,1.0,95
+soci.java,insert line 50: `double w;` on try 0,0.25806451612903225,1.0,95
+soci.java,insert line 62: `int count = 0;` on try 0,0.19935691318327975,1.0,95
+soci.java,insert line 126: `int count = 0;` on try 0,0.1987179487179487,1.0,95
+soci.java,insert line 75: `int j = 0;` on try 0,0.19808306709265175,1.0,95
+soci.java,insert line 44: `int index = 0;` on try 0,0.19745222929936307,1.0,95
+soci.java,insert line 65: `boolean done = false;` on try 0,0.19682539682539682,1.0,95
+soci.java,insert line 72: `int index = 0;` on try 0,0.1962025316455696,1.0,95
+soci.java,insert line 129: `int j = 0;` on try 0,0.19558359621451105,1.0,95
+soci.java,"insert line 137: `String output = """";` on try 0",0.1949685534591195,1.0,95
+soci.java,insert line 120: `int indexOfField;` on try 2,0.13793103448275862,1.0,95
+soci.java,insert line 100: `boolean debug = false;` on try 0,0.1375,1.0,95
+soci.java,insert line 114: `int j = 0;` on try 0,0.13707165109034267,1.0,95
+soci.java,insert line 8: `int count = 0;` on try 0,0.13043478260869565,1.0,95
+soci.java,insert line 108: `int min;` on try 1,0.13003095975232198,1.0,95
+soci.java,insert line 100: `int index = 0;` on try 0,0.12962962962962962,1.0,95
+soci.java,"insert line 21: `int x, y;` on try 0",0.12269938650306748,1.0,95
+soci.java,insert line 1: `import java.util.HashMap;` on try 2,0.12232415902140673,0.9962546816479401,95
+soci.java,insert line 118: `boolean done = false;` on try 0,0.12195121951219512,0.9962546816479401,95
+soci.java,insert line 65: `boolean done = false;` on try 1,0.12158054711246201,0.9962546816479401,95
+soci.java,insert line 51: `int from;` on try 1,0.12121212121212122,0.9962546816479401,95
+soci.java,"insert line 43: `int x, y;` on try 0",0.12048192771084337,0.9962546816479401,95
+soci.java,insert line 42: `int count = 0;` on try 0,0.12012012012012012,0.9962546816479401,95
+soci.java,insert line 75: `int count = 0;` on try 2,0.11976047904191617,0.9962546816479401,95
+soci.java,insert line 61: `int i = 0;` on try 2,0.11940298507462686,0.9962546816479401,95
+soci.java,insert line 41: `int min;` on try 0,0.11904761904761904,0.9962546816479401,95
+soci.java,insert line 8: `int intInput;` on try 3,0.06528189910979229,0.9962546816479401,95
+soci.java,insert line 50: `boolean done = false;` on try 5,0.0650887573964497,0.9962546816479401,95
+soci.java,insert line 99: `boolean done = false;` on try 3,0.06489675516224189,0.9962546816479401,95
+soci.java,insert line 127: `int i = 0;` on try 2,0.06470588235294118,0.9962546816479401,95
+soci.java,insert line 38: `int choosen = -1;` on try 2,0.06451612903225806,0.9962546816479401,95
+soci.java,insert line 82: `boolean debug = false;` on try 3,0.06432748538011696,0.9962546816479401,95
+soci.java,insert line 68: `int index = 0;` on try 4,0.0641399416909621,0.9962546816479401,95
+soci.java,insert line 40: `boolean check;` on try 6,0.06395348837209303,0.9962546816479401,95
+soci.java,insert line 105: `boolean check;` on try 7,0.06376811594202898,0.9962546816479401,95

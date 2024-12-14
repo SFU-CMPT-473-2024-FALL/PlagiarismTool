@@ -1,0 +1,91 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,132
+Sociologia.java,insert line 99: `boolean debug = false;` on try 0,0.9977220956719818,1.0,132
+Sociologia.java,insert line 52: `int i = 0;` on try 0,0.9954545454545455,1.0,132
+Sociologia.java,insert line 64: `int intInput;` on try 0,0.9931972789115646,1.0,132
+Sociologia.java,insert line 30: `int j = 0;` on try 0,0.9909502262443439,1.0,132
+Sociologia.java,insert line 48: `int choosen = -1;` on try 0,0.9661399548532731,1.0,132
+Sociologia.java,insert line 106: `double w;` on try 0,0.9504504504504504,1.0,132
+Sociologia.java,"insert line 25: `String output = """";` on try 0",0.9123595505617977,1.0,132
+Sociologia.java,insert line 73: `int i = 0;` on try 0,0.9103139013452914,1.0,132
+Sociologia.java,"insert line 115: `int x, y;` on try 0",0.90625,1.0,132
+Sociologia.java,insert line 34: `String[] messages;` on try 0,0.8953229398663697,1.0,132
+Sociologia.java,insert line 12: `double w;` on try 0,0.8933333333333333,1.0,132
+Sociologia.java,insert line 25: `int index = 0;` on try 1,0.8869179600886918,1.0,132
+Sociologia.java,insert line 48: `int min;` on try 0,0.8539823008849557,1.0,132
+Sociologia.java,insert line 81: `double dist;` on try 0,0.8300220750551877,1.0,132
+Sociologia.java,insert line 68: `String[] messages;` on try 0,0.7973568281938326,1.0,132
+Sociologia.java,insert line 138: `int intInput;` on try 0,0.7956043956043956,1.0,132
+Sociologia.java,insert line 98: `double w;` on try 0,0.793859649122807,1.0,132
+Sociologia.java,insert line 67: `int index = 0;` on try 0,0.787746170678337,1.0,132
+Sociologia.java,insert line 64: `int j = 0;` on try 0,0.7379912663755459,1.0,132
+Sociologia.java,insert line 61: `int max;` on try 0,0.7363834422657952,1.0,132
+Sociologia.java,insert line 122: `int count = 0;` on try 0,0.6739130434782609,1.0,132
+Sociologia.java,insert line 35: `int index = 0;` on try 0,0.6724511930585684,1.0,132
+Sociologia.java,"insert line 92: `int x, y;` on try 0",0.6393088552915767,1.0,132
+Sociologia.java,"insert line 84: `String output = """";` on try 0",0.6379310344827587,1.0,132
+Sociologia.java,insert line 131: `String[] messages;` on try 0,0.632258064516129,1.0,132
+Sociologia.java,insert line 101: `boolean done = false;` on try 0,0.6180257510729614,1.0,132
+Sociologia.java,insert line 100: `int indexOfField;` on try 0,0.6081370449678801,1.0,132
+Sociologia.java,insert line 105: `int count = 0;` on try 0,0.6068376068376068,1.0,132
+Sociologia.java,insert line 149: `boolean done = false;` on try 0,0.6012793176972282,1.0,132
+Sociologia.java,insert line 118: `int index = 0;` on try 0,0.574468085106383,1.0,132
+Sociologia.java,insert line 18: `boolean debug = false;` on try 1,0.5732484076433121,1.0,132
+Sociologia.java,insert line 114: `int min;` on try 0,0.5466101694915254,1.0,132
+Sociologia.java,"insert line 163: `int x, y;` on try 0",0.5358649789029536,1.0,132
+Sociologia.java,insert line 60: `int index = 0;` on try 0,0.5347368421052632,1.0,132
+Sociologia.java,insert line 30: `int j = 0;` on try 0,0.5336134453781513,1.0,132
+Sociologia.java,insert line 58: `int max;` on try 0,0.5324947589098532,1.0,132
+Sociologia.java,insert line 101: `String[] messages;` on try 0,0.4811715481171548,1.0,132
+Sociologia.java,insert line 148: `double w;` on try 1,0.44676409185803756,1.0,132
+Sociologia.java,insert line 47: `int count = 0;` on try 1,0.4166666666666667,1.0,132
+Sociologia.java,insert line 94: `int index = 0;` on try 0,0.4158004158004158,1.0,132
+Sociologia.java,insert line 166: `boolean debug = false;` on try 1,0.37344398340248963,1.0,132
+Sociologia.java,insert line 45: `boolean done = false;` on try 0,0.32712215320910976,1.0,132
+Sociologia.java,"insert line 42: `int x, y;` on try 0",0.32577319587628867,1.0,132
+Sociologia.java,insert line 21: `int count = 0;` on try 0,0.3004115226337449,1.0,132
+Sociologia.java,insert line 127: `double weight;` on try 0,0.28336755646817247,1.0,132
+Sociologia.java,"insert line 152: `int x, y;` on try 0",0.2822085889570552,1.0,132
+Sociologia.java,insert line 15: `boolean done = false;` on try 0,0.24489795918367346,1.0,132
+Sociologia.java,insert line 10: `String[] messages;` on try 0,0.22810590631364563,1.0,132
+Sociologia.java,insert line 101: `String[] messages;` on try 0,0.22764227642276422,1.0,132
+Sociologia.java,insert line 75: `double w;` on try 0,0.22718052738336714,1.0,132
+Sociologia.java,insert line 44: `double w;` on try 0,0.22672064777327935,1.0,132
+Sociologia.java,insert line 109: `int index = 0;` on try 0,0.22626262626262628,1.0,132
+Sociologia.java,insert line 120: `int j = 0;` on try 0,0.22580645161290322,1.0,132
+Sociologia.java,insert line 114: `int max;` on try 1,0.22535211267605634,1.0,132
+Sociologia.java,insert line 169: `int max;` on try 1,0.20883534136546184,1.0,132
+Sociologia.java,insert line 12: `int count = 0;` on try 0,0.20841683366733466,1.0,132
+Sociologia.java,insert line 106: `int index = 0;` on try 0,0.208,1.0,132
+Sociologia.java,insert line 58: `int count = 0;` on try 1,0.20758483033932135,1.0,132
+Sociologia.java,insert line 171: `int indexOfField;` on try 2,0.17131474103585656,1.0,132
+Sociologia.java,"insert line 82: `int x, y;` on try 0",0.17063492063492064,1.0,132
+Sociologia.java,insert line 77: `int intInput;` on try 0,0.1702970297029703,1.0,132
+Sociologia.java,"insert line 16: `int x, y;` on try 0",0.16962524654832348,1.0,132
+Sociologia.java,insert line 117: `boolean debug = false;` on try 0,0.16929133858267717,1.0,132
+Sociologia.java,"insert line 140: `String output = """";` on try 0",0.16895874263261296,1.0,132
+Sociologia.java,insert line 142: `int choosen = -1;` on try 2,0.16862745098039217,1.0,132
+Sociologia.java,insert line 9: `int j = 0;` on try 1,0.16046966731898238,1.0,132
+Sociologia.java,insert line 28: `int min;` on try 0,0.12109375,1.0,132
+Sociologia.java,insert line 32: `int j = 0;` on try 0,0.12085769980506822,1.0,132
+Sociologia.java,insert line 30: `int max;` on try 1,0.12062256809338522,1.0,132
+Sociologia.java,insert line 198: `boolean done = false;` on try 1,0.1203883495145631,1.0,132
+Sociologia.java,"insert line 32: `int x, y;` on try 0",0.11992263056092843,1.0,132
+Sociologia.java,insert line 165: `int max;` on try 0,0.11969111969111969,1.0,132
+Sociologia.java,insert line 188: `boolean debug = false;` on try 1,0.11946050096339114,1.0,132
+Sociologia.java,"insert line 69: `String output = """";` on try 0",0.11923076923076924,1.0,132
+Sociologia.java,insert line 103: `int count = 0;` on try 1,0.08061420345489444,1.0,132
+Sociologia.java,insert line 76: `double w;` on try 1,0.08045977011494253,1.0,132
+Sociologia.java,insert line 44: `boolean debug = false;` on try 1,0.08030592734225621,1.0,132
+Sociologia.java,insert line 204: `int j = 0;` on try 1,0.08015267175572519,1.0,132
+Sociologia.java,insert line 203: `boolean done = false;` on try 2,0.08,1.0,132
+Sociologia.java,"insert line 63: `String output = """";` on try 0",0.07984790874524715,1.0,132
+Sociologia.java,insert line 163: `int indexOfField;` on try 0,0.07969639468690702,1.0,132
+Sociologia.java,insert line 73: `boolean done = false;` on try 1,0.07954545454545454,1.0,132
+Sociologia.java,insert line 169: `boolean debug = false;` on try 1,0.07939508506616257,1.0,132
+Sociologia.java,insert line 22: `boolean done = false;` on try 1,0.07924528301886792,1.0,132
+Sociologia.java,insert line 115: `double w;` on try 0,0.07909604519774012,1.0,132
+Sociologia.java,insert line 71: `boolean debug = false;` on try 5,0.07894736842105263,1.0,132
+Sociologia.java,insert line 160: `int v;` on try 3,0.07879924953095685,1.0,132
+Sociologia.java,insert line 57: `int min;` on try 3,0.07865168539325842,1.0,132
+Sociologia.java,insert line 84: `int from;` on try 5,0.07850467289719626,1.0,132

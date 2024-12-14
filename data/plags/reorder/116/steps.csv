@@ -1,0 +1,78 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 8:`int nCases = 0;`,0.9338235294117647,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 9:`int nNumAlumni = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 23:`arGroups = new int[nNumAlumni][nNumAlumni];` and 24:`arTransp = new int[nNumAlumni][nNumAlumni];`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 31:`arGroups[nIdAl - 1][nIdAl2 - 1] = 1;` and 32:`arTransp[nIdAl2 - 1][nIdAl - 1] = 1;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 11:`int nIdAl2 = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 13:`int nNumGroup = 0;` and 14:`int nCountElem = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 12:`int nNumFriends = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 13:`int nNumGroup = 0;` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 12:`int nNumFriends = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 13:`int nNumGroup = 0;` and 16:`int[] arVisited = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 14:`int nCountElem = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 14:`int nCountElem = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 9:`int nNumAlumni = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 13:`int nNumGroup = 0;` and 17:`int[][] arGroups = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 16:`int[] arVisited = null;` and 17:`int[][] arGroups = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 23:`arGroups = new int[nNumAlumni][nNumAlumni];` and 25:`arVisited = new int[nNumAlumni];`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 12:`int nNumFriends = 0;` and 14:`int nCountElem = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 14:`int nCountElem = 0;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 12:`int nNumFriends = 0;`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 15:`ArrayList<Integer> alOnAGroup = null;` and 17:`int[][] arGroups = null;`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 18:`int[][] arTransp = null;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 13:`int nNumGroup = 0;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 14:`int nCountElem = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 15:`ArrayList<Integer> alOnAGroup = null;` and 16:`int[] arVisited = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 24:`arTransp = new int[nNumAlumni][nNumAlumni];` and 25:`arVisited = new int[nNumAlumni];`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 13:`int nNumGroup = 0;` and 18:`int[][] arTransp = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 12:`int nNumFriends = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 14:`int nCountElem = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 17:`int[][] arGroups = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 11:`int nIdAl2 = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 17:`int[][] arGroups = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 17:`int[][] arGroups = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 16:`int[] arVisited = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 17:`int[][] arGroups = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 11:`int nIdAl2 = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 12:`int nNumFriends = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 16:`int[] arVisited = null;`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 18:`int[][] arTransp = null;`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 10:`int nIdAl = 0;` and 13:`int nNumGroup = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 16:`int[] arVisited = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 17:`int[][] arGroups = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 11:`int nIdAl2 = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 18:`int[][] arTransp = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 12:`int nNumFriends = 0;` and 17:`int[][] arGroups = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 14:`int nCountElem = 0;` and 17:`int[][] arGroups = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 16:`int[] arVisited = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 16:`int[] arVisited = null;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 12:`int nNumFriends = 0;` and 16:`int[] arVisited = null;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 14:`int nCountElem = 0;` and 16:`int[] arVisited = null;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 18:`int[][] arTransp = null;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.9191176470588235,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 18:`int[][] arTransp = null;`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 13:`int nNumGroup = 0;`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 12:`int nNumFriends = 0;` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 13:`int nNumGroup = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 13:`int nNumGroup = 0;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 14:`int nCountElem = 0;` and 15:`ArrayList<Integer> alOnAGroup = null;`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 12:`int nNumFriends = 0;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.8455882352941176,1.0,85
+Sociologia.java,swap lines 14:`int nCountElem = 0;` and 19:`alOnAGroup = new ArrayList<Integer>();`,0.9117647058823529,1.0,85
+Sociologia.java,swap lines 7:`Scanner myscan = new Scanner(System.in);` and 10:`int nIdAl = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 18:`int[][] arTransp = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 11:`int nIdAl2 = 0;` and 13:`int nNumGroup = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 8:`int nCases = 0;` and 10:`int nIdAl = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 9:`int nNumAlumni = 0;` and 10:`int nIdAl = 0;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 12:`int nNumFriends = 0;` and 18:`int[][] arTransp = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 14:`int nCountElem = 0;` and 18:`int[][] arTransp = null;`,0.9264705882352942,1.0,85
+Sociologia.java,swap lines 12:`int nNumFriends = 0;` and 13:`int nNumGroup = 0;`,0.9264705882352942,1.0,85

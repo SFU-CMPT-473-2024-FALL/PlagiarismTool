@@ -1,0 +1,28 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,132
+Sociologia.java,swap lines 96:`LinkedList<Integer> snd = new LinkedList<Integer>();` and 97:`Graph sociologia = new Graph();`,1.0,1.0,132
+Sociologia.java,swap lines 114:`int count = 0;` and 115:`int nGroups = 0;`,1.0,1.0,132
+Sociologia.java,"swap lines 6:`LinkedList<Integer>[] adj = null;` and 7:`int[] color, parent, startTime, finishTime;`",1.0,1.0,132
+Sociologia.java,swap lines 6:`LinkedList<Integer>[] adj = null;` and 8:`int time;`,1.0,1.0,132
+Sociologia.java,swap lines 54:`color[source] = 2;` and 55:`time += 1;`,1.0,1.0,132
+Sociologia.java,swap lines 13:`startTime = new int[DIM];` and 14:`finishTime = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 114:`int count = 0;` and 116:`int nElemOut = 0;`,1.0,1.0,132
+Sociologia.java,swap lines 115:`int nGroups = 0;` and 116:`int nElemOut = 0;`,1.0,1.0,132
+Sociologia.java,swap lines 54:`color[source] = 2;` and 56:`finishTime[source] = time;`,1.0,1.0,132
+Sociologia.java,"swap lines 7:`int[] color, parent, startTime, finishTime;` and 8:`int time;`",1.0,1.0,132
+Sociologia.java,swap lines 43:`color[source] = 1;` and 44:`time += 1;`,1.0,1.0,132
+Sociologia.java,swap lines 43:`color[source] = 1;` and 45:`startTime[source] = time;`,1.0,1.0,132
+Sociologia.java,swap lines 12:`parent = new int[DIM];` and 14:`finishTime = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 10:`adj = new LinkedList[DIM];` and 11:`color = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 10:`adj = new LinkedList[DIM];` and 14:`finishTime = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 12:`parent = new int[DIM];` and 13:`startTime = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 10:`adj = new LinkedList[DIM];` and 13:`startTime = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 95:`LinkedList<Integer> fst = new LinkedList<Integer>();` and 97:`Graph sociologia = new Graph();`,1.0,1.0,132
+Sociologia.java,swap lines 10:`adj = new LinkedList[DIM];` and 12:`parent = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 95:`LinkedList<Integer> fst = new LinkedList<Integer>();` and 96:`LinkedList<Integer> snd = new LinkedList<Integer>();`,1.0,1.0,132
+Sociologia.java,swap lines 11:`color = new int[DIM];` and 14:`finishTime = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 11:`color = new int[DIM];` and 13:`startTime = new int[DIM];`,1.0,1.0,132
+Sociologia.java,swap lines 5:`public final Integer DIM = 1000;` and 8:`int time;`,1.0,1.0,132
+Sociologia.java,swap lines 11:`color = new int[DIM];` and 12:`parent = new int[DIM];`,1.0,1.0,132
+Sociologia.java,"swap lines 5:`public final Integer DIM = 1000;` and 7:`int[] color, parent, startTime, finishTime;`",1.0,1.0,132
+Sociologia.java,swap lines 5:`public final Integer DIM = 1000;` and 6:`LinkedList<Integer>[] adj = null;`,1.0,1.0,132

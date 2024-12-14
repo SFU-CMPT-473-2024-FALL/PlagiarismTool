@@ -1,0 +1,49 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,80
+socio.java,insert line 73: `int min;` on try 0,0.9363295880149812,1.0,80
+socio.java,insert line 40: `boolean done = false;` on try 1,0.9328358208955224,1.0,80
+socio.java,insert line 63: `int index = 0;` on try 0,0.929368029739777,1.0,80
+socio.java,insert line 23: `String[] messages;` on try 0,0.9259259259259259,1.0,80
+socio.java,insert line 28: `int intInput;` on try 0,0.922509225092251,1.0,80
+socio.java,insert line 8: `int count = 0;` on try 0,0.8676470588235294,1.0,80
+socio.java,insert line 63: `int count = 0;` on try 0,0.8351648351648352,1.0,80
+socio.java,insert line 10: `int j = 0;` on try 0,0.8175182481751825,1.0,80
+socio.java,insert line 39: `int min;` on try 0,0.7781818181818182,1.0,80
+socio.java,"insert line 61: `int x, y;` on try 0",0.7292418772563177,1.0,80
+socio.java,insert line 14: `int v;` on try 1,0.7050359712230215,1.0,80
+socio.java,insert line 90: `int count = 0;` on try 0,0.7025089605734767,1.0,80
+socio.java,insert line 61: `boolean debug = false;` on try 0,0.6928571428571428,1.0,80
+socio.java,insert line 75: `int max;` on try 0,0.6832740213523132,1.0,80
+socio.java,insert line 56: `String[] messages;` on try 0,0.6808510638297872,1.0,80
+socio.java,insert line 88: `boolean debug = false;` on try 0,0.6784452296819788,1.0,80
+socio.java,insert line 61: `int min;` on try 0,0.6690140845070423,1.0,80
+socio.java,insert line 73: `int min;` on try 0,0.6666666666666666,1.0,80
+socio.java,insert line 13: `int index = 0;` on try 1,0.6643356643356644,1.0,80
+socio.java,"insert line 38: `int x, y;` on try 0",0.6041666666666666,1.0,80
+socio.java,insert line 51: `double w;` on try 0,0.5674740484429066,1.0,80
+socio.java,insert line 45: `int count = 0;` on try 0,0.5655172413793104,1.0,80
+socio.java,"insert line 86: `String output = """";` on try 0",0.5292096219931272,1.0,80
+socio.java,insert line 23: `int min;` on try 0,0.5273972602739726,1.0,80
+socio.java,insert line 35: `double w;` on try 0,0.5187713310580204,1.0,80
+socio.java,"insert line 73: `int x, y;` on try 2",0.5152542372881356,1.0,80
+socio.java,insert line 103: `boolean debug = false;` on try 2,0.5135135135135135,1.0,80
+socio.java,insert line 65: `int max;` on try 0,0.4511784511784512,1.0,80
+socio.java,insert line 103: `int choosen = -1;` on try 1,0.44966442953020136,1.0,80
+socio.java,insert line 102: `int count = 0;` on try 1,0.44816053511705684,1.0,80
+socio.java,insert line 46: `double dist;` on try 0,0.44666666666666666,1.0,80
+socio.java,insert line 86: `int index = 0;` on try 1,0.44518272425249167,1.0,80
+socio.java,insert line 81: `int index = 0;` on try 0,0.44370860927152317,1.0,80
+socio.java,"insert line 65: `String output = """";` on try 0",0.44224422442244227,1.0,80
+socio.java,insert line 39: `String[] messages;` on try 0,0.3815789473684211,1.0,80
+socio.java,insert line 93: `String[] messages;` on try 1,0.380327868852459,1.0,80
+socio.java,insert line 98: `int count = 0;` on try 0,0.3202614379084967,1.0,80
+socio.java,insert line 20: `double x;` on try 0,0.2931596091205212,1.0,80
+socio.java,insert line 61: `double weight;` on try 1,0.2727272727272727,1.0,80
+socio.java,insert line 60: `double cost;` on try 4,0.27184466019417475,1.0,80
+socio.java,"insert line 82: `int x, y;` on try 0",0.27009646302250806,1.0,80
+socio.java,insert line 33: `int max;` on try 0,0.2564102564102564,1.0,80
+socio.java,insert line 12: `int max;` on try 0,0.25559105431309903,1.0,80
+socio.java,insert line 29: `int min;` on try 1,0.19745222929936307,1.0,80
+socio.java,insert line 76: `int index = 0;` on try 2,0.19682539682539682,1.0,80
+socio.java,insert line 69: `int indexOfField;` on try 6,0.12025316455696203,1.0,80
+socio.java,insert line 117: `int intInput;` on try 2,0.11987381703470032,1.0,80

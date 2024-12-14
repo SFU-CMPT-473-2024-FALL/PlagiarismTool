@@ -1,0 +1,34 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,269
+ProblemA.java,swap lines 46:`NumberOfScenarios--;` and 47:`pcase++;`,1.0,1.0,269
+ProblemA.java,swap lines 45:`linenumber++;` and 47:`pcase++;`,1.0,1.0,269
+ProblemA.java,"swap lines 89:`int m, n, ii, ij, temp, temp1, indexi, indexj, itemp;` and 90:`int[] B = { 0 };`",0.9926470588235294,1.0,269
+ProblemA.java,"swap lines 10:`int ch;` and 11:`String r = """";`",0.9926470588235294,1.0,269
+ProblemA.java,swap lines 10:`int ch;` and 12:`boolean done = false;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 111:`temp = m;` and 112:`ij = indexj;`,0.9926470588235294,1.0,269
+ProblemA.java,"swap lines 11:`String r = """";` and 12:`boolean done = false;`",0.9926470588235294,1.0,269
+ProblemA.java,swap lines 133:`temp = m;` and 134:`ii = indexi;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 6:`private static int NumberOfStudents = 0;` and 7:`private static int pcase = 1;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 249:`int group = 0;` and 250:`int out = 0;`,0.9926470588235294,1.0,269
+ProblemA.java,"swap lines 6:`private static int NumberOfStudents = 0;` and 8:`public static String inputd = """";`",0.9926470588235294,1.0,269
+ProblemA.java,"swap lines 7:`private static int pcase = 1;` and 8:`public static String inputd = """";`",0.9926470588235294,1.0,269
+ProblemA.java,swap lines 111:`temp = m;` and 113:`temp1 = 0;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 175:`ij = 0;` and 176:`temp1 = -1;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 133:`temp = m;` and 135:`temp1 = 0;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 194:`ij = 0;` and 195:`temp1 = -1;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 45:`linenumber++;` and 46:`NumberOfScenarios--;`,0.9926470588235294,1.0,269
+ProblemA.java,"swap lines 5:`private static int NumberOfScenarios = 0;` and 8:`public static String inputd = """";`",0.9926470588235294,1.0,269
+ProblemA.java,swap lines 112:`ij = indexj;` and 113:`temp1 = 0;`,0.9926470588235294,1.0,269
+ProblemA.java,"swap lines 66:`int i, j;` and 67:`int n = nData.length;`",0.9926470588235294,1.0,269
+ProblemA.java,swap lines 134:`ii = indexi;` and 135:`temp1 = 0;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 119:`array[n] = B;` and 120:`temp1 = 1;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 88:`int empty = array[0].length;` and 90:`int[] B = { 0 };`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 252:`t1 = 0;` and 253:`t2 = 0;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 141:`array[n] = B;` and 142:`temp1 = 1;`,0.9926470588235294,1.0,269
+ProblemA.java,swap lines 5:`private static int NumberOfScenarios = 0;` and 7:`private static int pcase = 1;`,0.9926470588235294,1.0,269
+ProblemA.java,"swap lines 66:`int i, j;` and 68:`int[][] groupsArray = new int[n][0];`",0.9852941176470589,1.0,269
+ProblemA.java,"swap lines 88:`int empty = array[0].length;` and 89:`int m, n, ii, ij, temp, temp1, indexi, indexj, itemp;`",0.9852941176470589,1.0,269
+ProblemA.java,swap lines 5:`private static int NumberOfScenarios = 0;` and 6:`private static int NumberOfStudents = 0;`,0.9852941176470589,1.0,269
+ProblemA.java,"swap lines 236:`int i, j, k;` and 237:`int n = nData.length;`",0.9852941176470589,1.0,269
+ProblemA.java,"swap lines 248:`int i, j, t1, t2;` and 250:`int out = 0;`",0.9852941176470589,1.0,269
+ProblemA.java,"swap lines 248:`int i, j, t1, t2;` and 249:`int group = 0;`",0.9852941176470589,1.0,269

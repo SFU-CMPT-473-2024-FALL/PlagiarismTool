@@ -1,0 +1,17 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,102
+Sociologia.java,swap lines 24:`vertex = new Vertex[tamanho];` and 25:`visitado = new int[tamanho];`,1.0,1.0,102
+Sociologia.java,swap lines 86:`int grupos = 0;` and 87:`int solos = 0;`,1.0,1.0,102
+Sociologia.java,swap lines 4:`int peso;` and 5:`int aponta;`,1.0,1.0,102
+Sociologia.java,swap lines 18:`int sizeV;` and 19:`int sizeA;`,1.0,1.0,102
+Sociologia.java,swap lines 7:`peso = p;` and 8:`aponta = a;`,1.0,1.0,102
+Sociologia.java,swap lines 23:`sizeV = tamanho;` and 25:`visitado = new int[tamanho];`,0.9871794871794872,1.0,102
+Sociologia.java,swap lines 66:`Scanner ler = new Scanner(System.in);` and 67:`StringBuilder output = new StringBuilder();`,0.9871794871794872,1.0,102
+Sociologia.java,swap lines 23:`sizeV = tamanho;` and 24:`vertex = new Vertex[tamanho];`,0.9743589743589743,1.0,102
+Sociologia.java,swap lines 27:`vertex[i] = new Vertex();` and 28:`visitado[i] = 0;`,0.9358974358974359,1.0,102
+Sociologia.java,swap lines 18:`int sizeV;` and 20:`Vertex[] vertex;`,0.9358974358974359,1.0,102
+Sociologia.java,swap lines 18:`int sizeV;` and 21:`int[] visitado;`,0.9358974358974359,1.0,102
+Sociologia.java,swap lines 71:`Grafo amigos = new Grafo(npessoas);` and 72:`Grafo amigos1 = new Grafo(npessoas);`,0.9358974358974359,1.0,102
+Sociologia.java,swap lines 20:`Vertex[] vertex;` and 21:`int[] visitado;`,0.9358974358974359,1.0,102
+Sociologia.java,swap lines 19:`int sizeA;` and 21:`int[] visitado;`,0.9358974358974359,1.0,102
+Sociologia.java,swap lines 19:`int sizeA;` and 20:`Vertex[] vertex;`,0.9358974358974359,1.0,102

@@ -1,0 +1,31 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,95
+pa.java,swap lines 9:`int count;` and 10:`boolean[] visited;`,1.0,1.0,95
+pa.java,"swap lines 12:`LinkedList<Integer> Nodes = new LinkedList<Integer>();` and 13:`HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();`",1.0,1.0,95
+pa.java,swap lines 14:`ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();` and 15:`ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();`,1.0,1.0,95
+pa.java,swap lines 57:`count++;` and 58:`visited[u] = true;`,1.0,1.0,95
+pa.java,"swap lines 11:`Deque<Integer> order = new LinkedList<Integer>();` and 13:`HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();`",1.0,1.0,95
+pa.java,swap lines 12:`LinkedList<Integer> Nodes = new LinkedList<Integer>();` and 15:`ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();`,1.0,1.0,95
+pa.java,swap lines 12:`LinkedList<Integer> Nodes = new LinkedList<Integer>();` and 14:`ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();`,1.0,1.0,95
+pa.java,swap lines 8:`int N;` and 10:`boolean[] visited;`,1.0,1.0,95
+pa.java,swap lines 8:`int N;` and 9:`int count;`,1.0,1.0,95
+pa.java,swap lines 11:`Deque<Integer> order = new LinkedList<Integer>();` and 15:`ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();`,1.0,1.0,95
+pa.java,"swap lines 8:`int N;` and 13:`HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();`",0.9864864864864865,1.0,95
+pa.java,swap lines 8:`int N;` and 15:`ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();`,0.972972972972973,1.0,95
+pa.java,swap lines 11:`Deque<Integer> order = new LinkedList<Integer>();` and 14:`ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();`,0.972972972972973,1.0,95
+pa.java,"swap lines 13:`HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();` and 15:`ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();`",0.972972972972973,1.0,95
+pa.java,swap lines 11:`Deque<Integer> order = new LinkedList<Integer>();` and 12:`LinkedList<Integer> Nodes = new LinkedList<Integer>();`,0.972972972972973,1.0,95
+pa.java,swap lines 8:`int N;` and 14:`ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();`,0.9594594594594594,1.0,95
+pa.java,"swap lines 13:`HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();` and 14:`ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();`",0.9594594594594594,1.0,95
+pa.java,swap lines 8:`int N;` and 12:`LinkedList<Integer> Nodes = new LinkedList<Integer>();`,0.9459459459459459,1.0,95
+pa.java,swap lines 8:`int N;` and 11:`Deque<Integer> order = new LinkedList<Integer>();`,0.9459459459459459,1.0,95
+pa.java,swap lines 9:`int count;` and 15:`ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();`,0.9932432432432432,1.0,95
+pa.java,swap lines 9:`int count;` and 14:`ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();`,0.9256756756756757,1.0,95
+pa.java,"swap lines 9:`int count;` and 13:`HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();`",0.9256756756756757,1.0,95
+pa.java,swap lines 10:`boolean[] visited;` and 15:`ArrayList<LinkedList<Integer>> tadj = new ArrayList<LinkedList<Integer>>();`,0.8648648648648649,1.0,95
+pa.java,swap lines 9:`int count;` and 12:`LinkedList<Integer> Nodes = new LinkedList<Integer>();`,0.8648648648648649,1.0,95
+pa.java,swap lines 9:`int count;` and 11:`Deque<Integer> order = new LinkedList<Integer>();`,0.9324324324324325,1.0,95
+pa.java,swap lines 10:`boolean[] visited;` and 14:`ArrayList<LinkedList<Integer>> adj = new ArrayList<LinkedList<Integer>>();`,0.8648648648648649,1.0,95
+pa.java,"swap lines 10:`boolean[] visited;` and 13:`HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();`",0.8648648648648649,1.0,95
+pa.java,swap lines 10:`boolean[] visited;` and 12:`LinkedList<Integer> Nodes = new LinkedList<Integer>();`,0.9256756756756757,1.0,95
+pa.java,swap lines 10:`boolean[] visited;` and 11:`Deque<Integer> order = new LinkedList<Integer>();`,0.9324324324324325,1.0,95

@@ -1,0 +1,80 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,273
+sociologia.java,swap lines 161:`Node aux;` and 162:`int flag = 0;`,1.0,1.0,273
+sociologia.java,swap lines 38:`c = ca;` and 39:`prox = null;`,1.0,1.0,273
+sociologia.java,swap lines 92:`first = first.prox;` and 93:`length--;`,1.0,1.0,273
+sociologia.java,swap lines 42:`proxVert = v;` and 43:`c = ca;`,1.0,1.0,273
+sociologia.java,swap lines 157:`first = null;` and 158:`length = 0;`,1.0,1.0,273
+sociologia.java,"swap lines 34:`int proxVert, c;` and 35:`Arco prox;`",1.0,1.0,273
+sociologia.java,swap lines 197:`Fila stack = new Fila();` and 198:`Set s = new Set(n + 1);`,1.0,1.0,273
+sociologia.java,swap lines 42:`proxVert = v;` and 44:`prox = a;`,1.0,1.0,273
+sociologia.java,swap lines 100:`val = v;` and 101:`prox = p;`,1.0,1.0,273
+sociologia.java,swap lines 109:`int i;` and 110:`size = x + 1;`,0.9947643979057592,1.0,273
+sociologia.java,swap lines 85:`first = aux;` and 86:`length++;`,0.9947643979057592,1.0,273
+sociologia.java,"swap lines 81:`first = new Node(v, null);` and 82:`length++;`",0.9895287958115183,1.0,273
+sociologia.java,swap lines 196:`Arco aux;` and 198:`Set s = new Set(n + 1);`,0.9842931937172775,1.0,273
+sociologia.java,swap lines 184:`Set s;` and 185:`Node prox;`,0.9842931937172775,1.0,273
+sociologia.java,swap lines 121:`s[n] = 0;` and 122:`length--;`,0.9842931937172775,1.0,273
+sociologia.java,swap lines 109:`int i;` and 111:`length = 0;`,0.981675392670157,1.0,273
+sociologia.java,swap lines 59:`Node first;` and 60:`int length;`,0.981675392670157,1.0,273
+sociologia.java,swap lines 62:`first = null;` and 63:`length = 0;`,0.981675392670157,1.0,273
+sociologia.java,swap lines 226:`Fila listaSets;` and 227:`Lista sets;`,0.981675392670157,1.0,273
+sociologia.java,"swap lines 223:`Grafo g, trans;` and 224:`Set s1, s2, s;`",0.981675392670157,1.0,273
+sociologia.java,swap lines 187:`s = n;` and 188:`prox = p;`,0.981675392670157,1.0,273
+sociologia.java,swap lines 8:`narcos = 0;` and 9:`verts = new Vertice[n];`,0.9764397905759162,1.0,273
+sociologia.java,swap lines 12:`verts[n] = new Vertice(n);` and 13:`nverts++;`,0.9607329842931938,1.0,273
+sociologia.java,"swap lines 223:`Grafo g, trans;` and 225:`Scanner kb = new Scanner(System.in);`",0.9528795811518325,1.0,273
+sociologia.java,swap lines 51:`label = v;` and 52:`adjs = null;`,0.9528795811518325,1.0,273
+sociologia.java,swap lines 37:`proxVert = v;` and 39:`prox = null;`,0.9528795811518325,1.0,273
+sociologia.java,"swap lines 222:`int[] grupo;` and 224:`Set s1, s2, s;`",0.9528795811518325,1.0,273
+sociologia.java,swap lines 7:`nverts = 0;` and 9:`verts = new Vertice[n];`,0.9293193717277487,1.0,273
+sociologia.java,swap lines 233:`aux = npessoas;` and 234:`g = new Grafo(npessoas + 1);`,0.9240837696335078,1.0,273
+sociologia.java,swap lines 110:`size = x + 1;` and 111:`length = 0;`,0.9240837696335078,1.0,273
+sociologia.java,swap lines 97:`int val;` and 98:`Node prox;`,0.9240837696335078,1.0,273
+sociologia.java,swap lines 109:`int i;` and 112:`s = new int[x + 1];`,0.918848167539267,1.0,273
+sociologia.java,swap lines 37:`proxVert = v;` and 38:`c = ca;`,0.918848167539267,1.0,273
+sociologia.java,swap lines 144:`Set aux = new Set(size);` and 145:`int i;`,0.9136125654450262,1.0,273
+sociologia.java,swap lines 110:`size = x + 1;` and 112:`s = new int[x + 1];`,0.9136125654450262,1.0,273
+sociologia.java,swap lines 178:`first = aux;` and 179:`length++;`,0.9136125654450262,1.0,273
+sociologia.java,"swap lines 84:`aux = new Node(v, first);` and 86:`length++;`",0.900523560209424,1.0,273
+sociologia.java,"swap lines 223:`Grafo g, trans;` and 227:`Lista sets;`",0.900523560209424,1.0,273
+sociologia.java,swap lines 154:`Node first;` and 155:`int length;`,0.900523560209424,1.0,273
+sociologia.java,swap lines 196:`Arco aux;` and 197:`Fila stack = new Fila();`,0.8952879581151832,1.0,273
+sociologia.java,"swap lines 164:`first = new Node(n, null);` and 165:`length++;`",0.8900523560209425,1.0,273
+sociologia.java,swap lines 167:`aux = first;` and 168:`flag = 0;`,0.8900523560209425,1.0,273
+sociologia.java,"swap lines 4:`int nverts, narcos;` and 5:`Vertice[] verts;`",0.8900523560209425,1.0,273
+sociologia.java,swap lines 7:`nverts = 0;` and 8:`narcos = 0;`,0.8900523560209425,1.0,273
+sociologia.java,swap lines 43:`c = ca;` and 44:`prox = a;`,0.8900523560209425,1.0,273
+sociologia.java,"swap lines 177:`aux = new Node(n, first);` and 179:`length++;`",0.8848167539267016,1.0,273
+sociologia.java,swap lines 225:`Scanner kb = new Scanner(System.in);` and 227:`Lista sets;`,0.887434554973822,1.0,273
+sociologia.java,"swap lines 194:`int[] lidos = new int[n + 1];` and 195:`int cont, i;`",0.8769633507853403,1.0,273
+sociologia.java,swap lines 233:`aux = npessoas;` and 235:`trans = new Grafo(npessoas + 1);`,0.8717277486910995,1.0,273
+sociologia.java,swap lines 117:`s[n] = 1;` and 118:`length++;`,0.8717277486910995,1.0,273
+sociologia.java,swap lines 91:`aux = first.val;` and 93:`length--;`,0.8717277486910995,1.0,273
+sociologia.java,"swap lines 223:`Grafo g, trans;` and 226:`Fila listaSets;`",0.8717277486910995,1.0,273
+sociologia.java,swap lines 222:`int[] grupo;` and 227:`Lista sets;`,0.8717277486910995,1.0,273
+sociologia.java,"swap lines 221:`int ncasos, npessoas, i, j, n, aux, c;` and 224:`Set s1, s2, s;`",0.8717277486910995,1.0,273
+sociologia.java,swap lines 111:`length = 0;` and 112:`s = new int[x + 1];`,0.8717277486910995,1.0,273
+sociologia.java,swap lines 48:`int label;` and 49:`Arco adjs;`,0.8717277486910995,1.0,273
+sociologia.java,swap lines 222:`int[] grupo;` and 225:`Scanner kb = new Scanner(System.in);`,0.8691099476439791,1.0,273
+sociologia.java,"swap lines 221:`int ncasos, npessoas, i, j, n, aux, c;` and 227:`Lista sets;`",0.8691099476439791,1.0,273
+sociologia.java,swap lines 222:`int[] grupo;` and 226:`Fila listaSets;`,0.8691099476439791,1.0,273
+sociologia.java,swap lines 230:`sets = new Lista();` and 231:`listaSets = new Fila();`,0.8691099476439791,1.0,273
+sociologia.java,"swap lines 224:`Set s1, s2, s;` and 227:`Lista sets;`",0.8691099476439791,1.0,273
+sociologia.java,"swap lines 222:`int[] grupo;` and 223:`Grafo g, trans;`",0.8691099476439791,1.0,273
+sociologia.java,swap lines 225:`Scanner kb = new Scanner(System.in);` and 226:`Fila listaSets;`,0.8717277486910995,1.0,273
+sociologia.java,swap lines 194:`int[] lidos = new int[n + 1];` and 198:`Set s = new Set(n + 1);`,0.8717277486910995,1.0,273
+sociologia.java,swap lines 90:`int aux;` and 93:`length--;`,0.856020942408377,1.0,273
+sociologia.java,swap lines 194:`int[] lidos = new int[n + 1];` and 197:`Fila stack = new Fila();`,0.856020942408377,1.0,273
+sociologia.java,"swap lines 195:`int cont, i;` and 198:`Set s = new Set(n + 1);`",0.856020942408377,1.0,273
+sociologia.java,"swap lines 221:`int ncasos, npessoas, i, j, n, aux, c;` and 226:`Fila listaSets;`",0.856020942408377,1.0,273
+sociologia.java,swap lines 234:`g = new Grafo(npessoas + 1);` and 235:`trans = new Grafo(npessoas + 1);`,0.856020942408377,1.0,273
+sociologia.java,"swap lines 221:`int ncasos, npessoas, i, j, n, aux, c;` and 225:`Scanner kb = new Scanner(System.in);`",0.837696335078534,1.0,273
+sociologia.java,"swap lines 106:`int[] s;` and 107:`int size, length;`",0.837696335078534,1.0,273
+sociologia.java,"swap lines 224:`Set s1, s2, s;` and 226:`Fila listaSets;`",0.837696335078534,1.0,273
+sociologia.java,"swap lines 221:`int ncasos, npessoas, i, j, n, aux, c;` and 223:`Grafo g, trans;`",0.837696335078534,1.0,273
+sociologia.java,"swap lines 224:`Set s1, s2, s;` and 225:`Scanner kb = new Scanner(System.in);`",0.8586387434554974,1.0,273
+sociologia.java,swap lines 194:`int[] lidos = new int[n + 1];` and 196:`Arco aux;`,0.8586387434554974,1.0,273
+sociologia.java,"swap lines 195:`int cont, i;` and 197:`Fila stack = new Fila();`",0.8586387434554974,1.0,273
+sociologia.java,"swap lines 221:`int ncasos, npessoas, i, j, n, aux, c;` and 222:`int[] grupo;`",0.8586387434554974,1.0,273
+sociologia.java,"swap lines 195:`int cont, i;` and 196:`Arco aux;`",0.8586387434554974,1.0,273

@@ -1,0 +1,3397 @@
+id,type,token,location,code
+1,TRANSLATIONUNITDECLARATION,"/data/00000019/submissions/00582445_Sociologia_c0207055/Grupos.java",,""
+2,RECORDDECLARATION,"TestGrupos",Grupos.java(4:1-67:2),"class TestGrupos
+{	
+	static void verAlunos(int cenario, int n_alunos, Vertice[] alunos)
+	{
+		int aluno, n_amigos, amigo;
+	
+		Grupos.pw.print(""\n\n\nCenario "" + cenario);  //ver cenario
+	
+		for(aluno = 0; aluno < n_alunos; aluno++)
+		{
+			n_amigos = alunos[aluno].getNAmigos();
+		
+		
+			if(n_amigos > 0)
+			{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}
+			
+			else
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");
+		}
+		
+		Grupos.pw.print(""\n\n"");
+		
+		// PrintWriter nao retorna IOExceptions mas
+        // oferece  o metodo catchError()
+        if (Grupos.pw.checkError ())
+            Grupos.pw.println (""An output error occurred!"" );
+	}
+	
+	
+	static void listaLCFC(int cenario, Lista_CFC lista)
+	{
+		CFC i;
+		
+		Grupos.pw.print(""\n\n\nCenario: "" + cenario);
+		
+		for(i=lista.getPrimeiro(); i!=null; i=i.getNext())
+			showStack(i.getComponente());
+	}
+	
+	
+	static void showStack(Stack pilha)
+	{
+		int[] stack;
+		int n_elems = pilha.elemsStack(), i;
+	
+		stack = pilha.getElements();
+		
+		Grupos.pw.print(""\n\n\t Pilha:"");
+		
+		if(n_elems>0)
+			for(i=0; i <n_elems; i++)
+				Grupos.pw.print(""\n\t\t"" + (stack[i]+1));
+		
+		else
+			Grupos.pw.println(""\n\tSem elementos"");
+			
+		Grupos.pw.print(""\n\n"");
+	}
+}"
+3,RECORDDECLARATION,"Vertice",Grupos.java(69:1-126:2),"class Vertice
+{
+	private int n_amigos;
+	int[] amigos;
+	
+	int index;
+	int lowlink;
+	
+	Vertice(int n, int[] ami)
+	{
+		n_amigos = n;	
+		amigos = ami;
+		
+		index = -1;
+		lowlink = -1;
+	}
+	
+	int getNAmigos()
+	{
+		return(n_amigos);
+	}
+	
+	int Amigo(int x)
+	{
+		return(amigos[x]);
+	}
+	
+	void setIndex(int ind)
+	{
+		index = ind;
+	}
+	
+	int getIndex()
+	{
+		return(index);
+	}
+	
+	void setLowlink(int ll)
+	{
+		lowlink = ll;
+	}
+	
+	int getLowlink()
+	{
+		return(lowlink);
+	}
+	
+	boolean isAmigo(int a)
+	{
+		int i;
+		 
+		for(i=0; i<n_amigos; i++)
+			if(amigos[i] == a)
+				return(true);
+		
+		return(false);
+	}
+}"
+4,RECORDDECLARATION,"Resultados",Grupos.java(128:1-159:2),"class Resultados
+{
+	Resultado primeiro;
+	Resultado ultimo;
+
+	Resultados()
+	{
+		primeiro = null;
+		ultimo = null;
+	}
+	
+	Resultado getPrimeiro()
+	{
+		return(primeiro);
+	}
+
+	void adicionarResultado(Resultado res)
+	{
+		if(primeiro == null)
+		{
+			primeiro = res;
+			ultimo = res;
+		}
+		
+		else
+		{
+			ultimo.setProximo(res);
+			
+			ultimo=res;
+		}
+	}
+}"
+5,RECORDDECLARATION,"Resultado",Grupos.java(161:1-223:2),"class Resultado
+{
+	int caso; //variavel desnecessario - incluida para testes
+	
+	int gruposDe4;
+	int outrosElementos;
+	
+	Resultado next;
+	
+	Resultado(int cas, int grupos, int outros)
+	{
+		caso = cas;
+		gruposDe4 = grupos;
+		outrosElementos = outros;
+		
+		next = null;
+	}
+	
+	Resultado(int cas)
+	{
+		caso = cas;
+
+		gruposDe4 = 0;
+		outrosElementos = 0;
+		
+		next = null;
+	}
+	
+	int getCaso()
+	{
+		return(caso);
+	}
+	
+	void addGrupoDe4()
+	{
+		gruposDe4++;
+	}
+	
+	int getGruposDe4()
+	{
+		return(gruposDe4);
+	}
+	
+	void addOutrosElementos()
+	{
+		outrosElementos++;
+	}
+	
+	int getOutrosElementos()
+	{
+		return(outrosElementos);
+	}
+	
+	void setProximo(Resultado res)
+	{
+		next = res;
+	}
+	
+	Resultado proximo()
+	{
+		return(next);
+	}
+}"
+6,RECORDDECLARATION,"Lista_CFC",Grupos.java(225:1-252:2),"class Lista_CFC
+{
+	CFC primeiro, ultimo;
+
+	Lista_CFC()
+	{
+		primeiro = null;
+		ultimo = null;
+	}
+	
+	CFC getPrimeiro()
+	{
+		return(primeiro);
+	}
+	
+	void add2Lista(Stack pilha)
+	{
+		CFC compfc = new CFC(pilha);
+		
+		if(primeiro == null)
+			primeiro = compfc;
+			
+		else
+			ultimo.setNext(compfc);
+			
+		ultimo = compfc;
+	}
+}"
+7,RECORDDECLARATION,"CFC",Grupos.java(254:1-279:2),"class CFC //Componente Fortemente Conexa
+{
+	Stack componente;
+	CFC next;
+	
+	CFC(Stack comp)
+	{
+		componente = comp;
+		next = null;
+	}
+	
+	Stack getComponente()
+	{
+		return(componente);
+	}
+	
+	void setNext(CFC no)
+	{
+		next = no;
+	}
+	
+	CFC getNext()
+	{
+		return(next);
+	}
+}"
+8,RECORDDECLARATION,"Stack",Grupos.java(281:1-384:2),"class Stack
+{
+	int elems;
+	Node first;
+
+	Stack()
+	{
+		elems = 0;
+		first = null;
+	}
+	
+	int elemsStack()
+	{
+		return(elems);
+	}
+	
+	void push(int x)
+	{
+		Node no = new Node(x);
+	
+		no.setNext(first);
+		first = no;
+		
+		elems++;
+	}
+	
+	int pop()
+	{
+		int x = first.getValor();
+		
+		first = first.getNext();
+		
+		elems--;
+		
+		return(x);
+	}
+	
+	boolean isEmpty()
+	{
+		return(first==null);
+	}
+	
+/*	void emptyStack()
+	{
+		elems = 0;
+		first = null;
+	}
+*/	
+	boolean elemInStack(int x)
+	{
+		Node i;
+		
+		for(i=first; i!=null; i=i.getNext())
+			if(i.getValor()==x)
+				return(true);
+				
+		return(false);
+	}
+	
+	int[] getElements()
+	{
+		int[] elements = new int[elems];
+		int j;
+		Node i;
+		
+		for(i=first, j=elems-1; i!=null; i=i.getNext(), j--)
+		{
+			elements[j] = i.getValor();
+		}
+		
+		return(elements);
+	}
+	
+	Stack getTill(int v)
+	{
+		Node nova;
+		int i;
+		Stack s = new Stack();
+		
+		do
+		{
+			i = this.pop();
+		
+			s.push(i);
+		}
+		while(i!=v);
+		
+		return(s);
+	}
+	
+	int verPosicao(int ind)
+	{
+		Node j;
+		int i;
+	
+		for(i=0, j = first; i<ind && j!= null; i++, j=j.getNext());
+	
+		if(j!=null)
+			return(j.getValor());
+		
+		else
+			return(-1);
+	}
+}"
+9,RECORDDECLARATION,"Node",Grupos.java(386:1-412:2),"class Node
+{
+	int valor;
+	Node next;
+	
+	Node(int x)
+	{
+		valor = x;
+		
+		next = null;
+	}
+	
+	int getValor()
+	{
+		return(valor);
+	}
+	
+	void setNext(Node no)
+	{
+		next = no;
+	}
+	
+	Node getNext()
+	{
+		return(next);
+	}
+}"
+10,RECORDDECLARATION,"Grupos",Grupos.java(414:1-647:2),"public class Grupos
+{
+	public static PrintWriter pw = new PrintWriter(System.out, true);
+    private static Scanner sca = new Scanner(System.in);
+
+	
+	public static void main(String args[])
+	{
+		input();
+	}
+	
+	
+	private static void input()
+	{
+		int n_cenarios, cenario; //variaveis responsaveis pela iteracao do cenario
+		int n_alunos, aluno; //variaveis responsaveis pela iteracao dos alunos
+		Vertice[] alunos; //vector de alunos do tipo Vertice
+		int id, n_amigos, amigos[], i; //variaveis relacionadas com a leitura dos campos de um aluno
+		Resultados resus = new Resultados();
+		
+		n_cenarios = sca.nextInt();
+		
+		for(cenario = 1; cenario <= n_cenarios; cenario++)
+		{
+			n_alunos = sca.nextInt();
+			
+			alunos = new Vertice[n_alunos];
+			
+			for(aluno=0; aluno < n_alunos; aluno++)
+			{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}
+			
+			TestGrupos.verAlunos(cenario, n_alunos, alunos);
+			
+			resus.adicionarResultado(contagem_de_grupos(cenario, n_alunos, alunos));
+		}
+		
+		output(resus);
+	}
+	
+	
+	private static Resultado contagem_de_grupos(int cenario, int n_alunos, Vertice[] alunos)
+	{
+		int index, i, n_grupos4, outros, elementos_na_pilha;
+		boolean analisados[] = new boolean[n_alunos];
+		Stack pilha = new Stack(), p2;
+		Lista_CFC lista_comp = new Lista_CFC();
+		CFC j;
+		Resultado resu;
+		
+		for(i=0; i<n_alunos; i++)
+			analisados[i]=false;
+		
+		n_grupos4 = 0;
+		outros = 0;
+		
+		index = 0;
+			
+		while((i=primeiro_Nao_Analisado(analisados, n_alunos))!=-1)
+		{
+			lista_comp = tarjan(n_alunos, alunos, i, index, pilha, lista_comp); //******** linha alterada **********
+			
+			//TestGrupos.listaLCFC(cenario, lista_comp);
+			
+			for(j = lista_comp.getPrimeiro(); j!= null; j=j.getNext())
+			{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}
+
+		}	
+		
+		resu = new Resultado(cenario, n_grupos4, outros);
+		
+		return(resu);	
+	}
+	
+	
+	static int primeiro_Nao_Analisado(boolean[] estadoPosicoes, int n)
+	{
+		int i;
+		
+		for(i=0; i<n; i++)
+			if(estadoPosicoes[i]==false)
+				return(i);
+				
+		return(-1);
+	}
+	
+	
+	private static Lista_CFC tarjan(int n_alunos, Vertice[] alunos, int v, int index, Stack pilha, Lista_CFC lista_comp)
+	{
+		int i, n_amigos, amigo;
+		
+		//pw.println(""v = "" + v);
+		
+		alunos[v].setIndex(index);
+		alunos[v].setLowlink(index);
+		
+		index++;
+		
+		pilha.push(v);
+		
+		n_amigos = alunos[v].getNAmigos();
+		
+		for(i=0; i<n_amigos; i++)
+		{
+			amigo = alunos[v].Amigo(i);
+
+			if(alunos[amigo].getIndex()==-1)
+			{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}
+			
+			else
+				if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));
+		}
+		
+		if(alunos[v].getLowlink() == alunos[v].getIndex())
+		{
+//			if(mesma_componente(pilha, v, alunos) == false)
+//			{
+//				pw.println(""mesma_componente("" + v + "") = "" + mesma_componente(pilha, v, alunos));
+			
+				lista_comp.add2Lista(pilha.getTill(v));
+//			}
+		}
+		
+		return(lista_comp);
+	}
+	
+	
+	private static int min(int x, int y)
+	{
+		if(x <= y)
+			return(x);
+		
+		return(y);
+	}
+		
+/*	private static boolean mesma_componente(Stack pilha, int v, Vertice[] alunos)
+	{
+		Stack componente_actual = new Stack();
+		Stack componente_anterior = new Stack();
+		int i, j, pos;
+		boolean entrada, saida;
+		
+		i=-1;
+		
+		do
+		{
+			i++;
+			
+			componente_actual.push(pilha.verPosicao(i));
+		}
+		while(i!=v);
+		
+		if(i+1<pilha.elemsStack()) //se houver outra componente
+		{
+			do
+			{
+				i++;
+				
+				pos = pilha.verPosicao(i);
+			
+				componente_anterior.push(pos);
+				
+				//System.out.println(""pos= "" + pos);
+			}
+			while(alunos[pos].getLowlink() != alunos[pos].getIndex());
+		}
+		
+		if(componente_anterior.elemsStack()!=0) //se existir componente anterior
+		{
+			entrada = false;
+			saida = false;
+			
+			for(i=0; entrada!=true && i<componente_anterior.elemsStack(); i++) //encontrar uma entrada da componente actual para o anterior
+			{
+				for(j=0; entrada!=true && j<componente_actual.elemsStack(); j++)
+					if(alunos[componente_actual.verPosicao(j)].isAmigo(componente_anterior.verPosicao(i)))
+						entrada=true;	
+			}	
+			
+			for(i=0; saida!=true && i<componente_actual.elemsStack(); i++) //encontrar uma saida do componente anterior para o actual
+			{
+				for(j=0; saida!=true && j<componente_anterior.elemsStack(); j++)
+					if(alunos[componente_anterior.verPosicao(j)].isAmigo(componente_actual.verPosicao(i)))
+						saida=true;
+			}
+			
+			return(entrada && saida);
+		}
+		
+		return(false);
+	}
+*/	
+	static void output(Resultados resus)
+	{
+		Resultado i;
+		
+		for(i=resus.getPrimeiro(); i!=null; i=i.proximo())
+		{
+			pw.println(""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos());
+		}
+	}
+}"
+11,INCLUDEDECLARATION,"java.io",,""
+12,INCLUDEDECLARATION,"java.util",,""
+13,FIELDDECLARATION,"this",,""
+14,FIELDDECLARATION,"caso",Grupos.java(163:2-163:11),"caso"
+15,FIELDDECLARATION,"gruposDe4",Grupos.java(165:2-165:16),"gruposDe4"
+16,FIELDDECLARATION,"outrosElementos",Grupos.java(166:2-166:22),"outrosElementos"
+17,FIELDDECLARATION,"next",Grupos.java(168:2-168:17),"next"
+18,METHODDECLARATION,"getCaso",Grupos.java(189:2-192:3),"int getCaso()
+	{
+		return(caso);
+	}"
+19,METHODDECLARATION,"addGrupoDe4",Grupos.java(194:2-197:3),"void addGrupoDe4()
+	{
+		gruposDe4++;
+	}"
+20,METHODDECLARATION,"getGruposDe4",Grupos.java(199:2-202:3),"int getGruposDe4()
+	{
+		return(gruposDe4);
+	}"
+21,METHODDECLARATION,"addOutrosElementos",Grupos.java(204:2-207:3),"void addOutrosElementos()
+	{
+		outrosElementos++;
+	}"
+22,METHODDECLARATION,"getOutrosElementos",Grupos.java(209:2-212:3),"int getOutrosElementos()
+	{
+		return(outrosElementos);
+	}"
+23,METHODDECLARATION,"setProximo",Grupos.java(214:2-217:3),"void setProximo(Resultado res)
+	{
+		next = res;
+	}"
+24,METHODDECLARATION,"proximo",Grupos.java(219:2-222:3),"Resultado proximo()
+	{
+		return(next);
+	}"
+25,CONSTRUCTORDECLARATION,"Resultado",Grupos.java(170:2-177:3),"Resultado(int cas, int grupos, int outros)
+	{
+		caso = cas;
+		gruposDe4 = grupos;
+		outrosElementos = outros;
+		
+		next = null;
+	}"
+26,CONSTRUCTORDECLARATION,"Resultado",Grupos.java(179:2-187:3),"Resultado(int cas)
+	{
+		caso = cas;
+
+		gruposDe4 = 0;
+		outrosElementos = 0;
+		
+		next = null;
+	}"
+27,VARIABLEDECLARATION,"this",,""
+28,COMPOUNDSTATEMENT,"",Grupos.java(215:2-217:3),"{
+		next = res;
+	}"
+29,PARAMVARIABLEDECLARATION,"res",Grupos.java(214:18-214:31),"Resultado res"
+30,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(216:3-216:7),"this"
+31,RETURNSTATEMENT,"",,""
+32,BINARYOPERATOR,"=",Grupos.java(216:3-216:14),"next = res;"
+33,MEMBEREXPRESSION,"next",Grupos.java(216:3-216:7),"next"
+34,DECLAREDREFERENCEEXPRESSION,"res",Grupos.java(216:10-216:13),"res"
+35,COMPOUNDSTATEMENT,"",Grupos.java(171:2-177:3),"{
+		caso = cas;
+		gruposDe4 = grupos;
+		outrosElementos = outros;
+		
+		next = null;
+	}"
+36,PARAMVARIABLEDECLARATION,"cas",Grupos.java(170:12-170:19),"int cas"
+37,PARAMVARIABLEDECLARATION,"grupos",Grupos.java(170:21-170:31),"int grupos"
+38,PARAMVARIABLEDECLARATION,"outros",Grupos.java(170:33-170:43),"int outros"
+39,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(172:3-172:7),"this"
+40,RETURNSTATEMENT,"",,""
+41,BINARYOPERATOR,"=",Grupos.java(172:3-172:14),"caso = cas;"
+42,BINARYOPERATOR,"=",Grupos.java(173:3-173:22),"gruposDe4 = grupos;"
+43,BINARYOPERATOR,"=",Grupos.java(174:3-174:28),"outrosElementos = outros;"
+44,BINARYOPERATOR,"=",Grupos.java(176:3-176:15),"next = null;"
+45,MEMBEREXPRESSION,"caso",Grupos.java(172:3-172:7),"caso"
+46,DECLAREDREFERENCEEXPRESSION,"cas",Grupos.java(172:10-172:13),"cas"
+47,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(173:3-173:12),"this"
+48,MEMBEREXPRESSION,"gruposDe4",Grupos.java(173:3-173:12),"gruposDe4"
+49,DECLAREDREFERENCEEXPRESSION,"grupos",Grupos.java(173:15-173:21),"grupos"
+50,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(174:3-174:18),"this"
+51,MEMBEREXPRESSION,"next",Grupos.java(176:3-176:7),"next"
+52,LITERAL,"",Grupos.java(176:10-176:14),"null"
+53,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(176:3-176:7),"this"
+54,MEMBEREXPRESSION,"outrosElementos",Grupos.java(174:3-174:18),"outrosElementos"
+55,DECLAREDREFERENCEEXPRESSION,"outros",Grupos.java(174:21-174:27),"outros"
+56,VARIABLEDECLARATION,"this",,""
+57,COMPOUNDSTATEMENT,"",Grupos.java(205:2-207:3),"{
+		outrosElementos++;
+	}"
+58,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(206:3-206:18),"this"
+59,RETURNSTATEMENT,"",,""
+60,UNARYOPERATOR,"++",Grupos.java(206:3-206:21),"outrosElementos++;"
+61,MEMBEREXPRESSION,"outrosElementos",Grupos.java(206:3-206:18),"outrosElementos"
+62,VARIABLEDECLARATION,"this",,""
+63,COMPOUNDSTATEMENT,"",Grupos.java(220:2-222:3),"{
+		return(next);
+	}"
+64,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(221:10-221:14),"this"
+65,RETURNSTATEMENT,"",Grupos.java(221:3-221:16),"return(next);"
+66,MEMBEREXPRESSION,"next",Grupos.java(221:10-221:14),"next"
+67,VARIABLEDECLARATION,"this",,""
+68,COMPOUNDSTATEMENT,"",Grupos.java(210:2-212:3),"{
+		return(outrosElementos);
+	}"
+69,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(211:10-211:25),"this"
+70,RETURNSTATEMENT,"",Grupos.java(211:3-211:27),"return(outrosElementos);"
+71,MEMBEREXPRESSION,"outrosElementos",Grupos.java(211:10-211:25),"outrosElementos"
+72,VARIABLEDECLARATION,"this",,""
+73,COMPOUNDSTATEMENT,"",Grupos.java(195:2-197:3),"{
+		gruposDe4++;
+	}"
+74,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(196:3-196:12),"this"
+75,RETURNSTATEMENT,"",,""
+76,UNARYOPERATOR,"++",Grupos.java(196:3-196:15),"gruposDe4++;"
+77,MEMBEREXPRESSION,"gruposDe4",Grupos.java(196:3-196:12),"gruposDe4"
+78,VARIABLEDECLARATION,"this",,""
+79,COMPOUNDSTATEMENT,"",Grupos.java(200:2-202:3),"{
+		return(gruposDe4);
+	}"
+80,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(201:10-201:19),"this"
+81,RETURNSTATEMENT,"",Grupos.java(201:3-201:21),"return(gruposDe4);"
+82,MEMBEREXPRESSION,"gruposDe4",Grupos.java(201:10-201:19),"gruposDe4"
+83,COMPOUNDSTATEMENT,"",Grupos.java(180:2-187:3),"{
+		caso = cas;
+
+		gruposDe4 = 0;
+		outrosElementos = 0;
+		
+		next = null;
+	}"
+84,PARAMVARIABLEDECLARATION,"cas",Grupos.java(179:12-179:19),"int cas"
+85,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(181:3-181:7),"this"
+86,RETURNSTATEMENT,"",,""
+87,BINARYOPERATOR,"=",Grupos.java(181:3-181:14),"caso = cas;"
+88,BINARYOPERATOR,"=",Grupos.java(183:3-183:17),"gruposDe4 = 0;"
+89,BINARYOPERATOR,"=",Grupos.java(184:3-184:23),"outrosElementos = 0;"
+90,BINARYOPERATOR,"=",Grupos.java(186:3-186:15),"next = null;"
+91,MEMBEREXPRESSION,"gruposDe4",Grupos.java(183:3-183:12),"gruposDe4"
+92,LITERAL,"",Grupos.java(183:15-183:16),"0"
+93,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(184:3-184:18),"this"
+94,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(183:3-183:12),"this"
+95,MEMBEREXPRESSION,"caso",Grupos.java(181:3-181:7),"caso"
+96,DECLAREDREFERENCEEXPRESSION,"cas",Grupos.java(181:10-181:13),"cas"
+97,MEMBEREXPRESSION,"outrosElementos",Grupos.java(184:3-184:18),"outrosElementos"
+98,LITERAL,"",Grupos.java(184:21-184:22),"0"
+99,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(186:3-186:7),"this"
+100,MEMBEREXPRESSION,"next",Grupos.java(186:3-186:7),"next"
+101,LITERAL,"",Grupos.java(186:10-186:14),"null"
+102,VARIABLEDECLARATION,"this",,""
+103,COMPOUNDSTATEMENT,"",Grupos.java(190:2-192:3),"{
+		return(caso);
+	}"
+104,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(191:10-191:14),"this"
+105,RETURNSTATEMENT,"",Grupos.java(191:3-191:16),"return(caso);"
+106,MEMBEREXPRESSION,"caso",Grupos.java(191:10-191:14),"caso"
+107,FIELDDECLARATION,"this",,""
+108,FIELDDECLARATION,"componente",Grupos.java(256:2-256:19),"componente"
+109,FIELDDECLARATION,"next",Grupos.java(257:2-257:11),"next"
+110,METHODDECLARATION,"getComponente",Grupos.java(265:2-268:3),"Stack getComponente()
+	{
+		return(componente);
+	}"
+111,METHODDECLARATION,"setNext",Grupos.java(270:2-273:3),"void setNext(CFC no)
+	{
+		next = no;
+	}"
+112,METHODDECLARATION,"getNext",Grupos.java(275:2-278:3),"CFC getNext()
+	{
+		return(next);
+	}"
+113,CONSTRUCTORDECLARATION,"CFC",Grupos.java(259:2-263:3),"CFC(Stack comp)
+	{
+		componente = comp;
+		next = null;
+	}"
+114,VARIABLEDECLARATION,"this",,""
+115,COMPOUNDSTATEMENT,"",Grupos.java(276:2-278:3),"{
+		return(next);
+	}"
+116,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(277:10-277:14),"this"
+117,RETURNSTATEMENT,"",Grupos.java(277:3-277:16),"return(next);"
+118,MEMBEREXPRESSION,"next",Grupos.java(277:10-277:14),"next"
+119,VARIABLEDECLARATION,"this",,""
+120,COMPOUNDSTATEMENT,"",Grupos.java(271:2-273:3),"{
+		next = no;
+	}"
+121,PARAMVARIABLEDECLARATION,"no",Grupos.java(270:15-270:21),"CFC no"
+122,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(272:3-272:7),"this"
+123,RETURNSTATEMENT,"",,""
+124,BINARYOPERATOR,"=",Grupos.java(272:3-272:13),"next = no;"
+125,MEMBEREXPRESSION,"next",Grupos.java(272:3-272:7),"next"
+126,DECLAREDREFERENCEEXPRESSION,"no",Grupos.java(272:10-272:12),"no"
+127,COMPOUNDSTATEMENT,"",Grupos.java(260:2-263:3),"{
+		componente = comp;
+		next = null;
+	}"
+128,PARAMVARIABLEDECLARATION,"comp",Grupos.java(259:6-259:16),"Stack comp"
+129,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(261:3-261:13),"this"
+130,RETURNSTATEMENT,"",,""
+131,BINARYOPERATOR,"=",Grupos.java(261:3-261:21),"componente = comp;"
+132,BINARYOPERATOR,"=",Grupos.java(262:3-262:15),"next = null;"
+133,MEMBEREXPRESSION,"next",Grupos.java(262:3-262:7),"next"
+134,LITERAL,"",Grupos.java(262:10-262:14),"null"
+135,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(262:3-262:7),"this"
+136,MEMBEREXPRESSION,"componente",Grupos.java(261:3-261:13),"componente"
+137,DECLAREDREFERENCEEXPRESSION,"comp",Grupos.java(261:16-261:20),"comp"
+138,VARIABLEDECLARATION,"this",,""
+139,COMPOUNDSTATEMENT,"",Grupos.java(266:2-268:3),"{
+		return(componente);
+	}"
+140,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(267:10-267:20),"this"
+141,RETURNSTATEMENT,"",Grupos.java(267:3-267:22),"return(componente);"
+142,MEMBEREXPRESSION,"componente",Grupos.java(267:10-267:20),"componente"
+143,FIELDDECLARATION,"this",,""
+144,FIELDDECLARATION,"pw",Grupos.java(416:2-416:67),"pw = new PrintWriter(System.out, true)"
+145,FIELDDECLARATION,"sca",Grupos.java(417:5-417:57),"sca = new Scanner(System.in)"
+146,METHODDECLARATION,"main",Grupos.java(420:2-423:3),"public static void main(String args[])
+	{
+		input();
+	}"
+147,METHODDECLARATION,"input",Grupos.java(426:2-464:3),"private static void input()
+	{
+		int n_cenarios, cenario; //variaveis responsaveis pela iteracao do cenario
+		int n_alunos, aluno; //variaveis responsaveis pela iteracao dos alunos
+		Vertice[] alunos; //vector de alunos do tipo Vertice
+		int id, n_amigos, amigos[], i; //variaveis relacionadas com a leitura dos campos de um aluno
+		Resultados resus = new Resultados();
+		
+		n_cenarios = sca.nextInt();
+		
+		for(cenario = 1; cenario <= n_cenarios; cenario++)
+		{
+			n_alunos = sca.nextInt();
+			
+			alunos = new Vertice[n_alunos];
+			
+			for(aluno=0; aluno < n_alunos; aluno++)
+			{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}
+			
+			TestGrupos.verAlunos(cenario, n_alunos, alunos);
+			
+			resus.adicionarResultado(contagem_de_grupos(cenario, n_alunos, alunos));
+		}
+		
+		output(resus);
+	}"
+148,METHODDECLARATION,"contagem_de_grupos",Grupos.java(467:2-513:3),"private static Resultado contagem_de_grupos(int cenario, int n_alunos, Vertice[] alunos)
+	{
+		int index, i, n_grupos4, outros, elementos_na_pilha;
+		boolean analisados[] = new boolean[n_alunos];
+		Stack pilha = new Stack(), p2;
+		Lista_CFC lista_comp = new Lista_CFC();
+		CFC j;
+		Resultado resu;
+		
+		for(i=0; i<n_alunos; i++)
+			analisados[i]=false;
+		
+		n_grupos4 = 0;
+		outros = 0;
+		
+		index = 0;
+			
+		while((i=primeiro_Nao_Analisado(analisados, n_alunos))!=-1)
+		{
+			lista_comp = tarjan(n_alunos, alunos, i, index, pilha, lista_comp); //******** linha alterada **********
+			
+			//TestGrupos.listaLCFC(cenario, lista_comp);
+			
+			for(j = lista_comp.getPrimeiro(); j!= null; j=j.getNext())
+			{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}
+
+		}	
+		
+		resu = new Resultado(cenario, n_grupos4, outros);
+		
+		return(resu);	
+	}"
+149,METHODDECLARATION,"primeiro_Nao_Analisado",Grupos.java(516:2-525:3),"static int primeiro_Nao_Analisado(boolean[] estadoPosicoes, int n)
+	{
+		int i;
+		
+		for(i=0; i<n; i++)
+			if(estadoPosicoes[i]==false)
+				return(i);
+				
+		return(-1);
+	}"
+150,METHODDECLARATION,"tarjan",Grupos.java(528:2-570:3),"private static Lista_CFC tarjan(int n_alunos, Vertice[] alunos, int v, int index, Stack pilha, Lista_CFC lista_comp)
+	{
+		int i, n_amigos, amigo;
+		
+		//pw.println(""v = "" + v);
+		
+		alunos[v].setIndex(index);
+		alunos[v].setLowlink(index);
+		
+		index++;
+		
+		pilha.push(v);
+		
+		n_amigos = alunos[v].getNAmigos();
+		
+		for(i=0; i<n_amigos; i++)
+		{
+			amigo = alunos[v].Amigo(i);
+
+			if(alunos[amigo].getIndex()==-1)
+			{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}
+			
+			else
+				if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));
+		}
+		
+		if(alunos[v].getLowlink() == alunos[v].getIndex())
+		{
+//			if(mesma_componente(pilha, v, alunos) == false)
+//			{
+//				pw.println(""mesma_componente("" + v + "") = "" + mesma_componente(pilha, v, alunos));
+			
+				lista_comp.add2Lista(pilha.getTill(v));
+//			}
+		}
+		
+		return(lista_comp);
+	}"
+151,METHODDECLARATION,"min",Grupos.java(573:2-579:3),"private static int min(int x, int y)
+	{
+		if(x <= y)
+			return(x);
+		
+		return(y);
+	}"
+152,METHODDECLARATION,"output",Grupos.java(638:2-646:3),"static void output(Resultados resus)
+	{
+		Resultado i;
+		
+		for(i=resus.getPrimeiro(); i!=null; i=i.proximo())
+		{
+			pw.println(""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos());
+		}
+	}"
+153,CONSTRUCTORDECLARATION,"Grupos",,""
+154,NEWEXPRESSION,"",Grupos.java(417:34-417:56),"new Scanner(System.in)"
+155,CONSTRUCTEXPRESSION,"",Grupos.java(417:34-417:56),"new Scanner(System.in)"
+156,MEMBEREXPRESSION,"in",Grupos.java(417:46-417:55),"System.in"
+157,DECLAREDREFERENCEEXPRESSION,"System",Grupos.java(417:46-417:52),"System"
+158,VARIABLEDECLARATION,"this",,""
+159,COMPOUNDSTATEMENT,"",Grupos.java(574:2-579:3),"{
+		if(x <= y)
+			return(x);
+		
+		return(y);
+	}"
+160,PARAMVARIABLEDECLARATION,"x",Grupos.java(573:25-573:30),"int x"
+161,PARAMVARIABLEDECLARATION,"y",Grupos.java(573:32-573:37),"int y"
+162,DECLAREDREFERENCEEXPRESSION,"x",Grupos.java(575:6-575:7),"x"
+163,RETURNSTATEMENT,"",Grupos.java(578:3-578:13),"return(y);"
+164,IFSTATEMENT,"",Grupos.java(575:3-576:14),"if(x <= y)
+			return(x);"
+165,DECLAREDREFERENCEEXPRESSION,"y",Grupos.java(578:10-578:11),"y"
+166,BINARYOPERATOR,"<=",Grupos.java(575:6-575:12),"x <= y"
+167,RETURNSTATEMENT,"",Grupos.java(576:4-576:14),"return(x);"
+168,DECLAREDREFERENCEEXPRESSION,"x",Grupos.java(576:11-576:12),"x"
+169,DECLAREDREFERENCEEXPRESSION,"y",Grupos.java(575:11-575:12),"y"
+170,VARIABLEDECLARATION,"this",,""
+171,COMPOUNDSTATEMENT,"",Grupos.java(529:2-570:3),"{
+		int i, n_amigos, amigo;
+		
+		//pw.println(""v = "" + v);
+		
+		alunos[v].setIndex(index);
+		alunos[v].setLowlink(index);
+		
+		index++;
+		
+		pilha.push(v);
+		
+		n_amigos = alunos[v].getNAmigos();
+		
+		for(i=0; i<n_amigos; i++)
+		{
+			amigo = alunos[v].Amigo(i);
+
+			if(alunos[amigo].getIndex()==-1)
+			{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}
+			
+			else
+				if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));
+		}
+		
+		if(alunos[v].getLowlink() == alunos[v].getIndex())
+		{
+//			if(mesma_componente(pilha, v, alunos) == false)
+//			{
+//				pw.println(""mesma_componente("" + v + "") = "" + mesma_componente(pilha, v, alunos));
+			
+				lista_comp.add2Lista(pilha.getTill(v));
+//			}
+		}
+		
+		return(lista_comp);
+	}"
+172,PARAMVARIABLEDECLARATION,"n_alunos",Grupos.java(528:34-528:46),"int n_alunos"
+173,PARAMVARIABLEDECLARATION,"alunos",Grupos.java(528:48-528:64),"Vertice[] alunos"
+174,PARAMVARIABLEDECLARATION,"v",Grupos.java(528:66-528:71),"int v"
+175,PARAMVARIABLEDECLARATION,"index",Grupos.java(528:73-528:82),"int index"
+176,PARAMVARIABLEDECLARATION,"pilha",Grupos.java(528:84-528:95),"Stack pilha"
+177,PARAMVARIABLEDECLARATION,"lista_comp",Grupos.java(528:97-528:117),"Lista_CFC lista_comp"
+178,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+179,RETURNSTATEMENT,"",Grupos.java(569:3-569:22),"return(lista_comp);"
+180,DECLARATIONSTATEMENT,"",Grupos.java(530:3-530:26),"int i, n_amigos, amigo;"
+181,MEMBERCALLEXPRESSION,"setIndex",Grupos.java(534:3-534:29),"alunos[v].setIndex(index);"
+182,MEMBERCALLEXPRESSION,"setLowlink",Grupos.java(535:3-535:31),"alunos[v].setLowlink(index);"
+183,UNARYOPERATOR,"++",Grupos.java(537:3-537:11),"index++;"
+184,MEMBERCALLEXPRESSION,"push",Grupos.java(539:3-539:17),"pilha.push(v);"
+185,BINARYOPERATOR,"=",Grupos.java(541:3-541:37),"n_amigos = alunos[v].getNAmigos();"
+186,FORSTATEMENT,"",Grupos.java(543:3-557:4),"for(i=0; i<n_amigos; i++)
+		{
+			amigo = alunos[v].Amigo(i);
+
+			if(alunos[amigo].getIndex()==-1)
+			{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}
+			
+			else
+				if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));
+		}"
+187,IFSTATEMENT,"",Grupos.java(559:3-567:4),"if(alunos[v].getLowlink() == alunos[v].getIndex())
+		{
+//			if(mesma_componente(pilha, v, alunos) == false)
+//			{
+//				pw.println(""mesma_componente("" + v + "") = "" + mesma_componente(pilha, v, alunos));
+			
+				lista_comp.add2Lista(pilha.getTill(v));
+//			}
+		}"
+188,VARIABLEDECLARATION,"i",Grupos.java(530:7-530:8),"i"
+189,VARIABLEDECLARATION,"n_amigos",Grupos.java(530:10-530:18),"n_amigos"
+190,VARIABLEDECLARATION,"amigo",Grupos.java(530:20-530:25),"amigo"
+191,BINARYOPERATOR,"==",Grupos.java(559:6-559:52),"alunos[v].getLowlink() == alunos[v].getIndex()"
+192,COMPOUNDSTATEMENT,"",Grupos.java(560:3-567:4),"{
+//			if(mesma_componente(pilha, v, alunos) == false)
+//			{
+//				pw.println(""mesma_componente("" + v + "") = "" + mesma_componente(pilha, v, alunos));
+			
+				lista_comp.add2Lista(pilha.getTill(v));
+//			}
+		}"
+193,DECLAREDREFERENCEEXPRESSION,"lista_comp",Grupos.java(565:5-565:15),"lista_comp"
+194,DECLAREDREFERENCEEXPRESSION,"lista_comp",Grupos.java(569:10-569:20),"lista_comp"
+195,MEMBERCALLEXPRESSION,"add2Lista",Grupos.java(565:5-565:44),"lista_comp.add2Lista(pilha.getTill(v));"
+196,DECLAREDREFERENCEEXPRESSION,"add2Lista",Grupos.java(565:16-565:25),"add2Lista"
+197,METHODDECLARATION,"add2Lista",Grupos.java(240:2-251:3),"void add2Lista(Stack pilha)
+	{
+		CFC compfc = new CFC(pilha);
+		
+		if(primeiro == null)
+			primeiro = compfc;
+			
+		else
+			ultimo.setNext(compfc);
+			
+		ultimo = compfc;
+	}"
+198,MEMBERCALLEXPRESSION,"getTill",Grupos.java(565:26-565:42),"pilha.getTill(v)"
+199,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(565:26-565:31),"pilha"
+200,DECLAREDREFERENCEEXPRESSION,"getTill",Grupos.java(565:32-565:39),"getTill"
+201,METHODDECLARATION,"getTill",,""
+202,PARAMVARIABLEDECLARATION,"pilha",Grupos.java(240:17-240:28),"Stack pilha"
+203,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(565:40-565:41),"v"
+204,PARAMVARIABLEDECLARATION,"int0",,""
+205,MEMBERCALLEXPRESSION,"getLowlink",Grupos.java(559:6-559:28),"alunos[v].getLowlink()"
+206,MEMBERCALLEXPRESSION,"getIndex",Grupos.java(559:32-559:52),"alunos[v].getIndex()"
+207,DECLAREDREFERENCEEXPRESSION,"getIndex",Grupos.java(559:42-559:50),"getIndex"
+208,METHODDECLARATION,"getIndex",,""
+209,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(559:32-559:41),"alunos[v]"
+210,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(559:32-559:38),"alunos"
+211,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(559:39-559:40),"v"
+212,DECLAREDREFERENCEEXPRESSION,"getLowlink",Grupos.java(559:16-559:26),"getLowlink"
+213,METHODDECLARATION,"getLowlink",,""
+214,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(559:6-559:15),"alunos[v]"
+215,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(559:6-559:12),"alunos"
+216,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(559:13-559:14),"v"
+217,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+218,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+219,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(534:3-534:9),"alunos"
+220,DECLAREDREFERENCEEXPRESSION,"setIndex",Grupos.java(534:13-534:21),"setIndex"
+221,METHODDECLARATION,"setIndex",,""
+222,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(535:3-535:9),"alunos"
+223,DECLAREDREFERENCEEXPRESSION,"index",Grupos.java(534:22-534:27),"index"
+224,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(534:3-534:12),"alunos[v]"
+225,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(534:10-534:11),"v"
+226,PARAMVARIABLEDECLARATION,"int0",,""
+227,DECLAREDREFERENCEEXPRESSION,"setLowlink",Grupos.java(535:13-535:23),"setLowlink"
+228,METHODDECLARATION,"setLowlink",,""
+229,DECLAREDREFERENCEEXPRESSION,"index",Grupos.java(537:3-537:8),"index"
+230,DECLAREDREFERENCEEXPRESSION,"index",Grupos.java(535:24-535:29),"index"
+231,PARAMVARIABLEDECLARATION,"int0",,""
+232,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(535:3-535:12),"alunos[v]"
+233,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(535:10-535:11),"v"
+234,COMPOUNDSTATEMENT,"",Grupos.java(544:3-557:4),"{
+			amigo = alunos[v].Amigo(i);
+
+			if(alunos[amigo].getIndex()==-1)
+			{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}
+			
+			else
+				if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));
+		}"
+235,BINARYOPERATOR,"=",Grupos.java(543:7-543:10),"i=0"
+236,BINARYOPERATOR,"<",Grupos.java(543:12-543:22),"i<n_amigos"
+237,UNARYOPERATOR,"++",Grupos.java(543:24-543:27),"i++"
+238,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(545:4-545:9),"amigo"
+239,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(543:12-543:13),"i"
+240,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(543:14-543:22),"n_amigos"
+241,BINARYOPERATOR,"=",Grupos.java(545:4-545:31),"amigo = alunos[v].Amigo(i);"
+242,IFSTATEMENT,"",Grupos.java(547:4-556:82),"if(alunos[amigo].getIndex()==-1)
+			{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}
+			
+			else
+				if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));"
+243,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(543:24-543:25),"i"
+244,COMPOUNDSTATEMENT,"",Grupos.java(548:4-552:5),"{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}"
+245,MEMBERCALLEXPRESSION,"setLowlink",Grupos.java(556:6-556:82),"alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));"
+246,IFSTATEMENT,"",Grupos.java(555:5-556:82),"if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));"
+247,MEMBERCALLEXPRESSION,"Amigo",Grupos.java(545:12-545:30),"alunos[v].Amigo(i)"
+248,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(547:7-547:13),"alunos"
+249,DECLAREDREFERENCEEXPRESSION,"Amigo",Grupos.java(545:22-545:27),"Amigo"
+250,METHODDECLARATION,"Amigo",,""
+251,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(545:28-545:29),"i"
+252,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(545:12-545:21),"alunos[v]"
+253,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(545:12-545:18),"alunos"
+254,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(545:19-545:20),"v"
+255,PARAMVARIABLEDECLARATION,"int0",,""
+256,BINARYOPERATOR,"==",Grupos.java(547:7-547:35),"alunos[amigo].getIndex()==-1"
+257,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(549:12-549:20),"n_alunos"
+258,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(555:8-555:13),"pilha"
+259,MEMBERCALLEXPRESSION,"elemInStack",Grupos.java(555:8-555:32),"pilha.elemInStack(amigo)"
+260,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(556:6-556:12),"alunos"
+261,DECLAREDREFERENCEEXPRESSION,"elemInStack",Grupos.java(555:14-555:25),"elemInStack"
+262,METHODDECLARATION,"elemInStack",,""
+263,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(555:26-555:31),"amigo"
+264,PARAMVARIABLEDECLARATION,"int0",,""
+265,DECLAREDREFERENCEEXPRESSION,"setLowlink",Grupos.java(556:16-556:26),"setLowlink"
+266,CALLEXPRESSION,"min",Grupos.java(556:27-556:80),"min(alunos[v].getLowlink(), alunos[amigo].getIndex())"
+267,METHODDECLARATION,"min",Grupos.java(573:2-579:3),"private static int min(int x, int y)
+	{
+		if(x <= y)
+			return(x);
+		
+		return(y);
+	}"
+268,MEMBERCALLEXPRESSION,"getLowlink",Grupos.java(556:31-556:53),"alunos[v].getLowlink()"
+269,MEMBERCALLEXPRESSION,"getIndex",Grupos.java(556:55-556:79),"alunos[amigo].getIndex()"
+270,DECLAREDREFERENCEEXPRESSION,"getLowlink",Grupos.java(556:41-556:51),"getLowlink"
+271,PARAMVARIABLEDECLARATION,"x",Grupos.java(573:25-573:30),"int x"
+272,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(556:55-556:61),"alunos"
+273,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(556:31-556:40),"alunos[v]"
+274,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(556:31-556:37),"alunos"
+275,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(556:38-556:39),"v"
+276,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(556:6-556:15),"alunos[v]"
+277,DECLAREDREFERENCEEXPRESSION,"getIndex",Grupos.java(556:69-556:77),"getIndex"
+278,PARAMVARIABLEDECLARATION,"y",Grupos.java(573:32-573:37),"int y"
+279,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(556:55-556:68),"alunos[amigo]"
+280,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(556:62-556:67),"amigo"
+281,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(556:13-556:14),"v"
+282,CALLEXPRESSION,"tarjan",Grupos.java(549:5-549:63),"tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);"
+283,MEMBERCALLEXPRESSION,"setLowlink",Grupos.java(551:5-551:83),"alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));"
+284,METHODDECLARATION,"tarjan",Grupos.java(528:2-570:3),"private static Lista_CFC tarjan(int n_alunos, Vertice[] alunos, int v, int index, Stack pilha, Lista_CFC lista_comp)
+	{
+		int i, n_amigos, amigo;
+		
+		//pw.println(""v = "" + v);
+		
+		alunos[v].setIndex(index);
+		alunos[v].setLowlink(index);
+		
+		index++;
+		
+		pilha.push(v);
+		
+		n_amigos = alunos[v].getNAmigos();
+		
+		for(i=0; i<n_amigos; i++)
+		{
+			amigo = alunos[v].Amigo(i);
+
+			if(alunos[amigo].getIndex()==-1)
+			{
+				tarjan(n_alunos, alunos, amigo, index, pilha, lista_comp);
+				
+				alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getLowlink()));
+			}
+			
+			else
+				if(pilha.elemInStack(amigo))
+					alunos[v].setLowlink(min(alunos[v].getLowlink(), alunos[amigo].getIndex()));
+		}
+		
+		if(alunos[v].getLowlink() == alunos[v].getIndex())
+		{
+//			if(mesma_componente(pilha, v, alunos) == false)
+//			{
+//				pw.println(""mesma_componente("" + v + "") = "" + mesma_componente(pilha, v, alunos));
+			
+				lista_comp.add2Lista(pilha.getTill(v));
+//			}
+		}
+		
+		return(lista_comp);
+	}"
+285,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(549:22-549:28),"alunos"
+286,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(549:30-549:35),"amigo"
+287,DECLAREDREFERENCEEXPRESSION,"index",Grupos.java(549:37-549:42),"index"
+288,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(549:44-549:49),"pilha"
+289,DECLAREDREFERENCEEXPRESSION,"lista_comp",Grupos.java(549:51-549:61),"lista_comp"
+290,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(551:5-551:11),"alunos"
+291,PARAMVARIABLEDECLARATION,"index",Grupos.java(528:73-528:82),"int index"
+292,PARAMVARIABLEDECLARATION,"pilha",Grupos.java(528:84-528:95),"Stack pilha"
+293,PARAMVARIABLEDECLARATION,"alunos",Grupos.java(528:48-528:64),"Vertice[] alunos"
+294,PARAMVARIABLEDECLARATION,"lista_comp",Grupos.java(528:97-528:117),"Lista_CFC lista_comp"
+295,PARAMVARIABLEDECLARATION,"v",Grupos.java(528:66-528:71),"int v"
+296,PARAMVARIABLEDECLARATION,"n_alunos",Grupos.java(528:34-528:46),"int n_alunos"
+297,DECLAREDREFERENCEEXPRESSION,"setLowlink",Grupos.java(551:15-551:25),"setLowlink"
+298,CALLEXPRESSION,"min",Grupos.java(551:26-551:81),"min(alunos[v].getLowlink(), alunos[amigo].getLowlink())"
+299,MEMBERCALLEXPRESSION,"getLowlink",Grupos.java(551:30-551:52),"alunos[v].getLowlink()"
+300,MEMBERCALLEXPRESSION,"getLowlink",Grupos.java(551:54-551:80),"alunos[amigo].getLowlink()"
+301,DECLAREDREFERENCEEXPRESSION,"getLowlink",Grupos.java(551:68-551:78),"getLowlink"
+302,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(551:54-551:67),"alunos[amigo]"
+303,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(551:54-551:60),"alunos"
+304,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(551:61-551:66),"amigo"
+305,DECLAREDREFERENCEEXPRESSION,"getLowlink",Grupos.java(551:40-551:50),"getLowlink"
+306,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(551:30-551:39),"alunos[v]"
+307,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(551:30-551:36),"alunos"
+308,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(551:37-551:38),"v"
+309,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(551:5-551:14),"alunos[v]"
+310,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(551:12-551:13),"v"
+311,MEMBERCALLEXPRESSION,"getIndex",Grupos.java(547:7-547:31),"alunos[amigo].getIndex()"
+312,UNARYOPERATOR,"-",Grupos.java(547:33-547:35),"-1"
+313,LITERAL,"",Grupos.java(547:34-547:35),"1"
+314,DECLAREDREFERENCEEXPRESSION,"getIndex",Grupos.java(547:21-547:29),"getIndex"
+315,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(547:7-547:20),"alunos[amigo]"
+316,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(547:14-547:19),"amigo"
+317,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(543:7-543:8),"i"
+318,LITERAL,"",Grupos.java(543:9-543:10),"0"
+319,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(541:3-541:11),"n_amigos"
+320,MEMBERCALLEXPRESSION,"getNAmigos",Grupos.java(541:14-541:36),"alunos[v].getNAmigos()"
+321,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(541:14-541:20),"alunos"
+322,DECLAREDREFERENCEEXPRESSION,"getNAmigos",Grupos.java(541:24-541:34),"getNAmigos"
+323,METHODDECLARATION,"getNAmigos",,""
+324,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(541:14-541:23),"alunos[v]"
+325,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(541:21-541:22),"v"
+326,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(539:3-539:8),"pilha"
+327,DECLAREDREFERENCEEXPRESSION,"push",Grupos.java(539:9-539:13),"push"
+328,METHODDECLARATION,"push",,""
+329,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(539:14-539:15),"v"
+330,PARAMVARIABLEDECLARATION,"int0",,""
+331,VARIABLEDECLARATION,"this",,""
+332,COMPOUNDSTATEMENT,"",Grupos.java(421:2-423:3),"{
+		input();
+	}"
+333,PARAMVARIABLEDECLARATION,"args",Grupos.java(420:26-420:39),"String args[]"
+334,CALLEXPRESSION,"input",Grupos.java(422:3-422:11),"input();"
+335,RETURNSTATEMENT,"",,""
+336,METHODDECLARATION,"input",Grupos.java(426:2-464:3),"private static void input()
+	{
+		int n_cenarios, cenario; //variaveis responsaveis pela iteracao do cenario
+		int n_alunos, aluno; //variaveis responsaveis pela iteracao dos alunos
+		Vertice[] alunos; //vector de alunos do tipo Vertice
+		int id, n_amigos, amigos[], i; //variaveis relacionadas com a leitura dos campos de um aluno
+		Resultados resus = new Resultados();
+		
+		n_cenarios = sca.nextInt();
+		
+		for(cenario = 1; cenario <= n_cenarios; cenario++)
+		{
+			n_alunos = sca.nextInt();
+			
+			alunos = new Vertice[n_alunos];
+			
+			for(aluno=0; aluno < n_alunos; aluno++)
+			{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar � gest�o da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}
+			
+			TestGrupos.verAlunos(cenario, n_alunos, alunos);
+			
+			resus.adicionarResultado(contagem_de_grupos(cenario, n_alunos, alunos));
+		}
+		
+		output(resus);
+	}"
+337,VARIABLEDECLARATION,"this",,""
+338,COMPOUNDSTATEMENT,"",Grupos.java(427:2-464:3),"{
+		int n_cenarios, cenario; //variaveis responsaveis pela iteracao do cenario
+		int n_alunos, aluno; //variaveis responsaveis pela iteracao dos alunos
+		Vertice[] alunos; //vector de alunos do tipo Vertice
+		int id, n_amigos, amigos[], i; //variaveis relacionadas com a leitura dos campos de um aluno
+		Resultados resus = new Resultados();
+		
+		n_cenarios = sca.nextInt();
+		
+		for(cenario = 1; cenario <= n_cenarios; cenario++)
+		{
+			n_alunos = sca.nextInt();
+			
+			alunos = new Vertice[n_alunos];
+			
+			for(aluno=0; aluno < n_alunos; aluno++)
+			{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}
+			
+			TestGrupos.verAlunos(cenario, n_alunos, alunos);
+			
+			resus.adicionarResultado(contagem_de_grupos(cenario, n_alunos, alunos));
+		}
+		
+		output(resus);
+	}"
+339,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+340,RETURNSTATEMENT,"",,""
+341,DECLARATIONSTATEMENT,"",Grupos.java(428:3-428:27),"int n_cenarios, cenario;"
+342,DECLARATIONSTATEMENT,"",Grupos.java(429:3-429:23),"int n_alunos, aluno;"
+343,DECLARATIONSTATEMENT,"",Grupos.java(430:3-430:20),"Vertice[] alunos;"
+344,DECLARATIONSTATEMENT,"",Grupos.java(431:3-431:33),"int id, n_amigos, amigos[], i;"
+345,DECLARATIONSTATEMENT,"",Grupos.java(432:3-432:39),"Resultados resus = new Resultados();"
+346,BINARYOPERATOR,"=",Grupos.java(434:3-434:30),"n_cenarios = sca.nextInt();"
+347,FORSTATEMENT,"",Grupos.java(436:3-461:4),"for(cenario = 1; cenario <= n_cenarios; cenario++)
+		{
+			n_alunos = sca.nextInt();
+			
+			alunos = new Vertice[n_alunos];
+			
+			for(aluno=0; aluno < n_alunos; aluno++)
+			{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}
+			
+			TestGrupos.verAlunos(cenario, n_alunos, alunos);
+			
+			resus.adicionarResultado(contagem_de_grupos(cenario, n_alunos, alunos));
+		}"
+348,CALLEXPRESSION,"output",Grupos.java(463:3-463:17),"output(resus);"
+349,VARIABLEDECLARATION,"n_cenarios",Grupos.java(428:7-428:17),"n_cenarios"
+350,VARIABLEDECLARATION,"cenario",Grupos.java(428:19-428:26),"cenario"
+351,VARIABLEDECLARATION,"n_alunos",Grupos.java(429:7-429:15),"n_alunos"
+352,VARIABLEDECLARATION,"aluno",Grupos.java(429:17-429:22),"aluno"
+353,VARIABLEDECLARATION,"alunos",Grupos.java(430:13-430:19),"alunos"
+354,VARIABLEDECLARATION,"id",Grupos.java(431:7-431:9),"id"
+355,VARIABLEDECLARATION,"n_amigos",Grupos.java(431:11-431:19),"n_amigos"
+356,VARIABLEDECLARATION,"amigos",Grupos.java(431:21-431:29),"amigos[]"
+357,VARIABLEDECLARATION,"i",Grupos.java(431:31-431:32),"i"
+358,VARIABLEDECLARATION,"resus",Grupos.java(432:14-432:38),"resus = new Resultados()"
+359,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+360,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+361,COMPOUNDSTATEMENT,"",Grupos.java(437:3-461:4),"{
+			n_alunos = sca.nextInt();
+			
+			alunos = new Vertice[n_alunos];
+			
+			for(aluno=0; aluno < n_alunos; aluno++)
+			{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}
+			
+			TestGrupos.verAlunos(cenario, n_alunos, alunos);
+			
+			resus.adicionarResultado(contagem_de_grupos(cenario, n_alunos, alunos));
+		}"
+362,BINARYOPERATOR,"=",Grupos.java(436:7-436:18),"cenario = 1"
+363,BINARYOPERATOR,"<=",Grupos.java(436:20-436:41),"cenario <= n_cenarios"
+364,UNARYOPERATOR,"++",Grupos.java(436:43-436:52),"cenario++"
+365,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(438:4-438:12),"n_alunos"
+366,DECLAREDREFERENCEEXPRESSION,"resus",Grupos.java(463:10-463:15),"resus"
+367,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(436:20-436:27),"cenario"
+368,DECLAREDREFERENCEEXPRESSION,"n_cenarios",Grupos.java(436:31-436:41),"n_cenarios"
+369,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(436:7-436:14),"cenario"
+370,LITERAL,"",Grupos.java(436:17-436:18),"1"
+371,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(436:43-436:50),"cenario"
+372,BINARYOPERATOR,"=",Grupos.java(438:4-438:29),"n_alunos = sca.nextInt();"
+373,BINARYOPERATOR,"=",Grupos.java(440:4-440:35),"alunos = new Vertice[n_alunos];"
+374,FORSTATEMENT,"",Grupos.java(442:4-456:5),"for(aluno=0; aluno < n_alunos; aluno++)
+			{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}"
+375,STATICCALLEXPRESSION,"verAlunos",Grupos.java(458:4-458:52),"TestGrupos.verAlunos(cenario, n_alunos, alunos);"
+376,MEMBERCALLEXPRESSION,"adicionarResultado",Grupos.java(460:4-460:76),"resus.adicionarResultado(contagem_de_grupos(cenario, n_alunos, alunos));"
+377,METHODDECLARATION,"verAlunos",Grupos.java(6:2-35:3),"static void verAlunos(int cenario, int n_alunos, Vertice[] alunos)
+	{
+		int aluno, n_amigos, amigo;
+	
+		Grupos.pw.print(""\n\n\nCenario "" + cenario);  //ver cen�rio
+	
+		for(aluno = 0; aluno < n_alunos; aluno++)
+		{
+			n_amigos = alunos[aluno].getNAmigos();
+		
+		
+			if(n_amigos > 0)
+			{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}
+			
+			else
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");
+		}
+		
+		Grupos.pw.print(""\n\n"");
+		
+		// PrintWriter n�o retorna IOExceptions mas
+        // oferece  o m�todo catchError()
+        if (Grupos.pw.checkError ())
+            Grupos.pw.println (""An output error occurred!"" );
+	}"
+378,DECLAREDREFERENCEEXPRESSION,"resus",Grupos.java(460:4-460:9),"resus"
+379,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(458:44-458:50),"alunos"
+380,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(458:25-458:32),"cenario"
+381,PARAMVARIABLEDECLARATION,"cenario",Grupos.java(6:24-6:35),"int cenario"
+382,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(458:34-458:42),"n_alunos"
+383,PARAMVARIABLEDECLARATION,"n_alunos",Grupos.java(6:37-6:49),"int n_alunos"
+384,PARAMVARIABLEDECLARATION,"alunos",Grupos.java(6:51-6:67),"Vertice[] alunos"
+385,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(440:4-440:10),"alunos"
+386,ARRAYCREATIONEXPRESSION,"",Grupos.java(440:13-440:34),"new Vertice[n_alunos]"
+387,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(442:8-442:13),"aluno"
+388,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(440:25-440:33),"n_alunos"
+389,MEMBERCALLEXPRESSION,"nextInt",Grupos.java(438:15-438:28),"sca.nextInt()"
+390,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(438:15-438:18),"Grupos"
+391,DECLAREDREFERENCEEXPRESSION,"nextInt",Grupos.java(438:19-438:26),"nextInt"
+392,MEMBEREXPRESSION,"sca",Grupos.java(438:15-438:18),"sca"
+393,COMPOUNDSTATEMENT,"",Grupos.java(443:4-456:5),"{
+				id = sca.nextInt();
+			
+				n_amigos = sca.nextInt();
+			
+				amigos = new int [n_amigos];
+			
+				for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}
+				
+				alunos[id-1] = new Vertice(n_amigos, amigos);
+			}"
+394,BINARYOPERATOR,"=",Grupos.java(442:8-442:15),"aluno=0"
+395,BINARYOPERATOR,"<",Grupos.java(442:17-442:33),"aluno < n_alunos"
+396,UNARYOPERATOR,"++",Grupos.java(442:35-442:42),"aluno++"
+397,DECLAREDREFERENCEEXPRESSION,"id",Grupos.java(444:5-444:7),"id"
+398,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(442:35-442:40),"aluno"
+399,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(442:17-442:22),"aluno"
+400,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(442:25-442:33),"n_alunos"
+401,BINARYOPERATOR,"=",Grupos.java(444:5-444:24),"id = sca.nextInt();"
+402,BINARYOPERATOR,"=",Grupos.java(446:5-446:30),"n_amigos = sca.nextInt();"
+403,BINARYOPERATOR,"=",Grupos.java(448:5-448:33),"amigos = new int [n_amigos];"
+404,FORSTATEMENT,"",Grupos.java(450:5-453:6),"for(i=0; i < n_amigos; i++)
+				{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}"
+405,BINARYOPERATOR,"=",Grupos.java(455:5-455:50),"alunos[id-1] = new Vertice(n_amigos, amigos);"
+406,DECLAREDREFERENCEEXPRESSION,"amigos",Grupos.java(448:5-448:11),"amigos"
+407,ARRAYCREATIONEXPRESSION,"",Grupos.java(448:14-448:32),"new int [n_amigos]"
+408,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(450:9-450:10),"i"
+409,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(448:23-448:31),"n_amigos"
+410,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(455:5-455:17),"alunos[id-1]"
+411,NEWEXPRESSION,"",Grupos.java(455:20-455:49),"new Vertice(n_amigos, amigos)"
+412,CONSTRUCTEXPRESSION,"",Grupos.java(455:20-455:49),"new Vertice(n_amigos, amigos)"
+413,CONSTRUCTORDECLARATION,"Vertice",,""
+414,DECLAREDREFERENCEEXPRESSION,"amigos",Grupos.java(455:42-455:48),"amigos"
+415,PARAMVARIABLEDECLARATION,"intPtr1",,""
+416,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(455:32-455:40),"n_amigos"
+417,PARAMVARIABLEDECLARATION,"int0",,""
+418,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(455:5-455:11),"alunos"
+419,BINARYOPERATOR,"-",Grupos.java(455:12-455:16),"id-1"
+420,DECLAREDREFERENCEEXPRESSION,"id",Grupos.java(455:12-455:14),"id"
+421,LITERAL,"",Grupos.java(455:15-455:16),"1"
+422,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(446:5-446:13),"n_amigos"
+423,MEMBERCALLEXPRESSION,"nextInt",Grupos.java(446:16-446:29),"sca.nextInt()"
+424,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(446:16-446:19),"Grupos"
+425,DECLAREDREFERENCEEXPRESSION,"nextInt",Grupos.java(446:20-446:27),"nextInt"
+426,MEMBEREXPRESSION,"sca",Grupos.java(446:16-446:19),"sca"
+427,COMPOUNDSTATEMENT,"",Grupos.java(451:5-453:6),"{
+					amigos[i]= sca.nextInt()-1; //para adequar a gestao da base de dados
+				}"
+428,BINARYOPERATOR,"=",Grupos.java(450:9-450:12),"i=0"
+429,BINARYOPERATOR,"<",Grupos.java(450:14-450:26),"i < n_amigos"
+430,UNARYOPERATOR,"++",Grupos.java(450:28-450:31),"i++"
+431,DECLAREDREFERENCEEXPRESSION,"amigos",Grupos.java(452:6-452:12),"amigos"
+432,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(450:14-450:15),"i"
+433,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(450:18-450:26),"n_amigos"
+434,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(450:28-450:29),"i"
+435,BINARYOPERATOR,"=",Grupos.java(452:6-452:33),"amigos[i]= sca.nextInt()-1;"
+436,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(452:6-452:15),"amigos[i]"
+437,BINARYOPERATOR,"-",Grupos.java(452:17-452:32),"sca.nextInt()-1"
+438,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(452:13-452:14),"i"
+439,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(452:17-452:20),"Grupos"
+440,MEMBERCALLEXPRESSION,"nextInt",Grupos.java(452:17-452:30),"sca.nextInt()"
+441,LITERAL,"",Grupos.java(452:31-452:32),"1"
+442,DECLAREDREFERENCEEXPRESSION,"nextInt",Grupos.java(452:21-452:28),"nextInt"
+443,MEMBEREXPRESSION,"sca",Grupos.java(452:17-452:20),"sca"
+444,LITERAL,"",Grupos.java(450:11-450:12),"0"
+445,MEMBERCALLEXPRESSION,"nextInt",Grupos.java(444:10-444:23),"sca.nextInt()"
+446,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(444:10-444:13),"Grupos"
+447,DECLAREDREFERENCEEXPRESSION,"nextInt",Grupos.java(444:14-444:21),"nextInt"
+448,MEMBEREXPRESSION,"sca",Grupos.java(444:10-444:13),"sca"
+449,LITERAL,"",Grupos.java(442:14-442:15),"0"
+450,DECLAREDREFERENCEEXPRESSION,"adicionarResultado",Grupos.java(460:10-460:28),"adicionarResultado"
+451,METHODDECLARATION,"adicionarResultado",Grupos.java(144:2-158:3),"void adicionarResultado(Resultado res)
+	{
+		if(primeiro == null)
+		{
+			primeiro = res;
+			ultimo = res;
+		}
+		
+		else
+		{
+			ultimo.setProximo(res);
+			
+			ultimo=res;
+		}
+	}"
+452,CALLEXPRESSION,"contagem_de_grupos",Grupos.java(460:29-460:74),"contagem_de_grupos(cenario, n_alunos, alunos)"
+453,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(460:48-460:55),"cenario"
+454,METHODDECLARATION,"contagem_de_grupos",Grupos.java(467:2-513:3),"private static Resultado contagem_de_grupos(int cenario, int n_alunos, Vertice[] alunos)
+	{
+		int index, i, n_grupos4, outros, elementos_na_pilha;
+		boolean analisados[] = new boolean[n_alunos];
+		Stack pilha = new Stack(), p2;
+		Lista_CFC lista_comp = new Lista_CFC();
+		CFC j;
+		Resultado resu;
+		
+		for(i=0; i<n_alunos; i++)
+			analisados[i]=false;
+		
+		n_grupos4 = 0;
+		outros = 0;
+		
+		index = 0;
+			
+		while((i=primeiro_Nao_Analisado(analisados, n_alunos))!=-1)
+		{
+			lista_comp = tarjan(n_alunos, alunos, i, index, pilha, lista_comp); //******** linha alterada **********
+			
+			//TestGrupos.listaLCFC(cenario, lista_comp);
+			
+			for(j = lista_comp.getPrimeiro(); j!= null; j=j.getNext())
+			{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}
+
+		}	
+		
+		resu = new Resultado(cenario, n_grupos4, outros);
+		
+		return(resu);	
+	}"
+455,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(460:57-460:65),"n_alunos"
+456,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(460:67-460:73),"alunos"
+457,PARAMVARIABLEDECLARATION,"res",Grupos.java(144:26-144:39),"Resultado res"
+458,PARAMVARIABLEDECLARATION,"alunos",Grupos.java(467:73-467:89),"Vertice[] alunos"
+459,PARAMVARIABLEDECLARATION,"n_alunos",Grupos.java(467:59-467:71),"int n_alunos"
+460,PARAMVARIABLEDECLARATION,"cenario",Grupos.java(467:46-467:57),"int cenario"
+461,NEWEXPRESSION,"",Grupos.java(432:22-432:38),"new Resultados()"
+462,CONSTRUCTEXPRESSION,"",Grupos.java(432:22-432:38),"new Resultados()"
+463,CONSTRUCTORDECLARATION,"Resultados",Grupos.java(133:2-137:3),"Resultados()
+	{
+		primeiro = null;
+		ultimo = null;
+	}"
+464,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+465,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+466,METHODDECLARATION,"output",Grupos.java(638:2-646:3),"static void output(Resultados resus)
+	{
+		Resultado i;
+		
+		for(i=resus.getPrimeiro(); i!=null; i=i.proximo())
+		{
+			pw.println(""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos());
+		}
+	}"
+467,PARAMVARIABLEDECLARATION,"resus",Grupos.java(638:21-638:37),"Resultados resus"
+468,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+469,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+470,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+471,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+472,DECLAREDREFERENCEEXPRESSION,"n_cenarios",Grupos.java(434:3-434:13),"n_cenarios"
+473,MEMBERCALLEXPRESSION,"nextInt",Grupos.java(434:16-434:29),"sca.nextInt()"
+474,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(434:16-434:19),"Grupos"
+475,DECLAREDREFERENCEEXPRESSION,"nextInt",Grupos.java(434:20-434:27),"nextInt"
+476,MEMBEREXPRESSION,"sca",Grupos.java(434:16-434:19),"sca"
+477,VARIABLEDECLARATION,"this",,""
+478,COMPOUNDSTATEMENT,"",Grupos.java(639:2-646:3),"{
+		Resultado i;
+		
+		for(i=resus.getPrimeiro(); i!=null; i=i.proximo())
+		{
+			pw.println(""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos());
+		}
+	}"
+479,PARAMVARIABLEDECLARATION,"resus",Grupos.java(638:21-638:37),"Resultados resus"
+480,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+481,RETURNSTATEMENT,"",,""
+482,DECLARATIONSTATEMENT,"",Grupos.java(640:3-640:15),"Resultado i;"
+483,FORSTATEMENT,"",Grupos.java(642:3-645:4),"for(i=resus.getPrimeiro(); i!=null; i=i.proximo())
+		{
+			pw.println(""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos());
+		}"
+484,VARIABLEDECLARATION,"i",Grupos.java(640:13-640:14),"i"
+485,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(642:7-642:8),"i"
+486,COMPOUNDSTATEMENT,"",Grupos.java(643:3-645:4),"{
+			pw.println(""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos());
+		}"
+487,BINARYOPERATOR,"=",Grupos.java(642:7-642:28),"i=resus.getPrimeiro()"
+488,BINARYOPERATOR,"!=",Grupos.java(642:30-642:37),"i!=null"
+489,BINARYOPERATOR,"=",Grupos.java(642:39-642:52),"i=i.proximo()"
+490,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(644:4-644:6),"Grupos"
+491,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(642:30-642:31),"i"
+492,LITERAL,"",Grupos.java(642:33-642:37),"null"
+493,MEMBERCALLEXPRESSION,"println",Grupos.java(644:4-644:96),"pw.println(""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos());"
+494,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(642:39-642:40),"i"
+495,DECLAREDREFERENCEEXPRESSION,"println",Grupos.java(644:7-644:14),"println"
+496,BINARYOPERATOR,"+",Grupos.java(644:15-644:94),"""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" "" + i.getOutrosElementos()"
+497,MEMBEREXPRESSION,"pw",Grupos.java(644:4-644:6),"pw"
+498,LITERAL,"",Grupos.java(644:15-644:23),"""Caso #"""
+499,BINARYOPERATOR,"+",Grupos.java(644:15-644:69),"""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4() + "" """
+500,MEMBERCALLEXPRESSION,"getOutrosElementos",Grupos.java(644:72-644:94),"i.getOutrosElementos()"
+501,BINARYOPERATOR,"+",Grupos.java(644:15-644:63),"""Caso #"" + i.getCaso() + ""\n"" + i.getGruposDe4()"
+502,LITERAL,"",Grupos.java(644:66-644:69),""" """
+503,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(644:72-644:73),"i"
+504,BINARYOPERATOR,"+",Grupos.java(644:15-644:44),"""Caso #"" + i.getCaso() + ""\n"""
+505,MEMBERCALLEXPRESSION,"getGruposDe4",Grupos.java(644:47-644:63),"i.getGruposDe4()"
+506,BINARYOPERATOR,"+",Grupos.java(644:15-644:37),"""Caso #"" + i.getCaso()"
+507,LITERAL,"",Grupos.java(644:40-644:44),"""\n"""
+508,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(644:47-644:48),"i"
+509,MEMBERCALLEXPRESSION,"getCaso",Grupos.java(644:26-644:37),"i.getCaso()"
+510,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(644:26-644:27),"i"
+511,DECLAREDREFERENCEEXPRESSION,"getCaso",Grupos.java(644:28-644:35),"getCaso"
+512,METHODDECLARATION,"getCaso",Grupos.java(189:2-192:3),"int getCaso()
+	{
+		return(caso);
+	}"
+513,DECLAREDREFERENCEEXPRESSION,"getGruposDe4",Grupos.java(644:49-644:61),"getGruposDe4"
+514,METHODDECLARATION,"getGruposDe4",Grupos.java(199:2-202:3),"int getGruposDe4()
+	{
+		return(gruposDe4);
+	}"
+515,DECLAREDREFERENCEEXPRESSION,"getOutrosElementos",Grupos.java(644:74-644:92),"getOutrosElementos"
+516,METHODDECLARATION,"getOutrosElementos",Grupos.java(209:2-212:3),"int getOutrosElementos()
+	{
+		return(outrosElementos);
+	}"
+517,MEMBERCALLEXPRESSION,"getPrimeiro",Grupos.java(642:9-642:28),"resus.getPrimeiro()"
+518,DECLAREDREFERENCEEXPRESSION,"getPrimeiro",Grupos.java(642:15-642:26),"getPrimeiro"
+519,METHODDECLARATION,"getPrimeiro",Grupos.java(139:2-142:3),"Resultado getPrimeiro()
+	{
+		return(primeiro);
+	}"
+520,DECLAREDREFERENCEEXPRESSION,"resus",Grupos.java(642:9-642:14),"resus"
+521,MEMBERCALLEXPRESSION,"proximo",Grupos.java(642:41-642:52),"i.proximo()"
+522,DECLAREDREFERENCEEXPRESSION,"proximo",Grupos.java(642:43-642:50),"proximo"
+523,METHODDECLARATION,"proximo",Grupos.java(219:2-222:3),"Resultado proximo()
+	{
+		return(next);
+	}"
+524,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(642:41-642:42),"i"
+525,NEWEXPRESSION,"",Grupos.java(416:33-416:66),"new PrintWriter(System.out, true)"
+526,CONSTRUCTEXPRESSION,"",Grupos.java(416:33-416:66),"new PrintWriter(System.out, true)"
+527,MEMBEREXPRESSION,"out",Grupos.java(416:49-416:59),"System.out"
+528,DECLAREDREFERENCEEXPRESSION,"System",Grupos.java(416:49-416:55),"System"
+529,VARIABLEDECLARATION,"this",,""
+530,COMPOUNDSTATEMENT,"",Grupos.java(468:2-513:3),"{
+		int index, i, n_grupos4, outros, elementos_na_pilha;
+		boolean analisados[] = new boolean[n_alunos];
+		Stack pilha = new Stack(), p2;
+		Lista_CFC lista_comp = new Lista_CFC();
+		CFC j;
+		Resultado resu;
+		
+		for(i=0; i<n_alunos; i++)
+			analisados[i]=false;
+		
+		n_grupos4 = 0;
+		outros = 0;
+		
+		index = 0;
+			
+		while((i=primeiro_Nao_Analisado(analisados, n_alunos))!=-1)
+		{
+			lista_comp = tarjan(n_alunos, alunos, i, index, pilha, lista_comp); //******** linha alterada **********
+			
+			//TestGrupos.listaLCFC(cenario, lista_comp);
+			
+			for(j = lista_comp.getPrimeiro(); j!= null; j=j.getNext())
+			{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}
+
+		}	
+		
+		resu = new Resultado(cenario, n_grupos4, outros);
+		
+		return(resu);	
+	}"
+531,PARAMVARIABLEDECLARATION,"cenario",Grupos.java(467:46-467:57),"int cenario"
+532,PARAMVARIABLEDECLARATION,"n_alunos",Grupos.java(467:59-467:71),"int n_alunos"
+533,PARAMVARIABLEDECLARATION,"alunos",Grupos.java(467:73-467:89),"Vertice[] alunos"
+534,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+535,RETURNSTATEMENT,"",Grupos.java(512:3-512:16),"return(resu);"
+536,DECLARATIONSTATEMENT,"",Grupos.java(469:3-469:55),"int index, i, n_grupos4, outros, elementos_na_pilha;"
+537,DECLARATIONSTATEMENT,"",Grupos.java(470:3-470:48),"boolean analisados[] = new boolean[n_alunos];"
+538,DECLARATIONSTATEMENT,"",Grupos.java(471:3-471:33),"Stack pilha = new Stack(), p2;"
+539,DECLARATIONSTATEMENT,"",Grupos.java(472:3-472:42),"Lista_CFC lista_comp = new Lista_CFC();"
+540,DECLARATIONSTATEMENT,"",Grupos.java(473:3-473:9),"CFC j;"
+541,DECLARATIONSTATEMENT,"",Grupos.java(474:3-474:18),"Resultado resu;"
+542,FORSTATEMENT,"",Grupos.java(476:3-477:24),"for(i=0; i<n_alunos; i++)
+			analisados[i]=false;"
+543,BINARYOPERATOR,"=",Grupos.java(479:3-479:17),"n_grupos4 = 0;"
+544,BINARYOPERATOR,"=",Grupos.java(480:3-480:14),"outros = 0;"
+545,BINARYOPERATOR,"=",Grupos.java(482:3-482:13),"index = 0;"
+546,WHILESTATEMENT,"",Grupos.java(484:3-508:4),"while((i=primeiro_Nao_Analisado(analisados, n_alunos))!=-1)
+		{
+			lista_comp = tarjan(n_alunos, alunos, i, index, pilha, lista_comp); //******** linha alterada **********
+			
+			//TestGrupos.listaLCFC(cenario, lista_comp);
+			
+			for(j = lista_comp.getPrimeiro(); j!= null; j=j.getNext())
+			{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}
+
+		}"
+547,BINARYOPERATOR,"=",Grupos.java(510:3-510:52),"resu = new Resultado(cenario, n_grupos4, outros);"
+548,VARIABLEDECLARATION,"index",Grupos.java(469:7-469:12),"index"
+549,VARIABLEDECLARATION,"i",Grupos.java(469:14-469:15),"i"
+550,VARIABLEDECLARATION,"n_grupos4",Grupos.java(469:17-469:26),"n_grupos4"
+551,VARIABLEDECLARATION,"outros",Grupos.java(469:28-469:34),"outros"
+552,VARIABLEDECLARATION,"elementos_na_pilha",Grupos.java(469:36-469:54),"elementos_na_pilha"
+553,VARIABLEDECLARATION,"analisados",Grupos.java(470:11-470:47),"analisados[] = new boolean[n_alunos]"
+554,VARIABLEDECLARATION,"pilha",Grupos.java(471:9-471:28),"pilha = new Stack()"
+555,VARIABLEDECLARATION,"p2",Grupos.java(471:30-471:32),"p2"
+556,VARIABLEDECLARATION,"lista_comp",Grupos.java(472:13-472:41),"lista_comp = new Lista_CFC()"
+557,VARIABLEDECLARATION,"j",Grupos.java(473:7-473:8),"j"
+558,VARIABLEDECLARATION,"resu",Grupos.java(474:13-474:17),"resu"
+559,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+560,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+561,DECLAREDREFERENCEEXPRESSION,"index",Grupos.java(482:3-482:8),"index"
+562,LITERAL,"",Grupos.java(482:11-482:12),"0"
+563,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(484:10-484:11),"i"
+564,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+565,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(476:7-476:8),"i"
+566,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+567,DECLAREDREFERENCEEXPRESSION,"resu",Grupos.java(512:10-512:14),"resu"
+568,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+569,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+570,CONSTRUCTEXPRESSION,"",Grupos.java(471:17-471:28),"new Stack()"
+571,BINARYOPERATOR,"=",Grupos.java(477:4-477:24),"analisados[i]=false;"
+572,BINARYOPERATOR,"=",Grupos.java(476:7-476:10),"i=0"
+573,BINARYOPERATOR,"<",Grupos.java(476:12-476:22),"i<n_alunos"
+574,UNARYOPERATOR,"++",Grupos.java(476:24-476:27),"i++"
+575,DECLAREDREFERENCEEXPRESSION,"analisados",Grupos.java(477:4-477:14),"analisados"
+576,DECLAREDREFERENCEEXPRESSION,"n_grupos4",Grupos.java(479:3-479:12),"n_grupos4"
+577,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(477:4-477:17),"analisados[i]"
+578,LITERAL,"",Grupos.java(477:18-477:23),"false"
+579,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(476:24-476:25),"i"
+580,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(477:15-477:16),"i"
+581,LITERAL,"",Grupos.java(476:9-476:10),"0"
+582,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(476:12-476:13),"i"
+583,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(476:14-476:22),"n_alunos"
+584,NEWEXPRESSION,"",Grupos.java(472:26-472:41),"new Lista_CFC()"
+585,CONSTRUCTEXPRESSION,"",Grupos.java(472:26-472:41),"new Lista_CFC()"
+586,CONSTRUCTORDECLARATION,"Lista_CFC",Grupos.java(229:2-233:3),"Lista_CFC()
+	{
+		primeiro = null;
+		ultimo = null;
+	}"
+587,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+588,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(470:38-470:46),"n_alunos"
+589,NEWEXPRESSION,"",Grupos.java(471:17-471:28),"new Stack()"
+590,CONSTRUCTORDECLARATION,"__init__",,""
+591,LITERAL,"",Grupos.java(479:15-479:16),"0"
+592,DECLAREDREFERENCEEXPRESSION,"outros",Grupos.java(480:3-480:9),"outros"
+593,LITERAL,"",Grupos.java(480:12-480:13),"0"
+594,ARRAYCREATIONEXPRESSION,"",Grupos.java(470:26-470:47),"new boolean[n_alunos]"
+595,BINARYOPERATOR,"!=",Grupos.java(484:9-484:61),"(i=primeiro_Nao_Analisado(analisados, n_alunos))!=-1"
+596,COMPOUNDSTATEMENT,"",Grupos.java(485:3-508:4),"{
+			lista_comp = tarjan(n_alunos, alunos, i, index, pilha, lista_comp); //******** linha alterada **********
+			
+			//TestGrupos.listaLCFC(cenario, lista_comp);
+			
+			for(j = lista_comp.getPrimeiro(); j!= null; j=j.getNext())
+			{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}
+
+		}"
+597,DECLAREDREFERENCEEXPRESSION,"lista_comp",Grupos.java(486:4-486:14),"lista_comp"
+598,DECLAREDREFERENCEEXPRESSION,"resu",Grupos.java(510:3-510:7),"resu"
+599,BINARYOPERATOR,"=",Grupos.java(484:10-484:56),"i=primeiro_Nao_Analisado(analisados, n_alunos)"
+600,UNARYOPERATOR,"-",Grupos.java(484:59-484:61),"-1"
+601,LITERAL,"",Grupos.java(484:60-484:61),"1"
+602,CALLEXPRESSION,"primeiro_Nao_Analisado",Grupos.java(484:12-484:56),"primeiro_Nao_Analisado(analisados, n_alunos)"
+603,METHODDECLARATION,"primeiro_Nao_Analisado",Grupos.java(516:2-525:3),"static int primeiro_Nao_Analisado(boolean[] estadoPosicoes, int n)
+	{
+		int i;
+		
+		for(i=0; i<n; i++)
+			if(estadoPosicoes[i]==false)
+				return(i);
+				
+		return(-1);
+	}"
+604,DECLAREDREFERENCEEXPRESSION,"analisados",Grupos.java(484:35-484:45),"analisados"
+605,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(484:47-484:55),"n_alunos"
+606,PARAMVARIABLEDECLARATION,"n",Grupos.java(516:62-516:67),"int n"
+607,PARAMVARIABLEDECLARATION,"estadoPosicoes",Grupos.java(516:36-516:60),"boolean[] estadoPosicoes"
+608,BINARYOPERATOR,"=",Grupos.java(486:4-486:71),"lista_comp = tarjan(n_alunos, alunos, i, index, pilha, lista_comp);"
+609,FORSTATEMENT,"",Grupos.java(490:4-506:5),"for(j = lista_comp.getPrimeiro(); j!= null; j=j.getNext())
+			{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}"
+610,COMPOUNDSTATEMENT,"",Grupos.java(491:4-506:5),"{
+				p2 = j.getComponente(); 
+				
+				elementos_na_pilha = p2.elemsStack();
+			
+				if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;
+	
+				while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}
+			}"
+611,BINARYOPERATOR,"=",Grupos.java(490:8-490:36),"j = lista_comp.getPrimeiro()"
+612,BINARYOPERATOR,"!=",Grupos.java(490:38-490:46),"j!= null"
+613,BINARYOPERATOR,"=",Grupos.java(490:48-490:61),"j=j.getNext()"
+614,DECLAREDREFERENCEEXPRESSION,"p2",Grupos.java(492:5-492:7),"p2"
+615,BINARYOPERATOR,"=",Grupos.java(492:5-492:28),"p2 = j.getComponente();"
+616,BINARYOPERATOR,"=",Grupos.java(494:5-494:42),"elementos_na_pilha = p2.elemsStack();"
+617,IFSTATEMENT,"",Grupos.java(496:5-500:33),"if(elementos_na_pilha>=4)
+					n_grupos4++;
+				
+				else
+					outros+=elementos_na_pilha;"
+618,WHILESTATEMENT,"",Grupos.java(502:5-505:6),"while(p2.isEmpty() == false)
+				{
+					analisados[p2.pop()] = true; 
+				}"
+619,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(490:48-490:49),"j"
+620,MEMBERCALLEXPRESSION,"getComponente",Grupos.java(492:10-492:27),"j.getComponente()"
+621,DECLAREDREFERENCEEXPRESSION,"elementos_na_pilha",Grupos.java(494:5-494:23),"elementos_na_pilha"
+622,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(492:10-492:11),"j"
+623,DECLAREDREFERENCEEXPRESSION,"getComponente",Grupos.java(492:12-492:25),"getComponente"
+624,METHODDECLARATION,"getComponente",Grupos.java(265:2-268:3),"Stack getComponente()
+	{
+		return(componente);
+	}"
+625,BINARYOPERATOR,">=",Grupos.java(496:8-496:29),"elementos_na_pilha>=4"
+626,UNARYOPERATOR,"++",Grupos.java(497:6-497:18),"n_grupos4++;"
+627,BINARYOPERATOR,"+=",Grupos.java(500:6-500:33),"outros+=elementos_na_pilha;"
+628,DECLAREDREFERENCEEXPRESSION,"n_grupos4",Grupos.java(497:6-497:15),"n_grupos4"
+629,DECLAREDREFERENCEEXPRESSION,"outros",Grupos.java(500:6-500:12),"outros"
+630,DECLAREDREFERENCEEXPRESSION,"elementos_na_pilha",Grupos.java(496:8-496:26),"elementos_na_pilha"
+631,LITERAL,"",Grupos.java(496:28-496:29),"4"
+632,DECLAREDREFERENCEEXPRESSION,"p2",Grupos.java(502:11-502:13),"p2"
+633,DECLAREDREFERENCEEXPRESSION,"elementos_na_pilha",Grupos.java(500:14-500:32),"elementos_na_pilha"
+634,MEMBERCALLEXPRESSION,"elemsStack",Grupos.java(494:26-494:41),"p2.elemsStack()"
+635,DECLAREDREFERENCEEXPRESSION,"p2",Grupos.java(494:26-494:28),"p2"
+636,DECLAREDREFERENCEEXPRESSION,"elemsStack",Grupos.java(494:29-494:39),"elemsStack"
+637,METHODDECLARATION,"elemsStack",,""
+638,BINARYOPERATOR,"==",Grupos.java(502:11-502:32),"p2.isEmpty() == false"
+639,COMPOUNDSTATEMENT,"",Grupos.java(503:5-505:6),"{
+					analisados[p2.pop()] = true; 
+				}"
+640,DECLAREDREFERENCEEXPRESSION,"analisados",Grupos.java(504:6-504:16),"analisados"
+641,MEMBERCALLEXPRESSION,"isEmpty",Grupos.java(502:11-502:23),"p2.isEmpty()"
+642,LITERAL,"",Grupos.java(502:27-502:32),"false"
+643,DECLAREDREFERENCEEXPRESSION,"isEmpty",Grupos.java(502:14-502:21),"isEmpty"
+644,METHODDECLARATION,"isEmpty",,""
+645,BINARYOPERATOR,"=",Grupos.java(504:6-504:34),"analisados[p2.pop()] = true;"
+646,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(504:6-504:26),"analisados[p2.pop()]"
+647,LITERAL,"",Grupos.java(504:29-504:33),"true"
+648,MEMBERCALLEXPRESSION,"pop",Grupos.java(504:17-504:25),"p2.pop()"
+649,DECLAREDREFERENCEEXPRESSION,"pop",Grupos.java(504:20-504:23),"pop"
+650,METHODDECLARATION,"pop",,""
+651,DECLAREDREFERENCEEXPRESSION,"p2",Grupos.java(504:17-504:19),"p2"
+652,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(490:8-490:9),"j"
+653,MEMBERCALLEXPRESSION,"getPrimeiro",Grupos.java(490:12-490:36),"lista_comp.getPrimeiro()"
+654,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(490:38-490:39),"j"
+655,DECLAREDREFERENCEEXPRESSION,"getPrimeiro",Grupos.java(490:23-490:34),"getPrimeiro"
+656,METHODDECLARATION,"getPrimeiro",Grupos.java(235:2-238:3),"CFC getPrimeiro()
+	{
+		return(primeiro);
+	}"
+657,DECLAREDREFERENCEEXPRESSION,"lista_comp",Grupos.java(490:12-490:22),"lista_comp"
+658,LITERAL,"",Grupos.java(490:42-490:46),"null"
+659,MEMBERCALLEXPRESSION,"getNext",Grupos.java(490:50-490:61),"j.getNext()"
+660,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(490:50-490:51),"j"
+661,DECLAREDREFERENCEEXPRESSION,"getNext",Grupos.java(490:52-490:59),"getNext"
+662,METHODDECLARATION,"getNext",Grupos.java(275:2-278:3),"CFC getNext()
+	{
+		return(next);
+	}"
+663,CALLEXPRESSION,"tarjan",Grupos.java(486:17-486:70),"tarjan(n_alunos, alunos, i, index, pilha, lista_comp)"
+664,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(486:24-486:32),"n_alunos"
+665,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(486:34-486:40),"alunos"
+666,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(486:42-486:43),"i"
+667,DECLAREDREFERENCEEXPRESSION,"index",Grupos.java(486:45-486:50),"index"
+668,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(486:52-486:57),"pilha"
+669,DECLAREDREFERENCEEXPRESSION,"lista_comp",Grupos.java(486:59-486:69),"lista_comp"
+670,NEWEXPRESSION,"",Grupos.java(510:10-510:51),"new Resultado(cenario, n_grupos4, outros)"
+671,CONSTRUCTEXPRESSION,"",Grupos.java(510:10-510:51),"new Resultado(cenario, n_grupos4, outros)"
+672,CONSTRUCTORDECLARATION,"Resultado",Grupos.java(170:2-177:3),"Resultado(int cas, int grupos, int outros)
+	{
+		caso = cas;
+		gruposDe4 = grupos;
+		outrosElementos = outros;
+		
+		next = null;
+	}"
+673,DECLAREDREFERENCEEXPRESSION,"outros",Grupos.java(510:44-510:50),"outros"
+674,DECLAREDREFERENCEEXPRESSION,"n_grupos4",Grupos.java(510:33-510:42),"n_grupos4"
+675,PARAMVARIABLEDECLARATION,"grupos",Grupos.java(170:21-170:31),"int grupos"
+676,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(510:24-510:31),"cenario"
+677,PARAMVARIABLEDECLARATION,"outros",Grupos.java(170:33-170:43),"int outros"
+678,PARAMVARIABLEDECLARATION,"cas",Grupos.java(170:12-170:19),"int cas"
+679,VARIABLEDECLARATION,"this",,""
+680,COMPOUNDSTATEMENT,"",Grupos.java(517:2-525:3),"{
+		int i;
+		
+		for(i=0; i<n; i++)
+			if(estadoPosicoes[i]==false)
+				return(i);
+				
+		return(-1);
+	}"
+681,PARAMVARIABLEDECLARATION,"estadoPosicoes",Grupos.java(516:36-516:60),"boolean[] estadoPosicoes"
+682,PARAMVARIABLEDECLARATION,"n",Grupos.java(516:62-516:67),"int n"
+683,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+684,RETURNSTATEMENT,"",Grupos.java(524:3-524:14),"return(-1);"
+685,DECLARATIONSTATEMENT,"",Grupos.java(518:3-518:9),"int i;"
+686,FORSTATEMENT,"",Grupos.java(520:3-522:15),"for(i=0; i<n; i++)
+			if(estadoPosicoes[i]==false)
+				return(i);"
+687,VARIABLEDECLARATION,"i",Grupos.java(518:7-518:8),"i"
+688,IFSTATEMENT,"",Grupos.java(521:4-522:15),"if(estadoPosicoes[i]==false)
+				return(i);"
+689,BINARYOPERATOR,"=",Grupos.java(520:7-520:10),"i=0"
+690,BINARYOPERATOR,"<",Grupos.java(520:12-520:15),"i<n"
+691,UNARYOPERATOR,"++",Grupos.java(520:17-520:20),"i++"
+692,DECLAREDREFERENCEEXPRESSION,"estadoPosicoes",Grupos.java(521:7-521:21),"estadoPosicoes"
+693,LITERAL,"",Grupos.java(524:11-524:12),"1"
+694,BINARYOPERATOR,"==",Grupos.java(521:7-521:31),"estadoPosicoes[i]==false"
+695,RETURNSTATEMENT,"",Grupos.java(522:5-522:15),"return(i);"
+696,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(522:12-522:13),"i"
+697,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(520:17-520:18),"i"
+698,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(521:7-521:24),"estadoPosicoes[i]"
+699,LITERAL,"",Grupos.java(521:26-521:31),"false"
+700,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(521:22-521:23),"i"
+701,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(520:7-520:8),"i"
+702,LITERAL,"",Grupos.java(520:9-520:10),"0"
+703,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(520:12-520:13),"i"
+704,DECLAREDREFERENCEEXPRESSION,"n",Grupos.java(520:14-520:15),"n"
+705,UNARYOPERATOR,"-",Grupos.java(524:10-524:12),"-1"
+706,FIELDDECLARATION,"this",,""
+707,FIELDDECLARATION,"primeiro",Grupos.java(130:2-130:21),"primeiro"
+708,FIELDDECLARATION,"ultimo",Grupos.java(131:2-131:19),"ultimo"
+709,METHODDECLARATION,"getPrimeiro",Grupos.java(139:2-142:3),"Resultado getPrimeiro()
+	{
+		return(primeiro);
+	}"
+710,METHODDECLARATION,"adicionarResultado",Grupos.java(144:2-158:3),"void adicionarResultado(Resultado res)
+	{
+		if(primeiro == null)
+		{
+			primeiro = res;
+			ultimo = res;
+		}
+		
+		else
+		{
+			ultimo.setProximo(res);
+			
+			ultimo=res;
+		}
+	}"
+711,CONSTRUCTORDECLARATION,"Resultados",Grupos.java(133:2-137:3),"Resultados()
+	{
+		primeiro = null;
+		ultimo = null;
+	}"
+712,VARIABLEDECLARATION,"this",,""
+713,COMPOUNDSTATEMENT,"",Grupos.java(140:2-142:3),"{
+		return(primeiro);
+	}"
+714,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(141:10-141:18),"this"
+715,RETURNSTATEMENT,"",Grupos.java(141:3-141:20),"return(primeiro);"
+716,MEMBEREXPRESSION,"primeiro",Grupos.java(141:10-141:18),"primeiro"
+717,VARIABLEDECLARATION,"this",,""
+718,COMPOUNDSTATEMENT,"",Grupos.java(145:2-158:3),"{
+		if(primeiro == null)
+		{
+			primeiro = res;
+			ultimo = res;
+		}
+		
+		else
+		{
+			ultimo.setProximo(res);
+			
+			ultimo=res;
+		}
+	}"
+719,PARAMVARIABLEDECLARATION,"res",Grupos.java(144:26-144:39),"Resultado res"
+720,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(146:6-146:14),"this"
+721,RETURNSTATEMENT,"",,""
+722,IFSTATEMENT,"",Grupos.java(146:3-157:4),"if(primeiro == null)
+		{
+			primeiro = res;
+			ultimo = res;
+		}
+		
+		else
+		{
+			ultimo.setProximo(res);
+			
+			ultimo=res;
+		}"
+723,BINARYOPERATOR,"==",Grupos.java(146:6-146:22),"primeiro == null"
+724,COMPOUNDSTATEMENT,"",Grupos.java(147:3-150:4),"{
+			primeiro = res;
+			ultimo = res;
+		}"
+725,COMPOUNDSTATEMENT,"",Grupos.java(153:3-157:4),"{
+			ultimo.setProximo(res);
+			
+			ultimo=res;
+		}"
+726,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(148:4-148:12),"this"
+727,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(154:4-154:10),"this"
+728,BINARYOPERATOR,"=",Grupos.java(148:4-148:19),"primeiro = res;"
+729,BINARYOPERATOR,"=",Grupos.java(149:4-149:17),"ultimo = res;"
+730,MEMBEREXPRESSION,"primeiro",Grupos.java(148:4-148:12),"primeiro"
+731,DECLAREDREFERENCEEXPRESSION,"res",Grupos.java(148:15-148:18),"res"
+732,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(149:4-149:10),"this"
+733,MEMBEREXPRESSION,"ultimo",Grupos.java(149:4-149:10),"ultimo"
+734,DECLAREDREFERENCEEXPRESSION,"res",Grupos.java(149:13-149:16),"res"
+735,MEMBERCALLEXPRESSION,"setProximo",Grupos.java(154:4-154:27),"ultimo.setProximo(res);"
+736,BINARYOPERATOR,"=",Grupos.java(156:4-156:15),"ultimo=res;"
+737,DECLAREDREFERENCEEXPRESSION,"setProximo",Grupos.java(154:11-154:21),"setProximo"
+738,METHODDECLARATION,"setProximo",Grupos.java(214:2-217:3),"void setProximo(Resultado res)
+	{
+		next = res;
+	}"
+739,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(156:4-156:10),"this"
+740,DECLAREDREFERENCEEXPRESSION,"res",Grupos.java(154:22-154:25),"res"
+741,PARAMVARIABLEDECLARATION,"res",Grupos.java(214:18-214:31),"Resultado res"
+742,MEMBEREXPRESSION,"ultimo",Grupos.java(154:4-154:10),"ultimo"
+743,MEMBEREXPRESSION,"ultimo",Grupos.java(156:4-156:10),"ultimo"
+744,DECLAREDREFERENCEEXPRESSION,"res",Grupos.java(156:11-156:14),"res"
+745,MEMBEREXPRESSION,"primeiro",Grupos.java(146:6-146:14),"primeiro"
+746,LITERAL,"",Grupos.java(146:18-146:22),"null"
+747,COMPOUNDSTATEMENT,"",Grupos.java(134:2-137:3),"{
+		primeiro = null;
+		ultimo = null;
+	}"
+748,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(135:3-135:11),"this"
+749,RETURNSTATEMENT,"",,""
+750,BINARYOPERATOR,"=",Grupos.java(135:3-135:19),"primeiro = null;"
+751,BINARYOPERATOR,"=",Grupos.java(136:3-136:17),"ultimo = null;"
+752,MEMBEREXPRESSION,"ultimo",Grupos.java(136:3-136:9),"ultimo"
+753,LITERAL,"",Grupos.java(136:12-136:16),"null"
+754,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(136:3-136:9),"this"
+755,MEMBEREXPRESSION,"primeiro",Grupos.java(135:3-135:11),"primeiro"
+756,LITERAL,"",Grupos.java(135:14-135:18),"null"
+757,FIELDDECLARATION,"this",,""
+758,FIELDDECLARATION,"primeiro",Grupos.java(227:2-227:23),"primeiro"
+759,METHODDECLARATION,"getPrimeiro",Grupos.java(235:2-238:3),"CFC getPrimeiro()
+	{
+		return(primeiro);
+	}"
+760,METHODDECLARATION,"add2Lista",Grupos.java(240:2-251:3),"void add2Lista(Stack pilha)
+	{
+		CFC compfc = new CFC(pilha);
+		
+		if(primeiro == null)
+			primeiro = compfc;
+			
+		else
+			ultimo.setNext(compfc);
+			
+		ultimo = compfc;
+	}"
+761,CONSTRUCTORDECLARATION,"Lista_CFC",Grupos.java(229:2-233:3),"Lista_CFC()
+	{
+		primeiro = null;
+		ultimo = null;
+	}"
+762,COMPOUNDSTATEMENT,"",Grupos.java(230:2-233:3),"{
+		primeiro = null;
+		ultimo = null;
+	}"
+763,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(231:3-231:11),"this"
+764,RETURNSTATEMENT,"",,""
+765,BINARYOPERATOR,"=",Grupos.java(231:3-231:19),"primeiro = null;"
+766,BINARYOPERATOR,"=",Grupos.java(232:3-232:17),"ultimo = null;"
+767,MEMBEREXPRESSION,"primeiro",Grupos.java(231:3-231:11),"primeiro"
+768,LITERAL,"",Grupos.java(231:14-231:18),"null"
+769,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(232:3-232:9),"this"
+770,MEMBEREXPRESSION,"ultimo",Grupos.java(232:3-232:9),"ultimo"
+771,LITERAL,"",Grupos.java(232:12-232:16),"null"
+772,VARIABLEDECLARATION,"this",,""
+773,COMPOUNDSTATEMENT,"",Grupos.java(236:2-238:3),"{
+		return(primeiro);
+	}"
+774,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(237:10-237:18),"this"
+775,RETURNSTATEMENT,"",Grupos.java(237:3-237:20),"return(primeiro);"
+776,MEMBEREXPRESSION,"primeiro",Grupos.java(237:10-237:18),"primeiro"
+777,VARIABLEDECLARATION,"this",,""
+778,COMPOUNDSTATEMENT,"",Grupos.java(241:2-251:3),"{
+		CFC compfc = new CFC(pilha);
+		
+		if(primeiro == null)
+			primeiro = compfc;
+			
+		else
+			ultimo.setNext(compfc);
+			
+		ultimo = compfc;
+	}"
+779,PARAMVARIABLEDECLARATION,"pilha",Grupos.java(240:17-240:28),"Stack pilha"
+780,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(242:24-242:29),"pilha"
+781,RETURNSTATEMENT,"",,""
+782,DECLARATIONSTATEMENT,"",Grupos.java(242:3-242:31),"CFC compfc = new CFC(pilha);"
+783,IFSTATEMENT,"",Grupos.java(244:3-248:27),"if(primeiro == null)
+			primeiro = compfc;
+			
+		else
+			ultimo.setNext(compfc);"
+784,BINARYOPERATOR,"=",Grupos.java(250:3-250:19),"ultimo = compfc;"
+785,VARIABLEDECLARATION,"compfc",Grupos.java(242:7-242:30),"compfc = new CFC(pilha)"
+786,BINARYOPERATOR,"==",Grupos.java(244:6-244:22),"primeiro == null"
+787,BINARYOPERATOR,"=",Grupos.java(245:4-245:22),"primeiro = compfc;"
+788,MEMBERCALLEXPRESSION,"setNext",Grupos.java(248:4-248:27),"ultimo.setNext(compfc);"
+789,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(245:4-245:12),"this"
+790,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(248:4-248:10),"this"
+791,MEMBEREXPRESSION,"primeiro",Grupos.java(245:4-245:12),"primeiro"
+792,DECLAREDREFERENCEEXPRESSION,"compfc",Grupos.java(245:15-245:21),"compfc"
+793,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(250:3-250:9),"this"
+794,DECLAREDREFERENCEEXPRESSION,"setNext",Grupos.java(248:11-248:18),"setNext"
+795,METHODDECLARATION,"setNext",Grupos.java(270:2-273:3),"void setNext(CFC no)
+	{
+		next = no;
+	}"
+796,DECLAREDREFERENCEEXPRESSION,"compfc",Grupos.java(248:19-248:25),"compfc"
+797,PARAMVARIABLEDECLARATION,"no",Grupos.java(270:15-270:21),"CFC no"
+798,MEMBEREXPRESSION,"ultimo",Grupos.java(248:4-248:10),"ultimo"
+799,MEMBEREXPRESSION,"primeiro",Grupos.java(244:6-244:14),"primeiro"
+800,LITERAL,"",Grupos.java(244:18-244:22),"null"
+801,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(244:6-244:14),"this"
+802,NEWEXPRESSION,"",Grupos.java(242:16-242:30),"new CFC(pilha)"
+803,CONSTRUCTEXPRESSION,"",Grupos.java(242:16-242:30),"new CFC(pilha)"
+804,CONSTRUCTORDECLARATION,"CFC",Grupos.java(259:2-263:3),"CFC(Stack comp)
+	{
+		componente = comp;
+		next = null;
+	}"
+805,PARAMVARIABLEDECLARATION,"comp",Grupos.java(259:6-259:16),"Stack comp"
+806,MEMBEREXPRESSION,"ultimo",Grupos.java(250:3-250:9),"ultimo"
+807,DECLAREDREFERENCEEXPRESSION,"compfc",Grupos.java(250:12-250:18),"compfc"
+808,FIELDDECLARATION,"this",,""
+809,FIELDDECLARATION,"elems",Grupos.java(283:2-283:12),"elems"
+810,FIELDDECLARATION,"first",Grupos.java(284:2-284:13),"first"
+811,METHODDECLARATION,"elemsStack",Grupos.java(292:2-295:3),"int elemsStack()
+	{
+		return(elems);
+	}"
+812,METHODDECLARATION,"push",Grupos.java(297:2-305:3),"void push(int x)
+	{
+		Node no = new Node(x);
+	
+		no.setNext(first);
+		first = no;
+		
+		elems++;
+	}"
+813,METHODDECLARATION,"pop",Grupos.java(307:2-316:3),"int pop()
+	{
+		int x = first.getValor();
+		
+		first = first.getNext();
+		
+		elems--;
+		
+		return(x);
+	}"
+814,METHODDECLARATION,"isEmpty",Grupos.java(318:2-321:3),"boolean isEmpty()
+	{
+		return(first==null);
+	}"
+815,METHODDECLARATION,"elemInStack",Grupos.java(329:2-338:3),"boolean elemInStack(int x)
+	{
+		Node i;
+		
+		for(i=first; i!=null; i=i.getNext())
+			if(i.getValor()==x)
+				return(true);
+				
+		return(false);
+	}"
+816,METHODDECLARATION,"getElements",Grupos.java(340:2-352:3),"int[] getElements()
+	{
+		int[] elements = new int[elems];
+		int j;
+		Node i;
+		
+		for(i=first, j=elems-1; i!=null; i=i.getNext(), j--)
+		{
+			elements[j] = i.getValor();
+		}
+		
+		return(elements);
+	}"
+817,METHODDECLARATION,"getTill",Grupos.java(354:2-369:3),"Stack getTill(int v)
+	{
+		Node nova;
+		int i;
+		Stack s = new Stack();
+		
+		do
+		{
+			i = this.pop();
+		
+			s.push(i);
+		}
+		while(i!=v);
+		
+		return(s);
+	}"
+818,METHODDECLARATION,"verPosicao",Grupos.java(371:2-383:3),"int verPosicao(int ind)
+	{
+		Node j;
+		int i;
+	
+		for(i=0, j = first; i<ind && j!= null; i++, j=j.getNext());
+	
+		if(j!=null)
+			return(j.getValor());
+		
+		else
+			return(-1);
+	}"
+819,CONSTRUCTORDECLARATION,"Stack",Grupos.java(286:2-290:3),"Stack()
+	{
+		elems = 0;
+		first = null;
+	}"
+820,VARIABLEDECLARATION,"this",,""
+821,COMPOUNDSTATEMENT,"",Grupos.java(293:2-295:3),"{
+		return(elems);
+	}"
+822,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(294:10-294:15),"this"
+823,RETURNSTATEMENT,"",Grupos.java(294:3-294:17),"return(elems);"
+824,MEMBEREXPRESSION,"elems",Grupos.java(294:10-294:15),"elems"
+825,VARIABLEDECLARATION,"this",,""
+826,COMPOUNDSTATEMENT,"",Grupos.java(298:2-305:3),"{
+		Node no = new Node(x);
+	
+		no.setNext(first);
+		first = no;
+		
+		elems++;
+	}"
+827,PARAMVARIABLEDECLARATION,"x",Grupos.java(297:12-297:17),"int x"
+828,DECLAREDREFERENCEEXPRESSION,"x",Grupos.java(299:22-299:23),"x"
+829,RETURNSTATEMENT,"",,""
+830,DECLARATIONSTATEMENT,"",Grupos.java(299:3-299:25),"Node no = new Node(x);"
+831,MEMBERCALLEXPRESSION,"setNext",Grupos.java(301:3-301:21),"no.setNext(first);"
+832,BINARYOPERATOR,"=",Grupos.java(302:3-302:14),"first = no;"
+833,UNARYOPERATOR,"++",Grupos.java(304:3-304:11),"elems++;"
+834,VARIABLEDECLARATION,"no",Grupos.java(299:8-299:24),"no = new Node(x)"
+835,DECLAREDREFERENCEEXPRESSION,"setNext",Grupos.java(301:6-301:13),"setNext"
+836,METHODDECLARATION,"setNext",,""
+837,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(302:3-302:8),"this"
+838,MEMBEREXPRESSION,"first",Grupos.java(301:14-301:19),"first"
+839,DECLAREDREFERENCEEXPRESSION,"no",Grupos.java(301:3-301:5),"no"
+840,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(301:14-301:19),"this"
+841,PARAMVARIABLEDECLARATION,"node0",,""
+842,MEMBEREXPRESSION,"first",Grupos.java(302:3-302:8),"first"
+843,DECLAREDREFERENCEEXPRESSION,"no",Grupos.java(302:11-302:13),"no"
+844,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(304:3-304:8),"this"
+845,MEMBEREXPRESSION,"elems",Grupos.java(304:3-304:8),"elems"
+846,NEWEXPRESSION,"",Grupos.java(299:13-299:24),"new Node(x)"
+847,CONSTRUCTEXPRESSION,"",Grupos.java(299:13-299:24),"new Node(x)"
+848,CONSTRUCTORDECLARATION,"Node",,""
+849,PARAMVARIABLEDECLARATION,"int0",,""
+850,VARIABLEDECLARATION,"this",,""
+851,COMPOUNDSTATEMENT,"",Grupos.java(319:2-321:3),"{
+		return(first==null);
+	}"
+852,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(320:10-320:15),"this"
+853,RETURNSTATEMENT,"",Grupos.java(320:3-320:23),"return(first==null);"
+854,BINARYOPERATOR,"==",Grupos.java(320:10-320:21),"first==null"
+855,MEMBEREXPRESSION,"first",Grupos.java(320:10-320:15),"first"
+856,LITERAL,"",Grupos.java(320:17-320:21),"null"
+857,VARIABLEDECLARATION,"this",,""
+858,COMPOUNDSTATEMENT,"",Grupos.java(355:2-369:3),"{
+		Node nova;
+		int i;
+		Stack s = new Stack();
+		
+		do
+		{
+			i = this.pop();
+		
+			s.push(i);
+		}
+		while(i!=v);
+		
+		return(s);
+	}"
+859,PARAMVARIABLEDECLARATION,"v",Grupos.java(354:16-354:21),"int v"
+860,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+861,RETURNSTATEMENT,"",Grupos.java(368:3-368:13),"return(s);"
+862,DECLARATIONSTATEMENT,"",Grupos.java(356:3-356:13),"Node nova;"
+863,DECLARATIONSTATEMENT,"",Grupos.java(357:3-357:9),"int i;"
+864,DECLARATIONSTATEMENT,"",Grupos.java(358:3-358:25),"Stack s = new Stack();"
+865,DOSTATEMENT,"",Grupos.java(360:3-366:15),"do
+		{
+			i = this.pop();
+		
+			s.push(i);
+		}
+		while(i!=v);"
+866,VARIABLEDECLARATION,"nova",Grupos.java(356:8-356:12),"nova"
+867,VARIABLEDECLARATION,"i",Grupos.java(357:7-357:8),"i"
+868,VARIABLEDECLARATION,"s",Grupos.java(358:9-358:24),"s = new Stack()"
+869,NEWEXPRESSION,"",Grupos.java(358:13-358:24),"new Stack()"
+870,CONSTRUCTEXPRESSION,"",Grupos.java(358:13-358:24),"new Stack()"
+871,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(362:4-362:5),"i"
+872,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+873,DECLAREDREFERENCEEXPRESSION,"s",Grupos.java(368:10-368:11),"s"
+874,BINARYOPERATOR,"!=",Grupos.java(366:9-366:13),"i!=v"
+875,COMPOUNDSTATEMENT,"",Grupos.java(361:3-365:4),"{
+			i = this.pop();
+		
+			s.push(i);
+		}"
+876,BINARYOPERATOR,"=",Grupos.java(362:4-362:19),"i = this.pop();"
+877,MEMBERCALLEXPRESSION,"push",Grupos.java(364:4-364:14),"s.push(i);"
+878,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(366:9-366:10),"i"
+879,DECLAREDREFERENCEEXPRESSION,"push",Grupos.java(364:6-364:10),"push"
+880,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(364:11-364:12),"i"
+881,DECLAREDREFERENCEEXPRESSION,"s",Grupos.java(364:4-364:5),"s"
+882,MEMBERCALLEXPRESSION,"pop",Grupos.java(362:8-362:18),"this.pop()"
+883,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(362:8-362:12),"this"
+884,DECLAREDREFERENCEEXPRESSION,"pop",Grupos.java(362:13-362:16),"pop"
+885,DECLAREDREFERENCEEXPRESSION,"v",Grupos.java(366:12-366:13),"v"
+886,VARIABLEDECLARATION,"this",,""
+887,COMPOUNDSTATEMENT,"",Grupos.java(308:2-316:3),"{
+		int x = first.getValor();
+		
+		first = first.getNext();
+		
+		elems--;
+		
+		return(x);
+	}"
+888,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(309:11-309:16),"this"
+889,RETURNSTATEMENT,"",Grupos.java(315:3-315:13),"return(x);"
+890,DECLARATIONSTATEMENT,"",Grupos.java(309:3-309:28),"int x = first.getValor();"
+891,BINARYOPERATOR,"=",Grupos.java(311:3-311:27),"first = first.getNext();"
+892,UNARYOPERATOR,"--",Grupos.java(313:3-313:11),"elems--;"
+893,VARIABLEDECLARATION,"x",Grupos.java(309:7-309:27),"x = first.getValor()"
+894,MEMBEREXPRESSION,"elems",Grupos.java(313:3-313:8),"elems"
+895,DECLAREDREFERENCEEXPRESSION,"x",Grupos.java(315:10-315:11),"x"
+896,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(313:3-313:8),"this"
+897,MEMBEREXPRESSION,"first",Grupos.java(311:3-311:8),"first"
+898,MEMBERCALLEXPRESSION,"getNext",Grupos.java(311:11-311:26),"first.getNext()"
+899,DECLAREDREFERENCEEXPRESSION,"getNext",Grupos.java(311:17-311:24),"getNext"
+900,METHODDECLARATION,"getNext",,""
+901,MEMBEREXPRESSION,"first",Grupos.java(311:11-311:16),"first"
+902,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(311:11-311:16),"this"
+903,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(311:3-311:8),"this"
+904,MEMBERCALLEXPRESSION,"getValor",Grupos.java(309:11-309:27),"first.getValor()"
+905,DECLAREDREFERENCEEXPRESSION,"getValor",Grupos.java(309:17-309:25),"getValor"
+906,METHODDECLARATION,"getValor",,""
+907,MEMBEREXPRESSION,"first",Grupos.java(309:11-309:16),"first"
+908,VARIABLEDECLARATION,"this",,""
+909,COMPOUNDSTATEMENT,"",Grupos.java(341:2-352:3),"{
+		int[] elements = new int[elems];
+		int j;
+		Node i;
+		
+		for(i=first, j=elems-1; i!=null; i=i.getNext(), j--)
+		{
+			elements[j] = i.getValor();
+		}
+		
+		return(elements);
+	}"
+910,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(342:28-342:33),"this"
+911,RETURNSTATEMENT,"",Grupos.java(351:3-351:20),"return(elements);"
+912,DECLARATIONSTATEMENT,"",Grupos.java(342:3-342:35),"int[] elements = new int[elems];"
+913,DECLARATIONSTATEMENT,"",Grupos.java(343:3-343:9),"int j;"
+914,DECLARATIONSTATEMENT,"",Grupos.java(344:3-344:10),"Node i;"
+915,FORSTATEMENT,"",Grupos.java(346:3-349:3),"for(i=first, j=elems-1; i!=null; i=i.getNext(), j--)
+		{
+			elements[j] = i.getValor();
+		}"
+916,VARIABLEDECLARATION,"elements",Grupos.java(342:9-342:34),"elements = new int[elems]"
+917,VARIABLEDECLARATION,"j",Grupos.java(343:7-343:8),"j"
+918,VARIABLEDECLARATION,"i",Grupos.java(344:8-344:9),"i"
+919,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+920,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(346:7-346:8),"i"
+921,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+922,COMPOUNDSTATEMENT,"",Grupos.java(347:3-349:4),"{
+			elements[j] = i.getValor();
+		}"
+923,EXPRESSIONLIST,"",Grupos.java(346:7-346:25),"i=first, j=elems-1"
+924,BINARYOPERATOR,"!=",Grupos.java(346:27-346:34),"i!=null"
+925,EXPRESSIONLIST,"",Grupos.java(346:3-349:3),"for(i=first, j=elems-1; i!=null; i=i.getNext(), j--)
+		{
+			elements[j] = i.getValor();
+		"
+926,DECLAREDREFERENCEEXPRESSION,"elements",Grupos.java(348:4-348:12),"elements"
+927,DECLAREDREFERENCEEXPRESSION,"elements",Grupos.java(351:10-351:18),"elements"
+928,BINARYOPERATOR,"=",Grupos.java(346:7-346:25),"i=first"
+929,BINARYOPERATOR,"=",Grupos.java(346:16-346:25),"j=elems-1"
+930,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(346:27-346:28),"i"
+931,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(346:16-346:17),"j"
+932,BINARYOPERATOR,"-",Grupos.java(346:18-346:25),"elems-1"
+933,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(346:18-346:23),"this"
+934,MEMBEREXPRESSION,"elems",Grupos.java(346:18-346:23),"elems"
+935,LITERAL,"",Grupos.java(346:24-346:25),"1"
+936,MEMBEREXPRESSION,"first",Grupos.java(346:9-346:14),"first"
+937,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(346:9-346:14),"this"
+938,LITERAL,"",Grupos.java(346:30-346:34),"null"
+939,BINARYOPERATOR,"=",Grupos.java(348:4-348:31),"elements[j] = i.getValor();"
+940,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(346:36-346:37),"i"
+941,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(348:4-348:15),"elements[j]"
+942,MEMBERCALLEXPRESSION,"getValor",Grupos.java(348:18-348:30),"i.getValor()"
+943,DECLAREDREFERENCEEXPRESSION,"getValor",Grupos.java(348:20-348:28),"getValor"
+944,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(348:18-348:19),"i"
+945,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(348:13-348:14),"j"
+946,BINARYOPERATOR,"=",Grupos.java(346:36-346:49),"i=i.getNext()"
+947,UNARYOPERATOR,"--",Grupos.java(346:51-346:54),"j--"
+948,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(346:51-346:52),"j"
+949,MEMBERCALLEXPRESSION,"getNext",Grupos.java(346:38-346:49),"i.getNext()"
+950,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(346:38-346:39),"i"
+951,DECLAREDREFERENCEEXPRESSION,"getNext",Grupos.java(346:40-346:47),"getNext"
+952,ARRAYCREATIONEXPRESSION,"",Grupos.java(342:20-342:34),"new int[elems]"
+953,MEMBEREXPRESSION,"elems",Grupos.java(342:28-342:33),"elems"
+954,VARIABLEDECLARATION,"this",,""
+955,COMPOUNDSTATEMENT,"",Grupos.java(372:2-383:3),"{
+		Node j;
+		int i;
+	
+		for(i=0, j = first; i<ind && j!= null; i++, j=j.getNext());
+	
+		if(j!=null)
+			return(j.getValor());
+		
+		else
+			return(-1);
+	}"
+956,PARAMVARIABLEDECLARATION,"ind",Grupos.java(371:17-371:24),"int ind"
+957,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+958,RETURNSTATEMENT,"",,""
+959,DECLARATIONSTATEMENT,"",Grupos.java(373:3-373:10),"Node j;"
+960,DECLARATIONSTATEMENT,"",Grupos.java(374:3-374:9),"int i;"
+961,FORSTATEMENT,"",Grupos.java(376:3-376:60),"for(i=0, j = first; i<ind && j!= null; i++, j=j.getNext());"
+962,IFSTATEMENT,"",Grupos.java(378:3-382:15),"if(j!=null)
+			return(j.getValor());
+		
+		else
+			return(-1);"
+963,VARIABLEDECLARATION,"j",Grupos.java(373:8-373:9),"j"
+964,VARIABLEDECLARATION,"i",Grupos.java(374:7-374:8),"i"
+965,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+966,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(376:7-376:8),"i"
+967,EMPTYSTATEMENT,"",Grupos.java(376:61-376:62),";"
+968,EXPRESSIONLIST,"",Grupos.java(376:7-376:21),"i=0, j = first"
+969,BINARYOPERATOR,"&&",Grupos.java(376:23-376:40),"i<ind && j!= null"
+970,EXPRESSIONLIST,"",Grupos.java(376:3-376:60),"for(i=0, j = first; i<ind && j!= null; i++, j=j.getNext()"
+971,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(378:6-378:7),"j"
+972,BINARYOPERATOR,"=",Grupos.java(376:7-376:21),"i=0"
+973,BINARYOPERATOR,"=",Grupos.java(376:12-376:21),"j = first"
+974,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(376:23-376:24),"i"
+975,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(376:12-376:13),"j"
+976,MEMBEREXPRESSION,"first",Grupos.java(376:16-376:21),"first"
+977,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(376:16-376:21),"this"
+978,LITERAL,"",Grupos.java(376:9-376:10),"0"
+979,BINARYOPERATOR,"<",Grupos.java(376:23-376:28),"i<ind"
+980,BINARYOPERATOR,"!=",Grupos.java(376:32-376:40),"j!= null"
+981,DECLAREDREFERENCEEXPRESSION,"ind",Grupos.java(376:25-376:28),"ind"
+982,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(376:32-376:33),"j"
+983,LITERAL,"",Grupos.java(376:36-376:40),"null"
+984,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(376:42-376:43),"i"
+985,UNARYOPERATOR,"++",Grupos.java(376:42-376:45),"i++"
+986,BINARYOPERATOR,"=",Grupos.java(376:47-376:60),"j=j.getNext()"
+987,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(376:47-376:48),"j"
+988,MEMBERCALLEXPRESSION,"getNext",Grupos.java(376:49-376:60),"j.getNext()"
+989,DECLAREDREFERENCEEXPRESSION,"getNext",Grupos.java(376:51-376:58),"getNext"
+990,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(376:49-376:50),"j"
+991,BINARYOPERATOR,"!=",Grupos.java(378:6-378:13),"j!=null"
+992,RETURNSTATEMENT,"",Grupos.java(379:4-379:25),"return(j.getValor());"
+993,RETURNSTATEMENT,"",Grupos.java(382:4-382:15),"return(-1);"
+994,DECLAREDREFERENCEEXPRESSION,"j",Grupos.java(379:11-379:12),"j"
+995,LITERAL,"",Grupos.java(382:12-382:13),"1"
+996,MEMBERCALLEXPRESSION,"getValor",Grupos.java(379:11-379:23),"j.getValor()"
+997,DECLAREDREFERENCEEXPRESSION,"getValor",Grupos.java(379:13-379:21),"getValor"
+998,UNARYOPERATOR,"-",Grupos.java(382:11-382:13),"-1"
+999,LITERAL,"",Grupos.java(378:9-378:13),"null"
+1000,VARIABLEDECLARATION,"this",,""
+1001,COMPOUNDSTATEMENT,"",Grupos.java(330:2-338:3),"{
+		Node i;
+		
+		for(i=first; i!=null; i=i.getNext())
+			if(i.getValor()==x)
+				return(true);
+				
+		return(false);
+	}"
+1002,PARAMVARIABLEDECLARATION,"x",Grupos.java(329:22-329:27),"int x"
+1003,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1004,RETURNSTATEMENT,"",Grupos.java(337:3-337:17),"return(false);"
+1005,DECLARATIONSTATEMENT,"",Grupos.java(331:3-331:10),"Node i;"
+1006,FORSTATEMENT,"",Grupos.java(333:3-335:18),"for(i=first; i!=null; i=i.getNext())
+			if(i.getValor()==x)
+				return(true);"
+1007,VARIABLEDECLARATION,"i",Grupos.java(331:8-331:9),"i"
+1008,IFSTATEMENT,"",Grupos.java(334:4-335:18),"if(i.getValor()==x)
+				return(true);"
+1009,BINARYOPERATOR,"=",Grupos.java(333:7-333:14),"i=first"
+1010,BINARYOPERATOR,"!=",Grupos.java(333:16-333:23),"i!=null"
+1011,BINARYOPERATOR,"=",Grupos.java(333:25-333:38),"i=i.getNext()"
+1012,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(334:7-334:8),"i"
+1013,LITERAL,"",Grupos.java(337:10-337:15),"false"
+1014,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(333:16-333:17),"i"
+1015,LITERAL,"",Grupos.java(333:19-333:23),"null"
+1016,BINARYOPERATOR,"==",Grupos.java(334:7-334:22),"i.getValor()==x"
+1017,RETURNSTATEMENT,"",Grupos.java(335:5-335:18),"return(true);"
+1018,LITERAL,"",Grupos.java(335:12-335:16),"true"
+1019,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(333:25-333:26),"i"
+1020,MEMBERCALLEXPRESSION,"getValor",Grupos.java(334:7-334:19),"i.getValor()"
+1021,DECLAREDREFERENCEEXPRESSION,"x",Grupos.java(334:21-334:22),"x"
+1022,DECLAREDREFERENCEEXPRESSION,"getValor",Grupos.java(334:9-334:17),"getValor"
+1023,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(333:7-333:8),"i"
+1024,MEMBEREXPRESSION,"first",Grupos.java(333:9-333:14),"first"
+1025,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(333:9-333:14),"this"
+1026,MEMBERCALLEXPRESSION,"getNext",Grupos.java(333:27-333:38),"i.getNext()"
+1027,DECLAREDREFERENCEEXPRESSION,"getNext",Grupos.java(333:29-333:36),"getNext"
+1028,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(333:27-333:28),"i"
+1029,COMPOUNDSTATEMENT,"",Grupos.java(287:2-290:3),"{
+		elems = 0;
+		first = null;
+	}"
+1030,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(288:3-288:8),"this"
+1031,RETURNSTATEMENT,"",,""
+1032,BINARYOPERATOR,"=",Grupos.java(288:3-288:13),"elems = 0;"
+1033,BINARYOPERATOR,"=",Grupos.java(289:3-289:16),"first = null;"
+1034,MEMBEREXPRESSION,"elems",Grupos.java(288:3-288:8),"elems"
+1035,LITERAL,"",Grupos.java(288:11-288:12),"0"
+1036,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(289:3-289:8),"this"
+1037,MEMBEREXPRESSION,"first",Grupos.java(289:3-289:8),"first"
+1038,LITERAL,"",Grupos.java(289:11-289:15),"null"
+1039,FIELDDECLARATION,"this",,""
+1040,METHODDECLARATION,"verAlunos",Grupos.java(6:2-35:3),"static void verAlunos(int cenario, int n_alunos, Vertice[] alunos)
+	{
+		int aluno, n_amigos, amigo;
+	
+		Grupos.pw.print(""\n\n\nCenario "" + cenario);  //ver cenario
+	
+		for(aluno = 0; aluno < n_alunos; aluno++)
+		{
+			n_amigos = alunos[aluno].getNAmigos();
+		
+		
+			if(n_amigos > 0)
+			{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}
+			
+			else
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");
+		}
+		
+		Grupos.pw.print(""\n\n"");
+		
+		// PrintWriter nao retorna IOExceptions mas
+        // oferece  o metodo catchError()
+        if (Grupos.pw.checkError ())
+            Grupos.pw.println (""An output error occurred!"" );
+	}"
+1041,METHODDECLARATION,"listaLCFC",Grupos.java(38:2-46:3),"static void listaLCFC(int cenario, Lista_CFC lista)
+	{
+		CFC i;
+		
+		Grupos.pw.print(""\n\n\nCenario: "" + cenario);
+		
+		for(i=lista.getPrimeiro(); i!=null; i=i.getNext())
+			showStack(i.getComponente());
+	}"
+1042,METHODDECLARATION,"showStack",Grupos.java(49:2-66:3),"static void showStack(Stack pilha)
+	{
+		int[] stack;
+		int n_elems = pilha.elemsStack(), i;
+	
+		stack = pilha.getElements();
+		
+		Grupos.pw.print(""\n\n\t Pilha:"");
+		
+		if(n_elems>0)
+			for(i=0; i <n_elems; i++)
+				Grupos.pw.print(""\n\t\t"" + (stack[i]+1));
+		
+		else
+			Grupos.pw.println(""\n\tSem elementos"");
+			
+		Grupos.pw.print(""\n\n"");
+	}"
+1043,CONSTRUCTORDECLARATION,"TestGrupos",,""
+1044,VARIABLEDECLARATION,"this",,""
+1045,COMPOUNDSTATEMENT,"",Grupos.java(7:2-35:3),"{
+		int aluno, n_amigos, amigo;
+	
+		Grupos.pw.print(""\n\n\nCenario "" + cenario);  //ver cenario
+	
+		for(aluno = 0; aluno < n_alunos; aluno++)
+		{
+			n_amigos = alunos[aluno].getNAmigos();
+		
+		
+			if(n_amigos > 0)
+			{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}
+			
+			else
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");
+		}
+		
+		Grupos.pw.print(""\n\n"");
+		
+		// PrintWriter nao retorna IOExceptions mas
+        // oferece  o metodo catchError()
+        if (Grupos.pw.checkError ())
+            Grupos.pw.println (""An output error occurred!"" );
+	}"
+1046,PARAMVARIABLEDECLARATION,"cenario",Grupos.java(6:24-6:35),"int cenario"
+1047,PARAMVARIABLEDECLARATION,"n_alunos",Grupos.java(6:37-6:49),"int n_alunos"
+1048,PARAMVARIABLEDECLARATION,"alunos",Grupos.java(6:51-6:67),"Vertice[] alunos"
+1049,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1050,RETURNSTATEMENT,"",,""
+1051,DECLARATIONSTATEMENT,"",Grupos.java(8:3-8:30),"int aluno, n_amigos, amigo;"
+1052,MEMBERCALLEXPRESSION,"print",Grupos.java(10:3-10:47),"Grupos.pw.print(""\n\n\nCenario "" + cenario);"
+1053,FORSTATEMENT,"",Grupos.java(12:3-27:4),"for(aluno = 0; aluno < n_alunos; aluno++)
+		{
+			n_amigos = alunos[aluno].getNAmigos();
+		
+		
+			if(n_amigos > 0)
+			{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}
+			
+			else
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");
+		}"
+1054,MEMBERCALLEXPRESSION,"print",Grupos.java(29:3-29:27),"Grupos.pw.print(""\n\n"");"
+1055,IFSTATEMENT,"",Grupos.java(33:9-34:62),"if (Grupos.pw.checkError ())
+            Grupos.pw.println (""An output error occurred!"" );"
+1056,VARIABLEDECLARATION,"aluno",Grupos.java(8:7-8:12),"aluno"
+1057,VARIABLEDECLARATION,"n_amigos",Grupos.java(8:14-8:22),"n_amigos"
+1058,VARIABLEDECLARATION,"amigo",Grupos.java(8:24-8:29),"amigo"
+1059,COMPOUNDSTATEMENT,"",Grupos.java(13:3-27:4),"{
+			n_amigos = alunos[aluno].getNAmigos();
+		
+		
+			if(n_amigos > 0)
+			{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}
+			
+			else
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");
+		}"
+1060,BINARYOPERATOR,"=",Grupos.java(12:7-12:16),"aluno = 0"
+1061,BINARYOPERATOR,"<",Grupos.java(12:18-12:34),"aluno < n_alunos"
+1062,UNARYOPERATOR,"++",Grupos.java(12:36-12:43),"aluno++"
+1063,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(14:4-14:12),"n_amigos"
+1064,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(29:3-29:9),"Grupos"
+1065,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(12:36-12:41),"aluno"
+1066,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(12:18-12:23),"aluno"
+1067,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(12:7-12:12),"aluno"
+1068,LITERAL,"",Grupos.java(12:15-12:16),"0"
+1069,BINARYOPERATOR,"=",Grupos.java(14:4-14:42),"n_amigos = alunos[aluno].getNAmigos();"
+1070,IFSTATEMENT,"",Grupos.java(17:4-26:70),"if(n_amigos > 0)
+			{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}
+			
+			else
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");"
+1071,COMPOUNDSTATEMENT,"",Grupos.java(18:4-23:5),"{
+				Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");
+			
+				for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));
+			}"
+1072,MEMBERCALLEXPRESSION,"print",Grupos.java(26:5-26:70),"Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."");"
+1073,MEMBERCALLEXPRESSION,"getNAmigos",Grupos.java(14:15-14:41),"alunos[aluno].getNAmigos()"
+1074,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(17:7-17:15),"n_amigos"
+1075,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(14:15-14:21),"alunos"
+1076,DECLAREDREFERENCEEXPRESSION,"getNAmigos",Grupos.java(14:29-14:39),"getNAmigos"
+1077,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(14:15-14:28),"alunos[aluno]"
+1078,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(14:22-14:27),"aluno"
+1079,BINARYOPERATOR,">",Grupos.java(17:7-17:19),"n_amigos > 0"
+1080,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(19:5-19:11),"Grupos"
+1081,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(26:5-26:11),"Grupos"
+1082,MEMBERCALLEXPRESSION,"print",Grupos.java(19:5-19:94),"Grupos.pw.print(""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: "");"
+1083,FORSTATEMENT,"",Grupos.java(21:5-22:63),"for(amigo = 0; amigo < n_amigos; amigo++)
+					Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));"
+1084,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(19:15-19:20),"print"
+1085,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(21:9-21:14),"amigo"
+1086,BINARYOPERATOR,"+",Grupos.java(19:21-19:92),"""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos + "" amigo(s) que sao: """
+1087,MEMBEREXPRESSION,"pw",Grupos.java(19:5-19:14),"Grupos.pw"
+1088,LITERAL,"",Grupos.java(19:21-19:35),"""\n\n aluno: """
+1089,BINARYOPERATOR,"+",Grupos.java(19:21-19:68),"""\n\n aluno: "" + (aluno+1) + "" tem "" + n_amigos"
+1090,LITERAL,"",Grupos.java(19:71-19:92),""" amigo(s) que sao: """
+1091,BINARYOPERATOR,"+",Grupos.java(19:21-19:57),"""\n\n aluno: "" + (aluno+1) + "" tem """
+1092,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(19:60-19:68),"n_amigos"
+1093,BINARYOPERATOR,"+",Grupos.java(19:21-19:47),"""\n\n aluno: "" + (aluno+1)"
+1094,LITERAL,"",Grupos.java(19:50-19:57),""" tem """
+1095,BINARYOPERATOR,"+",Grupos.java(19:39-19:46),"aluno+1"
+1096,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(19:39-19:44),"aluno"
+1097,LITERAL,"",Grupos.java(19:45-19:46),"1"
+1098,MEMBERCALLEXPRESSION,"print",Grupos.java(22:6-22:63),"Grupos.pw.print(""\n\t"" + (alunos[aluno].Amigo(amigo)+1));"
+1099,BINARYOPERATOR,"=",Grupos.java(21:9-21:18),"amigo = 0"
+1100,BINARYOPERATOR,"<",Grupos.java(21:20-21:36),"amigo < n_amigos"
+1101,UNARYOPERATOR,"++",Grupos.java(21:38-21:45),"amigo++"
+1102,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(22:6-22:12),"Grupos"
+1103,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(22:16-22:21),"print"
+1104,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(21:38-21:43),"amigo"
+1105,BINARYOPERATOR,"+",Grupos.java(22:22-22:61),"""\n\t"" + (alunos[aluno].Amigo(amigo)+1)"
+1106,LITERAL,"",Grupos.java(22:22-22:28),"""\n\t"""
+1107,BINARYOPERATOR,"+",Grupos.java(22:32-22:60),"alunos[aluno].Amigo(amigo)+1"
+1108,MEMBERCALLEXPRESSION,"Amigo",Grupos.java(22:32-22:58),"alunos[aluno].Amigo(amigo)"
+1109,LITERAL,"",Grupos.java(22:59-22:60),"1"
+1110,DECLAREDREFERENCEEXPRESSION,"Amigo",Grupos.java(22:46-22:51),"Amigo"
+1111,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(22:52-22:57),"amigo"
+1112,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(22:32-22:45),"alunos[aluno]"
+1113,DECLAREDREFERENCEEXPRESSION,"alunos",Grupos.java(22:32-22:38),"alunos"
+1114,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(22:39-22:44),"aluno"
+1115,MEMBEREXPRESSION,"pw",Grupos.java(22:6-22:15),"Grupos.pw"
+1116,LITERAL,"",Grupos.java(21:17-21:18),"0"
+1117,DECLAREDREFERENCEEXPRESSION,"amigo",Grupos.java(21:20-21:25),"amigo"
+1118,DECLAREDREFERENCEEXPRESSION,"n_amigos",Grupos.java(21:28-21:36),"n_amigos"
+1119,LITERAL,"",Grupos.java(17:18-17:19),"0"
+1120,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(26:15-26:20),"print"
+1121,BINARYOPERATOR,"+",Grupos.java(26:21-26:68),"""\n\n aluno: "" + (aluno+1) + "" nao tem amigos."""
+1122,BINARYOPERATOR,"+",Grupos.java(26:21-26:47),"""\n\n aluno: "" + (aluno+1)"
+1123,LITERAL,"",Grupos.java(26:50-26:68),""" nao tem amigos."""
+1124,LITERAL,"",Grupos.java(26:21-26:35),"""\n\n aluno: """
+1125,BINARYOPERATOR,"+",Grupos.java(26:39-26:46),"aluno+1"
+1126,DECLAREDREFERENCEEXPRESSION,"aluno",Grupos.java(26:39-26:44),"aluno"
+1127,MEMBEREXPRESSION,"pw",Grupos.java(26:5-26:14),"Grupos.pw"
+1128,LITERAL,"",Grupos.java(26:45-26:46),"1"
+1129,DECLAREDREFERENCEEXPRESSION,"n_alunos",Grupos.java(12:26-12:34),"n_alunos"
+1130,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(10:3-10:9),"Grupos"
+1131,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(29:13-29:18),"print"
+1132,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(33:13-33:19),"Grupos"
+1133,LITERAL,"",Grupos.java(29:19-29:25),"""\n\n"""
+1134,MEMBEREXPRESSION,"pw",Grupos.java(29:3-29:12),"Grupos.pw"
+1135,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1136,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(10:13-10:18),"print"
+1137,BINARYOPERATOR,"+",Grupos.java(10:19-10:45),"""\n\n\nCenario "" + cenario"
+1138,LITERAL,"",Grupos.java(10:19-10:35),"""\n\n\nCenario """
+1139,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(10:38-10:45),"cenario"
+1140,MEMBEREXPRESSION,"pw",Grupos.java(10:3-10:12),"Grupos.pw"
+1141,MEMBERCALLEXPRESSION,"checkError",Grupos.java(33:13-33:36),"Grupos.pw.checkError ()"
+1142,MEMBERCALLEXPRESSION,"println",Grupos.java(34:13-34:62),"Grupos.pw.println (""An output error occurred!"" );"
+1143,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(34:13-34:19),"Grupos"
+1144,DECLAREDREFERENCEEXPRESSION,"println",Grupos.java(34:23-34:30),"println"
+1145,LITERAL,"",Grupos.java(34:32-34:59),"""An output error occurred!"""
+1146,MEMBEREXPRESSION,"pw",Grupos.java(34:13-34:22),"Grupos.pw"
+1147,DECLAREDREFERENCEEXPRESSION,"checkError",Grupos.java(33:23-33:33),"checkError"
+1148,MEMBEREXPRESSION,"pw",Grupos.java(33:13-33:22),"Grupos.pw"
+1149,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1150,VARIABLEDECLARATION,"this",,""
+1151,COMPOUNDSTATEMENT,"",Grupos.java(50:2-66:3),"{
+		int[] stack;
+		int n_elems = pilha.elemsStack(), i;
+	
+		stack = pilha.getElements();
+		
+		Grupos.pw.print(""\n\n\t Pilha:"");
+		
+		if(n_elems>0)
+			for(i=0; i <n_elems; i++)
+				Grupos.pw.print(""\n\t\t"" + (stack[i]+1));
+		
+		else
+			Grupos.pw.println(""\n\tSem elementos"");
+			
+		Grupos.pw.print(""\n\n"");
+	}"
+1152,PARAMVARIABLEDECLARATION,"pilha",Grupos.java(49:24-49:35),"Stack pilha"
+1153,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1154,RETURNSTATEMENT,"",,""
+1155,DECLARATIONSTATEMENT,"",Grupos.java(51:3-51:15),"int[] stack;"
+1156,DECLARATIONSTATEMENT,"",Grupos.java(52:3-52:39),"int n_elems = pilha.elemsStack(), i;"
+1157,BINARYOPERATOR,"=",Grupos.java(54:3-54:31),"stack = pilha.getElements();"
+1158,MEMBERCALLEXPRESSION,"print",Grupos.java(56:3-56:36),"Grupos.pw.print(""\n\n\t Pilha:"");"
+1159,IFSTATEMENT,"",Grupos.java(58:3-63:43),"if(n_elems>0)
+			for(i=0; i <n_elems; i++)
+				Grupos.pw.print(""\n\t\t"" + (stack[i]+1));
+		
+		else
+			Grupos.pw.println(""\n\tSem elementos"");"
+1160,MEMBERCALLEXPRESSION,"print",Grupos.java(65:3-65:27),"Grupos.pw.print(""\n\n"");"
+1161,VARIABLEDECLARATION,"stack",Grupos.java(51:9-51:14),"stack"
+1162,VARIABLEDECLARATION,"n_elems",Grupos.java(52:7-52:35),"n_elems = pilha.elemsStack()"
+1163,VARIABLEDECLARATION,"i",Grupos.java(52:37-52:38),"i"
+1164,DECLAREDREFERENCEEXPRESSION,"stack",Grupos.java(54:3-54:8),"stack"
+1165,MEMBERCALLEXPRESSION,"getElements",Grupos.java(54:11-54:30),"pilha.getElements()"
+1166,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(56:3-56:9),"Grupos"
+1167,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(54:11-54:16),"pilha"
+1168,DECLAREDREFERENCEEXPRESSION,"getElements",Grupos.java(54:17-54:28),"getElements"
+1169,METHODDECLARATION,"getElements",,""
+1170,MEMBERCALLEXPRESSION,"elemsStack",Grupos.java(52:17-52:35),"pilha.elemsStack()"
+1171,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1172,DECLAREDREFERENCEEXPRESSION,"elemsStack",Grupos.java(52:23-52:33),"elemsStack"
+1173,DECLAREDREFERENCEEXPRESSION,"pilha",Grupos.java(52:17-52:22),"pilha"
+1174,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(56:13-56:18),"print"
+1175,DECLAREDREFERENCEEXPRESSION,"n_elems",Grupos.java(58:6-58:13),"n_elems"
+1176,LITERAL,"",Grupos.java(56:19-56:34),"""\n\n\t Pilha:"""
+1177,MEMBEREXPRESSION,"pw",Grupos.java(56:3-56:12),"Grupos.pw"
+1178,BINARYOPERATOR,">",Grupos.java(58:6-58:15),"n_elems>0"
+1179,FORSTATEMENT,"",Grupos.java(59:4-60:46),"for(i=0; i <n_elems; i++)
+				Grupos.pw.print(""\n\t\t"" + (stack[i]+1));"
+1180,MEMBERCALLEXPRESSION,"println",Grupos.java(63:4-63:43),"Grupos.pw.println(""\n\tSem elementos"");"
+1181,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(59:8-59:9),"i"
+1182,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(63:4-63:10),"Grupos"
+1183,LITERAL,"",Grupos.java(58:14-58:15),"0"
+1184,DECLAREDREFERENCEEXPRESSION,"println",Grupos.java(63:14-63:21),"println"
+1185,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(65:3-65:9),"Grupos"
+1186,LITERAL,"",Grupos.java(63:22-63:41),"""\n\tSem elementos"""
+1187,MEMBEREXPRESSION,"pw",Grupos.java(63:4-63:13),"Grupos.pw"
+1188,MEMBERCALLEXPRESSION,"print",Grupos.java(60:5-60:46),"Grupos.pw.print(""\n\t\t"" + (stack[i]+1));"
+1189,BINARYOPERATOR,"=",Grupos.java(59:8-59:11),"i=0"
+1190,BINARYOPERATOR,"<",Grupos.java(59:13-59:23),"i <n_elems"
+1191,UNARYOPERATOR,"++",Grupos.java(59:25-59:28),"i++"
+1192,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(60:5-60:11),"Grupos"
+1193,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(60:15-60:20),"print"
+1194,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(59:25-59:26),"i"
+1195,BINARYOPERATOR,"+",Grupos.java(60:21-60:44),"""\n\t\t"" + (stack[i]+1)"
+1196,LITERAL,"",Grupos.java(60:21-60:29),"""\n\t\t"""
+1197,BINARYOPERATOR,"+",Grupos.java(60:33-60:43),"stack[i]+1"
+1198,DECLAREDREFERENCEEXPRESSION,"stack",Grupos.java(60:33-60:38),"stack"
+1199,MEMBEREXPRESSION,"pw",Grupos.java(60:5-60:14),"Grupos.pw"
+1200,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(60:33-60:41),"stack[i]"
+1201,LITERAL,"",Grupos.java(60:42-60:43),"1"
+1202,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(60:39-60:40),"i"
+1203,LITERAL,"",Grupos.java(59:10-59:11),"0"
+1204,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(59:13-59:14),"i"
+1205,DECLAREDREFERENCEEXPRESSION,"n_elems",Grupos.java(59:16-59:23),"n_elems"
+1206,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(65:13-65:18),"print"
+1207,LITERAL,"",Grupos.java(65:19-65:25),"""\n\n"""
+1208,MEMBEREXPRESSION,"pw",Grupos.java(65:3-65:12),"Grupos.pw"
+1209,VARIABLEDECLARATION,"this",,""
+1210,COMPOUNDSTATEMENT,"",Grupos.java(39:2-46:3),"{
+		CFC i;
+		
+		Grupos.pw.print(""\n\n\nCenario: "" + cenario);
+		
+		for(i=lista.getPrimeiro(); i!=null; i=i.getNext())
+			showStack(i.getComponente());
+	}"
+1211,PARAMVARIABLEDECLARATION,"cenario",Grupos.java(38:24-38:35),"int cenario"
+1212,PARAMVARIABLEDECLARATION,"lista",Grupos.java(38:37-38:52),"Lista_CFC lista"
+1213,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1214,RETURNSTATEMENT,"",,""
+1215,DECLARATIONSTATEMENT,"",Grupos.java(40:3-40:9),"CFC i;"
+1216,MEMBERCALLEXPRESSION,"print",Grupos.java(42:3-42:48),"Grupos.pw.print(""\n\n\nCenario: "" + cenario);"
+1217,FORSTATEMENT,"",Grupos.java(44:3-45:33),"for(i=lista.getPrimeiro(); i!=null; i=i.getNext())
+			showStack(i.getComponente());"
+1218,VARIABLEDECLARATION,"i",Grupos.java(40:7-40:8),"i"
+1219,DECLAREDREFERENCEEXPRESSION,"Grupos",Grupos.java(42:3-42:9),"Grupos"
+1220,CALLEXPRESSION,"showStack",Grupos.java(45:4-45:33),"showStack(i.getComponente());"
+1221,BINARYOPERATOR,"=",Grupos.java(44:7-44:28),"i=lista.getPrimeiro()"
+1222,BINARYOPERATOR,"!=",Grupos.java(44:30-44:37),"i!=null"
+1223,BINARYOPERATOR,"=",Grupos.java(44:39-44:52),"i=i.getNext()"
+1224,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(45:14-45:15),"i"
+1225,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(44:7-44:8),"i"
+1226,MEMBERCALLEXPRESSION,"getPrimeiro",Grupos.java(44:9-44:28),"lista.getPrimeiro()"
+1227,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(44:30-44:31),"i"
+1228,DECLAREDREFERENCEEXPRESSION,"getPrimeiro",Grupos.java(44:15-44:26),"getPrimeiro"
+1229,DECLAREDREFERENCEEXPRESSION,"lista",Grupos.java(44:9-44:14),"lista"
+1230,LITERAL,"",Grupos.java(44:33-44:37),"null"
+1231,METHODDECLARATION,"showStack",Grupos.java(49:2-66:3),"static void showStack(Stack pilha)
+	{
+		int[] stack;
+		int n_elems = pilha.elemsStack(), i;
+	
+		stack = pilha.getElements();
+		
+		Grupos.pw.print(""\n\n\t Pilha:"");
+		
+		if(n_elems>0)
+			for(i=0; i <n_elems; i++)
+				Grupos.pw.print(""\n\t\t"" + (stack[i]+1));
+		
+		else
+			Grupos.pw.println(""\n\tSem elementos"");
+			
+		Grupos.pw.print(""\n\n"");
+	}"
+1232,MEMBERCALLEXPRESSION,"getComponente",Grupos.java(45:14-45:31),"i.getComponente()"
+1233,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(44:39-44:40),"i"
+1234,DECLAREDREFERENCEEXPRESSION,"getComponente",Grupos.java(45:16-45:29),"getComponente"
+1235,PARAMVARIABLEDECLARATION,"pilha",Grupos.java(49:24-49:35),"Stack pilha"
+1236,MEMBERCALLEXPRESSION,"getNext",Grupos.java(44:41-44:52),"i.getNext()"
+1237,DECLAREDREFERENCEEXPRESSION,"getNext",Grupos.java(44:43-44:50),"getNext"
+1238,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(44:41-44:42),"i"
+1239,DECLAREDREFERENCEEXPRESSION,"print",Grupos.java(42:13-42:18),"print"
+1240,BINARYOPERATOR,"+",Grupos.java(42:19-42:46),"""\n\n\nCenario: "" + cenario"
+1241,MEMBEREXPRESSION,"pw",Grupos.java(42:3-42:12),"Grupos.pw"
+1242,LITERAL,"",Grupos.java(42:19-42:36),"""\n\n\nCenario: """
+1243,DECLAREDREFERENCEEXPRESSION,"cenario",Grupos.java(42:39-42:46),"cenario"
+1244,FIELDDECLARATION,"this",,""
+1245,FIELDDECLARATION,"valor",Grupos.java(388:2-388:12),"valor"
+1246,FIELDDECLARATION,"next",Grupos.java(389:2-389:12),"next"
+1247,METHODDECLARATION,"getValor",Grupos.java(398:2-401:3),"int getValor()
+	{
+		return(valor);
+	}"
+1248,METHODDECLARATION,"setNext",Grupos.java(403:2-406:3),"void setNext(Node no)
+	{
+		next = no;
+	}"
+1249,METHODDECLARATION,"getNext",Grupos.java(408:2-411:3),"Node getNext()
+	{
+		return(next);
+	}"
+1250,CONSTRUCTORDECLARATION,"Node",Grupos.java(391:2-396:3),"Node(int x)
+	{
+		valor = x;
+		
+		next = null;
+	}"
+1251,VARIABLEDECLARATION,"this",,""
+1252,COMPOUNDSTATEMENT,"",Grupos.java(399:2-401:3),"{
+		return(valor);
+	}"
+1253,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(400:10-400:15),"this"
+1254,RETURNSTATEMENT,"",Grupos.java(400:3-400:17),"return(valor);"
+1255,MEMBEREXPRESSION,"valor",Grupos.java(400:10-400:15),"valor"
+1256,VARIABLEDECLARATION,"this",,""
+1257,COMPOUNDSTATEMENT,"",Grupos.java(404:2-406:3),"{
+		next = no;
+	}"
+1258,PARAMVARIABLEDECLARATION,"no",Grupos.java(403:15-403:22),"Node no"
+1259,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(405:3-405:7),"this"
+1260,RETURNSTATEMENT,"",,""
+1261,BINARYOPERATOR,"=",Grupos.java(405:3-405:13),"next = no;"
+1262,MEMBEREXPRESSION,"next",Grupos.java(405:3-405:7),"next"
+1263,DECLAREDREFERENCEEXPRESSION,"no",Grupos.java(405:10-405:12),"no"
+1264,VARIABLEDECLARATION,"this",,""
+1265,COMPOUNDSTATEMENT,"",Grupos.java(409:2-411:3),"{
+		return(next);
+	}"
+1266,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(410:10-410:14),"this"
+1267,RETURNSTATEMENT,"",Grupos.java(410:3-410:16),"return(next);"
+1268,MEMBEREXPRESSION,"next",Grupos.java(410:10-410:14),"next"
+1269,COMPOUNDSTATEMENT,"",Grupos.java(392:2-396:3),"{
+		valor = x;
+		
+		next = null;
+	}"
+1270,PARAMVARIABLEDECLARATION,"x",Grupos.java(391:7-391:12),"int x"
+1271,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(393:3-393:8),"this"
+1272,RETURNSTATEMENT,"",,""
+1273,BINARYOPERATOR,"=",Grupos.java(393:3-393:13),"valor = x;"
+1274,BINARYOPERATOR,"=",Grupos.java(395:3-395:15),"next = null;"
+1275,MEMBEREXPRESSION,"valor",Grupos.java(393:3-393:8),"valor"
+1276,DECLAREDREFERENCEEXPRESSION,"x",Grupos.java(393:11-393:12),"x"
+1277,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(395:3-395:7),"this"
+1278,MEMBEREXPRESSION,"next",Grupos.java(395:3-395:7),"next"
+1279,LITERAL,"",Grupos.java(395:10-395:14),"null"
+1280,FIELDDECLARATION,"this",,""
+1281,FIELDDECLARATION,"n_amigos",Grupos.java(71:2-71:23),"n_amigos"
+1282,FIELDDECLARATION,"amigos",Grupos.java(72:2-72:15),"amigos"
+1283,FIELDDECLARATION,"index",Grupos.java(74:2-74:12),"index"
+1284,FIELDDECLARATION,"lowlink",Grupos.java(75:2-75:14),"lowlink"
+1285,METHODDECLARATION,"getNAmigos",Grupos.java(86:2-89:3),"int getNAmigos()
+	{
+		return(n_amigos);
+	}"
+1286,METHODDECLARATION,"Amigo",Grupos.java(91:2-94:3),"int Amigo(int x)
+	{
+		return(amigos[x]);
+	}"
+1287,METHODDECLARATION,"setIndex",Grupos.java(96:2-99:3),"void setIndex(int ind)
+	{
+		index = ind;
+	}"
+1288,METHODDECLARATION,"getIndex",Grupos.java(101:2-104:3),"int getIndex()
+	{
+		return(index);
+	}"
+1289,METHODDECLARATION,"setLowlink",Grupos.java(106:2-109:3),"void setLowlink(int ll)
+	{
+		lowlink = ll;
+	}"
+1290,METHODDECLARATION,"getLowlink",Grupos.java(111:2-114:3),"int getLowlink()
+	{
+		return(lowlink);
+	}"
+1291,METHODDECLARATION,"isAmigo",Grupos.java(116:2-125:3),"boolean isAmigo(int a)
+	{
+		int i;
+		 
+		for(i=0; i<n_amigos; i++)
+			if(amigos[i] == a)
+				return(true);
+		
+		return(false);
+	}"
+1292,CONSTRUCTORDECLARATION,"Vertice",Grupos.java(77:2-84:3),"Vertice(int n, int[] ami)
+	{
+		n_amigos = n;	
+		amigos = ami;
+		
+		index = -1;
+		lowlink = -1;
+	}"
+1293,VARIABLEDECLARATION,"this",,""
+1294,COMPOUNDSTATEMENT,"",Grupos.java(102:2-104:3),"{
+		return(index);
+	}"
+1295,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(103:10-103:15),"this"
+1296,RETURNSTATEMENT,"",Grupos.java(103:3-103:17),"return(index);"
+1297,MEMBEREXPRESSION,"index",Grupos.java(103:10-103:15),"index"
+1298,VARIABLEDECLARATION,"this",,""
+1299,COMPOUNDSTATEMENT,"",Grupos.java(87:2-89:3),"{
+		return(n_amigos);
+	}"
+1300,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(88:10-88:18),"this"
+1301,RETURNSTATEMENT,"",Grupos.java(88:3-88:20),"return(n_amigos);"
+1302,MEMBEREXPRESSION,"n_amigos",Grupos.java(88:10-88:18),"n_amigos"
+1303,VARIABLEDECLARATION,"this",,""
+1304,COMPOUNDSTATEMENT,"",Grupos.java(107:2-109:3),"{
+		lowlink = ll;
+	}"
+1305,PARAMVARIABLEDECLARATION,"ll",Grupos.java(106:18-106:24),"int ll"
+1306,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(108:3-108:10),"this"
+1307,RETURNSTATEMENT,"",,""
+1308,BINARYOPERATOR,"=",Grupos.java(108:3-108:16),"lowlink = ll;"
+1309,MEMBEREXPRESSION,"lowlink",Grupos.java(108:3-108:10),"lowlink"
+1310,DECLAREDREFERENCEEXPRESSION,"ll",Grupos.java(108:13-108:15),"ll"
+1311,VARIABLEDECLARATION,"this",,""
+1312,COMPOUNDSTATEMENT,"",Grupos.java(117:2-125:3),"{
+		int i;
+		 
+		for(i=0; i<n_amigos; i++)
+			if(amigos[i] == a)
+				return(true);
+		
+		return(false);
+	}"
+1313,PARAMVARIABLEDECLARATION,"a",Grupos.java(116:18-116:23),"int a"
+1314,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1315,RETURNSTATEMENT,"",Grupos.java(124:3-124:17),"return(false);"
+1316,DECLARATIONSTATEMENT,"",Grupos.java(118:3-118:9),"int i;"
+1317,FORSTATEMENT,"",Grupos.java(120:3-122:18),"for(i=0; i<n_amigos; i++)
+			if(amigos[i] == a)
+				return(true);"
+1318,VARIABLEDECLARATION,"i",Grupos.java(118:7-118:8),"i"
+1319,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(120:7-120:8),"i"
+1320,LITERAL,"",Grupos.java(124:10-124:15),"false"
+1321,IFSTATEMENT,"",Grupos.java(121:4-122:18),"if(amigos[i] == a)
+				return(true);"
+1322,BINARYOPERATOR,"=",Grupos.java(120:7-120:10),"i=0"
+1323,BINARYOPERATOR,"<",Grupos.java(120:12-120:22),"i<n_amigos"
+1324,UNARYOPERATOR,"++",Grupos.java(120:24-120:27),"i++"
+1325,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(121:7-121:13),"this"
+1326,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(120:12-120:13),"i"
+1327,MEMBEREXPRESSION,"n_amigos",Grupos.java(120:14-120:22),"n_amigos"
+1328,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(120:14-120:22),"this"
+1329,BINARYOPERATOR,"==",Grupos.java(121:7-121:21),"amigos[i] == a"
+1330,RETURNSTATEMENT,"",Grupos.java(122:5-122:18),"return(true);"
+1331,LITERAL,"",Grupos.java(122:12-122:16),"true"
+1332,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(120:24-120:25),"i"
+1333,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(121:7-121:16),"amigos[i]"
+1334,DECLAREDREFERENCEEXPRESSION,"a",Grupos.java(121:20-121:21),"a"
+1335,MEMBEREXPRESSION,"amigos",Grupos.java(121:7-121:13),"amigos"
+1336,DECLAREDREFERENCEEXPRESSION,"i",Grupos.java(121:14-121:15),"i"
+1337,LITERAL,"",Grupos.java(120:9-120:10),"0"
+1338,COMPOUNDSTATEMENT,"",Grupos.java(78:2-84:3),"{
+		n_amigos = n;	
+		amigos = ami;
+		
+		index = -1;
+		lowlink = -1;
+	}"
+1339,PARAMVARIABLEDECLARATION,"n",Grupos.java(77:10-77:15),"int n"
+1340,PARAMVARIABLEDECLARATION,"ami",Grupos.java(77:17-77:26),"int[] ami"
+1341,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(79:3-79:11),"this"
+1342,RETURNSTATEMENT,"",,""
+1343,BINARYOPERATOR,"=",Grupos.java(79:3-79:16),"n_amigos = n;"
+1344,BINARYOPERATOR,"=",Grupos.java(80:3-80:16),"amigos = ami;"
+1345,BINARYOPERATOR,"=",Grupos.java(82:3-82:14),"index = -1;"
+1346,BINARYOPERATOR,"=",Grupos.java(83:3-83:16),"lowlink = -1;"
+1347,MEMBEREXPRESSION,"amigos",Grupos.java(80:3-80:9),"amigos"
+1348,DECLAREDREFERENCEEXPRESSION,"ami",Grupos.java(80:12-80:15),"ami"
+1349,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(82:3-82:8),"this"
+1350,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(80:3-80:9),"this"
+1351,MEMBEREXPRESSION,"n_amigos",Grupos.java(79:3-79:11),"n_amigos"
+1352,DECLAREDREFERENCEEXPRESSION,"n",Grupos.java(79:14-79:15),"n"
+1353,MEMBEREXPRESSION,"index",Grupos.java(82:3-82:8),"index"
+1354,UNARYOPERATOR,"-",Grupos.java(82:11-82:13),"-1"
+1355,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(83:3-83:10),"this"
+1356,LITERAL,"",Grupos.java(82:12-82:13),"1"
+1357,MEMBEREXPRESSION,"lowlink",Grupos.java(83:3-83:10),"lowlink"
+1358,UNARYOPERATOR,"-",Grupos.java(83:13-83:15),"-1"
+1359,LITERAL,"",Grupos.java(83:14-83:15),"1"
+1360,VARIABLEDECLARATION,"this",,""
+1361,COMPOUNDSTATEMENT,"",Grupos.java(97:2-99:3),"{
+		index = ind;
+	}"
+1362,PARAMVARIABLEDECLARATION,"ind",Grupos.java(96:16-96:23),"int ind"
+1363,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(98:3-98:8),"this"
+1364,RETURNSTATEMENT,"",,""
+1365,BINARYOPERATOR,"=",Grupos.java(98:3-98:15),"index = ind;"
+1366,MEMBEREXPRESSION,"index",Grupos.java(98:3-98:8),"index"
+1367,DECLAREDREFERENCEEXPRESSION,"ind",Grupos.java(98:11-98:14),"ind"
+1368,VARIABLEDECLARATION,"this",,""
+1369,COMPOUNDSTATEMENT,"",Grupos.java(112:2-114:3),"{
+		return(lowlink);
+	}"
+1370,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(113:10-113:17),"this"
+1371,RETURNSTATEMENT,"",Grupos.java(113:3-113:19),"return(lowlink);"
+1372,MEMBEREXPRESSION,"lowlink",Grupos.java(113:10-113:17),"lowlink"
+1373,VARIABLEDECLARATION,"this",,""
+1374,COMPOUNDSTATEMENT,"",Grupos.java(92:2-94:3),"{
+		return(amigos[x]);
+	}"
+1375,PARAMVARIABLEDECLARATION,"x",Grupos.java(91:12-91:17),"int x"
+1376,DECLAREDREFERENCEEXPRESSION,"this",Grupos.java(93:10-93:16),"this"
+1377,RETURNSTATEMENT,"",Grupos.java(93:3-93:21),"return(amigos[x]);"
+1378,ARRAYSUBSCRIPTIONEXPRESSION,"",Grupos.java(93:10-93:19),"amigos[x]"
+1379,MEMBEREXPRESSION,"amigos",Grupos.java(93:10-93:16),"amigos"
+1380,DECLAREDREFERENCEEXPRESSION,"x",Grupos.java(93:17-93:18),"x"

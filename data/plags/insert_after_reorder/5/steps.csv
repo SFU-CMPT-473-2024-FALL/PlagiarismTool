@@ -1,0 +1,56 @@
+filename,operation,off score,on score,line count
+None,None,0.9417989417989417,1.0,89
+Social.java,insert line 30: `String[] messages;` on try 0,0.9393139841688655,1.0,89
+Social.java,insert line 70: `String[] messages;` on try 0,0.9368421052631579,1.0,89
+Social.java,insert line 47: `int j = 0;` on try 0,0.9343832020997376,1.0,89
+Social.java,insert line 64: `int intInput;` on try 0,0.9214659685863874,1.0,89
+Social.java,insert line 45: `int index = 0;` on try 0,0.9086161879895561,1.0,89
+Social.java,insert line 27: `boolean done = false;` on try 0,0.8802083333333334,1.0,89
+Social.java,insert line 48: `int count = 0;` on try 0,0.8779220779220779,1.0,89
+Social.java,"insert line 21: `String output = """";` on try 0",0.8756476683937824,1.0,89
+Social.java,insert line 64: `boolean done = false;` on try 0,0.8785529715762274,1.0,89
+Social.java,insert line 16: `String[] Data;` on try 0,0.8762886597938144,1.0,89
+Social.java,insert line 39: `int index = 0;` on try 0,0.8740359897172236,1.0,89
+Social.java,insert line 9: `double w;` on try 0,0.8358974358974359,1.0,89
+Social.java,"insert line 94: `int x, y;` on try 0",0.7908163265306123,1.0,89
+Social.java,insert line 12: `int lowlink;` on try 0,0.7480916030534351,1.0,89
+Social.java,insert line 15: `int index = 0;` on try 0,0.7461928934010152,1.0,89
+Social.java,insert line 92: `boolean debug = false;` on try 0,0.7037974683544304,1.0,89
+Social.java,insert line 63: `boolean done = false;` on try 0,0.702020202020202,1.0,89
+Social.java,insert line 67: `int count = 0;` on try 0,0.6397984886649875,1.0,89
+Social.java,insert line 103: `int min;` on try 0,0.6381909547738693,1.0,89
+Social.java,insert line 105: `double w;` on try 0,0.6365914786967418,1.0,89
+Social.java,"insert line 59: `int x, y;` on try 0",0.6234413965087282,1.0,89
+Social.java,"insert line 14: `int x, y;` on try 0",0.6203473945409429,1.0,89
+Social.java,insert line 88: `int index = 0;` on try 0,0.6138613861386139,1.0,89
+Social.java,insert line 24: `int index = 0;` on try 0,0.562962962962963,1.0,89
+Social.java,insert line 84: `int max;` on try 0,0.5221674876847291,1.0,89
+Social.java,insert line 32: `int min;` on try 0,0.5012285012285013,1.0,89
+Social.java,insert line 19: `int min;` on try 0,0.5,1.0,89
+Social.java,insert line 109: `double w;` on try 0,0.49877750611246946,1.0,89
+Social.java,insert line 108: `int max;` on try 0,0.4975609756097561,1.0,89
+Social.java,insert line 30: `boolean debug = false;` on try 0,0.4768856447688564,1.0,89
+Social.java,"insert line 53: `String output = """";` on try 0",0.4563106796116505,1.0,89
+Social.java,insert line 55: `int min;` on try 0,0.4552058111380145,1.0,89
+Social.java,insert line 57: `int j = 0;` on try 1,0.45410628019323673,1.0,89
+Social.java,insert line 92: `double w;` on try 0,0.4530120481927711,1.0,89
+Social.java,insert line 100: `String[] messages;` on try 1,0.4423076923076923,1.0,89
+Social.java,insert line 88: `int p = 0;` on try 3,0.38369304556354916,1.0,89
+Social.java,insert line 7: `int intInput;` on try 0,0.3827751196172249,1.0,89
+Social.java,"insert line 104: `String output = """";` on try 1",0.3818615751789976,1.0,89
+Social.java,insert line 45: `int intInput;` on try 0,0.3476190476190476,1.0,89
+Social.java,insert line 127: `int j = 0;` on try 0,0.34679334916864607,1.0,89
+Social.java,insert line 9: `boolean debug = false;` on try 1,0.3459715639810427,1.0,89
+Social.java,insert line 111: `index++;` on try 1,0.34515366430260047,1.0,89
+Social.java,insert line 55: `boolean debug = false;` on try 0,0.2971698113207547,1.0,89
+Social.java,insert line 94: `boolean debug = false;` on try 1,0.2964705882352941,1.0,89
+Social.java,insert line 42: `int min;` on try 0,0.29577464788732394,1.0,89
+Social.java,insert line 120: `int lowlink;` on try 3,0.2529274004683841,1.0,89
+Social.java,insert line 74: `double w;` on try 2,0.2336448598130841,1.0,89
+Social.java,insert line 64: `int count = 0;` on try 1,0.2331002331002331,1.0,89
+Social.java,insert line 114: `done = true;` on try 2,0.23255813953488372,1.0,89
+Social.java,insert line 82: `int indexOfField;` on try 3,0.23201856148491878,1.0,89
+Social.java,insert line 136: `int max;` on try 2,0.23148148148148148,1.0,89
+Social.java,insert line 55: `double w;` on try 5,0.23094688221709006,1.0,89
+Social.java,insert line 115: `index++;` on try 9,0.2304147465437788,1.0,89
+Social.java,insert line 91: `done = true;` on try 6,0.22988505747126436,1.0,89

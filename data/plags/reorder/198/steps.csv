@@ -1,0 +1,19 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,136
+Sociologia.java,swap lines 123:`id = i;` and 124:`color = Color.white;`,1.0,1.0,136
+Sociologia.java,swap lines 118:`int id;` and 119:`Color color;`,1.0,1.0,136
+Sociologia.java,swap lines 31:`int npessoasoutros = 0;` and 32:`Stack<Vertex> s = new Stack<Vertex>();`,0.9903846153846154,1.0,136
+Sociologia.java,swap lines 125:`stacked = false;` and 126:`arcosadj = new LinkedList<Arco>();`,0.9807692307692307,1.0,136
+Sociologia.java,swap lines 133:`processed = false;` and 134:`nofinal = n;`,0.9807692307692307,1.0,136
+Sociologia.java,swap lines 120:`boolean stacked;` and 121:`LinkedList<Arco> arcosadj;`,0.9807692307692307,1.0,136
+Sociologia.java,swap lines 118:`int id;` and 121:`LinkedList<Arco> arcosadj;`,0.9807692307692307,1.0,136
+Sociologia.java,swap lines 30:`int ngrupos4oumais = 0;` and 32:`Stack<Vertex> s = new Stack<Vertex>();`,0.9759615384615384,1.0,136
+Sociologia.java,swap lines 30:`int ngrupos4oumais = 0;` and 31:`int npessoasoutros = 0;`,0.9759615384615384,1.0,136
+Sociologia.java,swap lines 130:`boolean processed;` and 131:`Vertex nofinal;`,0.9759615384615384,1.0,136
+Sociologia.java,swap lines 119:`Color color;` and 121:`LinkedList<Arco> arcosadj;`,0.9759615384615384,1.0,136
+Sociologia.java,swap lines 118:`int id;` and 120:`boolean stacked;`,0.9759615384615384,1.0,136
+Sociologia.java,swap lines 123:`id = i;` and 126:`arcosadj = new LinkedList<Arco>();`,0.9711538461538461,1.0,136
+Sociologia.java,swap lines 124:`color = Color.white;` and 126:`arcosadj = new LinkedList<Arco>();`,0.9663461538461539,1.0,136
+Sociologia.java,swap lines 119:`Color color;` and 120:`boolean stacked;`,0.9663461538461539,1.0,136
+Sociologia.java,swap lines 123:`id = i;` and 125:`stacked = false;`,0.9663461538461539,1.0,136
+Sociologia.java,swap lines 124:`color = Color.white;` and 125:`stacked = false;`,0.9663461538461539,1.0,136

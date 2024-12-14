@@ -1,0 +1,197 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,345
+Grupos.java,insert line 273: `boolean done = false;` on try 0,0.9990557129367328,1.0,345
+Grupos.java,insert line 31: `String[] messages;` on try 0,0.9981132075471698,1.0,345
+Grupos.java,insert line 104: `int intInput;` on try 0,0.9971724787935909,1.0,345
+Grupos.java,insert line 237: `String[] messages;` on try 0,0.9962335216572504,1.0,345
+Grupos.java,insert line 153: `int i = 0;` on try 0,0.9952963311382879,1.0,345
+Grupos.java,insert line 340: `boolean done = false;` on try 0,0.9943609022556391,1.0,345
+Grupos.java,insert line 106: `int index = 0;` on try 0,0.9915492957746479,1.0,345
+Grupos.java,insert line 315: `String[] messages;` on try 0,0.9906191369606003,1.0,345
+Grupos.java,insert line 294: `double w;` on try 0,0.9896907216494846,1.0,345
+Grupos.java,insert line 182: `String[] messages;` on try 0,0.9887640449438202,1.0,345
+Grupos.java,"insert line 48: `int x, y;` on try 0",0.9869158878504672,1.0,345
+Grupos.java,insert line 130: `int j = 0;` on try 0,0.9859943977591037,1.0,345
+Grupos.java,insert line 121: `int intInput;` on try 0,0.9850746268656716,1.0,345
+Grupos.java,"insert line 23: `int x, y;` on try 0",0.9832402234636871,1.0,345
+Grupos.java,insert line 9: `int max;` on try 0,0.9823255813953489,1.0,345
+Grupos.java,insert line 6: `int intInput;` on try 0,0.9739776951672863,1.0,345
+Grupos.java,insert line 195: `Resultado ultimo;` on try 0,0.958217270194986,1.0,345
+Grupos.java,insert line 276: `int count = 0;` on try 0,0.9573283858998145,1.0,345
+Grupos.java,insert line 112: `int count = 0;` on try 0,0.9545875810936052,1.0,345
+Grupos.java,insert line 5: `int count = 0;` on try 0,0.9537037037037037,1.0,345
+Grupos.java,insert line 348: `double w;` on try 0,0.9528214616096207,1.0,345
+Grupos.java,insert line 86: `String[] messages;` on try 0,0.9519408502772643,1.0,345
+Grupos.java,"insert line 285: `int x, y;` on try 0",0.9501845018450185,1.0,345
+Grupos.java,insert line 224: `int index = 0;` on try 0,0.9493087557603687,1.0,345
+Grupos.java,insert line 211: `int j = 0;` on try 0,0.9484346224677717,1.0,345
+Grupos.java,insert line 271: `String[] messages;` on try 0,0.9475620975160993,1.0,345
+Grupos.java,insert line 75: `int min;` on try 0,0.9466911764705882,1.0,345
+Grupos.java,insert line 371: `int max;` on try 0,0.9421487603305785,1.0,345
+Grupos.java,insert line 358: `int max;` on try 0,0.9247706422018349,1.0,345
+Grupos.java,insert line 365: `int indexOfField;` on try 0,0.9147571035747021,1.0,345
+Grupos.java,insert line 372: `int j = 0;` on try 0,0.9120879120879121,1.0,345
+Grupos.java,insert line 123: `int index = 0;` on try 0,0.8874656907593779,1.0,345
+Grupos.java,insert line 343: `int count = 0;` on try 0,0.886654478976234,1.0,345
+Grupos.java,insert line 236: `boolean done = false;` on try 0,0.8858447488584474,1.0,345
+Grupos.java,insert line 120: `int count = 0;` on try 0,0.885036496350365,1.0,345
+Grupos.java,insert line 161: `boolean debug = false;` on try 0,0.8714676390154968,1.0,345
+Grupos.java,insert line 92: `int intInput;` on try 0,0.8633879781420765,1.0,345
+Grupos.java,insert line 227: `int min;` on try 1,0.8626023657870792,1.0,345
+Grupos.java,insert line 213: `boolean done = false;` on try 0,0.8563636363636363,1.0,345
+Grupos.java,insert line 348: `int min;` on try 0,0.8537693006357856,1.0,345
+Grupos.java,insert line 205: `int min;` on try 0,0.8511796733212341,1.0,345
+Grupos.java,insert line 279: `int count = 0;` on try 0,0.8485947416137806,1.0,345
+Grupos.java,insert line 355: `String[] messages;` on try 0,0.8442028985507246,1.0,345
+Grupos.java,insert line 34: `int intInput;` on try 0,0.8416289592760181,1.0,345
+Grupos.java,insert line 264: `int max;` on try 0,0.8390596745027125,1.0,345
+Grupos.java,insert line 193: `boolean debug = false;` on try 0,0.8310749774164409,1.0,345
+Grupos.java,insert line 183: `double w;` on try 0,0.8303249097472925,1.0,345
+Grupos.java,insert line 293: `double w;` on try 0,0.8169522091974752,1.0,345
+Grupos.java,insert line 229: `int count = 0;` on try 0,0.8144144144144144,1.0,345
+Grupos.java,insert line 187: `double cost;` on try 0,0.7956795679567957,1.0,345
+Grupos.java,insert line 335: `int intInput;` on try 0,0.7949640287769785,1.0,345
+Grupos.java,insert line 25: `int lowlink;` on try 0,0.7924528301886793,1.0,345
+Grupos.java,insert line 374: `boolean done = false;` on try 0,0.7899461400359067,1.0,345
+Grupos.java,insert line 104: `boolean done = false;` on try 0,0.7892376681614349,1.0,345
+Grupos.java,insert line 304: `int max;` on try 0,0.7688172043010753,1.0,345
+Grupos.java,insert line 102: `int max;` on try 0,0.7645478961504029,1.0,345
+Grupos.java,insert line 79: `int j = 0;` on try 0,0.7638640429338104,1.0,345
+Grupos.java,insert line 143: `int intInput;` on try 0,0.7470956210902592,1.0,345
+Grupos.java,"insert line 237: `String output = """";` on try 0",0.7464285714285714,1.0,345
+Grupos.java,insert line 190: `boolean done = false;` on try 0,0.7457627118644068,1.0,345
+Grupos.java,insert line 353: `int count = 0;` on try 0,0.7361853832442068,1.0,345
+Grupos.java,insert line 230: `double w;` on try 0,0.7355298308103295,1.0,345
+Grupos.java,insert line 359: `int max;` on try 0,0.7348754448398577,1.0,345
+Grupos.java,insert line 68: `double w;` on try 0,0.7342222222222222,1.0,345
+Grupos.java,"insert line 165: `int x, y;` on try 0",0.7222715173025732,1.0,345
+Grupos.java,insert line 370: `boolean debug = false;` on try 0,0.7216312056737588,1.0,345
+Grupos.java,insert line 146: `int index = 0;` on try 0,0.7209920283436669,1.0,345
+Grupos.java,insert line 102: `boolean done = false;` on try 0,0.7044247787610619,1.0,345
+Grupos.java,"insert line 355: `int x, y;` on try 0",0.6978798586572438,1.0,345
+Grupos.java,insert line 19: `double w;` on try 0,0.6972639011473963,1.0,345
+Grupos.java,insert line 262: `int max;` on try 0,0.6948853615520282,1.0,345
+Grupos.java,insert line 318: `int min;` on try 0,0.694273127753304,1.0,345
+Grupos.java,insert line 155: `int index = 0;` on try 0,0.6883802816901409,1.0,345
+Grupos.java,insert line 73: `boolean done = false;` on try 0,0.6877748460861918,1.0,345
+Grupos.java,insert line 326: `String[] messages;` on try 0,0.671353251318102,1.0,345
+Grupos.java,insert line 144: `int max;` on try 0,0.6532045654082529,1.0,345
+Grupos.java,insert line 354: `String[] messages;` on try 0,0.6491228070175439,1.0,345
+Grupos.java,insert line 96: `int min;` on try 1,0.6485539000876425,1.0,345
+Grupos.java,insert line 44: `double w;` on try 1,0.647985989492119,1.0,345
+Grupos.java,insert line 220: `int intInput;` on try 0,0.647419072615923,1.0,345
+Grupos.java,insert line 177: `int max;` on try 0,0.6468531468531469,1.0,345
+Grupos.java,insert line 23: `int min;` on try 0,0.62882096069869,1.0,345
+Grupos.java,insert line 106: `double x;` on try 0,0.6282722513089005,1.0,345
+Grupos.java,insert line 110: `int min;` on try 1,0.6277244986922407,1.0,345
+Grupos.java,insert line 56: `int count = 0;` on try 0,0.6254355400696864,1.0,345
+Grupos.java,insert line 80: `boolean debug = false;` on try 0,0.6248912097476066,1.0,345
+Grupos.java,insert line 279: `int min;` on try 0,0.6173913043478261,1.0,345
+Grupos.java,insert line 251: `int count = 0;` on try 1,0.6099044309296264,1.0,345
+Grupos.java,insert line 344: `int max;` on try 0,0.6076388888888888,1.0,345
+Grupos.java,insert line 9: `String[] messages;` on try 0,0.603642671292281,1.0,345
+Grupos.java,insert line 22: `boolean debug = false;` on try 0,0.6031195840554593,1.0,345
+Grupos.java,insert line 62: `boolean done = false;` on try 0,0.6008658008658009,1.0,345
+Grupos.java,insert line 309: `int max;` on try 0,0.6003460207612457,1.0,345
+Grupos.java,insert line 381: `int count = 0;` on try 0,0.5998271391529818,1.0,345
+Grupos.java,insert line 110: `int j = 0;` on try 0,0.5993091537132987,1.0,345
+Grupos.java,"insert line 288: `int x, y;` on try 0",0.5982758620689655,1.0,345
+Grupos.java,"insert line 36: `String output = """";` on try 0",0.590869939707149,1.0,345
+Grupos.java,insert line 380: `int max;` on try 0,0.5731497418244407,1.0,345
+Grupos.java,insert line 326: `int j = 0;` on try 0,0.5709372312983663,1.0,345
+Grupos.java,insert line 277: `int count = 0;` on try 0,0.5670103092783505,1.0,345
+Grupos.java,"insert line 194: `String output = """";` on try 0",0.5665236051502146,1.0,345
+Grupos.java,insert line 39: `int index = 0;` on try 0,0.5660377358490566,1.0,345
+Grupos.java,insert line 358: `boolean debug = false;` on try 0,0.5604113110539846,1.0,345
+Grupos.java,insert line 404: `int j = 0;` on try 0,0.559931506849315,1.0,345
+Grupos.java,insert line 28: `double w;` on try 0,0.5594525235243798,1.0,345
+Grupos.java,insert line 313: `boolean debug = false;` on try 0,0.5572649572649573,1.0,345
+Grupos.java,insert line 181: `double w;` on try 0,0.5499573014517506,1.0,345
+Grupos.java,insert line 339: `int index = 0;` on try 1,0.5494880546075085,1.0,345
+Grupos.java,insert line 396: `int min;` on try 2,0.5490196078431373,1.0,345
+Grupos.java,"insert line 17: `int x, y;` on try 1",0.5259574468085106,1.0,345
+Grupos.java,insert line 135: `String[] messages;` on try 0,0.5238095238095238,1.0,345
+Grupos.java,insert line 436: `boolean done = false;` on try 0,0.5233644859813084,1.0,345
+Grupos.java,insert line 294: `int index = 0;` on try 0,0.5229202037351444,1.0,345
+Grupos.java,"insert line 425: `int x, y;` on try 0",0.5203389830508475,1.0,345
+Grupos.java,insert line 246: `boolean done = false;` on try 1,0.5029635901778154,1.0,345
+Grupos.java,insert line 127: `int index = 0;` on try 0,0.5008460236886633,1.0,345
+Grupos.java,insert line 383: `boolean debug = false;` on try 0,0.4970414201183432,1.0,345
+Grupos.java,insert line 186: `int choosen = -1;` on try 0,0.4966216216216216,1.0,345
+Grupos.java,"insert line 97: `int x, y;` on try 0",0.4839797639123103,1.0,345
+Grupos.java,insert line 388: `boolean check;` on try 0,0.4633529907329402,1.0,345
+Grupos.java,insert line 77: `int count = 0;` on try 0,0.4595959595959596,1.0,345
+Grupos.java,insert line 180: `int j = 0;` on try 0,0.44070647603027757,1.0,345
+Grupos.java,insert line 40: `int min;` on try 1,0.4403361344537815,1.0,345
+Grupos.java,insert line 246: `int index = 0;` on try 0,0.4399664147774979,1.0,345
+Grupos.java,insert line 289: `int min;` on try 0,0.42449664429530204,1.0,345
+Grupos.java,insert line 214: `double x;` on try 0,0.432523051131601,1.0,345
+Grupos.java,insert line 192: `String[] messages;` on try 0,0.4321608040201005,1.0,345
+Grupos.java,insert line 179: `String[] messages;` on try 1,0.43179916317991635,1.0,345
+Grupos.java,"insert line 350: `String output = """";` on try 1",0.431438127090301,1.0,345
+Grupos.java,insert line 36: `int index = 0;` on try 1,0.4093567251461988,1.0,345
+Grupos.java,insert line 332: `boolean done = false;` on try 0,0.4090150250417362,1.0,345
+Grupos.java,insert line 222: `int max;` on try 0,0.39366138448707255,1.0,345
+Grupos.java,"insert line 380: `int x, y;` on try 1",0.3930058284762698,1.0,345
+Grupos.java,insert line 75: `String[] messages;` on try 0,0.37271214642262895,1.0,345
+Grupos.java,insert line 242: `int index = 0;` on try 0,0.3690773067331671,1.0,345
+Grupos.java,insert line 312: `int count = 0;` on try 1,0.3687707641196013,1.0,345
+Grupos.java,"insert line 462: `String output = """";` on try 0",0.36846473029045645,1.0,345
+Grupos.java,insert line 366: `int indexOfField;` on try 1,0.3681592039800995,1.0,345
+Grupos.java,insert line 295: `double w;` on try 0,0.36785418392709196,1.0,345
+Grupos.java,insert line 15: `boolean done = false;` on try 0,0.3675496688741722,1.0,345
+Grupos.java,insert line 377: `boolean debug = false;` on try 1,0.36724565756823824,1.0,345
+Grupos.java,insert line 453: `int intInput;` on try 0,0.36363636363636365,1.0,345
+Grupos.java,insert line 333: `int min;` on try 0,0.3633360858794385,1.0,345
+Grupos.java,insert line 80: `double w;` on try 0,0.36303630363036304,1.0,345
+Grupos.java,insert line 332: `boolean check;` on try 0,0.36273701566364386,1.0,345
+Grupos.java,insert line 223: `int j = 0;` on try 0,0.3624382207578254,1.0,345
+Grupos.java,insert line 11: `int i = 0;` on try 1,0.36213991769547327,1.0,345
+Grupos.java,insert line 132: `int indexOfField;` on try 0,0.3618421052631579,1.0,345
+Grupos.java,insert line 257: `double w;` on try 0,0.36154478225143794,1.0,345
+Grupos.java,insert line 489: `int index = 0;` on try 0,0.35467980295566504,1.0,345
+Grupos.java,insert line 249: `int i = 0;` on try 0,0.35438884331419196,1.0,345
+Grupos.java,insert line 402: `boolean done = false;` on try 0,0.34918032786885245,1.0,345
+Grupos.java,insert line 489: `double cost;` on try 1,0.34725634725634724,1.0,345
+Grupos.java,insert line 296: `String[] messages;` on try 1,0.3453355155482815,1.0,345
+Grupos.java,insert line 72: `int j = 0;` on try 0,0.34505314799672937,1.0,345
+Grupos.java,insert line 225: `boolean done = false;` on try 0,0.34477124183006536,1.0,345
+Grupos.java,insert line 164: `int intInput;` on try 0,0.3461224489795918,1.0,345
+Grupos.java,insert line 386: `boolean done = false;` on try 0,0.3458401305057096,1.0,345
+Grupos.java,insert line 160: `int j = 0;` on try 0,0.34555827220863894,1.0,345
+Grupos.java,insert line 275: `boolean debug = false;` on try 1,0.34527687296416937,1.0,345
+Grupos.java,insert line 156: `double w;` on try 0,0.3449959316517494,1.0,345
+Grupos.java,insert line 473: `double w;` on try 4,0.33658536585365856,1.0,345
+Grupos.java,insert line 154: `int from;` on try 0,0.3363119415109667,1.0,345
+Grupos.java,"insert line 22: `int x, y;` on try 2",0.3357664233576642,1.0,345
+Grupos.java,insert line 479: `count++;` on try 3,0.31118314424635335,1.0,345
+Grupos.java,insert line 15: `int choosen = -1;` on try 2,0.31093117408906884,1.0,345
+Grupos.java,"insert line 504: `int x, y;` on try 1",0.3104284559417947,1.0,345
+Grupos.java,insert line 479: `int j = 0;` on try 3,0.31017770597738287,1.0,345
+Grupos.java,insert line 378: `int intInput;` on try 3,0.3099273607748184,1.0,345
+Grupos.java,insert line 323: `String[] messages;` on try 1,0.3096774193548387,1.0,345
+Grupos.java,"insert line 175: `int x, y;` on try 0",0.29307568438003223,1.0,345
+Grupos.java,insert line 117: `boolean debug = false;` on try 0,0.27835880933226065,1.0,345
+Grupos.java,insert line 77: `boolean done = false;` on try 0,0.27813504823151125,1.0,345
+Grupos.java,insert line 281: `int j = 0;` on try 0,0.2779116465863454,1.0,345
+Grupos.java,insert line 305: `double w;` on try 2,0.27768860353130015,1.0,345
+Grupos.java,insert line 456: `String[] messages;` on try 3,0.2774659182036889,1.0,345
+Grupos.java,insert line 280: `int index = 0;` on try 2,0.27724358974358976,1.0,345
+Grupos.java,insert line 487: `boolean check;` on try 2,0.27702161729383507,1.0,345
+Grupos.java,insert line 59: `boolean done = false;` on try 4,0.2752,1.0,345
+Grupos.java,insert line 428: `int choosen = -1;` on try 3,0.2653876898481215,1.0,345
+Grupos.java,insert line 434: `done = true;` on try 1,0.26517571884984026,1.0,345
+Grupos.java,insert line 424: `done = true;` on try 7,0.2569832402234637,1.0,345
+Grupos.java,insert line 452: `Double valor;` on try 3,0.2567783094098884,1.0,345
+Grupos.java,insert line 419: `int max;` on try 3,0.2549800796812749,1.0,345
+Grupos.java,"insert line 490: `String output = """";` on try 4",0.25477707006369427,1.0,345
+Grupos.java,"insert line 318: `String output = """";` on try 5",0.2545743834526651,1.0,345
+Grupos.java,insert line 429: `int v;` on try 5,0.2543720190779014,1.0,345
+Grupos.java,insert line 97: `String[] messages;` on try 2,0.2541699761715647,1.0,345
+Grupos.java,insert line 167: `int min;` on try 6,0.25396825396825395,1.0,345
+Grupos.java,insert line 412: `boolean debug = false;` on try 4,0.253766851704996,1.0,345
+Grupos.java,insert line 68: `String[] messages;` on try 3,0.25356576862123614,1.0,345
+Grupos.java,insert line 327: `int j = 0;` on try 4,0.25336500395882816,1.0,345
+Grupos.java,insert line 314: `int index = 0;` on try 4,0.23734177215189872,1.0,345
+Grupos.java,insert line 417: `index++;` on try 4,0.23715415019762845,1.0,345
+Grupos.java,insert line 452: `double min = 9999999;` on try 8,0.23696682464454977,1.0,345

@@ -1,0 +1,3716 @@
+id,type,token,location,code
+1,TRANSLATIONUNITDECLARATION,"/data/00000019/submissions/00517359_Sociologia_c0716011/ProblemA.java",,""
+2,RECORDDECLARATION,"ProblemA",ProblemA.java(11:1-307:2),"public class ProblemA {
+        
+	private static int NumberOfScenarios = 0;
+	private static int NumberOfStudents = 0;
+	private static int pcase = 1;
+	public static String inputd = """";
+   
+	public static String readString(){  
+	   	  int ch;
+	      String r = """";
+	      boolean done = false;
+	      while (!done)
+	      {  try
+	         {  ch = System.in.read();
+	            if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;
+	         }
+	         catch(java.io.IOException e)
+	         {  done = true;
+	         }
+	      }
+	      return r;
+	   }
+	
+    public static void main(String[] args) {
+    	
+    	System.out.println(""Input: "");
+    	inputd = readString();
+    	String [] Data;
+    	Data = inputd.split(""#"");
+    	    	
+    	for (int linenumber = 0;linenumber < Data.length; linenumber++){
+			   if (linenumber == 0){
+				   NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());
+			   }else{
+				   while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}
+			   }				
+		    }
+      }
+    public static int[][] cratearray(String strLine, int[][] nData){
+		String [] temp = null;
+	    temp = strLine.split("" "");
+	    
+	    int i = Integer.parseInt(temp[0].trim());
+	    	for (int j = 2; j < temp.length; j++)
+	    		nData[i][Integer.parseInt(temp[j].trim())] = 1; //1 - the path exist
+	    		nData[i][i]=1;    		
+	return nData;    		
+	} 
+	
+	public static void checkConnections(int[][] nData){
+		nData = Floyd(nData);		
+		groupSearching(nData);		
+	}	
+	
+	public static void groupSearching(int[][] nData){
+		int i,j;
+		int n=nData.length;
+		int[][] groupsArray = new int[n][0];
+		
+		for (i=1; i<n; i++){
+			for (j=1; j<n; j++) {
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}
+		}
+		printresult(groupsArray);
+	}
+	
+	public static int[][] groupsArray(int[][] array, int i, int j, String a){
+		int empty = array[0].length;
+		int m,n,ii,ij,temp,temp1,indexi,indexj,itemp;
+		int[] B = {0};
+										
+		if(a == ""the_same""){
+			
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}	
+			
+		}else{
+			//case of different
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}
+		}
+	return array;   
+	}
+	private static int[] insertElement(int original[], int element, int index) {
+		int length = original.length;
+        int destination[] = new int[length+1];
+        System.arraycopy(original, 0, destination, 0, index);
+        destination[index] = element;
+        System.arraycopy(original, index, destination, index+1, length-index);
+        return destination;
+    }
+	
+	public static int[] merge(int[] array1, int[] array2){
+		int[] C= new int[array1.length+array2.length];
+			   System.arraycopy(array1, 0, C, 0, array1.length);
+			   System.arraycopy(array2, 0, C, array1.length, array2.length);
+	return C;
+	}
+
+	public static int arraySearch(int[] array, int val){
+		// Search for element in array
+	    int index = Arrays.binarySearch(array, val);
+		return index ;	
+	}
+	
+	public static int[][] Floyd(int[][] nData){
+		int i,j,k;
+		int n=nData.length;
+		//Floyd algorithm 
+		for (k=0; k<n; k++)
+			for (i=0; i<n; i++)
+				for (j=0; j<n; j++) {
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}
+	return nData;
+	}
+	public static void printresult(int[][] nData){
+		int i,j,t1,t2;
+		int group = 0;
+		int out=0;		
+				
+		for (i=0; i<nData.length; i++)	{
+			t1=0;t2=0;
+			if(nData[i].length >= 4){
+				group++;
+			}else{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}
+			out = out + t1 + t2;	
+		}		
+	System.out.println(group+"" ""+out);
+	}
+   
+}"
+3,INCLUDEDECLARATION,"java.util.Arrays",,""
+4,INCLUDEDECLARATION,"java.lang.System",,""
+5,FIELDDECLARATION,"this",,""
+6,FIELDDECLARATION,"NumberOfScenarios",ProblemA.java(13:2-13:43),"NumberOfScenarios = 0"
+7,FIELDDECLARATION,"NumberOfStudents",ProblemA.java(14:2-14:42),"NumberOfStudents = 0"
+8,FIELDDECLARATION,"pcase",ProblemA.java(15:2-15:31),"pcase = 1"
+9,FIELDDECLARATION,"inputd",ProblemA.java(16:2-16:35),"inputd = """""
+10,METHODDECLARATION,"readString",ProblemA.java(18:2-35:6),"public static String readString(){  
+	   	  int ch;
+	      String r = """";
+	      boolean done = false;
+	      while (!done)
+	      {  try
+	         {  ch = System.in.read();
+	            if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;
+	         }
+	         catch(java.io.IOException e)
+	         {  done = true;
+	         }
+	      }
+	      return r;
+	   }"
+11,METHODDECLARATION,"main",ProblemA.java(37:5-67:8),"public static void main(String[] args) {
+    	
+    	System.out.println(""Input: "");
+    	inputd = readString();
+    	String [] Data;
+    	Data = inputd.split(""#"");
+    	    	
+    	for (int linenumber = 0;linenumber < Data.length; linenumber++){
+			   if (linenumber == 0){
+				   NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());
+			   }else{
+				   while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}
+			   }				
+		    }
+      }"
+12,METHODDECLARATION,"cratearray",ProblemA.java(68:5-77:3),"public static int[][] cratearray(String strLine, int[][] nData){
+		String [] temp = null;
+	    temp = strLine.split("" "");
+	    
+	    int i = Integer.parseInt(temp[0].trim());
+	    	for (int j = 2; j < temp.length; j++)
+	    		nData[i][Integer.parseInt(temp[j].trim())] = 1; //1 - the path exist
+	    		nData[i][i]=1;    		
+	return nData;    		
+	}"
+13,METHODDECLARATION,"checkConnections",ProblemA.java(79:2-82:3),"public static void checkConnections(int[][] nData){
+		nData = Floyd(nData);		
+		groupSearching(nData);		
+	}"
+14,METHODDECLARATION,"groupSearching",ProblemA.java(84:2-108:3),"public static void groupSearching(int[][] nData){
+		int i,j;
+		int n=nData.length;
+		int[][] groupsArray = new int[n][0];
+		
+		for (i=1; i<n; i++){
+			for (j=1; j<n; j++) {
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}
+		}
+		printresult(groupsArray);
+	}"
+15,METHODDECLARATION,"groupsArray",ProblemA.java(110:2-248:3),"public static int[][] groupsArray(int[][] array, int i, int j, String a){
+		int empty = array[0].length;
+		int m,n,ii,ij,temp,temp1,indexi,indexj,itemp;
+		int[] B = {0};
+										
+		if(a == ""the_same""){
+			
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}	
+			
+		}else{
+			//case of different
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}
+		}
+	return array;   
+	}"
+16,METHODDECLARATION,"insertElement",ProblemA.java(249:2-256:6),"private static int[] insertElement(int original[], int element, int index) {
+		int length = original.length;
+        int destination[] = new int[length+1];
+        System.arraycopy(original, 0, destination, 0, index);
+        destination[index] = element;
+        System.arraycopy(original, index, destination, index+1, length-index);
+        return destination;
+    }"
+17,METHODDECLARATION,"merge",ProblemA.java(258:2-263:3),"public static int[] merge(int[] array1, int[] array2){
+		int[] C= new int[array1.length+array2.length];
+			   System.arraycopy(array1, 0, C, 0, array1.length);
+			   System.arraycopy(array2, 0, C, array1.length, array2.length);
+	return C;
+	}"
+18,METHODDECLARATION,"arraySearch",ProblemA.java(265:2-269:3),"public static int arraySearch(int[] array, int val){
+		// Search for element in array
+	    int index = Arrays.binarySearch(array, val);
+		return index ;	
+	}"
+19,METHODDECLARATION,"Floyd",ProblemA.java(271:2-283:3),"public static int[][] Floyd(int[][] nData){
+		int i,j,k;
+		int n=nData.length;
+		//Floyd algorithm 
+		for (k=0; k<n; k++)
+			for (i=0; i<n; i++)
+				for (j=0; j<n; j++) {
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}
+	return nData;
+	}"
+20,METHODDECLARATION,"printresult",ProblemA.java(284:2-305:3),"public static void printresult(int[][] nData){
+		int i,j,t1,t2;
+		int group = 0;
+		int out=0;		
+				
+		for (i=0; i<nData.length; i++)	{
+			t1=0;t2=0;
+			if(nData[i].length >= 4){
+				group++;
+			}else{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}
+			out = out + t1 + t2;	
+		}		
+	System.out.println(group+"" ""+out);
+	}"
+21,CONSTRUCTORDECLARATION,"ProblemA",,""
+22,VARIABLEDECLARATION,"this",,""
+23,COMPOUNDSTATEMENT,"",ProblemA.java(79:52-82:3),"{
+		nData = Floyd(nData);		
+		groupSearching(nData);		
+	}"
+24,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(79:38-79:51),"int[][] nData"
+25,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(80:3-80:8),"nData"
+26,RETURNSTATEMENT,"",,""
+27,BINARYOPERATOR,"=",ProblemA.java(80:3-80:24),"nData = Floyd(nData);"
+28,CALLEXPRESSION,"groupSearching",ProblemA.java(81:3-81:25),"groupSearching(nData);"
+29,CALLEXPRESSION,"Floyd",ProblemA.java(80:11-80:23),"Floyd(nData)"
+30,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(81:18-81:23),"nData"
+31,METHODDECLARATION,"Floyd",ProblemA.java(247:2-259:3),"public static int[][] Floyd(int[][] nData){
+		int i,j,k;
+		int n=nData.length;
+		//Floyd algorithm 
+		for (k=0; k<n; k++)
+			for (i=0; i<n; i++)
+				for (j=0; j<n; j++) {
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}
+	return nData;
+	}"
+32,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(80:17-80:22),"nData"
+33,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(247:30-247:43),"int[][] nData"
+34,METHODDECLARATION,"groupSearching",ProblemA.java(60:2-84:3),"public static void groupSearching(int[][] nData){
+		int i,j;
+		int n=nData.length;
+		int[][] groupsArray = new int[n][0];
+		
+		for (i=1; i<n; i++){
+			for (j=1; j<n; j++) {
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}
+		}
+		printresult(groupsArray);
+	}"
+35,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(60:36-60:49),"int[][] nData"
+36,VARIABLEDECLARATION,"this",,""
+37,COMPOUNDSTATEMENT,"",ProblemA.java(110:74-248:3),"{
+		int empty = array[0].length;
+		int m,n,ii,ij,temp,temp1,indexi,indexj,itemp;
+		int[] B = {0};
+										
+		if(a == ""the_same""){
+			
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}	
+			
+		}else{
+			//case of different
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}
+		}
+	return array;   
+	}"
+38,PARAMVARIABLEDECLARATION,"array",ProblemA.java(110:36-110:49),"int[][] array"
+39,PARAMVARIABLEDECLARATION,"i",ProblemA.java(110:51-110:56),"int i"
+40,PARAMVARIABLEDECLARATION,"j",ProblemA.java(110:58-110:63),"int j"
+41,PARAMVARIABLEDECLARATION,"a",ProblemA.java(110:65-110:73),"String a"
+42,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(111:15-111:20),"array"
+43,RETURNSTATEMENT,"",ProblemA.java(247:2-247:15),"return array;"
+44,DECLARATIONSTATEMENT,"",ProblemA.java(111:3-111:31),"int empty = array[0].length;"
+45,DECLARATIONSTATEMENT,"",ProblemA.java(112:3-112:48),"int m,n,ii,ij,temp,temp1,indexi,indexj,itemp;"
+46,DECLARATIONSTATEMENT,"",ProblemA.java(113:3-113:17),"int[] B = {0};"
+47,IFSTATEMENT,"",ProblemA.java(115:3-246:4),"if(a == ""the_same""){
+			
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}	
+			
+		}else{
+			//case of different
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}
+		}"
+48,VARIABLEDECLARATION,"empty",ProblemA.java(111:7-111:30),"empty = array[0].length"
+49,VARIABLEDECLARATION,"m",ProblemA.java(112:7-112:8),"m"
+50,VARIABLEDECLARATION,"n",ProblemA.java(112:9-112:10),"n"
+51,VARIABLEDECLARATION,"ii",ProblemA.java(112:11-112:13),"ii"
+52,VARIABLEDECLARATION,"ij",ProblemA.java(112:14-112:16),"ij"
+53,VARIABLEDECLARATION,"temp",ProblemA.java(112:17-112:21),"temp"
+54,VARIABLEDECLARATION,"temp1",ProblemA.java(112:22-112:27),"temp1"
+55,VARIABLEDECLARATION,"indexi",ProblemA.java(112:28-112:34),"indexi"
+56,VARIABLEDECLARATION,"indexj",ProblemA.java(112:35-112:41),"indexj"
+57,VARIABLEDECLARATION,"itemp",ProblemA.java(112:42-112:47),"itemp"
+58,VARIABLEDECLARATION,"B",ProblemA.java(113:9-113:16),"B = {0}"
+59,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+60,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+61,LITERAL,"",ProblemA.java(113:14-113:15),"0"
+62,MEMBEREXPRESSION,"length",ProblemA.java(111:15-111:30),"array[0].length"
+63,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(111:15-111:23),"array[0]"
+64,LITERAL,"",ProblemA.java(111:21-111:22),"0"
+65,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+66,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+67,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+68,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+69,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+70,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+71,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+72,BINARYOPERATOR,"==",ProblemA.java(115:6-115:21),"a == ""the_same"""
+73,COMPOUNDSTATEMENT,"",ProblemA.java(115:22-182:4),"{
+			
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}	
+			
+		}"
+74,COMPOUNDSTATEMENT,"",ProblemA.java(182:8-246:4),"{
+			//case of different
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}
+		}"
+75,DECLAREDREFERENCEEXPRESSION,"empty",ProblemA.java(117:7-117:12),"empty"
+76,DECLAREDREFERENCEEXPRESSION,"empty",ProblemA.java(184:7-184:12),"empty"
+77,IFSTATEMENT,"",ProblemA.java(117:4-180:5),"if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}"
+78,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(247:9-247:14),"array"
+79,COMPOUNDSTATEMENT,"",ProblemA.java(117:18-121:5),"{
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}"
+80,COMPOUNDSTATEMENT,"",ProblemA.java(121:9-180:5),"{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}"
+81,BINARYOPERATOR,"==",ProblemA.java(117:7-117:17),"empty == 0"
+82,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(118:5-118:10),"array"
+83,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(123:9-123:10),"m"
+84,BINARYOPERATOR,"=",ProblemA.java(118:5-118:45),"array[0] = insertElement(array[0],i, 0);"
+85,BINARYOPERATOR,"=",ProblemA.java(119:5-119:45),"array[0] = insertElement(array[0],j, 0);"
+86,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(118:5-118:13),"array[0]"
+87,CALLEXPRESSION,"insertElement",ProblemA.java(118:16-118:44),"insertElement(array[0],i, 0)"
+88,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(119:5-119:10),"array"
+89,LITERAL,"",ProblemA.java(118:11-118:12),"0"
+90,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(118:30-118:35),"array"
+91,METHODDECLARATION,"insertElement",ProblemA.java(225:2-232:6),"private static int[] insertElement(int original[], int element, int index) {
+		int length = original.length;
+        int destination[] = new int[length+1];
+        System.arraycopy(original, 0, destination, 0, index);
+        destination[index] = element;
+        System.arraycopy(original, index, destination, index+1, length-index);
+        return destination;
+    }"
+92,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(118:30-118:38),"array[0]"
+93,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(118:39-118:40),"i"
+94,LITERAL,"",ProblemA.java(118:42-118:43),"0"
+95,PARAMVARIABLEDECLARATION,"element",ProblemA.java(225:53-225:64),"int element"
+96,LITERAL,"",ProblemA.java(118:36-118:37),"0"
+97,PARAMVARIABLEDECLARATION,"original",ProblemA.java(225:37-225:51),"int original[]"
+98,PARAMVARIABLEDECLARATION,"index",ProblemA.java(225:66-225:75),"int index"
+99,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(119:5-119:13),"array[0]"
+100,CALLEXPRESSION,"insertElement",ProblemA.java(119:16-119:44),"insertElement(array[0],j, 0)"
+101,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(119:30-119:38),"array[0]"
+102,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(119:39-119:40),"j"
+103,LITERAL,"",ProblemA.java(119:42-119:43),"0"
+104,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(119:30-119:35),"array"
+105,LITERAL,"",ProblemA.java(119:36-119:37),"0"
+106,LITERAL,"",ProblemA.java(119:11-119:12),"0"
+107,LITERAL,"",ProblemA.java(117:16-117:17),"0"
+108,FORSTATEMENT,"",ProblemA.java(123:5-179:6),"for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}"
+109,BREAKSTATEMENT,"",ProblemA.java(130:36-130:42),"break;"
+110,BREAKSTATEMENT,"",ProblemA.java(136:8-136:14),"break;"
+111,BREAKSTATEMENT,"",ProblemA.java(153:19-153:25),"break;"
+112,BREAKSTATEMENT,"",ProblemA.java(156:8-156:14),"break;"
+113,BREAKSTATEMENT,"",ProblemA.java(174:19-174:25),"break;"
+114,BREAKSTATEMENT,"",ProblemA.java(176:8-176:14),"break;"
+115,COMPOUNDSTATEMENT,"",ProblemA.java(123:32-179:6),"{
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}"
+116,BINARYOPERATOR,"=",ProblemA.java(123:9-123:12),"m=0"
+117,BINARYOPERATOR,"<",ProblemA.java(123:13-123:27),"m<array.length"
+118,UNARYOPERATOR,"++",ProblemA.java(123:28-123:31),"m++"
+119,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(125:18-125:23),"array"
+120,LITERAL,"",ProblemA.java(123:11-123:12),"0"
+121,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(123:13-123:14),"m"
+122,STATICCALLEXPRESSION,"sort",ProblemA.java(125:6-125:28),"Arrays.sort(array[m]);"
+123,BINARYOPERATOR,"=",ProblemA.java(127:6-127:39),"indexi = arraySearch(array[m],i);"
+124,BINARYOPERATOR,"=",ProblemA.java(129:6-129:39),"indexj = arraySearch(array[m],j);"
+125,IFSTATEMENT,"",ProblemA.java(130:6-130:42),"if(indexi >= 0 && indexj >= 0)break;"
+126,IFSTATEMENT,"",ProblemA.java(131:6-138:7),"if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}"
+127,IFSTATEMENT,"",ProblemA.java(139:6-158:7),"if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}"
+128,IFSTATEMENT,"",ProblemA.java(160:6-178:7),"if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}"
+129,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(123:28-123:29),"m"
+130,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(127:6-127:12),"indexi"
+131,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(125:18-125:26),"array[m]"
+132,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(125:24-125:25),"m"
+133,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(129:6-129:12),"indexj"
+134,CALLEXPRESSION,"arraySearch",ProblemA.java(129:15-129:38),"arraySearch(array[m],j)"
+135,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(130:9-130:15),"indexi"
+136,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(129:27-129:32),"array"
+137,METHODDECLARATION,"arraySearch",ProblemA.java(241:2-245:3),"public static int arraySearch(int[] array, int val){
+		// Search for element in array
+	    int index = Arrays.binarySearch(array, val);
+		return index ;	
+	}"
+138,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(129:27-129:35),"array[m]"
+139,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(129:36-129:37),"j"
+140,PARAMVARIABLEDECLARATION,"val",ProblemA.java(241:45-241:52),"int val"
+141,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(129:33-129:34),"m"
+142,PARAMVARIABLEDECLARATION,"array",ProblemA.java(241:32-241:43),"int[] array"
+143,BINARYOPERATOR,"&&",ProblemA.java(139:9-139:34),"indexi >= 0 && indexj < 0"
+144,COMPOUNDSTATEMENT,"",ProblemA.java(139:35-158:7),"{
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}"
+145,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(140:7-140:11),"temp"
+146,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(160:9-160:15),"indexi"
+147,BINARYOPERATOR,"=",ProblemA.java(140:7-140:16),"temp = m;"
+148,BINARYOPERATOR,"=",ProblemA.java(140:16-140:26),"ij=indexj;"
+149,BINARYOPERATOR,"=",ProblemA.java(142:7-142:17),"temp1 = 0;"
+150,FORSTATEMENT,"",ProblemA.java(143:7-152:8),"for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}"
+151,IFSTATEMENT,"",ProblemA.java(153:7-157:8),"if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}"
+152,COMPOUNDSTATEMENT,"",ProblemA.java(143:36-152:8),"{
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}"
+153,BINARYOPERATOR,"=",ProblemA.java(143:11-143:16),"n=m+1"
+154,BINARYOPERATOR,"<",ProblemA.java(143:17-143:31),"n<array.length"
+155,UNARYOPERATOR,"++",ProblemA.java(143:32-143:35),"n++"
+156,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(144:20-144:25),"array"
+157,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(153:10-153:15),"temp1"
+158,STATICCALLEXPRESSION,"sort",ProblemA.java(144:8-144:30),"Arrays.sort(array[n]);"
+159,BINARYOPERATOR,"=",ProblemA.java(145:8-145:40),"itemp = arraySearch(array[n],j);"
+160,IFSTATEMENT,"",ProblemA.java(146:8-151:9),"if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}"
+161,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(143:32-143:33),"n"
+162,DECLAREDREFERENCEEXPRESSION,"itemp",ProblemA.java(145:8-145:13),"itemp"
+163,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(144:20-144:28),"array[n]"
+164,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(144:26-144:27),"n"
+165,BINARYOPERATOR,">=",ProblemA.java(146:11-146:19),"itemp>=0"
+166,COMPOUNDSTATEMENT,"",ProblemA.java(146:20-151:9),"{
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}"
+167,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(147:9-147:14),"array"
+168,BINARYOPERATOR,"=",ProblemA.java(147:9-147:51),"array[temp] = merge(array[temp],array[n]);"
+169,BINARYOPERATOR,"=",ProblemA.java(148:9-148:20),"array[n]=B;"
+170,BINARYOPERATOR,"=",ProblemA.java(149:9-149:17),"temp1=1;"
+171,BREAKSTATEMENT,"",ProblemA.java(150:9-150:15),"break;"
+172,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(147:9-147:20),"array[temp]"
+173,CALLEXPRESSION,"merge",ProblemA.java(147:23-147:50),"merge(array[temp],array[n])"
+174,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(148:9-148:14),"array"
+175,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(147:15-147:19),"temp"
+176,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(147:29-147:34),"array"
+177,METHODDECLARATION,"merge",ProblemA.java(234:2-239:3),"public static int[] merge(int[] array1, int[] array2){
+		int[] C= new int[array1.length+array2.length];
+			   System.arraycopy(array1, 0, C, 0, array1.length);
+			   System.arraycopy(array2, 0, C, array1.length, array2.length);
+	return C;
+	}"
+178,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(147:29-147:40),"array[temp]"
+179,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(147:41-147:49),"array[n]"
+180,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(147:41-147:46),"array"
+181,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(147:47-147:48),"n"
+182,PARAMVARIABLEDECLARATION,"array2",ProblemA.java(234:42-234:54),"int[] array2"
+183,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(147:35-147:39),"temp"
+184,PARAMVARIABLEDECLARATION,"array1",ProblemA.java(234:28-234:40),"int[] array1"
+185,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(148:9-148:17),"array[n]"
+186,DECLAREDREFERENCEEXPRESSION,"B",ProblemA.java(148:18-148:19),"B"
+187,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(149:9-149:14),"temp1"
+188,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(148:15-148:16),"n"
+189,LITERAL,"",ProblemA.java(149:15-149:16),"1"
+190,DECLAREDREFERENCEEXPRESSION,"itemp",ProblemA.java(146:11-146:16),"itemp"
+191,LITERAL,"",ProblemA.java(146:18-146:19),"0"
+192,CALLEXPRESSION,"arraySearch",ProblemA.java(145:16-145:39),"arraySearch(array[n],j)"
+193,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(145:28-145:36),"array[n]"
+194,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(145:37-145:38),"j"
+195,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(145:28-145:33),"array"
+196,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(145:34-145:35),"n"
+197,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(143:11-143:12),"n"
+198,BINARYOPERATOR,"+",ProblemA.java(143:13-143:16),"m+1"
+199,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(143:17-143:18),"n"
+200,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(143:13-143:14),"m"
+201,LITERAL,"",ProblemA.java(143:15-143:16),"1"
+202,MEMBEREXPRESSION,"length",ProblemA.java(143:19-143:31),"array.length"
+203,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(143:19-143:24),"array"
+204,BINARYOPERATOR,"==",ProblemA.java(153:10-153:18),"temp1==1"
+205,COMPOUNDSTATEMENT,"",ProblemA.java(153:31-157:8),"{
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}"
+206,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(154:20-154:25),"array"
+207,STATICCALLEXPRESSION,"sort",ProblemA.java(154:8-154:33),"Arrays.sort(array[temp]);"
+208,BINARYOPERATOR,"=",ProblemA.java(155:8-155:60),"array[temp] = insertElement(array[temp],j, -(ij+1));"
+209,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(155:8-155:13),"array"
+210,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(154:20-154:31),"array[temp]"
+211,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(154:26-154:30),"temp"
+212,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(155:8-155:19),"array[temp]"
+213,CALLEXPRESSION,"insertElement",ProblemA.java(155:22-155:59),"insertElement(array[temp],j, -(ij+1))"
+214,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(155:14-155:18),"temp"
+215,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(155:36-155:41),"array"
+216,METHODDECLARATION,"insertElement",,""
+217,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(155:36-155:47),"array[temp]"
+218,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(155:48-155:49),"j"
+219,UNARYOPERATOR,"-",ProblemA.java(155:51-155:58),"-(ij+1)"
+220,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(155:42-155:46),"temp"
+221,PARAMVARIABLEDECLARATION,"intPtr0",,""
+222,PARAMVARIABLEDECLARATION,"int1",,""
+223,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(155:53-155:55),"ij"
+224,BINARYOPERATOR,"+",ProblemA.java(155:53-155:57),"ij+1"
+225,PARAMVARIABLEDECLARATION,"unknown2",,""
+226,LITERAL,"",ProblemA.java(155:56-155:57),"1"
+227,LITERAL,"",ProblemA.java(153:17-153:18),"1"
+228,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(140:16-140:18),"ij"
+229,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(140:19-140:25),"indexj"
+230,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(142:7-142:12),"temp1"
+231,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(140:14-140:15),"m"
+232,LITERAL,"",ProblemA.java(142:15-142:16),"0"
+233,BINARYOPERATOR,">=",ProblemA.java(139:9-139:20),"indexi >= 0"
+234,BINARYOPERATOR,"<",ProblemA.java(139:24-139:34),"indexj < 0"
+235,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(139:24-139:30),"indexj"
+236,LITERAL,"",ProblemA.java(139:33-139:34),"0"
+237,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(139:9-139:15),"indexi"
+238,LITERAL,"",ProblemA.java(139:19-139:20),"0"
+239,BINARYOPERATOR,"&&",ProblemA.java(131:9-131:33),"indexi < 0 && indexj < 0"
+240,COMPOUNDSTATEMENT,"",ProblemA.java(131:34-138:7),"{
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}"
+241,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(132:10-132:15),"array"
+242,BINARYOPERATOR,"<",ProblemA.java(131:9-131:19),"indexi < 0"
+243,BINARYOPERATOR,"<",ProblemA.java(131:23-131:33),"indexj < 0"
+244,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(131:9-131:15),"indexi"
+245,LITERAL,"",ProblemA.java(131:18-131:19),"0"
+246,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(131:23-131:29),"indexj"
+247,LITERAL,"",ProblemA.java(131:32-131:33),"0"
+248,IFSTATEMENT,"",ProblemA.java(132:7-137:22),"if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;"
+249,BINARYOPERATOR,"==",ProblemA.java(132:10-132:30),"array[m].length == 0"
+250,COMPOUNDSTATEMENT,"",ProblemA.java(132:31-137:8),"{
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}"
+251,CONTINUESTATEMENT,"",ProblemA.java(137:13-137:22),"continue;"
+252,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(134:8-134:13),"array"
+253,MEMBEREXPRESSION,"length",ProblemA.java(132:10-132:25),"array[m].length"
+254,LITERAL,"",ProblemA.java(132:29-132:30),"0"
+255,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(132:10-132:18),"array[m]"
+256,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(132:16-132:17),"m"
+257,BINARYOPERATOR,"=",ProblemA.java(134:8-134:58),"array[m] = insertElement(array[m],i, -(indexi+1));"
+258,BINARYOPERATOR,"=",ProblemA.java(135:8-135:58),"array[m] = insertElement(array[m],j, -(indexj+1));"
+259,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(134:8-134:16),"array[m]"
+260,CALLEXPRESSION,"insertElement",ProblemA.java(134:19-134:57),"insertElement(array[m],i, -(indexi+1))"
+261,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(135:8-135:13),"array"
+262,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(134:33-134:41),"array[m]"
+263,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(134:42-134:43),"i"
+264,UNARYOPERATOR,"-",ProblemA.java(134:45-134:56),"-(indexi+1)"
+265,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(134:47-134:53),"indexi"
+266,BINARYOPERATOR,"+",ProblemA.java(134:47-134:55),"indexi+1"
+267,LITERAL,"",ProblemA.java(134:54-134:55),"1"
+268,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(134:33-134:38),"array"
+269,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(134:39-134:40),"m"
+270,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(134:14-134:15),"m"
+271,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(135:8-135:16),"array[m]"
+272,CALLEXPRESSION,"insertElement",ProblemA.java(135:19-135:57),"insertElement(array[m],j, -(indexj+1))"
+273,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(135:33-135:41),"array[m]"
+274,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(135:42-135:43),"j"
+275,UNARYOPERATOR,"-",ProblemA.java(135:45-135:56),"-(indexj+1)"
+276,BINARYOPERATOR,"+",ProblemA.java(135:47-135:55),"indexj+1"
+277,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(135:47-135:53),"indexj"
+278,LITERAL,"",ProblemA.java(135:54-135:55),"1"
+279,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(135:33-135:38),"array"
+280,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(135:39-135:40),"m"
+281,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(135:14-135:15),"m"
+282,CALLEXPRESSION,"arraySearch",ProblemA.java(127:15-127:38),"arraySearch(array[m],i)"
+283,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(127:27-127:35),"array[m]"
+284,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(127:36-127:37),"i"
+285,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(127:27-127:32),"array"
+286,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(127:33-127:34),"m"
+287,BINARYOPERATOR,"&&",ProblemA.java(130:9-130:35),"indexi >= 0 && indexj >= 0"
+288,BINARYOPERATOR,">=",ProblemA.java(130:9-130:20),"indexi >= 0"
+289,BINARYOPERATOR,">=",ProblemA.java(130:24-130:35),"indexj >= 0"
+290,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(130:24-130:30),"indexj"
+291,LITERAL,"",ProblemA.java(130:34-130:35),"0"
+292,LITERAL,"",ProblemA.java(130:19-130:20),"0"
+293,BINARYOPERATOR,"&&",ProblemA.java(160:9-160:34),"indexi < 0 && indexj >= 0"
+294,COMPOUNDSTATEMENT,"",ProblemA.java(160:35-178:7),"{
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}"
+295,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(161:7-161:11),"temp"
+296,BINARYOPERATOR,"=",ProblemA.java(161:7-161:16),"temp = m;"
+297,BINARYOPERATOR,"=",ProblemA.java(161:16-161:26),"ii=indexi;"
+298,BINARYOPERATOR,"=",ProblemA.java(163:7-163:17),"temp1 = 0;"
+299,FORSTATEMENT,"",ProblemA.java(164:7-173:8),"for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}"
+300,IFSTATEMENT,"",ProblemA.java(174:7-177:8),"if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}"
+301,BINARYOPERATOR,"==",ProblemA.java(174:10-174:18),"temp1==1"
+302,COMPOUNDSTATEMENT,"",ProblemA.java(174:31-177:8),"{
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}"
+303,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(175:8-175:13),"array"
+304,BINARYOPERATOR,"=",ProblemA.java(175:8-175:60),"array[temp] = insertElement(array[temp],i, -(ii+1));"
+305,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(175:8-175:19),"array[temp]"
+306,CALLEXPRESSION,"insertElement",ProblemA.java(175:22-175:59),"insertElement(array[temp],i, -(ii+1))"
+307,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(175:14-175:18),"temp"
+308,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(175:36-175:41),"array"
+309,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(175:36-175:47),"array[temp]"
+310,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(175:48-175:49),"i"
+311,UNARYOPERATOR,"-",ProblemA.java(175:51-175:58),"-(ii+1)"
+312,DECLAREDREFERENCEEXPRESSION,"ii",ProblemA.java(175:53-175:55),"ii"
+313,BINARYOPERATOR,"+",ProblemA.java(175:53-175:57),"ii+1"
+314,LITERAL,"",ProblemA.java(175:56-175:57),"1"
+315,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(175:42-175:46),"temp"
+316,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(174:10-174:15),"temp1"
+317,LITERAL,"",ProblemA.java(174:17-174:18),"1"
+318,BREAKSTATEMENT,"",ProblemA.java(171:9-171:15),"break;"
+319,COMPOUNDSTATEMENT,"",ProblemA.java(164:36-173:8),"{
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}"
+320,BINARYOPERATOR,"=",ProblemA.java(164:11-164:16),"n=m+1"
+321,BINARYOPERATOR,"<",ProblemA.java(164:17-164:31),"n<array.length"
+322,UNARYOPERATOR,"++",ProblemA.java(164:32-164:35),"n++"
+323,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(165:20-165:25),"array"
+324,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(164:32-164:33),"n"
+325,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(164:17-164:18),"n"
+326,STATICCALLEXPRESSION,"sort",ProblemA.java(165:8-165:30),"Arrays.sort(array[n]);"
+327,BINARYOPERATOR,"=",ProblemA.java(166:8-166:41),"indexi = arraySearch(array[n],i);"
+328,IFSTATEMENT,"",ProblemA.java(167:8-172:9),"if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}"
+329,BINARYOPERATOR,">=",ProblemA.java(167:11-167:20),"indexi>=0"
+330,COMPOUNDSTATEMENT,"",ProblemA.java(167:21-172:9),"{
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}"
+331,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(168:9-168:14),"array"
+332,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(167:11-167:17),"indexi"
+333,LITERAL,"",ProblemA.java(167:19-167:20),"0"
+334,BINARYOPERATOR,"=",ProblemA.java(168:9-168:51),"array[temp] = merge(array[temp],array[n]);"
+335,BINARYOPERATOR,"=",ProblemA.java(169:9-169:20),"array[n]=B;"
+336,BINARYOPERATOR,"=",ProblemA.java(170:9-170:19),"temp1 = 1;"
+337,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(170:9-170:14),"temp1"
+338,LITERAL,"",ProblemA.java(170:17-170:18),"1"
+339,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(169:9-169:17),"array[n]"
+340,DECLAREDREFERENCEEXPRESSION,"B",ProblemA.java(169:18-169:19),"B"
+341,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(169:9-169:14),"array"
+342,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(169:15-169:16),"n"
+343,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(168:9-168:20),"array[temp]"
+344,CALLEXPRESSION,"merge",ProblemA.java(168:23-168:50),"merge(array[temp],array[n])"
+345,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(168:15-168:19),"temp"
+346,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(168:29-168:34),"array"
+347,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(168:29-168:40),"array[temp]"
+348,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(168:41-168:49),"array[n]"
+349,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(168:35-168:39),"temp"
+350,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(168:41-168:46),"array"
+351,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(168:47-168:48),"n"
+352,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(166:8-166:14),"indexi"
+353,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(165:20-165:28),"array[n]"
+354,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(165:26-165:27),"n"
+355,CALLEXPRESSION,"arraySearch",ProblemA.java(166:17-166:40),"arraySearch(array[n],i)"
+356,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(166:29-166:37),"array[n]"
+357,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(166:38-166:39),"i"
+358,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(166:29-166:34),"array"
+359,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(166:35-166:36),"n"
+360,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(164:11-164:12),"n"
+361,BINARYOPERATOR,"+",ProblemA.java(164:13-164:16),"m+1"
+362,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(164:13-164:14),"m"
+363,LITERAL,"",ProblemA.java(164:15-164:16),"1"
+364,MEMBEREXPRESSION,"length",ProblemA.java(164:19-164:31),"array.length"
+365,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(164:19-164:24),"array"
+366,DECLAREDREFERENCEEXPRESSION,"ii",ProblemA.java(161:16-161:18),"ii"
+367,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(161:19-161:25),"indexi"
+368,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(163:7-163:12),"temp1"
+369,LITERAL,"",ProblemA.java(163:15-163:16),"0"
+370,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(161:14-161:15),"m"
+371,BINARYOPERATOR,"<",ProblemA.java(160:9-160:19),"indexi < 0"
+372,BINARYOPERATOR,">=",ProblemA.java(160:23-160:34),"indexj >= 0"
+373,LITERAL,"",ProblemA.java(160:18-160:19),"0"
+374,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(160:23-160:29),"indexj"
+375,LITERAL,"",ProblemA.java(160:33-160:34),"0"
+376,MEMBEREXPRESSION,"length",ProblemA.java(123:15-123:27),"array.length"
+377,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(123:15-123:20),"array"
+378,IFSTATEMENT,"",ProblemA.java(184:4-245:5),"if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}"
+379,COMPOUNDSTATEMENT,"",ProblemA.java(184:18-187:5),"{
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}"
+380,COMPOUNDSTATEMENT,"",ProblemA.java(187:9-245:5),"{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}"
+381,BINARYOPERATOR,"==",ProblemA.java(184:7-184:17),"empty == 0"
+382,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(185:5-185:10),"array"
+383,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(189:9-189:10),"m"
+384,BINARYOPERATOR,"=",ProblemA.java(185:5-185:45),"array[0] = insertElement(array[0],i, 0);"
+385,BINARYOPERATOR,"=",ProblemA.java(186:5-186:45),"array[1] = insertElement(array[1],j, 0);"
+386,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(185:5-185:13),"array[0]"
+387,CALLEXPRESSION,"insertElement",ProblemA.java(185:16-185:44),"insertElement(array[0],i, 0)"
+388,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(186:5-186:10),"array"
+389,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(185:30-185:38),"array[0]"
+390,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(185:39-185:40),"i"
+391,LITERAL,"",ProblemA.java(185:42-185:43),"0"
+392,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(185:30-185:35),"array"
+393,LITERAL,"",ProblemA.java(185:36-185:37),"0"
+394,LITERAL,"",ProblemA.java(185:11-185:12),"0"
+395,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(186:5-186:13),"array[1]"
+396,CALLEXPRESSION,"insertElement",ProblemA.java(186:16-186:44),"insertElement(array[1],j, 0)"
+397,LITERAL,"",ProblemA.java(186:11-186:12),"1"
+398,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(186:30-186:35),"array"
+399,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(186:30-186:38),"array[1]"
+400,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(186:39-186:40),"j"
+401,LITERAL,"",ProblemA.java(186:42-186:43),"0"
+402,LITERAL,"",ProblemA.java(186:36-186:37),"1"
+403,LITERAL,"",ProblemA.java(184:16-184:17),"0"
+404,FORSTATEMENT,"",ProblemA.java(189:5-244:6),"for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}"
+405,BREAKSTATEMENT,"",ProblemA.java(197:36-197:42),"break;"
+406,BREAKSTATEMENT,"",ProblemA.java(203:8-203:14),"break;"
+407,BREAKSTATEMENT,"",ProblemA.java(218:17-218:23),"break;"
+408,BREAKSTATEMENT,"",ProblemA.java(222:8-222:14),"break;"
+409,BREAKSTATEMENT,"",ProblemA.java(237:17-237:23),"break;"
+410,BREAKSTATEMENT,"",ProblemA.java(241:8-241:14),"break;"
+411,COMPOUNDSTATEMENT,"",ProblemA.java(189:32-244:6),"{
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}"
+412,BINARYOPERATOR,"=",ProblemA.java(189:9-189:12),"m=0"
+413,BINARYOPERATOR,"<",ProblemA.java(189:13-189:27),"m<array.length"
+414,UNARYOPERATOR,"++",ProblemA.java(189:28-189:31),"m++"
+415,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(191:18-191:23),"array"
+416,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(189:28-189:29),"m"
+417,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(189:13-189:14),"m"
+418,MEMBEREXPRESSION,"length",ProblemA.java(189:15-189:27),"array.length"
+419,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(189:15-189:20),"array"
+420,CONTINUESTATEMENT,"",ProblemA.java(204:13-204:22),"continue;"
+421,STATICCALLEXPRESSION,"sort",ProblemA.java(191:6-191:28),"Arrays.sort(array[m]);"
+422,BINARYOPERATOR,"=",ProblemA.java(193:6-193:39),"indexi = arraySearch(array[m],i);"
+423,BINARYOPERATOR,"=",ProblemA.java(195:6-195:39),"indexj = arraySearch(array[m],j);"
+424,IFSTATEMENT,"",ProblemA.java(197:6-197:42),"if(indexi >= 0 && indexj >= 0)break;"
+425,IFSTATEMENT,"",ProblemA.java(198:6-205:7),"if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}"
+426,IFSTATEMENT,"",ProblemA.java(206:6-224:7),"if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}"
+427,IFSTATEMENT,"",ProblemA.java(226:6-243:7),"if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}"
+428,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(193:6-193:12),"indexi"
+429,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(191:18-191:26),"array[m]"
+430,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(191:24-191:25),"m"
+431,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(195:6-195:12),"indexj"
+432,CALLEXPRESSION,"arraySearch",ProblemA.java(195:15-195:38),"arraySearch(array[m],j)"
+433,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(197:9-197:15),"indexi"
+434,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(195:27-195:32),"array"
+435,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(195:27-195:35),"array[m]"
+436,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(195:36-195:37),"j"
+437,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(195:33-195:34),"m"
+438,CALLEXPRESSION,"arraySearch",ProblemA.java(193:15-193:38),"arraySearch(array[m],i)"
+439,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(193:27-193:32),"array"
+440,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(193:27-193:35),"array[m]"
+441,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(193:36-193:37),"i"
+442,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(193:33-193:34),"m"
+443,BINARYOPERATOR,"&&",ProblemA.java(226:9-226:34),"indexi < 0 && indexj >= 0"
+444,COMPOUNDSTATEMENT,"",ProblemA.java(226:35-243:7),"{
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}"
+445,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(228:7-228:9),"ij"
+446,BINARYOPERATOR,"<",ProblemA.java(226:9-226:19),"indexi < 0"
+447,BINARYOPERATOR,">=",ProblemA.java(226:23-226:34),"indexj >= 0"
+448,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(226:9-226:15),"indexi"
+449,LITERAL,"",ProblemA.java(226:18-226:19),"0"
+450,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(226:23-226:29),"indexj"
+451,LITERAL,"",ProblemA.java(226:33-226:34),"0"
+452,BINARYOPERATOR,"=",ProblemA.java(228:7-228:12),"ij=0;"
+453,BINARYOPERATOR,"=",ProblemA.java(228:12-228:21),"temp1=-1;"
+454,FORSTATEMENT,"",ProblemA.java(229:7-234:8),"for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}"
+455,IFSTATEMENT,"",ProblemA.java(237:7-242:8),"if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}"
+456,BINARYOPERATOR,"==",ProblemA.java(237:11-237:16),"ij==1"
+457,COMPOUNDSTATEMENT,"",ProblemA.java(238:11-242:8),"{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}"
+458,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(239:20-239:25),"array"
+459,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(237:11-237:13),"ij"
+460,LITERAL,"",ProblemA.java(237:15-237:16),"1"
+461,STATICCALLEXPRESSION,"sort",ProblemA.java(239:8-239:34),"Arrays.sort(array[temp1]);"
+462,BINARYOPERATOR,"=",ProblemA.java(240:8-240:56),"array[temp1] = insertElement(array[temp1],i, 0);"
+463,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(240:8-240:13),"array"
+464,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(239:20-239:32),"array[temp1]"
+465,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(239:26-239:31),"temp1"
+466,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(240:8-240:20),"array[temp1]"
+467,CALLEXPRESSION,"insertElement",ProblemA.java(240:23-240:55),"insertElement(array[temp1],i, 0)"
+468,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(240:14-240:19),"temp1"
+469,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(240:37-240:42),"array"
+470,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(240:37-240:49),"array[temp1]"
+471,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(240:50-240:51),"i"
+472,LITERAL,"",ProblemA.java(240:53-240:54),"0"
+473,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(240:43-240:48),"temp1"
+474,COMPOUNDSTATEMENT,"",ProblemA.java(229:36-234:8),"{
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}"
+475,BINARYOPERATOR,"=",ProblemA.java(229:11-229:16),"n=m+1"
+476,BINARYOPERATOR,"<",ProblemA.java(229:17-229:31),"n<array.length"
+477,UNARYOPERATOR,"++",ProblemA.java(229:32-229:35),"n++"
+478,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(230:11-230:16),"array"
+479,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(229:11-229:12),"n"
+480,BINARYOPERATOR,"+",ProblemA.java(229:13-229:16),"m+1"
+481,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(229:17-229:18),"n"
+482,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(229:13-229:14),"m"
+483,LITERAL,"",ProblemA.java(229:15-229:16),"1"
+484,MEMBEREXPRESSION,"length",ProblemA.java(229:19-229:31),"array.length"
+485,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(229:19-229:24),"array"
+486,IFSTATEMENT,"",ProblemA.java(230:8-230:55),"if(array[n].length== 0 && temp1 == -1 )temp1=n;"
+487,STATICCALLEXPRESSION,"sort",ProblemA.java(231:8-231:30),"Arrays.sort(array[n]);"
+488,BINARYOPERATOR,"=",ProblemA.java(232:8-232:40),"itemp = arraySearch(array[n],i);"
+489,IFSTATEMENT,"",ProblemA.java(233:8-233:26),"if(itemp>=0) ij=1;"
+490,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(229:32-229:33),"n"
+491,BINARYOPERATOR,"=",ProblemA.java(233:21-233:26),"ij=1;"
+492,DECLAREDREFERENCEEXPRESSION,"itemp",ProblemA.java(232:8-232:13),"itemp"
+493,CALLEXPRESSION,"arraySearch",ProblemA.java(232:16-232:39),"arraySearch(array[n],i)"
+494,DECLAREDREFERENCEEXPRESSION,"itemp",ProblemA.java(233:11-233:16),"itemp"
+495,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(232:28-232:33),"array"
+496,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(232:28-232:36),"array[n]"
+497,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(232:37-232:38),"i"
+498,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(232:34-232:35),"n"
+499,BINARYOPERATOR,"&&",ProblemA.java(230:11-230:45),"array[n].length== 0 && temp1 == -1"
+500,BINARYOPERATOR,"=",ProblemA.java(230:47-230:55),"temp1=n;"
+501,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(230:47-230:52),"temp1"
+502,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(231:20-231:25),"array"
+503,BINARYOPERATOR,"==",ProblemA.java(230:11-230:30),"array[n].length== 0"
+504,BINARYOPERATOR,"==",ProblemA.java(230:34-230:45),"temp1 == -1"
+505,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(230:34-230:39),"temp1"
+506,UNARYOPERATOR,"-",ProblemA.java(230:43-230:45),"-1"
+507,LITERAL,"",ProblemA.java(230:44-230:45),"1"
+508,MEMBEREXPRESSION,"length",ProblemA.java(230:11-230:26),"array[n].length"
+509,LITERAL,"",ProblemA.java(230:29-230:30),"0"
+510,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(230:11-230:19),"array[n]"
+511,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(230:17-230:18),"n"
+512,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(230:53-230:54),"n"
+513,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(231:20-231:28),"array[n]"
+514,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(231:26-231:27),"n"
+515,BINARYOPERATOR,">=",ProblemA.java(233:11-233:19),"itemp>=0"
+516,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(233:21-233:23),"ij"
+517,LITERAL,"",ProblemA.java(233:24-233:25),"1"
+518,LITERAL,"",ProblemA.java(233:18-233:19),"0"
+519,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(228:12-228:17),"temp1"
+520,UNARYOPERATOR,"-",ProblemA.java(228:18-228:20),"-1"
+521,LITERAL,"",ProblemA.java(228:19-228:20),"1"
+522,LITERAL,"",ProblemA.java(228:10-228:11),"0"
+523,BINARYOPERATOR,"&&",ProblemA.java(206:9-206:34),"indexi >= 0 && indexj < 0"
+524,COMPOUNDSTATEMENT,"",ProblemA.java(206:35-224:7),"{
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}"
+525,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(209:7-209:9),"ij"
+526,BINARYOPERATOR,"=",ProblemA.java(209:7-209:12),"ij=0;"
+527,BINARYOPERATOR,"=",ProblemA.java(209:12-209:21),"temp1=-1;"
+528,FORSTATEMENT,"",ProblemA.java(210:7-215:8),"for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}"
+529,IFSTATEMENT,"",ProblemA.java(218:7-223:8),"if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}"
+530,BINARYOPERATOR,"==",ProblemA.java(218:11-218:16),"ij==1"
+531,COMPOUNDSTATEMENT,"",ProblemA.java(219:11-223:8),"{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}"
+532,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(220:20-220:25),"array"
+533,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(218:11-218:13),"ij"
+534,LITERAL,"",ProblemA.java(218:15-218:16),"1"
+535,STATICCALLEXPRESSION,"sort",ProblemA.java(220:8-220:34),"Arrays.sort(array[temp1]);"
+536,BINARYOPERATOR,"=",ProblemA.java(221:8-221:56),"array[temp1] = insertElement(array[temp1],j, 0);"
+537,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(221:8-221:13),"array"
+538,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(220:20-220:32),"array[temp1]"
+539,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(220:26-220:31),"temp1"
+540,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(221:8-221:20),"array[temp1]"
+541,CALLEXPRESSION,"insertElement",ProblemA.java(221:23-221:55),"insertElement(array[temp1],j, 0)"
+542,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(221:14-221:19),"temp1"
+543,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(221:37-221:42),"array"
+544,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(221:37-221:49),"array[temp1]"
+545,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(221:50-221:51),"j"
+546,LITERAL,"",ProblemA.java(221:53-221:54),"0"
+547,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(221:43-221:48),"temp1"
+548,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(209:12-209:17),"temp1"
+549,UNARYOPERATOR,"-",ProblemA.java(209:18-209:20),"-1"
+550,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(210:11-210:12),"n"
+551,LITERAL,"",ProblemA.java(209:19-209:20),"1"
+552,COMPOUNDSTATEMENT,"",ProblemA.java(210:36-215:8),"{
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}"
+553,BINARYOPERATOR,"=",ProblemA.java(210:11-210:16),"n=m+1"
+554,BINARYOPERATOR,"<",ProblemA.java(210:17-210:31),"n<array.length"
+555,UNARYOPERATOR,"++",ProblemA.java(210:32-210:35),"n++"
+556,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(211:11-211:16),"array"
+557,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(210:32-210:33),"n"
+558,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(210:17-210:18),"n"
+559,MEMBEREXPRESSION,"length",ProblemA.java(210:19-210:31),"array.length"
+560,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(210:19-210:24),"array"
+561,IFSTATEMENT,"",ProblemA.java(211:8-211:55),"if(array[n].length== 0 && temp1 == -1 )temp1=n;"
+562,STATICCALLEXPRESSION,"sort",ProblemA.java(212:8-212:30),"Arrays.sort(array[n]);"
+563,BINARYOPERATOR,"=",ProblemA.java(213:8-213:40),"itemp = arraySearch(array[n],j);"
+564,IFSTATEMENT,"",ProblemA.java(214:8-214:26),"if(itemp>=0) ij=1;"
+565,BINARYOPERATOR,"=",ProblemA.java(214:21-214:26),"ij=1;"
+566,DECLAREDREFERENCEEXPRESSION,"itemp",ProblemA.java(213:8-213:13),"itemp"
+567,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(212:20-212:28),"array[n]"
+568,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(212:20-212:25),"array"
+569,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(212:26-212:27),"n"
+570,BINARYOPERATOR,"=",ProblemA.java(211:47-211:55),"temp1=n;"
+571,CALLEXPRESSION,"arraySearch",ProblemA.java(213:16-213:39),"arraySearch(array[n],j)"
+572,DECLAREDREFERENCEEXPRESSION,"itemp",ProblemA.java(214:11-214:16),"itemp"
+573,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(213:28-213:33),"array"
+574,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(213:28-213:36),"array[n]"
+575,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(213:37-213:38),"j"
+576,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(213:34-213:35),"n"
+577,BINARYOPERATOR,"&&",ProblemA.java(211:11-211:45),"array[n].length== 0 && temp1 == -1"
+578,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(211:47-211:52),"temp1"
+579,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(211:53-211:54),"n"
+580,BINARYOPERATOR,"==",ProblemA.java(211:11-211:30),"array[n].length== 0"
+581,BINARYOPERATOR,"==",ProblemA.java(211:34-211:45),"temp1 == -1"
+582,DECLAREDREFERENCEEXPRESSION,"temp1",ProblemA.java(211:34-211:39),"temp1"
+583,UNARYOPERATOR,"-",ProblemA.java(211:43-211:45),"-1"
+584,LITERAL,"",ProblemA.java(211:44-211:45),"1"
+585,MEMBEREXPRESSION,"length",ProblemA.java(211:11-211:26),"array[n].length"
+586,LITERAL,"",ProblemA.java(211:29-211:30),"0"
+587,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(211:11-211:19),"array[n]"
+588,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(211:17-211:18),"n"
+589,BINARYOPERATOR,">=",ProblemA.java(214:11-214:19),"itemp>=0"
+590,DECLAREDREFERENCEEXPRESSION,"ij",ProblemA.java(214:21-214:23),"ij"
+591,LITERAL,"",ProblemA.java(214:18-214:19),"0"
+592,LITERAL,"",ProblemA.java(214:24-214:25),"1"
+593,BINARYOPERATOR,"+",ProblemA.java(210:13-210:16),"m+1"
+594,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(210:13-210:14),"m"
+595,LITERAL,"",ProblemA.java(210:15-210:16),"1"
+596,LITERAL,"",ProblemA.java(209:10-209:11),"0"
+597,BINARYOPERATOR,">=",ProblemA.java(206:9-206:20),"indexi >= 0"
+598,BINARYOPERATOR,"<",ProblemA.java(206:24-206:34),"indexj < 0"
+599,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(206:9-206:15),"indexi"
+600,LITERAL,"",ProblemA.java(206:19-206:20),"0"
+601,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(206:24-206:30),"indexj"
+602,LITERAL,"",ProblemA.java(206:33-206:34),"0"
+603,BINARYOPERATOR,"&&",ProblemA.java(197:9-197:35),"indexi >= 0 && indexj >= 0"
+604,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(198:9-198:15),"indexi"
+605,BINARYOPERATOR,">=",ProblemA.java(197:9-197:20),"indexi >= 0"
+606,BINARYOPERATOR,">=",ProblemA.java(197:24-197:35),"indexj >= 0"
+607,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(197:24-197:30),"indexj"
+608,LITERAL,"",ProblemA.java(197:34-197:35),"0"
+609,LITERAL,"",ProblemA.java(197:19-197:20),"0"
+610,BINARYOPERATOR,"&&",ProblemA.java(198:9-198:33),"indexi < 0 && indexj < 0"
+611,COMPOUNDSTATEMENT,"",ProblemA.java(198:34-205:7),"{
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}"
+612,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(199:10-199:15),"array"
+613,BINARYOPERATOR,"<",ProblemA.java(198:9-198:19),"indexi < 0"
+614,BINARYOPERATOR,"<",ProblemA.java(198:23-198:33),"indexj < 0"
+615,LITERAL,"",ProblemA.java(198:18-198:19),"0"
+616,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(198:23-198:29),"indexj"
+617,LITERAL,"",ProblemA.java(198:32-198:33),"0"
+618,IFSTATEMENT,"",ProblemA.java(199:7-204:22),"if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;"
+619,BINARYOPERATOR,"&&",ProblemA.java(199:10-199:56),"array[m].length == 0 && array[m+1].length == 0"
+620,COMPOUNDSTATEMENT,"",ProblemA.java(199:57-204:8),"{
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}"
+621,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(201:8-201:13),"array"
+622,BINARYOPERATOR,"==",ProblemA.java(199:10-199:30),"array[m].length == 0"
+623,BINARYOPERATOR,"==",ProblemA.java(199:34-199:56),"array[m+1].length == 0"
+624,MEMBEREXPRESSION,"length",ProblemA.java(199:34-199:51),"array[m+1].length"
+625,LITERAL,"",ProblemA.java(199:55-199:56),"0"
+626,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(199:34-199:44),"array[m+1]"
+627,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(199:34-199:39),"array"
+628,BINARYOPERATOR,"+",ProblemA.java(199:40-199:43),"m+1"
+629,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(199:40-199:41),"m"
+630,LITERAL,"",ProblemA.java(199:42-199:43),"1"
+631,MEMBEREXPRESSION,"length",ProblemA.java(199:10-199:25),"array[m].length"
+632,LITERAL,"",ProblemA.java(199:29-199:30),"0"
+633,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(199:10-199:18),"array[m]"
+634,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(199:16-199:17),"m"
+635,BINARYOPERATOR,"=",ProblemA.java(201:8-201:58),"array[m] = insertElement(array[m],i, -(indexi+1));"
+636,BINARYOPERATOR,"=",ProblemA.java(202:8-202:62),"array[m+1] = insertElement(array[m+1],j, -(indexj+1));"
+637,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(201:8-201:16),"array[m]"
+638,CALLEXPRESSION,"insertElement",ProblemA.java(201:19-201:57),"insertElement(array[m],i, -(indexi+1))"
+639,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(202:8-202:13),"array"
+640,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(201:14-201:15),"m"
+641,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(201:33-201:38),"array"
+642,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(201:33-201:41),"array[m]"
+643,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(201:42-201:43),"i"
+644,UNARYOPERATOR,"-",ProblemA.java(201:45-201:56),"-(indexi+1)"
+645,BINARYOPERATOR,"+",ProblemA.java(201:47-201:55),"indexi+1"
+646,DECLAREDREFERENCEEXPRESSION,"indexi",ProblemA.java(201:47-201:53),"indexi"
+647,LITERAL,"",ProblemA.java(201:54-201:55),"1"
+648,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(201:39-201:40),"m"
+649,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(202:8-202:18),"array[m+1]"
+650,CALLEXPRESSION,"insertElement",ProblemA.java(202:21-202:61),"insertElement(array[m+1],j, -(indexj+1))"
+651,BINARYOPERATOR,"+",ProblemA.java(202:14-202:17),"m+1"
+652,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(202:35-202:40),"array"
+653,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(202:14-202:15),"m"
+654,LITERAL,"",ProblemA.java(202:16-202:17),"1"
+655,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(202:35-202:45),"array[m+1]"
+656,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(202:46-202:47),"j"
+657,UNARYOPERATOR,"-",ProblemA.java(202:49-202:60),"-(indexj+1)"
+658,BINARYOPERATOR,"+",ProblemA.java(202:51-202:59),"indexj+1"
+659,DECLAREDREFERENCEEXPRESSION,"indexj",ProblemA.java(202:51-202:57),"indexj"
+660,LITERAL,"",ProblemA.java(202:58-202:59),"1"
+661,BINARYOPERATOR,"+",ProblemA.java(202:41-202:44),"m+1"
+662,DECLAREDREFERENCEEXPRESSION,"m",ProblemA.java(202:41-202:42),"m"
+663,LITERAL,"",ProblemA.java(202:43-202:44),"1"
+664,LITERAL,"",ProblemA.java(189:11-189:12),"0"
+665,DECLAREDREFERENCEEXPRESSION,"a",ProblemA.java(115:6-115:7),"a"
+666,LITERAL,"",ProblemA.java(115:11-115:21),"""the_same"""
+667,INITIALIZERLISTEXPRESSION,"",ProblemA.java(113:13-113:16),"{0}"
+668,VARIABLEDECLARATION,"this",,""
+669,COMPOUNDSTATEMENT,"",ProblemA.java(271:44-283:3),"{
+		int i,j,k;
+		int n=nData.length;
+		//Floyd algorithm 
+		for (k=0; k<n; k++)
+			for (i=0; i<n; i++)
+				for (j=0; j<n; j++) {
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}
+	return nData;
+	}"
+670,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(271:30-271:43),"int[][] nData"
+671,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+672,RETURNSTATEMENT,"",ProblemA.java(282:2-282:15),"return nData;"
+673,DECLARATIONSTATEMENT,"",ProblemA.java(272:3-272:13),"int i,j,k;"
+674,DECLARATIONSTATEMENT,"",ProblemA.java(273:3-273:22),"int n=nData.length;"
+675,FORSTATEMENT,"",ProblemA.java(275:3-281:6),"for (k=0; k<n; k++)
+			for (i=0; i<n; i++)
+				for (j=0; j<n; j++) {
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}"
+676,VARIABLEDECLARATION,"i",ProblemA.java(272:7-272:8),"i"
+677,VARIABLEDECLARATION,"j",ProblemA.java(272:9-272:10),"j"
+678,VARIABLEDECLARATION,"k",ProblemA.java(272:11-272:12),"k"
+679,VARIABLEDECLARATION,"n",ProblemA.java(273:7-273:21),"n=nData.length"
+680,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+681,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(282:9-282:14),"nData"
+682,FORSTATEMENT,"",ProblemA.java(276:4-281:6),"for (i=0; i<n; i++)
+				for (j=0; j<n; j++) {
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}"
+683,BINARYOPERATOR,"=",ProblemA.java(275:8-275:11),"k=0"
+684,BINARYOPERATOR,"<",ProblemA.java(275:13-275:16),"k<n"
+685,UNARYOPERATOR,"++",ProblemA.java(275:18-275:21),"k++"
+686,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(276:9-276:10),"i"
+687,FORSTATEMENT,"",ProblemA.java(277:5-281:6),"for (j=0; j<n; j++) {
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}"
+688,BINARYOPERATOR,"=",ProblemA.java(276:9-276:12),"i=0"
+689,BINARYOPERATOR,"<",ProblemA.java(276:14-276:17),"i<n"
+690,UNARYOPERATOR,"++",ProblemA.java(276:19-276:22),"i++"
+691,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(277:10-277:11),"j"
+692,DECLAREDREFERENCEEXPRESSION,"k",ProblemA.java(275:18-275:19),"k"
+693,LITERAL,"",ProblemA.java(276:11-276:12),"0"
+694,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(276:14-276:15),"i"
+695,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(276:16-276:17),"n"
+696,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(276:19-276:20),"i"
+697,COMPOUNDSTATEMENT,"",ProblemA.java(277:25-281:6),"{
+					if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}
+				}"
+698,BINARYOPERATOR,"=",ProblemA.java(277:10-277:13),"j=0"
+699,BINARYOPERATOR,"<",ProblemA.java(277:15-277:18),"j<n"
+700,UNARYOPERATOR,"++",ProblemA.java(277:20-277:23),"j++"
+701,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(278:10-278:15),"nData"
+702,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(277:20-277:21),"j"
+703,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(277:15-277:16),"j"
+704,IFSTATEMENT,"",ProblemA.java(278:6-280:7),"if((nData[i][k]==1)&&(nData[k][j]==1)) {
+						nData[i][j]=1;
+					}"
+705,COMPOUNDSTATEMENT,"",ProblemA.java(278:45-280:7),"{
+						nData[i][j]=1;
+					}"
+706,BINARYOPERATOR,"&&",ProblemA.java(278:9-278:43),"(nData[i][k]==1)&&(nData[k][j]==1)"
+707,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(279:7-279:12),"nData"
+708,BINARYOPERATOR,"==",ProblemA.java(278:10-278:24),"nData[i][k]==1"
+709,BINARYOPERATOR,"==",ProblemA.java(278:28-278:42),"nData[k][j]==1"
+710,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(278:28-278:39),"nData[k][j]"
+711,LITERAL,"",ProblemA.java(278:41-278:42),"1"
+712,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(278:28-278:36),"nData[k]"
+713,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(278:37-278:38),"j"
+714,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(278:28-278:33),"nData"
+715,DECLAREDREFERENCEEXPRESSION,"k",ProblemA.java(278:34-278:35),"k"
+716,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(278:10-278:21),"nData[i][k]"
+717,LITERAL,"",ProblemA.java(278:23-278:24),"1"
+718,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(278:10-278:18),"nData[i]"
+719,DECLAREDREFERENCEEXPRESSION,"k",ProblemA.java(278:19-278:20),"k"
+720,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(278:16-278:17),"i"
+721,BINARYOPERATOR,"=",ProblemA.java(279:7-279:21),"nData[i][j]=1;"
+722,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(279:7-279:18),"nData[i][j]"
+723,LITERAL,"",ProblemA.java(279:19-279:20),"1"
+724,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(279:7-279:15),"nData[i]"
+725,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(279:16-279:17),"j"
+726,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(279:13-279:14),"i"
+727,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(277:17-277:18),"n"
+728,LITERAL,"",ProblemA.java(277:12-277:13),"0"
+729,DECLAREDREFERENCEEXPRESSION,"k",ProblemA.java(275:8-275:9),"k"
+730,LITERAL,"",ProblemA.java(275:10-275:11),"0"
+731,DECLAREDREFERENCEEXPRESSION,"k",ProblemA.java(275:13-275:14),"k"
+732,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(275:15-275:16),"n"
+733,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(273:9-273:14),"nData"
+734,MEMBEREXPRESSION,"length",ProblemA.java(273:9-273:21),"nData.length"
+735,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+736,VARIABLEDECLARATION,"this",,""
+737,COMPOUNDSTATEMENT,"",ProblemA.java(265:53-269:3),"{
+		// Search for element in array
+	    int index = Arrays.binarySearch(array, val);
+		return index ;	
+	}"
+738,PARAMVARIABLEDECLARATION,"array",ProblemA.java(265:32-265:43),"int[] array"
+739,PARAMVARIABLEDECLARATION,"val",ProblemA.java(265:45-265:52),"int val"
+740,DECLAREDREFERENCEEXPRESSION,"array",ProblemA.java(267:38-267:43),"array"
+741,RETURNSTATEMENT,"",ProblemA.java(268:3-268:17),"return index ;"
+742,DECLARATIONSTATEMENT,"",ProblemA.java(267:6-267:50),"int index = Arrays.binarySearch(array, val);"
+743,VARIABLEDECLARATION,"index",ProblemA.java(267:10-267:49),"index = Arrays.binarySearch(array, val)"
+744,STATICCALLEXPRESSION,"binarySearch",ProblemA.java(267:18-267:49),"Arrays.binarySearch(array, val)"
+745,DECLAREDREFERENCEEXPRESSION,"val",ProblemA.java(267:45-267:48),"val"
+746,DECLAREDREFERENCEEXPRESSION,"index",ProblemA.java(268:10-268:15),"index"
+747,VARIABLEDECLARATION,"this",,""
+748,COMPOUNDSTATEMENT,"",ProblemA.java(84:50-108:3),"{
+		int i,j;
+		int n=nData.length;
+		int[][] groupsArray = new int[n][0];
+		
+		for (i=1; i<n; i++){
+			for (j=1; j<n; j++) {
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}
+		}
+		printresult(groupsArray);
+	}"
+749,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(84:36-84:49),"int[][] nData"
+750,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+751,RETURNSTATEMENT,"",,""
+752,DECLARATIONSTATEMENT,"",ProblemA.java(85:3-85:11),"int i,j;"
+753,DECLARATIONSTATEMENT,"",ProblemA.java(86:3-86:22),"int n=nData.length;"
+754,DECLARATIONSTATEMENT,"",ProblemA.java(87:3-87:39),"int[][] groupsArray = new int[n][0];"
+755,FORSTATEMENT,"",ProblemA.java(89:3-106:4),"for (i=1; i<n; i++){
+			for (j=1; j<n; j++) {
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}
+		}"
+756,CALLEXPRESSION,"printresult",ProblemA.java(107:3-107:28),"printresult(groupsArray);"
+757,VARIABLEDECLARATION,"i",ProblemA.java(85:7-85:8),"i"
+758,VARIABLEDECLARATION,"j",ProblemA.java(85:9-85:10),"j"
+759,VARIABLEDECLARATION,"n",ProblemA.java(86:7-86:21),"n=nData.length"
+760,VARIABLEDECLARATION,"groupsArray",ProblemA.java(87:11-87:38),"groupsArray = new int[n][0]"
+761,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+762,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(89:8-89:9),"i"
+763,ARRAYCREATIONEXPRESSION,"",ProblemA.java(87:25-87:38),"new int[n][0]"
+764,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(87:33-87:34),"n"
+765,LITERAL,"",ProblemA.java(87:36-87:37),"0"
+766,COMPOUNDSTATEMENT,"",ProblemA.java(89:22-106:4),"{
+			for (j=1; j<n; j++) {
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}
+		}"
+767,BINARYOPERATOR,"=",ProblemA.java(89:8-89:11),"i=1"
+768,BINARYOPERATOR,"<",ProblemA.java(89:13-89:16),"i<n"
+769,UNARYOPERATOR,"++",ProblemA.java(89:18-89:21),"i++"
+770,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(90:9-90:10),"j"
+771,DECLAREDREFERENCEEXPRESSION,"groupsArray",ProblemA.java(107:15-107:26),"groupsArray"
+772,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(89:13-89:14),"i"
+773,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(89:15-89:16),"n"
+774,LITERAL,"",ProblemA.java(89:10-89:11),"1"
+775,FORSTATEMENT,"",ProblemA.java(90:4-105:5),"for (j=1; j<n; j++) {
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}"
+776,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(89:18-89:19),"i"
+777,COMPOUNDSTATEMENT,"",ProblemA.java(90:24-105:5),"{
+				if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}
+			}"
+778,BINARYOPERATOR,"=",ProblemA.java(90:9-90:12),"j=1"
+779,BINARYOPERATOR,"<",ProblemA.java(90:14-90:17),"j<n"
+780,UNARYOPERATOR,"++",ProblemA.java(90:19-90:22),"j++"
+781,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(91:9-91:10),"i"
+782,LITERAL,"",ProblemA.java(90:11-90:12),"1"
+783,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(90:14-90:15),"j"
+784,DECLAREDREFERENCEEXPRESSION,"n",ProblemA.java(90:16-90:17),"n"
+785,CONTINUESTATEMENT,"",ProblemA.java(92:6-92:15),"continue;"
+786,IFSTATEMENT,"",ProblemA.java(91:5-104:6),"if (i==j) {
+					continue;
+				}else{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}"
+787,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(90:19-90:20),"j"
+788,COMPOUNDSTATEMENT,"",ProblemA.java(93:10-104:6),"{
+					if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}					
+				}"
+789,BINARYOPERATOR,"==",ProblemA.java(91:9-91:13),"i==j"
+790,COMPOUNDSTATEMENT,"",ProblemA.java(91:15-93:6),"{
+					continue;
+				}"
+791,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(94:10-94:15),"nData"
+792,IFSTATEMENT,"",ProblemA.java(94:6-103:7),"if (nData[i][j] == 1){
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}"
+793,COMPOUNDSTATEMENT,"",ProblemA.java(94:27-103:7),"{
+						if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}
+					}"
+794,BINARYOPERATOR,"==",ProblemA.java(94:10-94:26),"nData[i][j] == 1"
+795,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(95:11-95:16),"nData"
+796,IFSTATEMENT,"",ProblemA.java(95:7-102:8),"if (nData[i][j]==nData[j][i]){
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}else{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}"
+797,COMPOUNDSTATEMENT,"",ProblemA.java(95:36-99:8),"{
+							// i and j are in the same group
+							groupsArray=groupsArray(groupsArray,i,j,""the_same"");
+							nData[j][i]=0;
+						}"
+798,COMPOUNDSTATEMENT,"",ProblemA.java(99:12-102:8),"{
+							//i and j are in different group
+							groupsArray=groupsArray(groupsArray,i,j,""different"");
+						}"
+799,BINARYOPERATOR,"==",ProblemA.java(95:11-95:35),"nData[i][j]==nData[j][i]"
+800,DECLAREDREFERENCEEXPRESSION,"groupsArray",ProblemA.java(97:8-97:19),"groupsArray"
+801,DECLAREDREFERENCEEXPRESSION,"groupsArray",ProblemA.java(101:8-101:19),"groupsArray"
+802,BINARYOPERATOR,"=",ProblemA.java(101:8-101:61),"groupsArray=groupsArray(groupsArray,i,j,""different"");"
+803,CALLEXPRESSION,"groupsArray",ProblemA.java(101:20-101:60),"groupsArray(groupsArray,i,j,""different"")"
+804,DECLAREDREFERENCEEXPRESSION,"groupsArray",ProblemA.java(101:32-101:43),"groupsArray"
+805,METHODDECLARATION,"groupsArray",ProblemA.java(86:2-224:3),"public static int[][] groupsArray(int[][] array, int i, int j, String a){
+		int empty = array[0].length;
+		int m,n,ii,ij,temp,temp1,indexi,indexj,itemp;
+		int[] B = {0};
+										
+		if(a == ""the_same""){
+			
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[0] = insertElement(array[0],j, 0);
+				//break;
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m] = insertElement(array[m],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						temp = m;ij=indexj;
+						//search in the rest of the array for j
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1=1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							Arrays.sort(array[temp]);
+							array[temp] = insertElement(array[temp],j, -(ij+1));
+							break;							
+						}						
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						temp = m;ii=indexi;
+						//search in the rest of the array for i
+						temp1 = 0;
+						for(n=m+1;n<array.length;n++){
+							Arrays.sort(array[n]);
+							indexi = arraySearch(array[n],i);
+							if(indexi>=0){
+								array[temp] = merge(array[temp],array[n]);
+								array[n]=B;
+								temp1 = 1;
+								break;
+							}
+						}
+						if(temp1==1)break; else {
+							array[temp] = insertElement(array[temp],i, -(ii+1));
+							break;					
+						}
+					}					
+				}				
+			}	
+			
+		}else{
+			//case of different
+			if(empty == 0){
+				array[0] = insertElement(array[0],i, 0);
+				array[1] = insertElement(array[1],j, 0);
+			}else{
+				//search in the array
+				for(m=0;m<array.length;m++){
+					// Ensure array sorted
+					Arrays.sort(array[m]);	
+					//checking i
+					indexi = arraySearch(array[m],i);//checks if i is in array -- indexi<0 if not
+					//checking for j
+					indexj = arraySearch(array[m],j);//checks if i is in array -- indexi<0 if not
+			
+					if(indexi >= 0 && indexj >= 0)break;
+					if(indexi < 0 && indexj < 0){
+						if(array[m].length == 0 && array[m+1].length == 0){
+						//add to new row	
+							array[m] = insertElement(array[m],i, -(indexi+1));
+							array[m+1] = insertElement(array[m+1],j, -(indexj+1));
+							break;
+						}else continue;
+					}
+					if(indexi >= 0 && indexj < 0){
+						//search in the rest of the array for j
+						//if find then quit, if not then add to the next empty row
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],j);
+							if(itemp>=0) ij=1;
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],j, 0);
+							break;
+						}
+					}
+					
+					if(indexi < 0 && indexj >= 0){
+						//search in the rest of the array for i
+						ij=0;temp1=-1;
+						for(n=m+1;n<array.length;n++){
+							if(array[n].length== 0 && temp1 == -1 )temp1=n;
+							Arrays.sort(array[n]);
+							itemp = arraySearch(array[n],i);
+							if(itemp>=0) ij=1;								
+						}
+						//if didn't find -- add to the next empty row.
+						//if found -- break;
+						if (ij==1)break;
+						else{
+							Arrays.sort(array[temp1]);
+							array[temp1] = insertElement(array[temp1],i, 0);
+							break;
+						}						
+					}					
+				}				
+			}
+		}
+	return array;   
+	}"
+806,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(101:44-101:45),"i"
+807,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(101:46-101:47),"j"
+808,LITERAL,"",ProblemA.java(101:48-101:59),"""different"""
+809,PARAMVARIABLEDECLARATION,"a",ProblemA.java(86:65-86:73),"String a"
+810,PARAMVARIABLEDECLARATION,"array",ProblemA.java(86:36-86:49),"int[][] array"
+811,PARAMVARIABLEDECLARATION,"i",ProblemA.java(86:51-86:56),"int i"
+812,PARAMVARIABLEDECLARATION,"j",ProblemA.java(86:58-86:63),"int j"
+813,BINARYOPERATOR,"=",ProblemA.java(97:8-97:60),"groupsArray=groupsArray(groupsArray,i,j,""the_same"");"
+814,BINARYOPERATOR,"=",ProblemA.java(98:8-98:22),"nData[j][i]=0;"
+815,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(98:8-98:19),"nData[j][i]"
+816,LITERAL,"",ProblemA.java(98:20-98:21),"0"
+817,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(98:8-98:16),"nData[j]"
+818,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(98:17-98:18),"i"
+819,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(98:8-98:13),"nData"
+820,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(98:14-98:15),"j"
+821,CALLEXPRESSION,"groupsArray",ProblemA.java(97:20-97:59),"groupsArray(groupsArray,i,j,""the_same"")"
+822,DECLAREDREFERENCEEXPRESSION,"groupsArray",ProblemA.java(97:32-97:43),"groupsArray"
+823,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(97:44-97:45),"i"
+824,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(97:46-97:47),"j"
+825,LITERAL,"",ProblemA.java(97:48-97:58),"""the_same"""
+826,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(95:11-95:22),"nData[i][j]"
+827,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(95:24-95:35),"nData[j][i]"
+828,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(95:11-95:19),"nData[i]"
+829,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(95:20-95:21),"j"
+830,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(95:24-95:29),"nData"
+831,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(95:17-95:18),"i"
+832,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(95:24-95:32),"nData[j]"
+833,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(95:33-95:34),"i"
+834,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(95:30-95:31),"j"
+835,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(94:10-94:21),"nData[i][j]"
+836,LITERAL,"",ProblemA.java(94:25-94:26),"1"
+837,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(94:10-94:18),"nData[i]"
+838,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(94:19-94:20),"j"
+839,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(94:16-94:17),"i"
+840,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(91:12-91:13),"j"
+841,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(86:9-86:14),"nData"
+842,MEMBEREXPRESSION,"length",ProblemA.java(86:9-86:21),"nData.length"
+843,METHODDECLARATION,"printresult",ProblemA.java(260:2-281:3),"public static void printresult(int[][] nData){
+		int i,j,t1,t2;
+		int group = 0;
+		int out=0;		
+				
+		for (i=0; i<nData.length; i++)	{
+			t1=0;t2=0;
+			if(nData[i].length >= 4){
+				group++;
+			}else{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}
+			out = out + t1 + t2;	
+		}		
+	System.out.println(group+"" ""+out);
+	}"
+844,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(260:33-260:46),"int[][] nData"
+845,VARIABLEDECLARATION,"this",,""
+846,COMPOUNDSTATEMENT,"",ProblemA.java(37:44-67:8),"{
+    	
+    	System.out.println(""Input: "");
+    	inputd = readString();
+    	String [] Data;
+    	Data = inputd.split(""#"");
+    	    	
+    	for (int linenumber = 0;linenumber < Data.length; linenumber++){
+			   if (linenumber == 0){
+				   NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());
+			   }else{
+				   while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}
+			   }				
+		    }
+      }"
+847,PARAMVARIABLEDECLARATION,"args",ProblemA.java(37:29-37:42),"String[] args"
+848,DECLAREDREFERENCEEXPRESSION,"System",ProblemA.java(39:6-39:12),"System"
+849,RETURNSTATEMENT,"",,""
+850,MEMBERCALLEXPRESSION,"println",ProblemA.java(39:6-39:36),"System.out.println(""Input: "");"
+851,BINARYOPERATOR,"=",ProblemA.java(40:6-40:28),"inputd = readString();"
+852,DECLARATIONSTATEMENT,"",ProblemA.java(41:6-41:21),"String [] Data;"
+853,BINARYOPERATOR,"=",ProblemA.java(42:6-42:31),"Data = inputd.split(""#"");"
+854,FORSTATEMENT,"",ProblemA.java(44:6-66:8),"for (int linenumber = 0;linenumber < Data.length; linenumber++){
+			   if (linenumber == 0){
+				   NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());
+			   }else{
+				   while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}
+			   }				
+		    }"
+855,VARIABLEDECLARATION,"Data",ProblemA.java(41:16-41:20),"Data"
+856,MEMBEREXPRESSION,"inputd",ProblemA.java(40:6-40:12),"inputd"
+857,CALLEXPRESSION,"readString",ProblemA.java(40:15-40:27),"readString()"
+858,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+859,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(40:6-40:12),"ProblemA"
+860,METHODDECLARATION,"readString",,""
+861,DECLAREDREFERENCEEXPRESSION,"Data",ProblemA.java(42:6-42:10),"Data"
+862,MEMBERCALLEXPRESSION,"split",ProblemA.java(42:13-42:30),"inputd.split(""#"")"
+863,LITERAL,"",ProblemA.java(44:28-44:29),"0"
+864,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(42:13-42:19),"ProblemA"
+865,DECLAREDREFERENCEEXPRESSION,"split",ProblemA.java(42:20-42:25),"split"
+866,LITERAL,"",ProblemA.java(42:26-42:29),"""#"""
+867,MEMBEREXPRESSION,"inputd",ProblemA.java(42:13-42:19),"inputd"
+868,COMPOUNDSTATEMENT,"",ProblemA.java(44:69-66:8),"{
+			   if (linenumber == 0){
+				   NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());
+			   }else{
+				   while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}
+			   }				
+		    }"
+869,DECLARATIONSTATEMENT,"",ProblemA.java(44:11-44:29),"int linenumber = 0"
+870,BINARYOPERATOR,"<",ProblemA.java(44:30-44:54),"linenumber < Data.length"
+871,UNARYOPERATOR,"++",ProblemA.java(44:56-44:68),"linenumber++"
+872,VARIABLEDECLARATION,"linenumber",ProblemA.java(44:15-44:29),"linenumber = 0"
+873,DECLAREDREFERENCEEXPRESSION,"linenumber",ProblemA.java(45:11-45:21),"linenumber"
+874,DECLAREDREFERENCEEXPRESSION,"linenumber",ProblemA.java(44:30-44:40),"linenumber"
+875,MEMBEREXPRESSION,"length",ProblemA.java(44:43-44:54),"Data.length"
+876,DECLAREDREFERENCEEXPRESSION,"Data",ProblemA.java(44:43-44:47),"Data"
+877,IFSTATEMENT,"",ProblemA.java(45:7-65:8),"if (linenumber == 0){
+				   NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());
+			   }else{
+				   while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}
+			   }"
+878,DECLAREDREFERENCEEXPRESSION,"linenumber",ProblemA.java(44:56-44:66),"linenumber"
+879,COMPOUNDSTATEMENT,"",ProblemA.java(45:27-47:8),"{
+				   NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());
+			   }"
+880,COMPOUNDSTATEMENT,"",ProblemA.java(47:12-65:8),"{
+				   while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}
+			   }"
+881,BINARYOPERATOR,"==",ProblemA.java(45:11-45:26),"linenumber == 0"
+882,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(46:8-46:25),"ProblemA"
+883,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(48:15-48:32),"ProblemA"
+884,WHILESTATEMENT,"",ProblemA.java(48:8-64:7),"while (NumberOfScenarios > 0){
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}"
+885,BINARYOPERATOR,">",ProblemA.java(48:15-48:36),"NumberOfScenarios > 0"
+886,COMPOUNDSTATEMENT,"",ProblemA.java(48:37-64:7),"{
+					    NumberOfStudents = Integer.parseInt(Data[linenumber].trim());
+					   //Creating array of connections
+					   int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];
+					   while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }
+						//proper algorithm
+						System.out.println(""Caso #""+pcase);
+						checkConnections(nData);
+						linenumber++;   
+						NumberOfScenarios--;
+						pcase++;
+					}"
+887,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(49:10-49:26),"ProblemA"
+888,MEMBEREXPRESSION,"NumberOfScenarios",ProblemA.java(48:15-48:32),"NumberOfScenarios"
+889,LITERAL,"",ProblemA.java(48:35-48:36),"0"
+890,BINARYOPERATOR,"=",ProblemA.java(49:10-49:71),"NumberOfStudents = Integer.parseInt(Data[linenumber].trim());"
+891,DECLARATIONSTATEMENT,"",ProblemA.java(51:9-51:73),"int[][] nData = new int[NumberOfStudents+1][NumberOfStudents+1];"
+892,WHILESTATEMENT,"",ProblemA.java(52:9-57:10),"while (NumberOfStudents > 0){
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }"
+893,MEMBERCALLEXPRESSION,"println",ProblemA.java(59:7-59:42),"System.out.println(""Caso #""+pcase);"
+894,CALLEXPRESSION,"checkConnections",ProblemA.java(60:7-60:31),"checkConnections(nData);"
+895,UNARYOPERATOR,"++",ProblemA.java(61:7-61:20),"linenumber++;"
+896,UNARYOPERATOR,"--",ProblemA.java(62:7-62:27),"NumberOfScenarios--;"
+897,UNARYOPERATOR,"++",ProblemA.java(63:7-63:15),"pcase++;"
+898,VARIABLEDECLARATION,"nData",ProblemA.java(51:17-51:72),"nData = new int[NumberOfStudents+1][NumberOfStudents+1]"
+899,MEMBEREXPRESSION,"NumberOfStudents",ProblemA.java(49:10-49:26),"NumberOfStudents"
+900,STATICCALLEXPRESSION,"parseInt",ProblemA.java(49:29-49:70),"Integer.parseInt(Data[linenumber].trim())"
+901,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(51:33-51:49),"ProblemA"
+902,MEMBERCALLEXPRESSION,"trim",ProblemA.java(49:46-49:69),"Data[linenumber].trim()"
+903,DECLAREDREFERENCEEXPRESSION,"trim",ProblemA.java(49:63-49:67),"trim"
+904,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(49:46-49:62),"Data[linenumber]"
+905,DECLAREDREFERENCEEXPRESSION,"Data",ProblemA.java(49:46-49:50),"Data"
+906,DECLAREDREFERENCEEXPRESSION,"linenumber",ProblemA.java(49:51-49:61),"linenumber"
+907,BINARYOPERATOR,">",ProblemA.java(52:16-52:36),"NumberOfStudents > 0"
+908,COMPOUNDSTATEMENT,"",ProblemA.java(52:37-57:10),"{
+						  String strLine = Data[++linenumber];
+						  //filling the array
+						  nData = cratearray(strLine,nData);
+						  NumberOfStudents--;							   
+					   }"
+909,DECLAREDREFERENCEEXPRESSION,"Data",ProblemA.java(53:26-53:30),"Data"
+910,DECLAREDREFERENCEEXPRESSION,"System",ProblemA.java(59:7-59:13),"System"
+911,DECLARATIONSTATEMENT,"",ProblemA.java(53:9-53:45),"String strLine = Data[++linenumber];"
+912,BINARYOPERATOR,"=",ProblemA.java(55:9-55:43),"nData = cratearray(strLine,nData);"
+913,UNARYOPERATOR,"--",ProblemA.java(56:9-56:28),"NumberOfStudents--;"
+914,VARIABLEDECLARATION,"strLine",ProblemA.java(53:16-53:44),"strLine = Data[++linenumber]"
+915,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(52:16-52:32),"ProblemA"
+916,MEMBEREXPRESSION,"NumberOfStudents",ProblemA.java(56:9-56:25),"NumberOfStudents"
+917,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(56:9-56:25),"ProblemA"
+918,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(55:9-55:14),"nData"
+919,CALLEXPRESSION,"cratearray",ProblemA.java(55:17-55:42),"cratearray(strLine,nData)"
+920,DECLAREDREFERENCEEXPRESSION,"strLine",ProblemA.java(55:28-55:35),"strLine"
+921,METHODDECLARATION,"cratearray",ProblemA.java(44:5-53:3),"public static int[][] cratearray(String strLine, int[][] nData){
+		String [] temp = null;
+	    temp = strLine.split("" "");
+	    
+	    int i = Integer.parseInt(temp[0].trim());
+	    	for (int j = 2; j < temp.length; j++)
+	    		nData[i][Integer.parseInt(temp[j].trim())] = 1; //1 - the path exist
+	    		nData[i][i]=1;    		
+	return nData;    		
+	}"
+922,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(55:36-55:41),"nData"
+923,PARAMVARIABLEDECLARATION,"strLine",ProblemA.java(44:38-44:52),"String strLine"
+924,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(44:54-44:67),"int[][] nData"
+925,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(53:26-53:44),"Data[++linenumber]"
+926,UNARYOPERATOR,"++",ProblemA.java(53:31-53:43),"++linenumber"
+927,DECLAREDREFERENCEEXPRESSION,"linenumber",ProblemA.java(53:33-53:43),"linenumber"
+928,MEMBEREXPRESSION,"NumberOfStudents",ProblemA.java(52:16-52:32),"NumberOfStudents"
+929,LITERAL,"",ProblemA.java(52:35-52:36),"0"
+930,MEMBEREXPRESSION,"pcase",ProblemA.java(63:7-63:12),"pcase"
+931,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(63:7-63:12),"ProblemA"
+932,DECLAREDREFERENCEEXPRESSION,"println",ProblemA.java(59:18-59:25),"println"
+933,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(60:24-60:29),"nData"
+934,BINARYOPERATOR,"+",ProblemA.java(59:26-59:40),"""Caso #""+pcase"
+935,MEMBEREXPRESSION,"out",ProblemA.java(59:7-59:17),"System.out"
+936,LITERAL,"",ProblemA.java(59:26-59:34),"""Caso #"""
+937,MEMBEREXPRESSION,"pcase",ProblemA.java(59:35-59:40),"pcase"
+938,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(59:35-59:40),"ProblemA"
+939,MEMBEREXPRESSION,"NumberOfScenarios",ProblemA.java(62:7-62:24),"NumberOfScenarios"
+940,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(62:7-62:24),"ProblemA"
+941,DECLAREDREFERENCEEXPRESSION,"linenumber",ProblemA.java(61:7-61:17),"linenumber"
+942,ARRAYCREATIONEXPRESSION,"",ProblemA.java(51:25-51:72),"new int[NumberOfStudents+1][NumberOfStudents+1]"
+943,BINARYOPERATOR,"+",ProblemA.java(51:33-51:51),"NumberOfStudents+1"
+944,BINARYOPERATOR,"+",ProblemA.java(51:53-51:71),"NumberOfStudents+1"
+945,MEMBEREXPRESSION,"NumberOfStudents",ProblemA.java(51:53-51:69),"NumberOfStudents"
+946,LITERAL,"",ProblemA.java(51:70-51:71),"1"
+947,DECLAREDREFERENCEEXPRESSION,"ProblemA",ProblemA.java(51:53-51:69),"ProblemA"
+948,MEMBEREXPRESSION,"NumberOfStudents",ProblemA.java(51:33-51:49),"NumberOfStudents"
+949,LITERAL,"",ProblemA.java(51:50-51:51),"1"
+950,METHODDECLARATION,"checkConnections",ProblemA.java(55:2-58:3),"public static void checkConnections(int[][] nData){
+		nData = Floyd(nData);		
+		groupSearching(nData);		
+	}"
+951,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(55:38-55:51),"int[][] nData"
+952,LITERAL,"",ProblemA.java(45:25-45:26),"0"
+953,BINARYOPERATOR,"=",ProblemA.java(46:8-46:70),"NumberOfScenarios = Integer.parseInt(Data[linenumber].trim());"
+954,MEMBEREXPRESSION,"NumberOfScenarios",ProblemA.java(46:8-46:25),"NumberOfScenarios"
+955,STATICCALLEXPRESSION,"parseInt",ProblemA.java(46:28-46:69),"Integer.parseInt(Data[linenumber].trim())"
+956,MEMBERCALLEXPRESSION,"trim",ProblemA.java(46:45-46:68),"Data[linenumber].trim()"
+957,DECLAREDREFERENCEEXPRESSION,"trim",ProblemA.java(46:62-46:66),"trim"
+958,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(46:45-46:61),"Data[linenumber]"
+959,DECLAREDREFERENCEEXPRESSION,"Data",ProblemA.java(46:45-46:49),"Data"
+960,DECLAREDREFERENCEEXPRESSION,"linenumber",ProblemA.java(46:50-46:60),"linenumber"
+961,DECLAREDREFERENCEEXPRESSION,"println",ProblemA.java(39:17-39:24),"println"
+962,LITERAL,"",ProblemA.java(39:25-39:34),"""Input: """
+963,MEMBEREXPRESSION,"out",ProblemA.java(39:6-39:16),"System.out"
+964,VARIABLEDECLARATION,"this",,""
+965,COMPOUNDSTATEMENT,"",ProblemA.java(68:68-77:3),"{
+		String [] temp = null;
+	    temp = strLine.split("" "");
+	    
+	    int i = Integer.parseInt(temp[0].trim());
+	    	for (int j = 2; j < temp.length; j++)
+	    		nData[i][Integer.parseInt(temp[j].trim())] = 1; //1 - the path exist
+	    		nData[i][i]=1;    		
+	return nData;    		
+	}"
+966,PARAMVARIABLEDECLARATION,"strLine",ProblemA.java(68:38-68:52),"String strLine"
+967,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(68:54-68:67),"int[][] nData"
+968,LITERAL,"",ProblemA.java(69:20-69:24),"null"
+969,RETURNSTATEMENT,"",ProblemA.java(76:2-76:15),"return nData;"
+970,DECLARATIONSTATEMENT,"",ProblemA.java(69:3-69:25),"String [] temp = null;"
+971,BINARYOPERATOR,"=",ProblemA.java(70:6-70:32),"temp = strLine.split("" "");"
+972,DECLARATIONSTATEMENT,"",ProblemA.java(72:6-72:47),"int i = Integer.parseInt(temp[0].trim());"
+973,FORSTATEMENT,"",ProblemA.java(73:7-74:55),"for (int j = 2; j < temp.length; j++)
+	    		nData[i][Integer.parseInt(temp[j].trim())] = 1;"
+974,BINARYOPERATOR,"=",ProblemA.java(75:8-75:22),"nData[i][i]=1;"
+975,VARIABLEDECLARATION,"temp",ProblemA.java(69:13-69:24),"temp = null"
+976,VARIABLEDECLARATION,"i",ProblemA.java(72:10-72:46),"i = Integer.parseInt(temp[0].trim())"
+977,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(70:6-70:10),"temp"
+978,BINARYOPERATOR,"=",ProblemA.java(74:8-74:55),"nData[i][Integer.parseInt(temp[j].trim())] = 1;"
+979,DECLARATIONSTATEMENT,"",ProblemA.java(73:12-73:21),"int j = 2"
+980,BINARYOPERATOR,"<",ProblemA.java(73:23-73:38),"j < temp.length"
+981,UNARYOPERATOR,"++",ProblemA.java(73:40-73:43),"j++"
+982,VARIABLEDECLARATION,"j",ProblemA.java(73:16-73:21),"j = 2"
+983,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(74:8-74:13),"nData"
+984,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(75:8-75:13),"nData"
+985,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(73:40-73:41),"j"
+986,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(73:23-73:24),"j"
+987,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(74:8-74:50),"nData[i][Integer.parseInt(temp[j].trim())]"
+988,LITERAL,"",ProblemA.java(74:53-74:54),"1"
+989,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(74:8-74:16),"nData[i]"
+990,STATICCALLEXPRESSION,"parseInt",ProblemA.java(74:17-74:49),"Integer.parseInt(temp[j].trim())"
+991,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(74:14-74:15),"i"
+992,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(74:34-74:38),"temp"
+993,MEMBERCALLEXPRESSION,"trim",ProblemA.java(74:34-74:48),"temp[j].trim()"
+994,DECLAREDREFERENCEEXPRESSION,"trim",ProblemA.java(74:42-74:46),"trim"
+995,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(74:34-74:41),"temp[j]"
+996,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(74:39-74:40),"j"
+997,LITERAL,"",ProblemA.java(73:20-73:21),"2"
+998,MEMBEREXPRESSION,"length",ProblemA.java(73:27-73:38),"temp.length"
+999,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(73:27-73:31),"temp"
+1000,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(75:8-75:19),"nData[i][i]"
+1001,LITERAL,"",ProblemA.java(75:20-75:21),"1"
+1002,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(76:9-76:14),"nData"
+1003,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(75:8-75:16),"nData[i]"
+1004,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(75:17-75:18),"i"
+1005,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(75:14-75:15),"i"
+1006,STATICCALLEXPRESSION,"parseInt",ProblemA.java(72:14-72:46),"Integer.parseInt(temp[0].trim())"
+1007,MEMBERCALLEXPRESSION,"trim",ProblemA.java(72:31-72:45),"temp[0].trim()"
+1008,DECLAREDREFERENCEEXPRESSION,"trim",ProblemA.java(72:39-72:43),"trim"
+1009,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(72:31-72:38),"temp[0]"
+1010,DECLAREDREFERENCEEXPRESSION,"temp",ProblemA.java(72:31-72:35),"temp"
+1011,LITERAL,"",ProblemA.java(72:36-72:37),"0"
+1012,MEMBERCALLEXPRESSION,"split",ProblemA.java(70:13-70:31),"strLine.split("" "")"
+1013,DECLAREDREFERENCEEXPRESSION,"strLine",ProblemA.java(70:13-70:20),"strLine"
+1014,DECLAREDREFERENCEEXPRESSION,"split",ProblemA.java(70:21-70:26),"split"
+1015,LITERAL,"",ProblemA.java(70:27-70:30),""" """
+1016,LITERAL,"",ProblemA.java(13:41-13:42),"0"
+1017,LITERAL,"",ProblemA.java(16:32-16:34),""""""
+1018,VARIABLEDECLARATION,"this",,""
+1019,COMPOUNDSTATEMENT,"",ProblemA.java(284:47-305:3),"{
+		int i,j,t1,t2;
+		int group = 0;
+		int out=0;		
+				
+		for (i=0; i<nData.length; i++)	{
+			t1=0;t2=0;
+			if(nData[i].length >= 4){
+				group++;
+			}else{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}
+			out = out + t1 + t2;	
+		}		
+	System.out.println(group+"" ""+out);
+	}"
+1020,PARAMVARIABLEDECLARATION,"nData",ProblemA.java(284:33-284:46),"int[][] nData"
+1021,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1022,RETURNSTATEMENT,"",,""
+1023,DECLARATIONSTATEMENT,"",ProblemA.java(285:3-285:17),"int i,j,t1,t2;"
+1024,DECLARATIONSTATEMENT,"",ProblemA.java(286:3-286:17),"int group = 0;"
+1025,DECLARATIONSTATEMENT,"",ProblemA.java(287:3-287:13),"int out=0;"
+1026,FORSTATEMENT,"",ProblemA.java(289:3-303:4),"for (i=0; i<nData.length; i++)	{
+			t1=0;t2=0;
+			if(nData[i].length >= 4){
+				group++;
+			}else{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}
+			out = out + t1 + t2;	
+		}"
+1027,MEMBERCALLEXPRESSION,"println",ProblemA.java(304:2-304:36),"System.out.println(group+"" ""+out);"
+1028,VARIABLEDECLARATION,"i",ProblemA.java(285:7-285:8),"i"
+1029,VARIABLEDECLARATION,"j",ProblemA.java(285:9-285:10),"j"
+1030,VARIABLEDECLARATION,"t1",ProblemA.java(285:11-285:13),"t1"
+1031,VARIABLEDECLARATION,"t2",ProblemA.java(285:14-285:16),"t2"
+1032,VARIABLEDECLARATION,"group",ProblemA.java(286:7-286:16),"group = 0"
+1033,VARIABLEDECLARATION,"out",ProblemA.java(287:7-287:12),"out=0"
+1034,LITERAL,"",ProblemA.java(287:11-287:12),"0"
+1035,DECLAREDREFERENCEEXPRESSION,"println",ProblemA.java(304:13-304:20),"println"
+1036,BINARYOPERATOR,"+",ProblemA.java(304:21-304:34),"group+"" ""+out"
+1037,MEMBEREXPRESSION,"out",ProblemA.java(304:2-304:12),"System.out"
+1038,DECLAREDREFERENCEEXPRESSION,"System",ProblemA.java(304:2-304:8),"System"
+1039,DECLAREDREFERENCEEXPRESSION,"group",ProblemA.java(304:21-304:26),"group"
+1040,BINARYOPERATOR,"+",ProblemA.java(304:21-304:30),"group+"" """
+1041,DECLAREDREFERENCEEXPRESSION,"out",ProblemA.java(304:31-304:34),"out"
+1042,LITERAL,"",ProblemA.java(304:27-304:30),""" """
+1043,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1044,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1045,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1046,LITERAL,"",ProblemA.java(286:15-286:16),"0"
+1047,COMPOUNDSTATEMENT,"",ProblemA.java(289:34-303:4),"{
+			t1=0;t2=0;
+			if(nData[i].length >= 4){
+				group++;
+			}else{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}
+			out = out + t1 + t2;	
+		}"
+1048,BINARYOPERATOR,"=",ProblemA.java(289:8-289:11),"i=0"
+1049,BINARYOPERATOR,"<",ProblemA.java(289:13-289:27),"i<nData.length"
+1050,UNARYOPERATOR,"++",ProblemA.java(289:29-289:32),"i++"
+1051,DECLAREDREFERENCEEXPRESSION,"t1",ProblemA.java(290:4-290:6),"t1"
+1052,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(289:13-289:14),"i"
+1053,MEMBEREXPRESSION,"length",ProblemA.java(289:15-289:27),"nData.length"
+1054,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(289:15-289:20),"nData"
+1055,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(289:29-289:30),"i"
+1056,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(289:8-289:9),"i"
+1057,LITERAL,"",ProblemA.java(289:10-289:11),"0"
+1058,BINARYOPERATOR,"=",ProblemA.java(290:4-290:9),"t1=0;"
+1059,BINARYOPERATOR,"=",ProblemA.java(290:9-290:14),"t2=0;"
+1060,IFSTATEMENT,"",ProblemA.java(291:4-301:5),"if(nData[i].length >= 4){
+				group++;
+			}else{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}"
+1061,BINARYOPERATOR,"=",ProblemA.java(302:4-302:24),"out = out + t1 + t2;"
+1062,LITERAL,"",ProblemA.java(290:7-290:8),"0"
+1063,DECLAREDREFERENCEEXPRESSION,"t2",ProblemA.java(290:9-290:11),"t2"
+1064,LITERAL,"",ProblemA.java(290:12-290:13),"0"
+1065,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(291:7-291:12),"nData"
+1066,BINARYOPERATOR,">=",ProblemA.java(291:7-291:27),"nData[i].length >= 4"
+1067,COMPOUNDSTATEMENT,"",ProblemA.java(291:28-293:5),"{
+				group++;
+			}"
+1068,COMPOUNDSTATEMENT,"",ProblemA.java(293:9-301:5),"{
+				if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}					
+			}"
+1069,DECLAREDREFERENCEEXPRESSION,"group",ProblemA.java(292:5-292:10),"group"
+1070,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(294:9-294:14),"nData"
+1071,MEMBEREXPRESSION,"length",ProblemA.java(291:7-291:22),"nData[i].length"
+1072,LITERAL,"",ProblemA.java(291:26-291:27),"4"
+1073,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(291:7-291:15),"nData[i]"
+1074,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(291:13-291:14),"i"
+1075,IFSTATEMENT,"",ProblemA.java(294:5-300:6),"if((nData[i].length == 1) || (nData[i].length == 0)){
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}else{
+					t2=nData[i].length;
+				}"
+1076,DECLAREDREFERENCEEXPRESSION,"out",ProblemA.java(302:4-302:7),"out"
+1077,COMPOUNDSTATEMENT,"",ProblemA.java(294:57-298:6),"{
+					for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}											
+				}"
+1078,COMPOUNDSTATEMENT,"",ProblemA.java(298:10-300:6),"{
+					t2=nData[i].length;
+				}"
+1079,BINARYOPERATOR,"||",ProblemA.java(294:8-294:56),"(nData[i].length == 1) || (nData[i].length == 0)"
+1080,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(295:11-295:12),"j"
+1081,DECLAREDREFERENCEEXPRESSION,"t2",ProblemA.java(299:6-299:8),"t2"
+1082,BINARYOPERATOR,"=",ProblemA.java(299:6-299:25),"t2=nData[i].length;"
+1083,MEMBEREXPRESSION,"length",ProblemA.java(299:9-299:24),"nData[i].length"
+1084,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(299:9-299:17),"nData[i]"
+1085,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(299:9-299:14),"nData"
+1086,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(299:15-299:16),"i"
+1087,BINARYOPERATOR,"==",ProblemA.java(294:9-294:29),"nData[i].length == 1"
+1088,BINARYOPERATOR,"==",ProblemA.java(294:35-294:55),"nData[i].length == 0"
+1089,MEMBEREXPRESSION,"length",ProblemA.java(294:9-294:24),"nData[i].length"
+1090,LITERAL,"",ProblemA.java(294:28-294:29),"1"
+1091,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(294:35-294:40),"nData"
+1092,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(294:9-294:17),"nData[i]"
+1093,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(294:15-294:16),"i"
+1094,MEMBEREXPRESSION,"length",ProblemA.java(294:35-294:50),"nData[i].length"
+1095,LITERAL,"",ProblemA.java(294:54-294:55),"0"
+1096,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(294:35-294:43),"nData[i]"
+1097,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(294:41-294:42),"i"
+1098,FORSTATEMENT,"",ProblemA.java(295:6-297:7),"for (j=0; j<nData[i].length; j++){
+						if (nData[i][j] != 0)t1++ ;
+					}"
+1099,COMPOUNDSTATEMENT,"",ProblemA.java(295:39-297:7),"{
+						if (nData[i][j] != 0)t1++ ;
+					}"
+1100,BINARYOPERATOR,"=",ProblemA.java(295:11-295:14),"j=0"
+1101,BINARYOPERATOR,"<",ProblemA.java(295:16-295:33),"j<nData[i].length"
+1102,UNARYOPERATOR,"++",ProblemA.java(295:35-295:38),"j++"
+1103,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(296:11-296:16),"nData"
+1104,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(295:16-295:17),"j"
+1105,MEMBEREXPRESSION,"length",ProblemA.java(295:18-295:33),"nData[i].length"
+1106,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(295:18-295:26),"nData[i]"
+1107,DECLAREDREFERENCEEXPRESSION,"nData",ProblemA.java(295:18-295:23),"nData"
+1108,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(295:24-295:25),"i"
+1109,LITERAL,"",ProblemA.java(295:13-295:14),"0"
+1110,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(295:35-295:36),"j"
+1111,IFSTATEMENT,"",ProblemA.java(296:7-296:34),"if (nData[i][j] != 0)t1++ ;"
+1112,UNARYOPERATOR,"++",ProblemA.java(296:28-296:34),"t1++ ;"
+1113,BINARYOPERATOR,"!=",ProblemA.java(296:11-296:27),"nData[i][j] != 0"
+1114,DECLAREDREFERENCEEXPRESSION,"t1",ProblemA.java(296:28-296:30),"t1"
+1115,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(296:11-296:22),"nData[i][j]"
+1116,LITERAL,"",ProblemA.java(296:26-296:27),"0"
+1117,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(296:11-296:19),"nData[i]"
+1118,DECLAREDREFERENCEEXPRESSION,"j",ProblemA.java(296:20-296:21),"j"
+1119,DECLAREDREFERENCEEXPRESSION,"i",ProblemA.java(296:17-296:18),"i"
+1120,UNARYOPERATOR,"++",ProblemA.java(292:5-292:13),"group++;"
+1121,BINARYOPERATOR,"+",ProblemA.java(302:10-302:23),"out + t1 + t2"
+1122,DECLAREDREFERENCEEXPRESSION,"out",ProblemA.java(302:10-302:13),"out"
+1123,BINARYOPERATOR,"+",ProblemA.java(302:10-302:18),"out + t1"
+1124,DECLAREDREFERENCEEXPRESSION,"t2",ProblemA.java(302:21-302:23),"t2"
+1125,DECLAREDREFERENCEEXPRESSION,"t1",ProblemA.java(302:16-302:18),"t1"
+1126,LITERAL,"",ProblemA.java(14:40-14:41),"0"
+1127,VARIABLEDECLARATION,"this",,""
+1128,COMPOUNDSTATEMENT,"",ProblemA.java(249:77-256:6),"{
+		int length = original.length;
+        int destination[] = new int[length+1];
+        System.arraycopy(original, 0, destination, 0, index);
+        destination[index] = element;
+        System.arraycopy(original, index, destination, index+1, length-index);
+        return destination;
+    }"
+1129,PARAMVARIABLEDECLARATION,"original",ProblemA.java(249:37-249:51),"int original[]"
+1130,PARAMVARIABLEDECLARATION,"element",ProblemA.java(249:53-249:64),"int element"
+1131,PARAMVARIABLEDECLARATION,"index",ProblemA.java(249:66-249:75),"int index"
+1132,DECLAREDREFERENCEEXPRESSION,"original",ProblemA.java(250:16-250:24),"original"
+1133,RETURNSTATEMENT,"",ProblemA.java(255:9-255:28),"return destination;"
+1134,DECLARATIONSTATEMENT,"",ProblemA.java(250:3-250:32),"int length = original.length;"
+1135,DECLARATIONSTATEMENT,"",ProblemA.java(251:9-251:47),"int destination[] = new int[length+1];"
+1136,STATICCALLEXPRESSION,"arraycopy",ProblemA.java(252:9-252:62),"System.arraycopy(original, 0, destination, 0, index);"
+1137,BINARYOPERATOR,"=",ProblemA.java(253:9-253:38),"destination[index] = element;"
+1138,STATICCALLEXPRESSION,"arraycopy",ProblemA.java(254:9-254:79),"System.arraycopy(original, index, destination, index+1, length-index);"
+1139,VARIABLEDECLARATION,"length",ProblemA.java(250:7-250:31),"length = original.length"
+1140,VARIABLEDECLARATION,"destination",ProblemA.java(251:13-251:46),"destination[] = new int[length+1]"
+1141,DECLAREDREFERENCEEXPRESSION,"destination",ProblemA.java(255:16-255:27),"destination"
+1142,BINARYOPERATOR,"-",ProblemA.java(254:65-254:77),"length-index"
+1143,DECLAREDREFERENCEEXPRESSION,"length",ProblemA.java(254:65-254:71),"length"
+1144,DECLAREDREFERENCEEXPRESSION,"index",ProblemA.java(254:72-254:77),"index"
+1145,BINARYOPERATOR,"+",ProblemA.java(254:56-254:63),"index+1"
+1146,DECLAREDREFERENCEEXPRESSION,"original",ProblemA.java(254:26-254:34),"original"
+1147,DECLAREDREFERENCEEXPRESSION,"index",ProblemA.java(254:36-254:41),"index"
+1148,DECLAREDREFERENCEEXPRESSION,"destination",ProblemA.java(254:43-254:54),"destination"
+1149,DECLAREDREFERENCEEXPRESSION,"index",ProblemA.java(254:56-254:61),"index"
+1150,LITERAL,"",ProblemA.java(254:62-254:63),"1"
+1151,DECLAREDREFERENCEEXPRESSION,"original",ProblemA.java(252:26-252:34),"original"
+1152,DECLAREDREFERENCEEXPRESSION,"destination",ProblemA.java(253:9-253:20),"destination"
+1153,DECLAREDREFERENCEEXPRESSION,"index",ProblemA.java(252:55-252:60),"index"
+1154,LITERAL,"",ProblemA.java(252:36-252:37),"0"
+1155,DECLAREDREFERENCEEXPRESSION,"destination",ProblemA.java(252:39-252:50),"destination"
+1156,LITERAL,"",ProblemA.java(252:52-252:53),"0"
+1157,ARRAYSUBSCRIPTIONEXPRESSION,"",ProblemA.java(253:9-253:27),"destination[index]"
+1158,DECLAREDREFERENCEEXPRESSION,"element",ProblemA.java(253:30-253:37),"element"
+1159,DECLAREDREFERENCEEXPRESSION,"index",ProblemA.java(253:21-253:26),"index"
+1160,ARRAYCREATIONEXPRESSION,"",ProblemA.java(251:29-251:46),"new int[length+1]"
+1161,BINARYOPERATOR,"+",ProblemA.java(251:37-251:45),"length+1"
+1162,DECLAREDREFERENCEEXPRESSION,"length",ProblemA.java(251:37-251:43),"length"
+1163,LITERAL,"",ProblemA.java(251:44-251:45),"1"
+1164,MEMBEREXPRESSION,"length",ProblemA.java(250:16-250:31),"original.length"
+1165,VARIABLEDECLARATION,"this",,""
+1166,COMPOUNDSTATEMENT,"",ProblemA.java(258:55-263:3),"{
+		int[] C= new int[array1.length+array2.length];
+			   System.arraycopy(array1, 0, C, 0, array1.length);
+			   System.arraycopy(array2, 0, C, array1.length, array2.length);
+	return C;
+	}"
+1167,PARAMVARIABLEDECLARATION,"array1",ProblemA.java(258:28-258:40),"int[] array1"
+1168,PARAMVARIABLEDECLARATION,"array2",ProblemA.java(258:42-258:54),"int[] array2"
+1169,DECLAREDREFERENCEEXPRESSION,"array1",ProblemA.java(259:20-259:26),"array1"
+1170,RETURNSTATEMENT,"",ProblemA.java(262:2-262:11),"return C;"
+1171,DECLARATIONSTATEMENT,"",ProblemA.java(259:3-259:49),"int[] C= new int[array1.length+array2.length];"
+1172,STATICCALLEXPRESSION,"arraycopy",ProblemA.java(260:7-260:56),"System.arraycopy(array1, 0, C, 0, array1.length);"
+1173,STATICCALLEXPRESSION,"arraycopy",ProblemA.java(261:7-261:68),"System.arraycopy(array2, 0, C, array1.length, array2.length);"
+1174,VARIABLEDECLARATION,"C",ProblemA.java(259:9-259:48),"C= new int[array1.length+array2.length]"
+1175,DECLAREDREFERENCEEXPRESSION,"C",ProblemA.java(262:9-262:10),"C"
+1176,MEMBEREXPRESSION,"length",ProblemA.java(261:53-261:66),"array2.length"
+1177,DECLAREDREFERENCEEXPRESSION,"array2",ProblemA.java(261:24-261:30),"array2"
+1178,LITERAL,"",ProblemA.java(261:32-261:33),"0"
+1179,DECLAREDREFERENCEEXPRESSION,"array2",ProblemA.java(261:53-261:59),"array2"
+1180,MEMBEREXPRESSION,"length",ProblemA.java(261:38-261:51),"array1.length"
+1181,DECLAREDREFERENCEEXPRESSION,"C",ProblemA.java(261:35-261:36),"C"
+1182,DECLAREDREFERENCEEXPRESSION,"array1",ProblemA.java(261:38-261:44),"array1"
+1183,MEMBEREXPRESSION,"length",ProblemA.java(260:41-260:54),"array1.length"
+1184,DECLAREDREFERENCEEXPRESSION,"array1",ProblemA.java(260:24-260:30),"array1"
+1185,LITERAL,"",ProblemA.java(260:32-260:33),"0"
+1186,DECLAREDREFERENCEEXPRESSION,"C",ProblemA.java(260:35-260:36),"C"
+1187,DECLAREDREFERENCEEXPRESSION,"array1",ProblemA.java(260:41-260:47),"array1"
+1188,LITERAL,"",ProblemA.java(260:38-260:39),"0"
+1189,ARRAYCREATIONEXPRESSION,"",ProblemA.java(259:12-259:48),"new int[array1.length+array2.length]"
+1190,BINARYOPERATOR,"+",ProblemA.java(259:20-259:47),"array1.length+array2.length"
+1191,MEMBEREXPRESSION,"length",ProblemA.java(259:20-259:33),"array1.length"
+1192,MEMBEREXPRESSION,"length",ProblemA.java(259:34-259:47),"array2.length"
+1193,DECLAREDREFERENCEEXPRESSION,"array2",ProblemA.java(259:34-259:40),"array2"
+1194,VARIABLEDECLARATION,"this",,""
+1195,COMPOUNDSTATEMENT,"",ProblemA.java(18:35-35:6),"{  
+	   	  int ch;
+	      String r = """";
+	      boolean done = false;
+	      while (!done)
+	      {  try
+	         {  ch = System.in.read();
+	            if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;
+	         }
+	         catch(java.io.IOException e)
+	         {  done = true;
+	         }
+	      }
+	      return r;
+	   }"
+1196,UNINITIALIZEDVALUE,"Uninitialized Value",,""
+1197,RETURNSTATEMENT,"",ProblemA.java(34:8-34:17),"return r;"
+1198,DECLARATIONSTATEMENT,"",ProblemA.java(19:8-19:15),"int ch;"
+1199,DECLARATIONSTATEMENT,"",ProblemA.java(20:8-20:22),"String r = """";"
+1200,DECLARATIONSTATEMENT,"",ProblemA.java(21:8-21:29),"boolean done = false;"
+1201,WHILESTATEMENT,"",ProblemA.java(22:8-33:9),"while (!done)
+	      {  try
+	         {  ch = System.in.read();
+	            if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;
+	         }
+	         catch(java.io.IOException e)
+	         {  done = true;
+	         }
+	      }"
+1202,VARIABLEDECLARATION,"ch",ProblemA.java(19:12-19:14),"ch"
+1203,VARIABLEDECLARATION,"r",ProblemA.java(20:15-20:21),"r = """""
+1204,VARIABLEDECLARATION,"done",ProblemA.java(21:16-21:28),"done = false"
+1205,UNARYOPERATOR,"!",ProblemA.java(22:15-22:20),"!done"
+1206,COMPOUNDSTATEMENT,"",ProblemA.java(23:8-33:9),"{  try
+	         {  ch = System.in.read();
+	            if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;
+	         }
+	         catch(java.io.IOException e)
+	         {  done = true;
+	         }
+	      }"
+1207,DECLAREDREFERENCEEXPRESSION,"ch",ProblemA.java(24:14-24:16),"ch"
+1208,DECLAREDREFERENCEEXPRESSION,"r",ProblemA.java(34:15-34:16),"r"
+1209,DECLAREDREFERENCEEXPRESSION,"done",ProblemA.java(22:16-22:20),"done"
+1210,TRYSTATEMENT,"",ProblemA.java(23:11-32:12),"try
+	         {  ch = System.in.read();
+	            if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;
+	         }
+	         catch(java.io.IOException e)
+	         {  done = true;
+	         }"
+1211,COMPOUNDSTATEMENT,"",ProblemA.java(24:11-29:12),"{  ch = System.in.read();
+	            if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;
+	         }"
+1212,CATCHCLAUSE,"",,""
+1213,VARIABLEDECLARATION,"e",,""
+1214,COMPOUNDSTATEMENT,"",ProblemA.java(31:11-32:12),"{  done = true;
+	         }"
+1215,BINARYOPERATOR,"=",ProblemA.java(31:14-31:26),"done = true;"
+1216,DECLAREDREFERENCEEXPRESSION,"done",ProblemA.java(31:14-31:18),"done"
+1217,LITERAL,"",ProblemA.java(31:21-31:25),"true"
+1218,BINARYOPERATOR,"=",ProblemA.java(24:14-24:36),"ch = System.in.read();"
+1219,IFSTATEMENT,"",ProblemA.java(25:14-28:35),"if (ch < 0 || (char)ch == '\n')
+	               done = true;
+	            else if ((char)ch != '\r') 
+	               r = r + (char) ch;"
+1220,BINARYOPERATOR,"=",ProblemA.java(26:17-26:29),"done = true;"
+1221,BINARYOPERATOR,"=",ProblemA.java(28:17-28:35),"r = r + (char) ch;"
+1222,IFSTATEMENT,"",ProblemA.java(27:19-28:35),"if ((char)ch != '\r') 
+	               r = r + (char) ch;"
+1223,MEMBERCALLEXPRESSION,"read",ProblemA.java(24:19-24:35),"System.in.read()"
+1224,DECLAREDREFERENCEEXPRESSION,"ch",ProblemA.java(25:18-25:20),"ch"
+1225,DECLAREDREFERENCEEXPRESSION,"System",ProblemA.java(24:19-24:25),"System"
+1226,DECLAREDREFERENCEEXPRESSION,"read",ProblemA.java(24:29-24:33),"read"
+1227,MEMBEREXPRESSION,"in",ProblemA.java(24:19-24:28),"System.in"
+1228,BINARYOPERATOR,"||",ProblemA.java(25:18-25:44),"ch < 0 || (char)ch == '\n'"
+1229,DECLAREDREFERENCEEXPRESSION,"done",ProblemA.java(26:17-26:21),"done"
+1230,DECLAREDREFERENCEEXPRESSION,"ch",ProblemA.java(27:29-27:31),"ch"
+1231,LITERAL,"",ProblemA.java(26:24-26:28),"true"
+1232,BINARYOPERATOR,"!=",ProblemA.java(27:23-27:39),"(char)ch != '\r'"
+1233,DECLAREDREFERENCEEXPRESSION,"r",ProblemA.java(28:17-28:18),"r"
+1234,CASTEXPRESSION,"static_cast",ProblemA.java(27:23-27:31),"(char)ch"
+1235,LITERAL,"",ProblemA.java(27:35-27:39),"'\r'"
+1236,BINARYOPERATOR,"+",ProblemA.java(28:21-28:34),"r + (char) ch"
+1237,DECLAREDREFERENCEEXPRESSION,"r",ProblemA.java(28:21-28:22),"r"
+1238,CASTEXPRESSION,"static_cast",ProblemA.java(28:25-28:34),"(char) ch"
+1239,DECLAREDREFERENCEEXPRESSION,"ch",ProblemA.java(28:32-28:34),"ch"
+1240,BINARYOPERATOR,"<",ProblemA.java(25:18-25:24),"ch < 0"
+1241,BINARYOPERATOR,"==",ProblemA.java(25:28-25:44),"(char)ch == '\n'"
+1242,CASTEXPRESSION,"static_cast",ProblemA.java(25:28-25:36),"(char)ch"
+1243,LITERAL,"",ProblemA.java(25:40-25:44),"'\n'"
+1244,DECLAREDREFERENCEEXPRESSION,"ch",ProblemA.java(25:34-25:36),"ch"
+1245,LITERAL,"",ProblemA.java(25:23-25:24),"0"
+1246,LITERAL,"",ProblemA.java(20:19-20:21),""""""
+1247,LITERAL,"",ProblemA.java(21:23-21:28),"false"
+1248,LITERAL,"",ProblemA.java(15:29-15:30),"1"

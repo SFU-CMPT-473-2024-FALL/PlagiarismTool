@@ -1,0 +1,47 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,202
+sociologia.java,swap lines 184:`int y = 0;` and 185:`Queue<Integer> fila = new Queue<Integer>();`,0.993127147766323,1.0,202
+sociologia.java,swap lines 34:`first = first.next;` and 35:`size--;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 53:`int[][] o;` and 54:`int p;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 122:`int max = 0;` and 123:`int ind = 0;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 141:`pais[i] = 0;` and 142:`f[i] = 0;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 141:`pais[i] = 0;` and 143:`d[i] = 0;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 83:`String[] color = new String[p];` and 84:`int[] pais = new int[p];`,0.993127147766323,1.0,202
+sociologia.java,swap lines 12:`val = v;` and 13:`next = n;`,0.993127147766323,1.0,202
+sociologia.java,"swap lines 154:`d[h] = time;` and 155:`color[h] = ""gray"";`",0.993127147766323,1.0,202
+sociologia.java,swap lines 126:`max = f[b];` and 127:`ind = b;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 133:`String[] color = new String[p];` and 134:`int[] pais = new int[p];`,0.993127147766323,1.0,202
+sociologia.java,swap lines 142:`f[i] = 0;` and 143:`d[i] = 0;`,0.993127147766323,1.0,202
+sociologia.java,"swap lines 164:`color[h] = ""black"";` and 165:`time++;`",0.993127147766323,1.0,202
+sociologia.java,swap lines 133:`String[] color = new String[p];` and 135:`int[] d = new int[p];`,0.993127147766323,1.0,202
+sociologia.java,swap lines 21:`size = 0;` and 22:`first = last = null;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 105:`int cntg = 0;` and 106:`int cntf = 0;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 55:`int cnt;` and 56:`int time;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 59:`o = ola;` and 60:`cnt = 0;`,0.993127147766323,1.0,202
+sociologia.java,swap lines 91:`Queue<Integer> filas = new Queue<Integer>();` and 92:`int u = -1;`,0.9862542955326461,1.0,202
+sociologia.java,swap lines 9:`E val;` and 10:`Node<E> next;`,0.9862542955326461,1.0,202
+sociologia.java,swap lines 91:`Queue<Integer> filas = new Queue<Integer>();` and 93:`int z = 1;`,0.9828178694158075,1.0,202
+sociologia.java,"swap lines 164:`color[h] = ""black"";` and 166:`f[h] = time;`",0.9828178694158075,1.0,202
+sociologia.java,swap lines 18:`private Node<E> first;` and 19:`private Node<E> last;`,0.9828178694158075,1.0,202
+sociologia.java,swap lines 92:`int u = -1;` and 93:`int z = 1;`,0.9828178694158075,1.0,202
+sociologia.java,swap lines 99:`f[z] = 0;` and 100:`u = z;`,0.9828178694158075,1.0,202
+sociologia.java,swap lines 17:`private int size;` and 19:`private Node<E> last;`,0.9828178694158075,1.0,202
+sociologia.java,swap lines 91:`Queue<Integer> filas = new Queue<Integer>();` and 94:`int uz = 1;`,0.979381443298969,1.0,202
+sociologia.java,"swap lines 153:`time++;` and 155:`color[h] = ""gray"";`",0.979381443298969,1.0,202
+sociologia.java,swap lines 134:`int[] pais = new int[p];` and 135:`int[] d = new int[p];`,0.979381443298969,1.0,202
+sociologia.java,swap lines 53:`int[][] o;` and 56:`int time;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 59:`o = ola;` and 61:`time = 0;`,0.979381443298969,1.0,202
+sociologia.java,"swap lines 70:`cnt++;` and 71:`color[h] = ""gray"";`",0.979381443298969,1.0,202
+sociologia.java,swap lines 54:`int p;` and 56:`int time;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 133:`String[] color = new String[p];` and 136:`int[] f = new int[p];`,0.979381443298969,1.0,202
+sociologia.java,swap lines 92:`int u = -1;` and 94:`int uz = 1;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 17:`private int size;` and 18:`private Node<E> first;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 93:`int z = 1;` and 94:`int uz = 1;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 58:`p = xl;` and 60:`cnt = 0;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 53:`int[][] o;` and 55:`int cnt;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 54:`int p;` and 55:`int cnt;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 58:`p = xl;` and 61:`time = 0;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 58:`p = xl;` and 59:`o = ola;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 134:`int[] pais = new int[p];` and 136:`int[] f = new int[p];`,0.979381443298969,1.0,202
+sociologia.java,swap lines 60:`cnt = 0;` and 61:`time = 0;`,0.979381443298969,1.0,202
+sociologia.java,swap lines 135:`int[] d = new int[p];` and 136:`int[] f = new int[p];`,0.979381443298969,1.0,202

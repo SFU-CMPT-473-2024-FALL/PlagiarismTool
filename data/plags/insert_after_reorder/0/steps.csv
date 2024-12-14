@@ -1,0 +1,62 @@
+filename,operation,off score,on score,line count
+None,None,0.9324324324324325,1.0,95
+pa.java,insert line 42: `String[] messages;` on try 0,0.9292929292929293,1.0,95
+pa.java,insert line 80: `int indexOfField;` on try 0,0.9261744966442953,1.0,95
+pa.java,insert line 30: `int j = 0;` on try 0,0.9230769230769231,1.0,95
+pa.java,insert line 91: `String[] messages;` on try 0,0.92,1.0,95
+pa.java,insert line 74: `int min;` on try 0,0.9169435215946844,1.0,95
+pa.java,insert line 63: `String[] messages;` on try 0,0.9139072847682119,1.0,95
+pa.java,insert line 97: `int indexOfField;` on try 0,0.8448844884488449,1.0,95
+pa.java,"insert line 47: `int x, y;` on try 0",0.8131147540983606,1.0,95
+pa.java,"insert line 70: `String output = """";` on try 0",0.7712418300653595,1.0,95
+pa.java,"insert line 5: `int x, y;` on try 0",0.7662337662337663,1.0,95
+pa.java,insert line 99: `int min;` on try 0,0.7637540453074434,1.0,95
+pa.java,"insert line 80: `int x, y;` on try 0",0.7009646302250804,1.0,95
+pa.java,insert line 37: `boolean done = false;` on try 0,0.6987179487179487,1.0,95
+pa.java,insert line 34: `int max;` on try 0,0.6325878594249201,1.0,95
+pa.java,insert line 42: `int min;` on try 0,0.6050955414012739,1.0,95
+pa.java,insert line 79: `String[] messages;` on try 0,0.5904761904761905,1.0,95
+pa.java,insert line 44: `boolean debug = false;` on try 1,0.5886075949367089,1.0,95
+pa.java,insert line 58: `int max;` on try 0,0.5867507886435331,1.0,95
+pa.java,insert line 24: `boolean debug = false;` on try 0,0.5345911949685535,1.0,95
+pa.java,insert line 111: `double w;` on try 0,0.5329153605015674,1.0,95
+pa.java,insert line 17: `int j = 0;` on try 0,0.525,1.0,95
+pa.java,insert line 39: `double w;` on try 0,0.5233644859813084,1.0,95
+pa.java,insert line 53: `int max;` on try 0,0.5217391304347826,1.0,95
+pa.java,insert line 93: `double w;` on try 0,0.5201238390092879,1.0,95
+pa.java,insert line 24: `int min;` on try 0,0.5123456790123457,1.0,95
+pa.java,insert line 21: `int id;` on try 0,0.4307692307692308,1.0,95
+pa.java,insert line 68: `boolean debug = false;` on try 0,0.4049079754601227,1.0,95
+pa.java,insert line 105: `int min;` on try 0,0.3853211009174312,1.0,95
+pa.java,"insert line 74: `int x, y;` on try 0",0.3100303951367781,1.0,95
+pa.java,insert line 45: `int indexOfField;` on try 0,0.2545454545454545,1.0,95
+pa.java,insert line 68: `int min;` on try 0,0.2537764350453172,1.0,95
+pa.java,"insert line 23: `int x, y;` on try 0",0.25225225225225223,1.0,95
+pa.java,"insert line 118: `int x, y;` on try 0",0.2507462686567164,1.0,95
+pa.java,insert line 127: `int index = 0;` on try 0,0.25,1.0,95
+pa.java,insert line 83: `boolean done = false;` on try 0,0.24925816023738873,1.0,95
+pa.java,insert line 95: `boolean done = false;` on try 0,0.2485207100591716,1.0,95
+pa.java,insert line 73: `int j = 0;` on try 0,0.24778761061946902,1.0,95
+pa.java,insert line 129: `int index = 0;` on try 0,0.24705882352941178,1.0,95
+pa.java,insert line 102: `int max;` on try 0,0.24633431085043989,1.0,95
+pa.java,insert line 25: `int index = 0;` on try 0,0.24561403508771928,1.0,95
+pa.java,insert line 54: `int index = 0;` on try 3,0.24489795918367346,1.0,95
+pa.java,insert line 121: `boolean done = false;` on try 1,0.18604651162790697,1.0,95
+pa.java,insert line 79: `int index = 0;` on try 0,0.1855072463768116,1.0,95
+pa.java,insert line 90: `boolean debug = false;` on try 1,0.18497109826589594,1.0,95
+pa.java,insert line 116: `int indexOfField;` on try 2,0.1844380403458213,1.0,95
+pa.java,insert line 78: `double w;` on try 1,0.1839080459770115,1.0,95
+pa.java,insert line 7: `int max;` on try 0,0.1833810888252149,1.0,95
+pa.java,"insert line 57: `int x, y;` on try 0",0.18233618233618235,1.0,95
+pa.java,insert line 37: `int intInput;` on try 1,0.18181818181818182,1.0,95
+pa.java,insert line 51: `done = true;` on try 4,0.1813031161473088,1.0,95
+pa.java,insert line 128: `int max;` on try 1,0.1807909604519774,1.0,95
+pa.java,"insert line 120: `int x, y;` on try 2",0.1797752808988764,1.0,95
+pa.java,"insert line 44: `String output = """";` on try 5",0.1792717086834734,1.0,95
+pa.java,insert line 35: `int count = 0;` on try 5,0.1787709497206704,1.0,95
+pa.java,insert line 99: `int j = 0;` on try 2,0.17827298050139276,1.0,95
+pa.java,insert line 2: `import java.util.Scanner;` on try 6,0.17777777777777778,0.9966329966329966,95
+pa.java,insert line 74: `int index = 0;` on try 8,0.12188365650969529,0.9966329966329966,95
+pa.java,insert line 43: `j++;` on try 4,0.12154696132596685,0.9966329966329966,95
+pa.java,insert line 38: `String[] temp = null;` on try 7,0.12121212121212122,0.9966329966329966,95
+pa.java,insert line 94: `boolean done = false;` on try 0,0.12087912087912088,0.9966329966329966,95

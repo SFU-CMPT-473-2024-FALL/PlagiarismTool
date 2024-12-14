@@ -1,0 +1,82 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,140
+Sociologia.java,swap lines 40:`ppl = new Pessoa[n + 1];` and 41:`tppl = new Pessoa[n + 1];`,1.0,1.0,140
+Sociologia.java,swap lines 38:`nos = n;` and 39:`tempo = 0;`,1.0,1.0,140
+Sociologia.java,swap lines 29:`int nos;` and 30:`int tempo;`,1.0,1.0,140
+Sociologia.java,swap lines 17:`t = 0;` and 18:`visitado = false;`,1.0,1.0,140
+Sociologia.java,swap lines 32:`Pessoa[] tppl;` and 33:`int ngrupos;`,1.0,1.0,140
+Sociologia.java,swap lines 40:`ppl = new Pessoa[n + 1];` and 42:`ngrupos = 0;`,0.9896373056994818,1.0,140
+Sociologia.java,swap lines 101:`tppl[x].visitado = true;` and 102:`visitados++;`,0.9896373056994818,1.0,140
+Sociologia.java,swap lines 4:`int id;` and 5:`int namigos;`,0.9896373056994818,1.0,140
+Sociologia.java,swap lines 41:`tppl = new Pessoa[n + 1];` and 42:`ngrupos = 0;`,0.9792746113989638,1.0,140
+Sociologia.java,swap lines 35:`int res;` and 36:`int visitados;`,0.9792746113989638,1.0,140
+Sociologia.java,swap lines 16:`amigos = new int[namigos];` and 18:`visitado = false;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 16:`amigos = new int[namigos];` and 17:`t = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 90:`int max = -1;` and 91:`int indice = -1;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 43:`nelementos = 0;` and 44:`res = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 29:`int nos;` and 31:`Pessoa[] ppl;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 15:`namigos = n;` and 18:`visitado = false;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 38:`nos = n;` and 42:`ngrupos = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 29:`int nos;` and 33:`int ngrupos;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 6:`int[] amigos;` and 7:`int t;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 15:`namigos = n;` and 17:`t = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 31:`Pessoa[] ppl;` and 33:`int ngrupos;`,0.9637305699481865,1.0,140
+Sociologia.java,"swap lines 49:`ppl[i] = new Pessoa(i);` and 50:`tppl[i] = new Pessoa(i, nos);`",0.9637305699481865,1.0,140
+Sociologia.java,swap lines 10:`id = i;` and 11:`visitado = false;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 6:`int[] amigos;` and 8:`boolean visitado;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 43:`nelementos = 0;` and 45:`visitados = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 38:`nos = n;` and 41:`tppl = new Pessoa[n + 1];`,0.9740932642487047,1.0,140
+Sociologia.java,swap lines 94:`max = ppl[i].t;` and 95:`indice = i;`,0.9740932642487047,1.0,140
+Sociologia.java,swap lines 32:`Pessoa[] tppl;` and 34:`int nelementos;`,0.9740932642487047,1.0,140
+Sociologia.java,swap lines 4:`int id;` and 7:`int t;`,0.9740932642487047,1.0,140
+Sociologia.java,swap lines 44:`res = 0;` and 45:`visitados = 0;`,0.9740932642487047,1.0,140
+Sociologia.java,swap lines 30:`int tempo;` and 33:`int ngrupos;`,0.9740932642487047,1.0,140
+Sociologia.java,swap lines 40:`ppl = new Pessoa[n + 1];` and 45:`visitados = 0;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 32:`Pessoa[] tppl;` and 36:`int visitados;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 32:`Pessoa[] tppl;` and 35:`int res;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 39:`tempo = 0;` and 42:`ngrupos = 0;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 38:`nos = n;` and 45:`visitados = 0;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 34:`int nelementos;` and 36:`int visitados;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 4:`int id;` and 8:`boolean visitado;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 14:`id = i;` and 18:`visitado = false;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 30:`int tempo;` and 31:`Pessoa[] ppl;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 40:`ppl = new Pessoa[n + 1];` and 44:`res = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 29:`int nos;` and 36:`int visitados;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 30:`int tempo;` and 36:`int visitados;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 34:`int nelementos;` and 35:`int res;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 4:`int id;` and 6:`int[] amigos;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 14:`id = i;` and 17:`t = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 29:`int nos;` and 35:`int res;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 40:`ppl = new Pessoa[n + 1];` and 43:`nelementos = 0;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 5:`int namigos;` and 7:`int t;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 14:`id = i;` and 15:`namigos = n;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 39:`tempo = 0;` and 41:`tppl = new Pessoa[n + 1];`,0.9430051813471503,1.0,140
+Sociologia.java,swap lines 39:`tempo = 0;` and 45:`visitados = 0;`,0.9430051813471503,1.0,140
+Sociologia.java,swap lines 41:`tppl = new Pessoa[n + 1];` and 45:`visitados = 0;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 30:`int tempo;` and 35:`int res;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 14:`id = i;` and 16:`amigos = new int[namigos];`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 29:`int nos;` and 34:`int nelementos;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 38:`nos = n;` and 44:`res = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 38:`nos = n;` and 43:`nelementos = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 42:`ngrupos = 0;` and 45:`visitados = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 29:`int nos;` and 32:`Pessoa[] tppl;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 5:`int namigos;` and 8:`boolean visitado;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 39:`tempo = 0;` and 44:`res = 0;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 38:`nos = n;` and 40:`ppl = new Pessoa[n + 1];`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 7:`int t;` and 8:`boolean visitado;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 5:`int namigos;` and 6:`int[] amigos;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 30:`int tempo;` and 34:`int nelementos;`,0.9689119170984456,1.0,140
+Sociologia.java,swap lines 41:`tppl = new Pessoa[n + 1];` and 44:`res = 0;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 30:`int tempo;` and 32:`Pessoa[] tppl;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 31:`Pessoa[] ppl;` and 36:`int visitados;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 39:`tempo = 0;` and 43:`nelementos = 0;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 41:`tppl = new Pessoa[n + 1];` and 43:`nelementos = 0;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 31:`Pessoa[] ppl;` and 35:`int res;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 31:`Pessoa[] ppl;` and 34:`int nelementos;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 42:`ngrupos = 0;` and 44:`res = 0;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 31:`Pessoa[] ppl;` and 32:`Pessoa[] tppl;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 42:`ngrupos = 0;` and 43:`nelementos = 0;`,0.9585492227979274,1.0,140
+Sociologia.java,swap lines 39:`tempo = 0;` and 40:`ppl = new Pessoa[n + 1];`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 33:`int ngrupos;` and 36:`int visitados;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 33:`int ngrupos;` and 35:`int res;`,0.9637305699481865,1.0,140
+Sociologia.java,swap lines 33:`int ngrupos;` and 34:`int nelementos;`,0.9637305699481865,1.0,140

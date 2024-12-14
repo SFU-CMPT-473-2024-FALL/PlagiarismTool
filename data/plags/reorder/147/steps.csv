@@ -1,0 +1,7 @@
+filename,operation,off score,on score,line count
+None,None,1.0,1.0,93
+sociologia.java,swap lines 65:`int contadordegrupos = 0;` and 66:`int numerodenosdefora = 0;`,1.0,1.0,93
+sociologia.java,swap lines 30:`GNode[] listadenos = new GNode[numeropessoas];` and 31:`GNode[] listadenosinvertida = new GNode[numeropessoas];`,1.0,1.0,93
+sociologia.java,swap lines 5:`public ArrayList<Integer> DFSresult = new ArrayList<Integer>();` and 6:`public int cor = 0;`,0.9513888888888888,1.0,93
+sociologia.java,swap lines 4:`public ArrayList<Integer> filhos = new ArrayList<Integer>();` and 6:`public int cor = 0;`,0.9513888888888888,1.0,93
+sociologia.java,swap lines 4:`public ArrayList<Integer> filhos = new ArrayList<Integer>();` and 5:`public ArrayList<Integer> DFSresult = new ArrayList<Integer>();`,0.9513888888888888,1.0,93
