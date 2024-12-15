@@ -5,7 +5,7 @@
 1. Clone repo
 
 ```bash
-git clone https://github.com/username/repository-name.git
+git clone https://github.com/SFU-CMPT-473-2024-FALL/PlagiarismTool.git
 ```
 
 3. Navigate to Application
