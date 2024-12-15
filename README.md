@@ -1,40 +1,9 @@
-# PlagiarismTool
-
-**To Run Web Application (Windows)**
-
-1. Clone repo
-
-```bash
-git clone https://github.com/SFU-CMPT-473-2024-FALL/PlagiarismTool.git
-```
-
-3. Navigate to Application
-
-```bash
-cd PlagiarismTool
-```
-
-3. Install Dependencies
-
-```bash
-npm install --force
-```
-
-4. Run server.js
-
-```bash
-node server.js
-```
-
-5. Navigate to [localhost:3000](http://localhost:3000)
-
-
-
+### PlagiarismTool
 
 **To Run Using CMD Line**
 
 
-Base 
+Standard Winnowing
 
 To run, execute the following commands in the root folder (PlagiarismTool/):
 
@@ -50,7 +19,7 @@ javac src/PlagiarismTool.java
 java -cp . src.PlagiarismTool test
 ```
 
-
+---
 
 ANTLR
 
@@ -97,7 +66,7 @@ for processing all files in the data folder:
 java -cp "bin:lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR data
 ```
 
-
+---
 
 TREE-SITTER
 
@@ -112,3 +81,47 @@ for processing all files in the data folder:
 ```bash
 node srcTreesitter/tree-sitter.js data
 ```
+
+---
+
+**To Run Web Application (Windows)**
+
+1. Clone repo
+
+```bash
+git clone https://github.com/SFU-CMPT-473-2024-FALL/PlagiarismTool.git
+```
+
+3. Navigate to Application
+
+```bash
+cd PlagiarismTool
+```
+
+3. Install Dependencies
+
+```bash
+npm install --force
+```
+
+4. Run server.js
+
+```bash
+node server.js
+```
+
+5. Navigate to [localhost:3000](http://localhost:3000)
+
+---
+
+Output: 
+
+#### ANTLR Output
+![ANTLR](images/antlr.PNG)
+
+#### Base Output
+![Base](images/base.PNG)
+
+#### Tree Sitter Output
+![Tree Sitter](images/treesitter.PNG)
+
