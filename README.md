@@ -1,5 +1,7 @@
 ### PlagiarismTool for Java files
 
+To run this project, ensure Java Development Kit (JDK) or OpenJDK is installed 
+
 **To Run Using CMD Line**
 
 
