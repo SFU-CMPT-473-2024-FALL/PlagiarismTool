@@ -54,7 +54,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
 });
 
 app.get('/compare-files', (req, res) => {
-    const comparisonMethod = req.query.method; 
+    const comparisonMethod = req.query.method;
     let command = '';
 
     if (comparisonMethod === 'standard') {
@@ -67,16 +67,14 @@ app.get('/compare-files', (req, res) => {
             "java" -cp "srcANTLR/bin;lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR test
         `;
 
-
-        const scriptPath = path.join(__dirname, 'run-antlr.bat'); 
+        const scriptPath = path.join(__dirname, 'run-antlr.bat');
         fs.writeFileSync(scriptPath, antlrScript);
-
         command = `"cmd.exe" /c "${scriptPath}"`;
+    } else if (comparisonMethod === 'tree-sitter') {
+        command = 'node srcTreesitter/tree-sitter.js test'; 
     } else {
         return res.status(400).json({ message: `Error with method: ${comparisonMethod}` });
     }
-
-    // console.log('Executing command:', command);
 
     exec(command, (err, stdout, stderr) => {
         if (comparisonMethod === 'antlr') {
@@ -96,6 +94,7 @@ app.get('/compare-files', (req, res) => {
         res.status(200).json({ results: stdout });
     });
 });
+
 
 app.post('/clear-folder', (req, res) => {
     clearTestFolder();
