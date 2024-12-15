@@ -1,9 +1,9 @@
-### PlagiarismTool
+### PlagiarismTool for Java files
 
 **To Run Using CMD Line**
 
 
-Standard Winnowing
+### Standard Winnowing
 
 To run, execute the following commands in the root folder (PlagiarismTool/):
 
@@ -19,9 +19,9 @@ javac src/PlagiarismTool.java
 java -cp . src.PlagiarismTool test
 ```
 
----
 
-ANTLR
+
+### ANTLR
 
 To run, execute the following commands in the root folder (PlagiarismTool/):
 
@@ -66,9 +66,9 @@ for processing all files in the data folder:
 java -cp "bin:lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR data
 ```
 
----
 
-TREE-SITTER
+
+### TREE-SITTER
 
 for processing 2 particular files in the test folder:
 
@@ -112,9 +112,9 @@ node server.js
 
 5. Navigate to [localhost:3000](http://localhost:3000)
 
----
 
-Output: 
+
+### Output: 
 
 #### ANTLR Output
 ![ANTLR](images/antlr.PNG)
@@ -124,4 +124,8 @@ Output:
 
 #### Tree Sitter Output
 ![Tree Sitter](images/treesitter.PNG)
+
+### Debug:
+
+Note: If graph fails to load, try testing two files at a time.
 
