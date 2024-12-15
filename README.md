@@ -5,7 +5,7 @@
 1. Clone repo
 
 ```bash
-git clone https://github.com/username/repository-name.git
+git clone https://github.com/SFU-CMPT-473-2024-FALL/PlagiarismTool.git
 ```
 
 3. Navigate to Application
@@ -29,7 +29,10 @@ node server.js
 5. Navigate to [localhost:3000](http://localhost:3000)
 
 
+
+
 **To Run Using CMD Line**
+
 
 Base 
 
@@ -46,6 +49,7 @@ javac src/PlagiarismTool.java
 ```bash
 java -cp . src.PlagiarismTool test
 ```
+
 
 
 ANTLR
@@ -92,6 +96,7 @@ for processing all files in the data folder:
 ```bash
 java -cp "bin:lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR data
 ```
+
 
 
 TREE-SITTER
