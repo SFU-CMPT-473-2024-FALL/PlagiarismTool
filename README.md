@@ -29,7 +29,10 @@ node server.js
 5. Navigate to [localhost:3000](http://localhost:3000)
 
 
+
+
 **To Run Using CMD Line**
+
 
 Base 
 
@@ -46,6 +49,7 @@ javac src/PlagiarismTool.java
 ```bash
 java -cp . src.PlagiarismTool test
 ```
+
 
 
 ANTLR
@@ -92,6 +96,7 @@ for processing all files in the data folder:
 ```bash
 java -cp "bin:lib/antlr-4.13.2-complete.jar" PlagiarismToolANTLR data
 ```
+
 
 
 TREE-SITTER
