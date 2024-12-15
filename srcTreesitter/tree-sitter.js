@@ -15,35 +15,24 @@ async function main() {
         return;
     }
 
-    if (args[0] == 'data') {
-        await dataScan("../data/dataset", "../data/plags/insert");
-        console.log("\n\n");
-        await dataScan("../data/dataset", "../data/plags/insert_after_reorder");
-        console.log("\n\n");
-        await dataScan("../data/dataset", "../data/plags/reorder");
-        return;
-    }
-
-    // make it appear that the test path is relative to root directory
     const testFolder = path.resolve(__dirname, "../" + args[0]);
     if (!fs.existsSync(testFolder) || !fs.statSync(testFolder).isDirectory()) {
         console.log("Invalid folder path: ", testFolder);
         return;
     }
 
-    var files = [];
+    const files = [];
     try {
-      const entries = fs.readdirSync(testFolder);
-      
-      for (const entry of entries) {
-        const fullPath = path.join(testFolder, entry);
-        if (fs.statSync(fullPath).isFile()) {
-          files.push(fullPath);
+        const entries = fs.readdirSync(testFolder);
+        for (const entry of entries) {
+            const fullPath = path.join(testFolder, entry);
+            if (fs.statSync(fullPath).isFile() && path.extname(entry) === '.java') {
+                files.push(fullPath);
+            }
         }
-      }
     } catch (err) {
-      console.log("ERROR: couldn't read the directory");
-      return;
+        console.log("ERROR: couldn't read the directory");
+        return;
     }
 
     if (files.length < 2) {
@@ -52,14 +41,18 @@ async function main() {
     }
 
     const baseFile = files[0];
+    const baseFileName = path.basename(baseFile);
     const baseTree = constructSyntaxTree(baseFile);
 
-    for (let i=1; i < files.length; i++) {
-        const otherFile = files[i]; 
+    for (let i = 1; i < files.length; i++) {
+        const otherFile = files[i];
+        const otherFileName = path.basename(otherFile);
         const otherTree = constructSyntaxTree(otherFile);
 
         const similarityMetric = await winnow(baseTree, otherTree);
-        console.log(`Plagiarism percentage (Jaccard Similarity): ${similarityMetric * 100}`);
+        const formattedSimilarity = (similarityMetric * 100).toFixed(2);
+        console.log(`Comparing: ${baseFileName} and ${otherFileName}`);
+        console.log(`Plagiarism percentage (Jaccard Similarity): ${formattedSimilarity}%\n`);
     }
 }
 
