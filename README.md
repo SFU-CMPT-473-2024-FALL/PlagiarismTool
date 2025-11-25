@@ -1,5 +1,26 @@
 [Click here to view the Full Project Report (PDF)](Project_Report.pdf)
 
+**Algorithm**
+
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/0865756d-f57a-4ad8-a553-4e478e93a145" />
+
+**System Architecture**
+
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/f07cc862-3462-4e40-9250-7b37d32cc5db" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/ed07e325-e45e-4521-a9e9-f1ac9cfdc508" />
+<img width="400" height="500" alt="image" src="https://github.com/user-attachments/assets/4c64a4ff-6c1a-4b76-b5b1-480983bf2bc2" />
+
+
+**Results Overview**
+
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/4fbfae04-265f-46f6-8d72-1ed1b2051de8" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/b96189a9-1ebf-48ea-87e9-cce6bbfecaa1" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/e6139225-f400-4918-8d56-33d533804c19" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/a88a30f2-2dd4-4f1c-a36a-6c2c12453b4d" />
+
+
+---
+
 ### PlagiarismTool for Java files
 
 To run this project, ensure Java Development Kit (JDK) or OpenJDK is installed 
