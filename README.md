@@ -1,3 +1,5 @@
+[Click here to view the Full Project Report (PDF)](Project_Report.pdf)
+
 ### PlagiarismTool for Java files
 
 To run this project, ensure Java Development Kit (JDK) or OpenJDK is installed 
@@ -131,3 +133,4 @@ node server.js
 
 Note: If graph fails to load, try testing two files at a time.
 
+[Click here to view the Full Project Report (PDF)](Project_Report.pdf)
