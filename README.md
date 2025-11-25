@@ -1,5 +1,7 @@
 [Click here to view the Full Project Report (PDF)](Project_Report.pdf)
 
+**BRIEF OVERVIEW**
+
 **Algorithm**
 
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/0865756d-f57a-4ad8-a553-4e478e93a145" />
@@ -11,7 +13,7 @@
 <img width="400" height="500" alt="image" src="https://github.com/user-attachments/assets/4c64a4ff-6c1a-4b76-b5b1-480983bf2bc2" />
 
 
-**Results Overview**
+**Numerical Results**
 
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/4fbfae04-265f-46f6-8d72-1ed1b2051de8" />
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/b96189a9-1ebf-48ea-87e9-cce6bbfecaa1" />
